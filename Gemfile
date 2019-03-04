@@ -29,6 +29,7 @@ gem 'jbuilder', '~> 2.7'
 
 # From Rails Tutorial book
 gem 'jquery-rails', '~> 4.3.1'
+gem 'bootstrap-sass', '3.3.7'
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
