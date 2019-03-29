@@ -65,6 +65,9 @@ group :development do
 
   # Rails Database Viewer and SQL Query Runner (https://github.com/igorkasyanchuk/rails_db)
   gem 'rails_db', '2.0.4'
+
+  # For creating fake data
+  gem 'faker', '1.7.3'
 end
 
 group :test do
