@@ -1,7 +1,6 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+admin:
+  name: Admin
 
-one:
-  name: MyString
-
-two:
-  name: MyString
+candidate:
+  name: Candidate
