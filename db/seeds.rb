@@ -15,7 +15,9 @@ User.create!(first_name:  "Michael",
              email: "michael.william.dorsey@gmail.com",
              user_type_id: UserType.find_by(name: 'Admin').id,
              password:              "password",
-             password_confirmation: "password")
+             password_confirmation: "password",
+             activated: true,
+             activated_at: Time.zone.now)
 
 99.times do |n|
   first_name = Faker::Name.first_name
@@ -27,5 +29,7 @@ User.create!(first_name:  "Michael",
                email: email,
                user_type_id: UserType.find_by(name: 'Candidate').id,
                password:              password,
-               password_confirmation: password)
+               password_confirmation: password,
+               activated: true,
+               activated_at: Time.zone.now)
 end
