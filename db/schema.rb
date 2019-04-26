@@ -10,7 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_18_020302) do
+ActiveRecord::Schema.define(version: 2019_04_26_022633) do
+
+  create_table "candidates", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id"
+    t.string "email"
+    t.string "website"
+    t.text "biography"
+    t.boolean "is_incumbent"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_candidates_on_user_id"
+  end
 
   create_table "user_types", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
@@ -35,4 +46,5 @@ ActiveRecord::Schema.define(version: 2019_04_18_020302) do
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
+  add_foreign_key "candidates", "users"
 end
