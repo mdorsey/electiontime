@@ -54,8 +54,6 @@ class UsersController < ApplicationController
       params.require(:user).permit(:first_name, :last_name, :email, :user_type_id, :password, :password_confirmation)
     end
 
-    # Before filters
-
     # Confirms a logged-in user.
     def logged_in_user
       unless logged_in?
@@ -71,9 +69,9 @@ class UsersController < ApplicationController
       redirect_to(root_url) unless current_user?(@user)
     end
 
-    # Confirms an admin user.
-    def admin_user
-      redirect_to(root_url) unless current_user.user_type_id === UserType.find_by(name: 'Admin').id
-    end
+    # # Confirms an admin user.
+    # def admin_user
+    #   redirect_to(root_url) unless current_user.user_type_id === UserType.find_by(name: 'Admin').id
+    # end
 
 end

@@ -35,6 +35,11 @@ module SessionsHelper
     !current_user.nil?
   end
 
+  # Returns true if the user is logged in and an Admin user type, false otherwise.
+  def is_admin_user?
+    logged_in? && (current_user.user_type_id === UserType.find_by(name: 'Admin').id)
+  end
+
   # Remembers a user in a persistent session.
   def remember(user)
     user.remember

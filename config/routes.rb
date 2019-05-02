@@ -10,10 +10,15 @@ Rails.application.routes.draw do
   post    '/login',   to: 'sessions#create'
   delete  '/logout',  to: 'sessions#destroy'
 
-  resources :users
+  # Admin controller
+  get     'admin/resources'
+  
   resources :account_activations, only: [:edit]
-  resources :password_resets,     only: [:new, :create, :edit, :update]
   resources :candidates
-
+  resources :election_types
+  resources :password_resets,     only: [:new, :create, :edit, :update]
+  resources :user_types
+  resources :users
+  
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

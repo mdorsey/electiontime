@@ -1,0 +1,13 @@
+<% provide(:title, 'User Types') %>
+<h1>User Types</h1>
+
+<%= will_paginate %>
+
+<ul class="resources-list">
+  <%= render @user_types %>
+</ul>
+
+<%= will_paginate %>
+
+<%= link_to '+ New User Type', new_user_type_path, class: "btn btn-primary" %>
+<%= link_to 'Back', admin_resources_path, class: "btn btn-default" %>

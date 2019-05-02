@@ -1,0 +1,13 @@
+<% provide(:title, 'Election Types') %>
+<h1>Election Types</h1>
+
+<%= will_paginate %>
+
+<ul class="resources-list">
+  <%= render @election_types %>
+</ul>
+
+<%= will_paginate %>
+
+<%= link_to '+ New Election Type', new_election_type_path, class: "btn btn-primary" %>
+<%= link_to 'Back', admin_resources_path, class: "btn btn-default" %>
