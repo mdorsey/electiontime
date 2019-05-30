@@ -2,10 +2,30 @@
 <h1>User: <%= @user.first_name + ' ' + @user.last_name %></h1>
 
 <p>
-  <strong>First Name:</strong>
-  <%= @user.first_name %>
+  <strong>First Name: </strong><%= @user.first_name %>
+</p>
+<p>
+  <strong>Last Name: </strong><%= @user.last_name %>
+</p>
+<p>
+  <strong>Email: </strong><%= @user.email %>
+</p>
+<p>
+  <strong>User Type: </strong><%= display_user_type(@user.user_type_id) %>
+</p>
+<p>
+  <strong>Activated: </strong><%= @user.activated %>
+</p>
+<p>
+  <strong>Activated At: </strong><%= @user.activated_at.localtime %>
+</p>
+<p>
+  <strong>Created At: </strong><%= @user.created_at.localtime %>
+</p>
+<p>
+  <strong>Updated At: </strong><%= @user.updated_at.localtime %>
 </p>
 
-<%= link_to 'Edit', edit_user_path(@user_type), class: "btn btn-primary" %>
+<%= link_to 'Edit', edit_user_path(@user), class: "btn btn-primary" %>
 <%= link_to 'Delete', @user, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
-<%= link_to 'Back', user_path, class: "btn btn-default" %>
+<%= link_to 'Back', users_path, class: "btn btn-default" %>

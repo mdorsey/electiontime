@@ -4,7 +4,7 @@
 
 .resources-list {
   list-style: none;
-  margin-bottom: 20px;
+  margin: 10px 0 20px 0;
   padding: 0;
 
   li {
@@ -12,4 +12,8 @@
     padding: 10px 0;
     border-bottom: 1px solid lightgray;
   }
+}
+
+div.pagination, ul.pagination {
+  margin: 10px 0;
 }

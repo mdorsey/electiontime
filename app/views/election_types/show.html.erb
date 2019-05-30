@@ -2,8 +2,7 @@
 <h1>Election Type: <%= @election_type.name %></h1>
 
 <p>
-  <strong>Name:</strong>
-  <%= @election_type.name %>
+  <strong>Name: </strong><%= @election_type.name %>
 </p>
 
 <%= link_to 'Edit', edit_election_type_path(@election_type), class: "btn btn-primary" %>
