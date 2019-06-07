@@ -1,0 +1,11 @@
+<% provide(:title, 'Jurisdictions') %>
+<h1>Jurisdictions</h1>
+
+<%= link_to '+ New Jurisdiction', new_jurisdiction_path, class: "btn btn-primary" %>
+<%= link_to 'Back', admin_resources_path, class: "btn btn-default" %>
+
+<ul class="resources-list">
+  <%= render @jurisdictions %>
+</ul>
+
+<%= will_paginate %>

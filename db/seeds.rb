@@ -6,6 +6,15 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+ElectionType.create!(name: "Federal");
+ElectionType.create!(name: "Provincial");
+ElectionType.create!(name: "Municipal");
+
+Jurisdiction.create!(name: "Canada");
+Jurisdiction.create!(name: "British Columbia");
+Jurisdiction.create!(name: "Alberta");
+Jurisdiction.create!(name: "Calgary");
+
 UserType.create!(name: "Admin")
 UserType.create!(name: "Ambassador")
 UserType.create!(name: "Candidate")
