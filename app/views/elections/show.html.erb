@@ -1,0 +1,19 @@
+<% provide(:title, @election.name) %>
+<h1>Election: <%= @election.name %></h1>
+
+<p>
+  <strong>Name: </strong><%= @election.name %>
+</p>
+<p>
+  <strong>Election Type: </strong><%= display_election_type(@election.election_type_id) %>
+</p>
+<p>
+  <strong>Election Date: </strong><%= @election.election_date.strftime("%B %d, %Y") %>
+</p>
+<p>
+  <strong>Jurisdiction: </strong><%= display_jurisdiction(@election.jurisdiction_id) %>
+</p>
+
+<%= link_to 'Edit', edit_election_path(@election), class: "btn btn-primary" %>
+<%= link_to 'Delete', @election, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
+<%= link_to 'Back', elections_path, class: "btn btn-default" %>

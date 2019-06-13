@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_13_184409) do
+ActiveRecord::Schema.define(version: 2019_06_13_192738) do
 
   create_table "candidates", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id"
@@ -27,6 +27,17 @@ ActiveRecord::Schema.define(version: 2019_06_13_184409) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "elections", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
+    t.datetime "election_date"
+    t.bigint "election_type_id"
+    t.bigint "jurisdiction_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["election_type_id"], name: "index_elections_on_election_type_id"
+    t.index ["jurisdiction_id"], name: "index_elections_on_jurisdiction_id"
   end
 
   create_table "history_types", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -65,4 +76,6 @@ ActiveRecord::Schema.define(version: 2019_06_13_184409) do
   end
 
   add_foreign_key "candidates", "users"
+  add_foreign_key "elections", "election_types"
+  add_foreign_key "elections", "jurisdictions"
 end

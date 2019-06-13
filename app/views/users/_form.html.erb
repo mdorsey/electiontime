@@ -11,7 +11,7 @@
   <%= f.email_field :email, class: 'form-control' %>
 
   <%= f.label :user_type_id, "User Type" %>
-  <%= f.select :user_type_id, options_for_user_type, :prompt => '- Select -' %>
+  <%= f.select(:user_type_id, options_for_user_type, {:prompt => '- Select -'}, {:class => 'form-control'}) %>
 
   <%= f.label :password %>
   <%= f.password_field :password, class: 'form-control' %>
