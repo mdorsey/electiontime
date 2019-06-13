@@ -10,6 +10,8 @@ ElectionType.create!(name: "Federal");
 ElectionType.create!(name: "Provincial");
 ElectionType.create!(name: "Municipal");
 
+HistoryType.create!(name: "User Log-In")
+
 Jurisdiction.create!(name: "Canada");
 Jurisdiction.create!(name: "British Columbia");
 Jurisdiction.create!(name: "Alberta");

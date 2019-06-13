@@ -1,0 +1,10 @@
+<% provide(:title, @history_type.name) %>
+<h1>History Type: <%= @history_type.name %></h1>
+
+<p>
+  <strong>Name: </strong><%= @history_type.name %>
+</p>
+
+<%= link_to 'Edit', edit_history_type_path(@history_type), class: "btn btn-primary" %>
+<%= link_to 'Delete', @history_type, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
+<%= link_to 'Back', history_types_path, class: "btn btn-default" %>
