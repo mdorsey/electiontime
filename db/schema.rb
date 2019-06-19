@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_13_192738) do
+ActiveRecord::Schema.define(version: 2019_06_19_020733) do
 
   create_table "candidates", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id"
@@ -36,6 +36,7 @@ ActiveRecord::Schema.define(version: 2019_06_13_192738) do
     t.bigint "jurisdiction_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "active", default: false
     t.index ["election_type_id"], name: "index_elections_on_election_type_id"
     t.index ["jurisdiction_id"], name: "index_elections_on_jurisdiction_id"
   end

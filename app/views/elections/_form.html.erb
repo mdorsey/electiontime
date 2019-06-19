@@ -13,6 +13,9 @@
   <%= f.label :jurisdiction_id, "Jurisdiction" %>
   <%= f.select(:jurisdiction_id, options_for_jurisdiction, {:prompt => '- Select -'}, {:class => 'form-control'}) %>
 
+  <%= f.label :active, "Active" %>
+  <%= f.check_box :active, class: 'form-control auto-width' %>
+
   <%= f.submit "Save", class: "btn btn-primary" %>
   <%= link_to 'Cancel', cancel_path, class: "btn btn-default", role: "button" %>
 <% end %>

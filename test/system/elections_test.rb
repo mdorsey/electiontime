@@ -18,6 +18,7 @@ class ElectionsTest < ApplicationSystemTestCase
     fill_in "Election type", with: @election.election_type_id
     fill_in "Jurisdiction", with: @election.jurisdiction_id
     fill_in "Name", with: @election.name
+    fill_in "Active", with: @election.active
     click_on "Create Election"
 
     assert_text "Election was successfully created"
@@ -32,6 +33,7 @@ class ElectionsTest < ApplicationSystemTestCase
     fill_in "Election type", with: @election.election_type_id
     fill_in "Jurisdiction", with: @election.jurisdiction_id
     fill_in "Name", with: @election.name
+    fill_in "Active", with: @election.active
     click_on "Update Election"
 
     assert_text "Election was successfully updated"
