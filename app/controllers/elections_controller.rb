@@ -21,7 +21,7 @@ class ElectionsController < ApplicationController
   def destroy
     @election.destroy
     flash[:success] = "Election deleted"
-    redirect_to Elections_url
+    redirect_to elections_url
   end
 
   def edit
