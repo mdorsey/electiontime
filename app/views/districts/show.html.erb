@@ -1,0 +1,16 @@
+<% provide(:title, @district.name) %>
+<h1>District: <%= @district.name %></h1>
+
+<p>
+  <strong>Name: </strong><%= @district.name %>
+</p>
+<p>
+  <strong>Election Type: </strong><%= display_election_type(@district.election_type_id) %>
+</p>
+<p>
+  <strong>Jurisdiction: </strong><%= display_jurisdiction(@district.jurisdiction_id) %>
+</p>
+
+<%= link_to 'Edit', edit_district_path(@district), class: "btn btn-primary" %>
+<%= link_to 'Delete', @district, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
+<%= link_to 'Back', districts_path, class: "btn btn-default" %>

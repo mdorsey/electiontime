@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_19_020733) do
+ActiveRecord::Schema.define(version: 2019_06_27_021414) do
 
   create_table "candidates", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id"
@@ -21,6 +21,16 @@ ActiveRecord::Schema.define(version: 2019_06_19_020733) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_candidates_on_user_id"
+  end
+
+  create_table "districts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
+    t.bigint "election_type_id"
+    t.bigint "jurisdiction_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["election_type_id"], name: "index_districts_on_election_type_id"
+    t.index ["jurisdiction_id"], name: "index_districts_on_jurisdiction_id"
   end
 
   create_table "election_types", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -77,6 +87,8 @@ ActiveRecord::Schema.define(version: 2019_06_19_020733) do
   end
 
   add_foreign_key "candidates", "users"
+  add_foreign_key "districts", "election_types"
+  add_foreign_key "districts", "jurisdictions"
   add_foreign_key "elections", "election_types"
   add_foreign_key "elections", "jurisdictions"
 end

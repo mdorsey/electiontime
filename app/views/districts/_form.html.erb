@@ -1,0 +1,15 @@
+<%= form_for(@district) do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+
+  <%= f.label :name, "Name" %>
+  <%= f.text_field :name, class: 'form-control' %>
+
+  <%= f.label :election_type_id, "Election Type" %>
+  <%= f.select(:election_type_id, options_for_election_type, {:prompt => '- Select -'}, {:class => 'form-control'}) %>
+
+  <%= f.label :jurisdiction_id, "Jurisdiction" %>
+  <%= f.select(:jurisdiction_id, options_for_jurisdiction, {:prompt => '- Select -'}, {:class => 'form-control'}) %>
+
+  <%= f.submit "Save", class: "btn btn-primary" %>
+  <%= link_to 'Cancel', cancel_path, class: "btn btn-default", role: "button" %>
+<% end %>

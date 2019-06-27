@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  election_type: one
+  jurisdiction: one
+
+two:
+  name: MyString
+  election_type: two
+  jurisdiction: two
