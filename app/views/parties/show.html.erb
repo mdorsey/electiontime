@@ -1,0 +1,19 @@
+<% provide(:title, @party.name) %>
+<h1>Party: <%= @party.name %></h1>
+
+<p>
+  <strong>Name: </strong><%= @party.name %>
+</p>
+<p>
+  <strong>Name Abbreviation: </strong><%= @party.name_abbreviation %>
+</p>
+<p>
+  <strong>Alternate Name: </strong><%= @party.alternate_name %>
+</p>
+<p>
+  <strong>Alternate Abbreviation: </strong><%= @party.alternate_abbreviation %>
+</p>
+
+<%= link_to 'Edit', edit_party_path(@party), class: "btn btn-primary" %>
+<%= link_to 'Delete', @party, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
+<%= link_to 'Back', parties_path, class: "btn btn-default" %>

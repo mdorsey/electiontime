@@ -367,6 +367,14 @@ District.create!(name: "Yukon", jurisdiction_id: Jurisdiction.find_by(name: "Yuk
 
 HistoryType.create!(name: "User Log-In")
 
+Party.create!(name: "Independent")
+Party.create!(name: "Liberal Party of Canada", name_abbreviation: "Liberal", alternate_name: "Parti libéral du Canada", alternate_abbreviation: "Libéral")
+Party.create!(name: "People's Party of Canada", name_abbreviation: "PPC", alternate_name: "Parti populaire du Canada", alternate_abbreviation: "PPC")
+Party.create!(name: "Conservative Party of Canada", name_abbreviation: "Conservative", alternate_name: "Parti conservateur du Canada", alternate_abbreviation: "Conservateur")
+Party.create!(name: "New Democratic Party", name_abbreviation: "NDP", alternate_name: "Nouveau Parti démocratique", alternate_abbreviation: "NPD")
+Party.create!(name: "Bloc Québécois", name_abbreviation: "BQ")
+Party.create!(name: "Green Party of Canada", name_abbreviation: "Green", alternate_name: "Parti vert du Canada", alternate_abbreviation: "Vert")
+
 UserType.create!(name: "Admin")
 UserType.create!(name: "Ambassador")
 UserType.create!(name: "Candidate")

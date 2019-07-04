@@ -1,0 +1,18 @@
+<%= form_for(@party) do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+
+  <%= f.label :name, "Name" %>
+  <%= f.text_field :name, class: 'form-control' %>
+
+  <%= f.label :name_abbreviation, "Name Abbreviation" %>
+  <%= f.text_field :name_abbreviation, class: 'form-control' %>
+
+  <%= f.label :alternate_name, "Alternate Name" %>
+  <%= f.text_field :alternate_name, class: 'form-control' %>
+
+  <%= f.label :alternate_abbreviation, "Alternate Abbreviation" %>
+  <%= f.text_field :alternate_abbreviation, class: 'form-control' %>
+
+  <%= f.submit "Save", class: "btn btn-primary" %>
+  <%= link_to 'Cancel', cancel_path, class: "btn btn-default", role: "button" %>
+<% end %>
