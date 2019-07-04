@@ -190,3 +190,7 @@ input {
 .auto-width {
   width: auto;
 }
+
+select[multiple] {
+  height: 200px;
+}

@@ -16,6 +16,14 @@
 <p>
   <strong>Active: </strong><%= @election.active %>
 </p>
+<p>
+  <strong>Districts: </strong>
+  <ul>
+    <% @election.districts.each do |district| %>
+      <li><%= district.name %></li>
+    <%end %>
+  </ul>
+</p>
 
 <%= link_to 'Edit', edit_election_path(@election), class: "btn btn-primary" %>
 <%= link_to 'Delete', @election, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>

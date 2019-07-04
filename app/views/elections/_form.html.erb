@@ -13,8 +13,13 @@
   <%= f.label :jurisdiction_id, "Jurisdiction" %>
   <%= f.select(:jurisdiction_id, options_for_jurisdiction, {:prompt => '- Select -'}, {:class => 'form-control'}) %>
 
+  <%= f.label :district_ids, "Districts" %>
+  <%= f.collection_select(:district_ids, District.order(:name), :id, :name, {:include_blank => false, :include_hidden => false}, {:multiple => true, :class => 'form-control'}) %>
+
   <%= f.label :active, "Active" %>
   <%= f.check_box :active, class: 'form-control auto-width' %>
+  
+  <br/>
 
   <%= f.submit "Save", class: "btn btn-primary" %>
   <%= link_to 'Cancel', cancel_path, class: "btn btn-default", role: "button" %>
