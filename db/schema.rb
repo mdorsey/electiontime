@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_04_212604) do
+ActiveRecord::Schema.define(version: 2019_07_09_022232) do
+
+  create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "street"
+    t.string "city"
+    t.bigint "province_id"
+    t.string "postal_code"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["province_id"], name: "index_addresses_on_province_id"
+  end
 
   create_table "candidates", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id"
@@ -79,6 +89,12 @@ ActiveRecord::Schema.define(version: 2019_07_04_212604) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "provinces", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "user_types", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -102,6 +118,7 @@ ActiveRecord::Schema.define(version: 2019_07_04_212604) do
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
+  add_foreign_key "addresses", "provinces"
   add_foreign_key "candidates", "users"
   add_foreign_key "districts", "election_types"
   add_foreign_key "districts", "jurisdictions"

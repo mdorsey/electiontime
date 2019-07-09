@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
   
-
   # Static_Pages controller  
   root    'static_pages#home'
   get     '/about',   to: 'static_pages#about'
@@ -15,6 +14,7 @@ Rails.application.routes.draw do
   get     'admin/resources'
   
   resources :account_activations, only: [:edit]
+  resources :addresses
   resources :candidates
   resources :districts
   resources :election_types
@@ -23,6 +23,7 @@ Rails.application.routes.draw do
   resources :jurisdictions
   resources :password_resets,     only: [:new, :create, :edit, :update]
   resources :parties
+  resources :provinces
   resources :user_types
   resources :users
   

@@ -1,0 +1,19 @@
+<% provide(:title, @address.street) %>
+<h1>Address: <%= @address.street %></h1>
+
+<p>
+  <strong>Street: </strong><%= @address.street %>
+</p>
+<p>
+  <strong>City: </strong><%= @address.city %>
+</p>
+<p>
+  <strong>Province: </strong><%= display_province(@address.province_id) %>
+</p>
+<p>
+  <strong>Postal Code: </strong><%= @address.postal_code %>
+</p>
+
+<%= link_to 'Edit', edit_address_path(@address), class: "btn btn-primary" %>
+<%= link_to 'Delete', @address, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
+<%= link_to 'Back', addresses_path, class: "btn btn-default" %>

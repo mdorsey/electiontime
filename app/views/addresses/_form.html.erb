@@ -1,0 +1,18 @@
+<%= form_for(@address) do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+
+  <%= f.label :street, "Street" %>
+  <%= f.text_field :street, class: 'form-control' %>
+
+  <%= f.label :city, "City" %>
+  <%= f.text_field :city, class: 'form-control' %>
+
+  <%= f.label :province_id, "Province" %>
+  <%= f.select(:province_id, options_for_province, {:prompt => '- Select -'}, {:class => 'form-control'}) %>
+
+  <%= f.label :postal_code, "Postal Code" %>
+  <%= f.text_field :postal_code, class: 'form-control' %>
+
+  <%= f.submit "Save", class: "btn btn-primary" %>
+  <%= link_to 'Cancel', cancel_path, class: "btn btn-default", role: "button" %>
+<% end %>
