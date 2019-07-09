@@ -15,12 +15,12 @@ Rails.application.routes.draw do
   
   resources :account_activations, only: [:edit]
   resources :addresses
-  resources :candidates
   resources :districts
   resources :election_types
   resources :elections
   resources :history_types
   resources :jurisdictions
+  resources :participants
   resources :password_resets,     only: [:new, :create, :edit, :update]
   resources :parties
   resources :provinces

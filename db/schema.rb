@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_09_022232) do
+ActiveRecord::Schema.define(version: 2019_07_09_025507) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "street"
@@ -20,17 +20,6 @@ ActiveRecord::Schema.define(version: 2019_07_09_022232) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["province_id"], name: "index_addresses_on_province_id"
-  end
-
-  create_table "candidates", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.bigint "user_id"
-    t.string "email"
-    t.string "website"
-    t.text "biography"
-    t.boolean "is_incumbent"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_candidates_on_user_id"
   end
 
   create_table "districts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -80,6 +69,17 @@ ActiveRecord::Schema.define(version: 2019_07_09_022232) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "participants", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id"
+    t.string "email"
+    t.string "website"
+    t.text "biography"
+    t.boolean "is_incumbent"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_participants_on_user_id"
+  end
+
   create_table "parties", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
     t.string "name_abbreviation"
@@ -119,9 +119,9 @@ ActiveRecord::Schema.define(version: 2019_07_09_022232) do
   end
 
   add_foreign_key "addresses", "provinces"
-  add_foreign_key "candidates", "users"
   add_foreign_key "districts", "election_types"
   add_foreign_key "districts", "jurisdictions"
   add_foreign_key "elections", "election_types"
   add_foreign_key "elections", "jurisdictions"
+  add_foreign_key "participants", "users"
 end
