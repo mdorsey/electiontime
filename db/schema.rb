@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_09_025507) do
+ActiveRecord::Schema.define(version: 2019_07_17_023137) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "street"
@@ -77,6 +77,16 @@ ActiveRecord::Schema.define(version: 2019_07_09_025507) do
     t.boolean "is_incumbent"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "phone"
+    t.boolean "is_candidate"
+    t.bigint "address_id"
+    t.bigint "district_id"
+    t.bigint "party_id"
+    t.bigint "leader_participant_id"
+    t.index ["address_id"], name: "index_participants_on_address_id"
+    t.index ["district_id"], name: "index_participants_on_district_id"
+    t.index ["leader_participant_id"], name: "fk_rails_de8d82c2c8"
+    t.index ["party_id"], name: "index_participants_on_party_id"
     t.index ["user_id"], name: "index_participants_on_user_id"
   end
 
@@ -123,5 +133,9 @@ ActiveRecord::Schema.define(version: 2019_07_09_025507) do
   add_foreign_key "districts", "jurisdictions"
   add_foreign_key "elections", "election_types"
   add_foreign_key "elections", "jurisdictions"
+  add_foreign_key "participants", "addresses"
+  add_foreign_key "participants", "districts"
+  add_foreign_key "participants", "participants", column: "leader_participant_id"
+  add_foreign_key "participants", "parties"
   add_foreign_key "participants", "users"
 end

@@ -1,0 +1,40 @@
+<% provide(:title, @participant.user_id) %>
+<h1>Participant: <%= @participant.user_id %></h1>
+
+<p>
+  <strong>User ID: </strong><%= @participant.user_id %>
+</p>
+<p>
+  <strong>Email: </strong><%= @participant.email %>
+</p>
+<p>
+  <strong>Phone: </strong><%= @participant.phone %>
+</p>
+<p>
+  <strong>Website: </strong><%= @participant.website %>
+</p>
+<p>
+  <strong>Biography: </strong><%= @participant.biography %>
+</p>
+<p>
+  <strong>Is Incumbent: </strong><%= @participant.is_incumbent %>
+</p>
+<p>
+  <strong>Is Candidate: </strong><%= @participant.is_candidate %>
+</p>
+<p>
+  <strong>Address: </strong><%= display_address(@participant.address_id) %>
+</p>
+<p>
+  <strong>District: </strong><%= display_district(@participant.district_id) %>
+</p>
+<p>
+  <strong>Party: </strong><%= display_party(@participant.party_id) %>
+</p>
+<p>
+  <strong>Leader Participant: </strong><%= display_participant(@participant.leader_participant_id) %>
+</p>
+
+<%= link_to 'Edit', edit_participant_path(@participant), class: "btn btn-primary" %>
+<%= link_to 'Delete', @participant, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
+<%= link_to 'Back', participants_path, class: "btn btn-default" %>

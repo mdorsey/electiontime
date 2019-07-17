@@ -1,12 +1,12 @@
 module UsersHelper
 
-  def options_for_user_type
-    user_types = Array.new
+  def options_for_user
+    users = Array.new
 
-    UserType.all.order('name ASC').each do |ut|
-      user_types.push([ut.name, ut.id])
+    User.all.order('first_name ASC').each do |j|
+      users.push([j.first_name + ' ' + j.last_name, j.id])
     end
 
-    return user_types
+    return users
   end
 end
