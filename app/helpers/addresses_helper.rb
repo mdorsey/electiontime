@@ -1,7 +1,15 @@
 module AddressesHelper
 
   def display_address(address_id)
-    return Address.find(address_id).street
+
+    address_name = '';
+    
+    if address_id
+      address = Address.find(address_id)
+      address_name = address.street + ', ' + address.city + ', ' + display_province(address.province_id) + ' ' + address.postal_code
+    end
+
+    return address_name
   end
 
   def options_for_address

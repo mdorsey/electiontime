@@ -10,7 +10,6 @@ class User < ApplicationRecord
   before_save   :downcase_email
   before_create :create_activation_digest
 
-  # Validations
   validates(:first_name, presence: true, length: { maximum: 255 })
   validates(:last_name, presence: true, length: { maximum: 255 })
   validates(:email, presence: true, length: { maximum: 255 }, format: { with: VALID_EMAIL_REGEX }, uniqueness: { case_sensitive: false })

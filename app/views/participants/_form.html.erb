@@ -4,6 +4,25 @@
   <%= f.label :user_id, "User" %>
   <%= f.select(:user_id, options_for_user, {:prompt => '- Select -'}, {:class => 'form-control'}) %>
 
+  <%= f.label :party_id, "Party" %>
+  <%= f.select(:party_id, options_for_party, {:prompt => '- Select -'}, {:class => 'form-control'}) %>
+
+  <%= f.label :district_id, "District" %>
+  <%= f.select(:district_id, options_for_district, {include_blank: "None"}, {:class => 'form-control'}) %>
+
+  <%= f.label :leader_participant_id, "Leader Participant" %>
+  <%= f.select(:leader_participant_id, options_for_participant, {include_blank: "None"}, {:class => 'form-control'}) %>
+
+  <%= f.label :is_candidate, "Is Candidate" %>
+  <%= f.check_box :is_candidate, class: 'form-control auto-width' %>
+
+  <br/>
+
+  <%= f.label :is_incumbent, "Is Incumbent" %>
+  <%= f.check_box :is_incumbent, class: 'form-control auto-width' %>
+
+  <br/>
+
   <%= f.label :email, "Email" %>
   <%= f.text_field :email, class: 'form-control' %>
 
@@ -16,23 +35,8 @@
   <%= f.label :biography, "Biography" %>
   <%= f.text_field :biography, class: 'form-control' %>
 
-  <%= f.label :is_incumbent, "Is Incumbent" %>
-  <%= f.check_box :is_incumbent, class: 'form-control auto-width' %>
-
-  <%= f.label :is_candidate, "Is Candidate" %>
-  <%= f.check_box :is_candidate, class: 'form-control auto-width' %>
-
   <%= f.label :address_id, "Address" %>
-  <%= f.select(:address_id, options_for_address, {:prompt => '- Select -'}, {:class => 'form-control'}) %>
-
-  <%= f.label :district_id, "District" %>
-  <%= f.select(:district_id, options_for_district, {:prompt => '- Select -'}, {:class => 'form-control'}) %>
-
-  <%= f.label :party_id, "Party" %>
-  <%= f.select(:party_id, options_for_party, {:prompt => '- Select -'}, {:class => 'form-control'}) %>
-
-  <%= f.label :leader_participant_id, "Leader Participant" %>
-  <%= f.select(:leader_participant_id, options_for_participant, {:prompt => '- Select -'}, {:class => 'form-control'}) %>
+  <%= f.select(:address_id, options_for_address, {include_blank: "None"}, {:class => 'form-control'}) %>
 
   <%= f.submit "Save", class: "btn btn-primary" %>
   <%= link_to 'Cancel', cancel_path, class: "btn btn-default", role: "button" %>

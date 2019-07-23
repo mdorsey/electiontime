@@ -4,7 +4,7 @@ class ParticipantsController < ApplicationController
   before_action :set_participant, only: [:show, :edit, :update, :destroy]
 
   def index
-    @participants = Participant.paginate(page: params[:page]).order('user_id ASC')
+    @participants = Participant.paginate(page: params[:page])
   end
 
   def create
