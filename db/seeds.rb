@@ -389,6 +389,11 @@ Province.create!(name: "Quebec")
 Province.create!(name: "Saskatchewan")
 Province.create!(name: "Yukon")
 
+SocialMediaType.create!(name: "Facebook")
+SocialMediaType.create!(name: "Twitter")
+SocialMediaType.create!(name: "Instagram")
+SocialMediaType.create!(name: "Youtube")
+
 UserType.create!(name: "Admin")
 UserType.create!(name: "Ambassador")
 UserType.create!(name: "Candidate")

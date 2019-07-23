@@ -1,0 +1,11 @@
+<% provide(:title, 'Social Media Types') %>
+<h1>Social Media Types</h1>
+
+<%= link_to '+ New Social Media Type', new_social_media_type_path, class: "btn btn-primary" %>
+<%= link_to 'Back', admin_resources_path, class: "btn btn-default" %>
+
+<ul class="resources-list">
+  <%= render @social_media_types %>
+</ul>
+
+<%= will_paginate %>
