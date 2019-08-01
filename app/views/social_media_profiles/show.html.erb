@@ -1,0 +1,16 @@
+<% provide(:title, @social_media_profile.handle) %>
+<h1>Social Media Profile: <%= @social_media_profile.handle %></h1>
+
+<p>
+  <strong>Handle: </strong><%= @social_media_profile.handle %>
+</p>
+<p>
+  <strong>Participant: </strong><%= display_participant(@social_media_profile.participant_id) %>
+</p>
+<p>
+  <strong>Social Media Type: </strong><%= display_social_media_type(@social_media_profile.social_media_type_id) %>
+</p>
+
+<%= link_to 'Edit', edit_social_media_profile_path(@social_media_profile), class: "btn btn-primary" %>
+<%= link_to 'Delete', @social_media_profile, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
+<%= link_to 'Back', social_media_profiles_path, class: "btn btn-default" %>

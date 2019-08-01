@@ -24,6 +24,7 @@ Rails.application.routes.draw do
   resources :password_resets,     only: [:new, :create, :edit, :update]
   resources :parties
   resources :provinces
+  resources :social_media_profiles
   resources :social_media_types
   resources :user_types
   resources :users

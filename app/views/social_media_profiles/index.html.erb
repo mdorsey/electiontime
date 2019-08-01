@@ -1,0 +1,11 @@
+<% provide(:title, 'Social Media Profiles') %>
+<h1>Social Media Profiles</h1>
+
+<%= link_to '+ New Social Media Profile', new_social_media_profile_path, class: "btn btn-primary" %>
+<%= link_to 'Back', admin_resources_path, class: "btn btn-default" %>
+
+<ul class="resources-list">
+  <%= render @social_media_profiles %>
+</ul>
+
+<%= will_paginate %>

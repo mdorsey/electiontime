@@ -1,0 +1,15 @@
+<%= form_for(@social_media_profile) do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+
+  <%= f.label :handle, "Handle" %>
+  <%= f.text_field :handle, class: 'form-control' %>
+
+  <%= f.label :participant_id, "Participant" %>
+  <%= f.select(:participant_id, options_for_participant, {:prompt => '- Select -'}, {:class => 'form-control'}) %>
+
+  <%= f.label :social_media_type_id, "Social Media Type" %>
+  <%= f.select(:social_media_type_id, options_for_social_media_type, {:prompt => '- Select -'}, {:class => 'form-control'}) %>
+
+  <%= f.submit "Save", class: "btn btn-primary" %>
+  <%= link_to 'Cancel', cancel_path, class: "btn btn-default", role: "button" %>
+<% end %>
