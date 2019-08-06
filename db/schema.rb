@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_01_030015) do
+ActiveRecord::Schema.define(version: 2019_08_06_020938) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "street"
@@ -55,6 +55,13 @@ ActiveRecord::Schema.define(version: 2019_08_01_030015) do
     t.boolean "active", default: false
     t.index ["election_type_id"], name: "index_elections_on_election_type_id"
     t.index ["jurisdiction_id"], name: "index_elections_on_jurisdiction_id"
+  end
+
+  create_table "elections_participants", id: false, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "election_id", null: false
+    t.bigint "participant_id", null: false
+    t.index ["election_id", "participant_id"], name: "index_elections_participants_on_election_id_and_participant_id"
+    t.index ["participant_id", "election_id"], name: "index_elections_participants_on_participant_id_and_election_id"
   end
 
   create_table "history_types", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|

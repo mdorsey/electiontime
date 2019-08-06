@@ -35,7 +35,19 @@ class ElectionsController < ApplicationController
   end
 
   def update
+
     if @election.update_attributes(election_params)
+
+      if (!election_params.include? "participant_ids")
+        # Remove all previously existing Participants
+        @election.participants.delete_all
+      end
+
+      if (!election_params.include? "district_ids")
+        # Remove all previously existing Districts
+        @election.districts.delete_all
+      end
+
       flash[:success] = "Election updated"
       redirect_to @election
     else
@@ -50,6 +62,6 @@ class ElectionsController < ApplicationController
     end
 
     def election_params
-      params.require(:election).permit(:name, :election_date, :election_type_id, :jurisdiction_id, :active, :district_ids => [])
+      params.require(:election).permit(:name, :election_date, :election_type_id, :jurisdiction_id, :active, :district_ids => [], :participant_ids => [])
     end
 end

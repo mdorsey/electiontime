@@ -5,6 +5,9 @@
   <strong>Name: </strong><%= @election.name %>
 </p>
 <p>
+  <strong>Active: </strong><%= @election.active %>
+</p>
+<p>
   <strong>Election Type: </strong><%= display_election_type(@election.election_type_id) %>
 </p>
 <p>
@@ -14,13 +17,18 @@
   <strong>Jurisdiction: </strong><%= display_jurisdiction(@election.jurisdiction_id) %>
 </p>
 <p>
-  <strong>Active: </strong><%= @election.active %>
-</p>
-<p>
   <strong>Districts: </strong>
   <ul>
     <% @election.districts.each do |district| %>
       <li><%= district.name %></li>
+    <%end %>
+  </ul>
+</p>
+<p>
+  <strong>Participants: </strong>
+  <ul>
+    <% @election.participants.each do |participant| %>
+      <li><%= display_participant(participant.id) %></li>
     <%end %>
   </ul>
 </p>

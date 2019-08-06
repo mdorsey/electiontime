@@ -4,6 +4,11 @@
   <%= f.label :name, "Name" %>
   <%= f.text_field :name, class: 'form-control' %>
 
+  <%= f.label :active, "Active" %>
+  <%= f.check_box :active, class: 'form-control auto-width' %>
+  
+  <br/>
+
   <%= f.label :election_type_id, "Election Type" %>
   <%= f.select(:election_type_id, options_for_election_type, {:prompt => '- Select -'}, {:class => 'form-control'}) %>
 
@@ -16,10 +21,8 @@
   <%= f.label :district_ids, "Districts" %>
   <%= f.collection_select(:district_ids, District.order(:name), :id, :name, {:include_blank => false, :include_hidden => false}, {:multiple => true, :class => 'form-control'}) %>
 
-  <%= f.label :active, "Active" %>
-  <%= f.check_box :active, class: 'form-control auto-width' %>
-  
-  <br/>
+  <%= f.label :participant_ids, "Participants" %>
+  <%= f.collection_select(:participant_ids, Participant.all, :id, :participant_name_for_display, {:include_blank => false, :include_hidden => false}, {:multiple => true, :class => 'form-control'}) %>
 
   <%= f.submit "Save", class: "btn btn-primary" %>
   <%= link_to 'Cancel', cancel_path, class: "btn btn-default", role: "button" %>
