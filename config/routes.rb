@@ -18,8 +18,8 @@ Rails.application.routes.draw do
   resources :districts
   resources :election_types
   resources :elections
-  resources :history_types
   resources :jurisdictions
+  resources :log_types
   resources :participants
   resources :password_resets,     only: [:new, :create, :edit, :update]
   resources :parties

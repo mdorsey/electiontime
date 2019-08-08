@@ -1,0 +1,10 @@
+<% provide(:title, @log_type.name) %>
+<h1>Log Type: <%= @log_type.name %></h1>
+
+<p>
+  <strong>Name: </strong><%= @log_type.name %>
+</p>
+
+<%= link_to 'Edit', edit_log_type_path(@log_type), class: "btn btn-primary" %>
+<%= link_to 'Delete', @log_type, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
+<%= link_to 'Back', log_types_path, class: "btn btn-default" %>

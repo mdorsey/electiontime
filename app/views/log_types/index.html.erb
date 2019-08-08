@@ -1,0 +1,11 @@
+<% provide(:title, 'Log Types') %>
+<h1>Log Types</h1>
+
+<%= link_to '+ New Log Type', new_log_type_path, class: "btn btn-primary" %>
+<%= link_to 'Back', admin_resources_path, class: "btn btn-default" %>
+
+<ul class="resources-list">
+  <%= render @log_types %>
+</ul>
+
+<%= will_paginate %>
