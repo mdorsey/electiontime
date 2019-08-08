@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_08_212156) do
+ActiveRecord::Schema.define(version: 2019_08_08_213250) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "street"
@@ -20,6 +20,16 @@ ActiveRecord::Schema.define(version: 2019_08_08_212156) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["province_id"], name: "index_addresses_on_province_id"
+  end
+
+  create_table "contents", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "location"
+    t.text "content", limit: 16777215
+    t.string "machine_name"
+    t.bigint "language_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["language_id"], name: "index_contents_on_language_id"
   end
 
   create_table "districts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -169,6 +179,7 @@ ActiveRecord::Schema.define(version: 2019_08_08_212156) do
   end
 
   add_foreign_key "addresses", "provinces"
+  add_foreign_key "contents", "languages"
   add_foreign_key "districts", "election_types"
   add_foreign_key "districts", "jurisdictions"
   add_foreign_key "elections", "election_types"

@@ -1,0 +1,19 @@
+<% provide(:title, @content.location) %>
+<h1>Content: <%= @content.location %></h1>
+
+<p>
+  <strong>Location: </strong><%= @content.location %>
+</p>
+<p>
+  <strong>Content: </strong><%= @content.content %>
+</p>
+<p>
+  <strong>Machine Name: </strong><%= @content.machine_name %>
+</p>
+<p>
+  <strong>Language: </strong><%= display_language(@content.language_id) %>
+</p>
+
+<%= link_to 'Edit', edit_content_path(@content), class: "btn btn-primary" %>
+<%= link_to 'Delete', @content, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
+<%= link_to 'Back', contents_path, class: "btn btn-default" %>

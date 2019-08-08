@@ -1,0 +1,18 @@
+<%= form_for(@content) do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+
+  <%= f.label :location, "Location" %>
+  <%= f.text_field :location, class: 'form-control' %>
+
+  <%= f.label :content, "Content" %>
+  <%= f.text_field :content, class: 'form-control' %>
+
+  <%= f.label :machine_name, "Machine Name" %>
+  <%= f.text_field :machine_name, class: 'form-control' %>
+
+  <%= f.label :language_id, "Language" %>
+  <%= f.select(:language_id, options_for_language, {:prompt => '- Select -'}, {:class => 'form-control'}) %>
+
+  <%= f.submit "Save", class: "btn btn-primary" %>
+  <%= link_to 'Cancel', cancel_path, class: "btn btn-default", role: "button" %>
+<% end %>
