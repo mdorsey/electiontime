@@ -11,7 +11,7 @@ class Participant < ApplicationRecord
   validates(:party, presence: true)
   validates(:email, length: { maximum: 255 })
   validates(:website, length: { maximum: 255 })
-  validates(:biography, length: { maximum: 1000, too_long: "%{count} characters is the maximum allowed" })
+  validates(:biography, length: { maximum: 5000, too_long: "%{count} characters is the maximum allowed" })
   validates(:phone, length: { maximum: 255 })
 
   def participant_name_for_display

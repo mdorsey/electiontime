@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   resources :election_types
   resources :elections
   resources :jurisdictions
+  resources :languages
   resources :log_types
   resources :logs
   resources :participants
