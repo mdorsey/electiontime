@@ -1,0 +1,11 @@
+<% provide(:title, 'System Settings') %>
+<h1>System Settings</h1>
+
+<%= link_to '+ New System Setting', new_system_setting_path, class: "btn btn-primary" %>
+<%= link_to 'Back', admin_resources_path, class: "btn btn-default" %>
+
+<ul class="resources-list">
+  <%= render @system_settings %>
+</ul>
+
+<%= will_paginate %>

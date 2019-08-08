@@ -29,6 +29,7 @@ Rails.application.routes.draw do
   resources :provinces
   resources :social_media_profiles
   resources :social_media_types
+  resources :system_settings
   resources :user_types
   resources :users
   
