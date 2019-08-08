@@ -1,0 +1,19 @@
+<% provide(:title, @log.id) %>
+<h1>Log: <%= @log.id %></h1>
+
+<p>
+  <strong>User: </strong><%= display_user(@log.user_id) %>
+</p>
+<p>
+  <strong>Log Type: </strong><%= display_log_type(@log.log_type_id) %>
+</p>
+<p>
+  <strong>Message: </strong><%= @log.message %>
+</p>
+<p>
+  <strong>Location: </strong><%= @log.location %>
+</p>
+
+<%= link_to 'Edit', edit_log_path(@log), class: "btn btn-primary" %>
+<%= link_to 'Delete', @log, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
+<%= link_to 'Back', logs_path, class: "btn btn-default" %>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_08_200940) do
+ActiveRecord::Schema.define(version: 2019_08_08_202754) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "street"
@@ -74,6 +74,17 @@ ActiveRecord::Schema.define(version: 2019_08_08_200940) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "logs", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "log_type_id"
+    t.string "message"
+    t.string "location"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["log_type_id"], name: "index_logs_on_log_type_id"
+    t.index ["user_id"], name: "index_logs_on_user_id"
   end
 
   create_table "participants", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -156,6 +167,8 @@ ActiveRecord::Schema.define(version: 2019_08_08_200940) do
   add_foreign_key "districts", "jurisdictions"
   add_foreign_key "elections", "election_types"
   add_foreign_key "elections", "jurisdictions"
+  add_foreign_key "logs", "log_types"
+  add_foreign_key "logs", "users"
   add_foreign_key "participants", "addresses"
   add_foreign_key "participants", "districts"
   add_foreign_key "participants", "participants", column: "leader_participant_id"

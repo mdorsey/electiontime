@@ -1,0 +1,18 @@
+<%= form_for(@log) do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+
+  <%= f.label :user_id, "User" %>
+  <%= f.select(:user_id, options_for_user, {:prompt => '- Select -'}, {:class => 'form-control'}) %>
+
+  <%= f.label :log_type_id, "Log Type" %>
+  <%= f.select(:log_type_id, options_for_log_type, {:prompt => '- Select -'}, {:class => 'form-control'}) %>
+
+  <%= f.label :message, "Message" %>
+  <%= f.text_field :message, class: 'form-control' %>
+
+  <%= f.label :location, "Location" %>
+  <%= f.text_field :location, class: 'form-control' %>
+
+  <%= f.submit "Save", class: "btn btn-primary" %>
+  <%= link_to 'Cancel', cancel_path, class: "btn btn-default", role: "button" %>
+<% end %>
