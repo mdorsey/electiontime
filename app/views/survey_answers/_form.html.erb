@@ -1,0 +1,18 @@
+<%= form_for(@survey_answer) do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+
+  <%= f.label :survey_question_id, "Survey Question" %>
+  <%= f.select(:survey_question_id, options_for_survey_question, {:prompt => '- Select -'}, {:class => 'form-control'}) %>
+
+  <%= f.label :participant_id, "Participant" %>
+  <%= f.select(:participant_id, options_for_participant, {:prompt => '- Select -'}, {:class => 'form-control'}) %>
+
+  <%= f.label :answer, "Answer" %>
+  <%= f.text_field :answer, class: 'form-control' %>
+
+  <%= f.label :source, "Source" %>
+  <%= f.text_field :source, class: 'form-control' %>
+
+  <%= f.submit "Save", class: "btn btn-primary" %>
+  <%= link_to 'Cancel', cancel_path, class: "btn btn-default", role: "button" %>
+<% end %>

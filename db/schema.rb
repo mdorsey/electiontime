@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_16_021440) do
+ActiveRecord::Schema.define(version: 2019_08_16_030933) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "street"
@@ -155,6 +155,26 @@ ActiveRecord::Schema.define(version: 2019_08_16_021440) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "survey_answers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "survey_question_id"
+    t.bigint "participant_id"
+    t.text "answer"
+    t.text "source"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["participant_id"], name: "index_survey_answers_on_participant_id"
+    t.index ["survey_question_id"], name: "index_survey_answers_on_survey_question_id"
+  end
+
+  create_table "survey_questions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "survey_id"
+    t.string "question"
+    t.integer "order"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["survey_id"], name: "index_survey_questions_on_survey_id"
+  end
+
   create_table "survey_types", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -217,6 +237,9 @@ ActiveRecord::Schema.define(version: 2019_08_16_021440) do
   add_foreign_key "participants", "users"
   add_foreign_key "social_media_profiles", "participants"
   add_foreign_key "social_media_profiles", "social_media_types"
+  add_foreign_key "survey_answers", "participants"
+  add_foreign_key "survey_answers", "survey_questions"
+  add_foreign_key "survey_questions", "surveys"
   add_foreign_key "surveys", "elections"
   add_foreign_key "surveys", "survey_types"
 end

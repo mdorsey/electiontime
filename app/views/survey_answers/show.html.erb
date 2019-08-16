@@ -1,0 +1,19 @@
+<% provide(:title, @survey_answer.answer) %>
+<h1>Survey Answer: <%= @survey_answer.answer %></h1>
+
+<p>
+  <strong>Survey Question: </strong><%= display_survey_question(@survey_answer.survey_question_id) %>
+</p>
+<p>
+  <strong>Participant: </strong><%= display_participant(@survey_answer.participant_id) %>
+</p>
+<p>
+  <strong>Answer: </strong><%= @survey_answer.answer %>
+</p>
+<p>
+  <strong>Source: </strong><%= @survey_answer.source %>
+</p>
+
+<%= link_to 'Edit', edit_survey_answer_path(@survey_answer), class: "btn btn-primary" %>
+<%= link_to 'Delete', @survey_answer, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
+<%= link_to 'Back', survey_answers_path, class: "btn btn-default" %>

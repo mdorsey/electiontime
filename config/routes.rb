@@ -29,6 +29,8 @@ Rails.application.routes.draw do
   resources :provinces
   resources :social_media_profiles
   resources :social_media_types
+  resources :survey_answers
+  resources :survey_questions
   resources :survey_types
   resources :surveys
   resources :system_settings
