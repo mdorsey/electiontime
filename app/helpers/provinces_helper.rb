@@ -7,8 +7,8 @@ module ProvincesHelper
   def options_for_province
     provinces = Array.new
 
-    Province.all.order('name ASC').each do |pr|
-      provinces.push([pr.name, pr.id])
+    Province.all.order('name ASC').each do |j|
+      provinces.push([j.name, j.id])
     end
 
     return provinces

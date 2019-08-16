@@ -7,8 +7,8 @@ module LogTypesHelper
   def options_for_log_type
     log_types = Array.new
 
-    LogType.all.order('name ASC').each do |lt|
-      log_types.push([lt.name, lt.id])
+    LogType.all.order('name ASC').each do |j|
+      log_types.push([j.name, j.id])
     end
 
     return log_types

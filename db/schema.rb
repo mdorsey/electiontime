@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_08_221606) do
+ActiveRecord::Schema.define(version: 2019_08_16_021440) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "street"
@@ -155,6 +155,23 @@ ActiveRecord::Schema.define(version: 2019_08_08_221606) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "survey_types", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "surveys", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
+    t.string "description"
+    t.bigint "survey_type_id"
+    t.bigint "election_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["election_id"], name: "index_surveys_on_election_id"
+    t.index ["survey_type_id"], name: "index_surveys_on_survey_type_id"
+  end
+
   create_table "system_settings", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
     t.string "setting"
@@ -200,4 +217,6 @@ ActiveRecord::Schema.define(version: 2019_08_08_221606) do
   add_foreign_key "participants", "users"
   add_foreign_key "social_media_profiles", "participants"
   add_foreign_key "social_media_profiles", "social_media_types"
+  add_foreign_key "surveys", "elections"
+  add_foreign_key "surveys", "survey_types"
 end

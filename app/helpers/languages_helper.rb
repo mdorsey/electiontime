@@ -7,8 +7,8 @@ module LanguagesHelper
   def options_for_language
     languages = Array.new
 
-    Language.all.order('name ASC').each do |l|
-      languages.push([l.name, l.id])
+    Language.all.order('name ASC').each do |j|
+      languages.push([j.name, j.id])
     end
 
     return languages

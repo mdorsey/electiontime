@@ -1,0 +1,10 @@
+<% provide(:title, @survey_type.name) %>
+<h1>Survey Type: <%= @survey_type.name %></h1>
+
+<p>
+  <strong>Name: </strong><%= @survey_type.name %>
+</p>
+
+<%= link_to 'Edit', edit_survey_type_path(@survey_type), class: "btn btn-primary" %>
+<%= link_to 'Delete', @survey_type, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
+<%= link_to 'Back', survey_types_path, class: "btn btn-default" %>

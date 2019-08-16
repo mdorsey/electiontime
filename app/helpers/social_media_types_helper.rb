@@ -7,8 +7,8 @@ module SocialMediaTypesHelper
   def options_for_social_media_type
     social_media_types = Array.new
 
-    SocialMediaType.all.order('name ASC').each do |s|
-      social_media_types.push([s.name, s.id])
+    SocialMediaType.all.order('name ASC').each do |j|
+      social_media_types.push([j.name, j.id])
     end
 
     return social_media_types

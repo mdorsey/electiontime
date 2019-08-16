@@ -7,8 +7,8 @@ module ElectionTypesHelper
   def options_for_election_type
     election_types = Array.new
 
-    ElectionType.all.order('name ASC').each do |et|
-      election_types.push([et.name, et.id])
+    ElectionType.all.order('name ASC').each do |j|
+      election_types.push([j.name, j.id])
     end
 
     return election_types
