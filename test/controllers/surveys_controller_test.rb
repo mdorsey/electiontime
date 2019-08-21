@@ -20,7 +20,7 @@ class SurveysControllerTest < ActionDispatch::IntegrationTest
       post surveys_url, params: { survey: { description: @survey.description, election_id: @survey.election_id, name: @survey.name, survey_type_id: @survey.survey_type_id } }
     end
 
-    assert_redirected_to survey_url(Survey.last)
+    assert_redirected_to surveys_url
   end
 
   test "should show survey" do

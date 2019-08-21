@@ -2,12 +2,12 @@
 
 one:
   location: MyString
-  content: 
+  content: Abc123
   machine_name: MyString
   language: one
 
 two:
   location: MyString
-  content: 
+  content: Abc123
   machine_name: MyString
   language: two

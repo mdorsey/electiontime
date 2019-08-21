@@ -1,15 +1,25 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  user: one
+  user: michael
   email: MyString
+  phone: MyString
   website: MyString
   biography: MyText
-  is_incumbent: false
+  address: one
+  district: one
+  party: one
+  is_candidate: true
+  is_incumbent: true
 
 two:
-  user: two
+  user: archer
   email: MyString
+  phone: MyString
   website: MyString
   biography: MyText
+  address: two
+  district: two
+  party: two
+  is_candidate: false
   is_incumbent: false

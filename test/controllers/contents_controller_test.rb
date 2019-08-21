@@ -20,7 +20,7 @@ class ContentsControllerTest < ActionDispatch::IntegrationTest
       post contents_url, params: { content: { content: @content.content, language_id: @content.language_id, location: @content.location, machine_name: @content.machine_name } }
     end
 
-    assert_redirected_to content_url(Content.last)
+    assert_redirected_to contents_url
   end
 
   test "should show content" do

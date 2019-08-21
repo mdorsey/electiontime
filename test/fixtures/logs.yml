@@ -1,13 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  user: one
+  user: michael
   log_type: one
   message: MyString
   location: MyString
 
 two:
-  user: two
+  user: archer
   log_type: two
   message: MyString
   location: MyString

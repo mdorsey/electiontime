@@ -20,7 +20,7 @@ class SocialMediaProfilesControllerTest < ActionDispatch::IntegrationTest
       post social_media_profiles_url, params: { social_media_profile: { handle: @social_media_profile.handle, participant_id: @social_media_profile.participant_id, social_media_type_id: @social_media_profile.social_media_type_id } }
     end
 
-    assert_redirected_to social_media_profile_url(SocialMediaProfile.last)
+    assert_redirected_to social_media_profiles_url
   end
 
   test "should show social_media_profile" do

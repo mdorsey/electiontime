@@ -20,7 +20,7 @@ class LogTypesControllerTest < ActionDispatch::IntegrationTest
       post log_types_url, params: { log_type: { name: @log_type.name } }
     end
 
-    assert_redirected_to log_type_url(LogType.last)
+    assert_redirected_to log_types_url
   end
 
   test "should show log_type" do

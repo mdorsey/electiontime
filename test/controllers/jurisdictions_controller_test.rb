@@ -20,7 +20,7 @@ class JurisdictionsControllerTest < ActionDispatch::IntegrationTest
       post jurisdictions_url, params: { jurisdiction: { name: @jurisdiction.name } }
     end
 
-    assert_redirected_to jurisdiction_url(Jurisdiction.last)
+    assert_redirected_to jurisdictions_url
   end
 
   test "should show jurisdiction" do

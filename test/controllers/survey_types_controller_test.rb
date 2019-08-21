@@ -20,7 +20,7 @@ class SurveyTypesControllerTest < ActionDispatch::IntegrationTest
       post survey_types_url, params: { survey_type: { name: @survey_type.name } }
     end
 
-    assert_redirected_to survey_type_url(SurveyType.last)
+    assert_redirected_to survey_types_url
   end
 
   test "should show survey_type" do

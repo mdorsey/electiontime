@@ -17,10 +17,10 @@ class SystemSettingsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create system_setting" do
     assert_difference('SystemSetting.count') do
-      post system_settings_url, params: { system_setting: { key: @system_setting.key, value: @system_setting.value } }
+      post system_settings_url, params: { system_setting: { name: @system_setting.name, setting: @system_setting.setting } }
     end
 
-    assert_redirected_to system_setting_url(SystemSetting.last)
+    assert_redirected_to system_settings_url
   end
 
   test "should show system_setting" do
@@ -34,7 +34,7 @@ class SystemSettingsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update system_setting" do
-    patch system_setting_url(@system_setting), params: { system_setting: { key: @system_setting.key, value: @system_setting.value } }
+    patch system_setting_url(@system_setting), params: { system_setting: { name: @system_setting.name, setting: @system_setting.setting } }
     assert_redirected_to system_setting_url(@system_setting)
   end
 

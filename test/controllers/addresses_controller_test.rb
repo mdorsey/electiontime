@@ -20,7 +20,7 @@ class AddressesControllerTest < ActionDispatch::IntegrationTest
       post addresses_url, params: { address: { city: @address.city, postal_code: @address.postal_code, province_id: @address.province_id, street: @address.street } }
     end
 
-    assert_redirected_to address_url(Address.last)
+    assert_redirected_to addresses_url
   end
 
   test "should show address" do

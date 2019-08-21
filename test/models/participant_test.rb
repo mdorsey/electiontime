@@ -4,7 +4,10 @@ class ParticipantTest < ActiveSupport::TestCase
 
   def setup
     @user = users(:michael)
-    @participant = Participant.new(user_id: @user.id, email: "Lorem ipsum", website: "Lorem ipsum", biography: "Lorem ipsum", is_incumbent: false)
+    @address = addresses(:one)
+    @district = districts(:one)
+    @party = parties(:one)
+    @participant = Participant.new(user_id: @user.id, email: "Lorem ipsum", phone: "Lorem ipsum", website: "Lorem ipsum", biography: "Lorem ipsum", address_id: @address.id, district_id: @district.id, party_id: @party.id, is_candidate: true, is_incumbent: false)
   end
 
   test "should be valid" do

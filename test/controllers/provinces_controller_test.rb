@@ -20,7 +20,7 @@ class ProvincesControllerTest < ActionDispatch::IntegrationTest
       post provinces_url, params: { province: { name: @province.name } }
     end
 
-    assert_redirected_to province_url(Province.last)
+    assert_redirected_to provinces_url
   end
 
   test "should show province" do

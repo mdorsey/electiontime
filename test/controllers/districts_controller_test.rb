@@ -20,7 +20,7 @@ class DistrictsControllerTest < ActionDispatch::IntegrationTest
       post districts_url, params: { district: { election_type_id: @district.election_type_id, jurisdiction_id: @district.jurisdiction_id, name: @district.name } }
     end
 
-    assert_redirected_to district_url(District.last)
+    assert_redirected_to districts_url
   end
 
   test "should show district" do

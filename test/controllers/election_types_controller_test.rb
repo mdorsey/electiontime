@@ -20,7 +20,7 @@ class ElectionTypesControllerTest < ActionDispatch::IntegrationTest
       post election_types_url, params: { election_type: { name: @election_type.name } }
     end
 
-    assert_redirected_to election_type_url(ElectionType.last)
+    assert_redirected_to election_types_url
   end
 
   test "should show election_type" do

@@ -20,7 +20,7 @@ class LogsControllerTest < ActionDispatch::IntegrationTest
       post logs_url, params: { log: { location: @log.location, log_type_id: @log.log_type_id, message: @log.message, user_id: @log.user_id } }
     end
 
-    assert_redirected_to log_url(Log.last)
+    assert_redirected_to logs_url
   end
 
   test "should show log" do

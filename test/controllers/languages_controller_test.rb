@@ -20,7 +20,7 @@ class LanguagesControllerTest < ActionDispatch::IntegrationTest
       post languages_url, params: { language: { name: @language.name } }
     end
 
-    assert_redirected_to language_url(Language.last)
+    assert_redirected_to languages_url
   end
 
   test "should show language" do

@@ -20,7 +20,7 @@ class SocialMediaTypesControllerTest < ActionDispatch::IntegrationTest
       post social_media_types_url, params: { social_media_type: { name: @social_media_type.name } }
     end
 
-    assert_redirected_to social_media_type_url(SocialMediaType.last)
+    assert_redirected_to social_media_types_url
   end
 
   test "should show social_media_type" do

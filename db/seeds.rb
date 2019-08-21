@@ -365,7 +365,7 @@ District.create!(name: "York South--Weston", jurisdiction_id: Jurisdiction.find_
 District.create!(name: "Yorkton--Melville", jurisdiction_id: Jurisdiction.find_by(name: "Saskatchewan").id, election_type_id: ElectionType.find_by(name: "Federal").id)
 District.create!(name: "Yukon", jurisdiction_id: Jurisdiction.find_by(name: "Yukon ").id, election_type_id: ElectionType.find_by(name: "Federal").id)
 
-Languages.create!(name: "English")
+Language.create!(name: "English")
 
 LogType.create!(name: "User Log-In")
 
