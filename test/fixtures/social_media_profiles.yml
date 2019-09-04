@@ -3,7 +3,7 @@
 one:
   handle: MyString
   participant: one
-  social_media_type: one
+  social_media_type: two
 
 two:
   handle: MyString

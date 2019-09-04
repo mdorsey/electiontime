@@ -1,12 +1,12 @@
 module AddressesHelper
 
   def display_address(address_id)
-
-    address_name = '';
     
     if address_id
       address = Address.find(address_id)
       address_name = address.street + ', ' + address.city + ', ' + display_province(address.province_id) + ' ' + address.postal_code
+    else
+      address_name = ''
     end
 
     return address_name

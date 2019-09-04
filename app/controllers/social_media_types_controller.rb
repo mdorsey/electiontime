@@ -19,9 +19,13 @@ class SocialMediaTypesController < ApplicationController
   end
 
   def destroy
-    @social_media_type.destroy
-    flash[:success] = "Social Media Type deleted"
-    redirect_to social_media_types_url
+    if @social_media_type.destroy
+      flash[:success] = "Social Media Type deleted"
+      redirect_to social_media_types_url
+    else
+      flash[:danger] = "Deletion failed! This Social Media Type is being used by another object and cannot be deleted."
+      redirect_to @social_media_type
+    end
   end
 
   def edit

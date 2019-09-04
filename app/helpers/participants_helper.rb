@@ -1,12 +1,12 @@
 module ParticipantsHelper
 
   def display_participant(participant_id)
-
-    participant_name = '';
     
     if participant_id
       participant = Participant.find(participant_id)
       participant_name = display_user(participant.user_id, false) + ' (' + display_party(participant.party_id) + ')'
+    else
+      participant_name = ''
     end
 
     return participant_name
