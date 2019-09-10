@@ -22,9 +22,13 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    @user.destroy
-    flash[:success] = "User deleted"
-    redirect_to users_url
+    if @user.destroy
+      flash[:success] = "User deleted"
+      redirect_to users_url
+    else
+      flash[:danger] = "Deletion failed! This User is being used by another object and cannot be deleted."
+      redirect_to @user
+    end
   end
 
   def edit

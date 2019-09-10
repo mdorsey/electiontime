@@ -19,9 +19,13 @@ class AddressesController < ApplicationController
   end
 
   def destroy
-    @address.destroy
-    flash[:success] = "Address deleted"
-    redirect_to addresses_url
+    if @address.destroy
+      flash[:success] = "Address deleted"
+      redirect_to addresses_url
+    else
+      flash[:danger] = "Deletion failed! This Address is being used by another object and cannot be deleted."
+      redirect_to @address
+    end
   end
 
   def edit

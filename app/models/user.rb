@@ -5,10 +5,12 @@ class User < ApplicationRecord
   attr_accessor :remember_token, :activation_token, :reset_token
 
   belongs_to :user_type
+  has_many :logs
   has_secure_password
 
   before_save   :downcase_email
   before_create :create_activation_digest
+  before_destroy :allow_destroy
 
   validates(:first_name, presence: true, length: { maximum: 255 })
   validates(:last_name, presence: true, length: { maximum: 255 })
@@ -84,5 +86,12 @@ class User < ApplicationRecord
     def create_activation_digest
       self.activation_token  = User.new_token
       self.activation_digest = User.digest(activation_token)
+    end
+
+    # Before deletion, check if the object is in use
+    def allow_destroy
+      unless logs.empty?
+        throw :abort
+      end
     end
 end

@@ -19,9 +19,13 @@ class UserTypesController < ApplicationController
   end
 
   def destroy
-    @user_type.destroy
-    flash[:success] = "User Type deleted"
-    redirect_to user_types_url
+    if @user_type.destroy
+      flash[:success] = "User Type deleted"
+      redirect_to user_types_url
+    else
+      flash[:danger] = "Deletion failed! This User Type is being used by another object and cannot be deleted."
+      redirect_to @user_type
+    end
   end
 
   def edit

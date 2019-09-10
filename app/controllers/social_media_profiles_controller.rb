@@ -19,9 +19,13 @@ class SocialMediaProfilesController < ApplicationController
   end
 
   def destroy
-    @social_media_profile.destroy
-    flash[:success] = "Social Media Profile deleted"
-    redirect_to social_media_profiles_url
+    if @social_media_profile.destroy
+      flash[:success] = "Social Media Profile deleted"
+      redirect_to social_media_profiles_url
+    else
+      flash[:danger] = "Deletion failed! This Social Media Profile is being used by another object and cannot be deleted."
+      redirect_to @social_media_profile
+    end
   end
 
   def edit

@@ -19,9 +19,13 @@ class ElectionTypesController < ApplicationController
   end
 
   def destroy
-    @election_type.destroy
-    flash[:success] = "Election Type deleted"
-    redirect_to election_types_url
+    if @election_type.destroy
+      flash[:success] = "Election Type deleted"
+      redirect_to election_types_url
+    else
+      flash[:danger] = "Deletion failed! This Election Type is being used by another object and cannot be deleted."
+      redirect_to @election_type
+    end
   end
 
   def edit

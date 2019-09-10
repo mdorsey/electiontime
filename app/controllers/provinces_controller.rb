@@ -19,9 +19,13 @@ class ProvincesController < ApplicationController
   end
 
   def destroy
-    @province.destroy
-    flash[:success] = "Province deleted"
-    redirect_to provinces_url
+    if @province.destroy
+      flash[:success] = "Province deleted"
+      redirect_to provinces_url
+    else
+      flash[:danger] = "Deletion failed! This Province is being used by another object and cannot be deleted."
+      redirect_to @province
+    end
   end
 
   def edit

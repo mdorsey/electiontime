@@ -19,9 +19,13 @@ class SystemSettingsController < ApplicationController
   end
 
   def destroy
-    @system_setting.destroy
-    flash[:success] = "System Setting deleted"
-    redirect_to system_settings_url
+    if @system_setting.destroy
+      flash[:success] = "System Setting deleted"
+      redirect_to system_settings_url
+    else
+      flash[:danger] = "Deletion failed! This System Setting is being used by another object and cannot be deleted."
+      redirect_to @system_setting
+    end
   end
 
   def edit

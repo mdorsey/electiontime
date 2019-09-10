@@ -19,9 +19,13 @@ class ParticipantsController < ApplicationController
   end
 
   def destroy
-    @participant.destroy
-    flash[:success] = "Participant deleted"
-    redirect_to participants_url
+    if @participant.destroy
+      flash[:success] = "Participant deleted"
+      redirect_to participants_url
+    else
+      flash[:danger] = "Deletion failed! This Participant is being used by another object and cannot be deleted."
+      redirect_to @participant
+    end
   end
 
   def edit

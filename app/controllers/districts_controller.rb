@@ -19,9 +19,13 @@ class DistrictsController < ApplicationController
   end
 
   def destroy
-    @district.destroy
-    flash[:success] = "District deleted"
-    redirect_to districts_url
+    if @district.destroy
+      flash[:success] = "District deleted"
+      redirect_to districts_url
+    else
+      flash[:danger] = "Deletion failed! This District is being used by another object and cannot be deleted."
+      redirect_to @district
+    end
   end
 
   def edit

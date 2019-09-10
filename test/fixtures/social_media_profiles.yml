@@ -2,7 +2,7 @@
 
 one:
   handle: MyString
-  participant: one
+  participant: two
   social_media_type: two
 
 two:

@@ -2,8 +2,8 @@
 
 one:
   name: MyString
-  election_type: one
-  jurisdiction: one
+  election_type: two
+  jurisdiction: two
 
 two:
   name: MyString

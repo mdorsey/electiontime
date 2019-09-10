@@ -2,7 +2,7 @@
 
 one:
   user: michael
-  log_type: one
+  log_type: two
   message: MyString
   location: MyString
 

@@ -19,9 +19,13 @@ class LogTypesController < ApplicationController
   end
 
   def destroy
-    @log_type.destroy
-    flash[:success] = "Log Type deleted"
-    redirect_to log_types_url
+    if @log_type.destroy
+      flash[:success] = "Log Type deleted"
+      redirect_to log_types_url
+    else
+      flash[:danger] = "Deletion failed! This Log Type is being used by another object and cannot be deleted."
+      redirect_to @log_type
+    end
   end
 
   def edit

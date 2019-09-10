@@ -3,8 +3,8 @@
 one:
   name: MyString
   description: MyString
-  survey_type: one
-  election: one
+  survey_type: two
+  election: two
 
 two:
   name: MyString

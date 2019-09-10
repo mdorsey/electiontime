@@ -8,7 +8,7 @@ one:
   biography: MyText
   address: one
   district: one
-  party: one
+  party: two
   is_candidate: true
   is_incumbent: true
 

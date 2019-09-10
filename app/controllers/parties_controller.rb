@@ -19,9 +19,13 @@ class PartiesController < ApplicationController
   end
 
   def destroy
-    @party.destroy
-    flash[:success] = "Party deleted"
-    redirect_to parties_url
+    if @party.destroy
+      flash[:success] = "Party deleted"
+      redirect_to parties_url
+    else
+      flash[:danger] = "Deletion failed! This Party is being used by another object and cannot be deleted."
+      redirect_to @party
+    end
   end
 
   def edit

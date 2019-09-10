@@ -19,9 +19,13 @@ class LogsController < ApplicationController
   end
 
   def destroy
-    @log.destroy
-    flash[:success] = "Log deleted"
-    redirect_to logs_url
+    if @log.destroy
+      flash[:success] = "Log deleted"
+      redirect_to logs_url
+    else
+      flash[:danger] = "Deletion failed! This Log is being used by another object and cannot be deleted."
+      redirect_to @log
+    end
   end
 
   def edit

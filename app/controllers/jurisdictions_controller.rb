@@ -19,9 +19,13 @@ class JurisdictionsController < ApplicationController
   end
 
   def destroy
-    @jurisdiction.destroy
-    flash[:success] = "Jurisdiction deleted"
-    redirect_to jurisdictions_url
+    if @jurisdiction.destroy
+      flash[:success] = "Jurisdiction deleted"
+      redirect_to jurisdictions_url
+    else
+      flash[:danger] = "Deletion failed! This Jurisdiction is being used by another object and cannot be deleted."
+      redirect_to @jurisdiction
+    end
   end
 
   def edit

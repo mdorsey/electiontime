@@ -19,9 +19,13 @@ class LanguagesController < ApplicationController
   end
 
   def destroy
-    @language.destroy
-    flash[:success] = "Language deleted"
-    redirect_to languages_url
+    if @language.destroy
+      flash[:success] = "Language deleted"
+      redirect_to languages_url
+    else
+      flash[:danger] = "Deletion failed! This Language is being used by another object and cannot be deleted."
+      redirect_to @language
+    end
   end
 
   def edit

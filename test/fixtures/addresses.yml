@@ -3,7 +3,7 @@
 one:
   street: MyString
   city: MyString
-  province: one
+  province: two
   postal_code: MyString
 
 two:

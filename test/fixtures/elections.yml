@@ -3,8 +3,8 @@
 one:
   name: MyString
   election_date: 2019-06-13 13:27:38
-  election_type: one
-  jurisdiction: one
+  election_type: two
+  jurisdiction: two
   active: true
 
 two:

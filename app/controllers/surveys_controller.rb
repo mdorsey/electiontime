@@ -19,9 +19,13 @@ class SurveysController < ApplicationController
   end
 
   def destroy
-    @survey.destroy
-    flash[:success] = "Survey deleted"
-    redirect_to surveys_url
+    if @survey.destroy
+      flash[:success] = "Survey deleted"
+      redirect_to surveys_url
+    else
+      flash[:danger] = "Deletion failed! This Survey is being used by another object and cannot be deleted."
+      redirect_to @survey
+    end
   end
 
   def edit

@@ -19,9 +19,13 @@ class ContentsController < ApplicationController
   end
 
   def destroy
-    @content.destroy
-    flash[:success] = "Content deleted"
-    redirect_to contents_url
+    if @content.destroy
+      flash[:success] = "Content deleted"
+      redirect_to contents_url
+    else
+      flash[:danger] = "Deletion failed! This Content is being used by another object and cannot be deleted."
+      redirect_to @content
+    end
   end
 
   def edit
