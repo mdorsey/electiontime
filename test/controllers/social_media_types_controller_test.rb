@@ -1,7 +1,10 @@
 require 'test_helper'
 
 class SocialMediaTypesControllerTest < ActionDispatch::IntegrationTest
+  
   setup do
+    @admin = users(:admin)
+    log_in_as(@admin)
     @social_media_type = social_media_types(:one)
   end
 

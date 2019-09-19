@@ -1,7 +1,10 @@
 require 'test_helper'
 
 class DistrictsControllerTest < ActionDispatch::IntegrationTest
+  
   setup do
+    @admin = users(:admin)
+    log_in_as(@admin)
     @district = districts(:one)
   end
 

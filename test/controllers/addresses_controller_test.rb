@@ -1,7 +1,10 @@
 require 'test_helper'
 
 class AddressesControllerTest < ActionDispatch::IntegrationTest
+  
   setup do
+    @admin = users(:admin)
+    log_in_as(@admin)
     @address = addresses(:one)
   end
 

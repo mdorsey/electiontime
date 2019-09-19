@@ -1,7 +1,10 @@
 require 'test_helper'
 
 class PartiesControllerTest < ActionDispatch::IntegrationTest
+  
   setup do
+    @admin = users(:admin)
+    log_in_as(@admin)
     @party = parties(:one)
   end
 

@@ -1,7 +1,10 @@
 require 'test_helper'
 
 class SocialMediaProfilesControllerTest < ActionDispatch::IntegrationTest
+  
   setup do
+    @admin = users(:admin)
+    log_in_as(@admin)
     @social_media_profile = social_media_profiles(:one)
   end
 

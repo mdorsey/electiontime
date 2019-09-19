@@ -1,7 +1,10 @@
 require 'test_helper'
 
 class LanguagesControllerTest < ActionDispatch::IntegrationTest
+  
   setup do
+    @admin = users(:admin)
+    log_in_as(@admin)
     @language = languages(:one)
   end
 

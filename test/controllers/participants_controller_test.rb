@@ -1,7 +1,10 @@
 require 'test_helper'
 
 class ParticipantsControllerTest < ActionDispatch::IntegrationTest
+  
   setup do
+    @admin = users(:admin)
+    log_in_as(@admin)
     @participant = participants(:one)
   end
 

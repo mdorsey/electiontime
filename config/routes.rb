@@ -24,7 +24,7 @@ Rails.application.routes.draw do
   resources :log_types
   resources :logs
   resources :participants
-  resources :password_resets,     only: [:new, :create, :edit, :update]
+  resources :password_resets, only: [:new, :create, :edit, :update]
   resources :parties
   resources :provinces
   resources :social_media_profiles

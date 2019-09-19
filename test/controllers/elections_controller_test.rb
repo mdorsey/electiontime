@@ -1,7 +1,10 @@
 require 'test_helper'
 
 class ElectionsControllerTest < ActionDispatch::IntegrationTest
+  
   setup do
+    @admin = users(:admin)
+    log_in_as(@admin)
     @election = elections(:one)
   end
 

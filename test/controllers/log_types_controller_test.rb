@@ -1,7 +1,10 @@
 require 'test_helper'
 
 class LogTypesControllerTest < ActionDispatch::IntegrationTest
+  
   setup do
+    @admin = users(:admin)
+    log_in_as(@admin)
     @log_type = log_types(:one)
   end
 

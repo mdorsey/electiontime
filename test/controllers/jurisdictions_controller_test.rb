@@ -1,7 +1,10 @@
 require 'test_helper'
 
 class JurisdictionsControllerTest < ActionDispatch::IntegrationTest
+  
   setup do
+    @admin = users(:admin)
+    log_in_as(@admin)
     @jurisdiction = jurisdictions(:one)
   end
 

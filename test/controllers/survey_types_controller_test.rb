@@ -1,7 +1,10 @@
 require 'test_helper'
 
 class SurveyTypesControllerTest < ActionDispatch::IntegrationTest
+  
   setup do
+    @admin = users(:admin)
+    log_in_as(@admin)
     @survey_type = survey_types(:one)
   end
 

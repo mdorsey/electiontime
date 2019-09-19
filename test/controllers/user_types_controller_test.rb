@@ -1,7 +1,10 @@
 require 'test_helper'
 
 class UserTypesControllerTest < ActionDispatch::IntegrationTest
+  
   setup do
+    @admin = users(:admin)
+    log_in_as(@admin)
     @user_type = user_types(:admin)
   end
 

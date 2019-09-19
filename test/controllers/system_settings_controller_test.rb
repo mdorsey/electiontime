@@ -1,7 +1,10 @@
 require 'test_helper'
 
 class SystemSettingsControllerTest < ActionDispatch::IntegrationTest
+
   setup do
+    @admin = users(:admin)
+    log_in_as(@admin)
     @system_setting = system_settings(:one)
   end
 

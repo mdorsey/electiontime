@@ -1,7 +1,10 @@
 require 'test_helper'
 
 class ContentsControllerTest < ActionDispatch::IntegrationTest
+  
   setup do
+    @admin = users(:admin)
+    log_in_as(@admin)
     @content = contents(:one)
   end
 

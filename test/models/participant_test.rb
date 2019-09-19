@@ -3,7 +3,7 @@ require 'test_helper'
 class ParticipantTest < ActiveSupport::TestCase
 
   def setup
-    @user = users(:michael)
+    @user = users(:admin)
     @address = addresses(:one)
     @district = districts(:one)
     @party = parties(:one)

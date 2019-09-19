@@ -1,7 +1,10 @@
 require 'test_helper'
 
 class LogsControllerTest < ActionDispatch::IntegrationTest
+  
   setup do
+    @admin = users(:admin)
+    log_in_as(@admin)
     @log = logs(:one)
   end
 
