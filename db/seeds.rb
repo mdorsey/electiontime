@@ -397,8 +397,9 @@ SocialMediaType.create!(name: "Instagram")
 SocialMediaType.create!(name: "Youtube")
 
 UserType.create!(name: "Admin")
-UserType.create!(name: "Ambassador")
+UserType.create!(name: "Volunteer")
 UserType.create!(name: "Candidate")
+UserType.create!(name: "Party Representative")
 
 User.create!(first_name:  "Michael",
              last_name: "Dorsey",
