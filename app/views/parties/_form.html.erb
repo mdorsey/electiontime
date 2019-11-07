@@ -2,16 +2,16 @@
   <%= render 'shared/error_messages', object: f.object %>
 
   <%= f.label :name, "Name" %>
-  <%= f.text_field :name, class: 'form-control' %>
+  <%= f.text_field :name, class: 'input' %>
 
   <%= f.label :name_abbreviation, "Name Abbreviation" %>
-  <%= f.text_field :name_abbreviation, class: 'form-control' %>
+  <%= f.text_field :name_abbreviation, class: 'input' %>
 
   <%= f.label :alternate_name, "Alternate Name" %>
-  <%= f.text_field :alternate_name, class: 'form-control' %>
+  <%= f.text_field :alternate_name, class: 'input' %>
 
   <%= f.label :alternate_abbreviation, "Alternate Abbreviation" %>
-  <%= f.text_field :alternate_abbreviation, class: 'form-control' %>
+  <%= f.text_field :alternate_abbreviation, class: 'input' %>
 
   <div class="buttons">
     <%= f.submit "Save", class: "button is-link" %>

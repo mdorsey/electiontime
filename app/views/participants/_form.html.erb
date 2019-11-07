@@ -2,41 +2,41 @@
   <%= render 'shared/error_messages', object: f.object %>
 
   <%= f.label :user_id, "User" %>
-  <%= f.select(:user_id, options_for_user, {:prompt => '- Select -'}, {:class => 'form-control'}) %>
+  <%= f.select(:user_id, options_for_user, {:prompt => '- Select -'}, {:class => 'input'}) %>
 
   <%= f.label :party_id, "Party" %>
-  <%= f.select(:party_id, options_for_party, {:prompt => '- Select -'}, {:class => 'form-control'}) %>
+  <%= f.select(:party_id, options_for_party, {:prompt => '- Select -'}, {:class => 'input'}) %>
 
   <%= f.label :district_id, "District" %>
-  <%= f.select(:district_id, options_for_district, {include_blank: "None"}, {:class => 'form-control'}) %>
+  <%= f.select(:district_id, options_for_district, {include_blank: "None"}, {:class => 'input'}) %>
 
   <%= f.label :leader_participant_id, "Leader Participant" %>
-  <%= f.select(:leader_participant_id, options_for_participant, {include_blank: "None"}, {:class => 'form-control'}) %>
+  <%= f.select(:leader_participant_id, options_for_participant, {include_blank: "None"}, {:class => 'input'}) %>
 
   <%= f.label :is_candidate, "Is Candidate" %>
-  <%= f.check_box :is_candidate, class: 'form-control auto-width' %>
+  <%= f.check_box :is_candidate, class: 'input' %>
 
   <br/>
 
   <%= f.label :is_incumbent, "Is Incumbent" %>
-  <%= f.check_box :is_incumbent, class: 'form-control auto-width' %>
+  <%= f.check_box :is_incumbent, class: 'input' %>
 
   <br/>
 
   <%= f.label :email, "Email" %>
-  <%= f.text_field :email, class: 'form-control' %>
+  <%= f.text_field :email, class: 'input' %>
 
   <%= f.label :phone, "Phone" %>
-  <%= f.text_field :phone, class: 'form-control' %>
+  <%= f.text_field :phone, class: 'input' %>
 
   <%= f.label :website, "Website" %>
-  <%= f.text_field :website, class: 'form-control' %>
+  <%= f.text_field :website, class: 'input' %>
 
   <%= f.label :biography, "Biography" %>
-  <%= f.text_field :biography, class: 'form-control' %>
+  <%= f.text_field :biography, class: 'input' %>
 
   <%= f.label :address_id, "Address" %>
-  <%= f.select(:address_id, options_for_address, {include_blank: "None"}, {:class => 'form-control'}) %>
+  <%= f.select(:address_id, options_for_address, {include_blank: "None"}, {:class => 'input'}) %>
 
   <div class="buttons">
     <%= f.submit "Save", class: "button is-link" %>

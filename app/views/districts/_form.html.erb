@@ -1,15 +1,31 @@
 <%= form_for(@district) do |f| %>
   <%= render 'shared/error_messages', object: f.object %>
 
-  <%= f.label :name, "Name" %>
-  <%= f.text_field :name, class: 'form-control' %>
+  <div class="field">
+    <%= f.label :name, "Name", class: 'label' %>
+    <div class="control">
+      <%= f.text_field :name, class: 'input' %>
+    </div>
+  </div>
 
-  <%= f.label :election_type_id, "Election Type" %>
-  <%= f.select(:election_type_id, options_for_election_type, {:prompt => '- Select -'}, {:class => 'form-control'}) %>
+  <div class="field">
+    <%= f.label :election_type_id, "Election Type", class: 'label' %>
+    <div class="control">
+      <div class="select">
+        <%= f.select(:election_type_id, options_for_election_type, {:prompt => '- Select -'}) %>
+      </div>
+    </div>
+  </div>
 
-  <%= f.label :jurisdiction_id, "Jurisdiction" %>
-  <%= f.select(:jurisdiction_id, options_for_jurisdiction, {:prompt => '- Select -'}, {:class => 'form-control'}) %>
-
+  <div class="field">
+    <%= f.label :jurisdiction_id, "Jurisdiction", class: 'label' %>
+    <div class="control">
+      <div class="select">
+        <%= f.select(:jurisdiction_id, options_for_jurisdiction, {:prompt => '- Select -'}) %>
+      </div>
+    </div>
+  </div>
+  
   <div class="buttons">
     <%= f.submit "Save", class: "button is-link" %>
     <%= link_to 'Cancel', cancel_path, class: "button", role: "button" %>

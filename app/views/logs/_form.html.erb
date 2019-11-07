@@ -2,16 +2,16 @@
   <%= render 'shared/error_messages', object: f.object %>
 
   <%= f.label :user_id, "User" %>
-  <%= f.select(:user_id, options_for_user, {:prompt => '- Select -'}, {:class => 'form-control'}) %>
+  <%= f.select(:user_id, options_for_user, {:prompt => '- Select -'}, {:class => 'input'}) %>
 
   <%= f.label :log_type_id, "Log Type" %>
-  <%= f.select(:log_type_id, options_for_log_type, {:prompt => '- Select -'}, {:class => 'form-control'}) %>
+  <%= f.select(:log_type_id, options_for_log_type, {:prompt => '- Select -'}, {:class => 'input'}) %>
 
   <%= f.label :message, "Message" %>
-  <%= f.text_field :message, class: 'form-control' %>
+  <%= f.text_field :message, class: 'input' %>
 
   <%= f.label :location, "Location" %>
-  <%= f.text_field :location, class: 'form-control' %>
+  <%= f.text_field :location, class: 'input' %>
 
   <div class="buttons">
     <%= f.submit "Save", class: "button is-link" %>

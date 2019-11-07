@@ -2,16 +2,16 @@
   <%= render 'shared/error_messages', object: f.object %>
 
   <%= f.label :survey_question_id, "Survey Question" %>
-  <%= f.select(:survey_question_id, options_for_survey_question, {:prompt => '- Select -'}, {:class => 'form-control'}) %>
+  <%= f.select(:survey_question_id, options_for_survey_question, {:prompt => '- Select -'}, {:class => 'input'}) %>
 
   <%= f.label :participant_id, "Participant" %>
-  <%= f.select(:participant_id, options_for_participant, {:prompt => '- Select -'}, {:class => 'form-control'}) %>
+  <%= f.select(:participant_id, options_for_participant, {:prompt => '- Select -'}, {:class => 'input'}) %>
 
   <%= f.label :answer, "Answer" %>
-  <%= f.text_field :answer, class: 'form-control' %>
+  <%= f.text_field :answer, class: 'input' %>
 
   <%= f.label :source, "Source" %>
-  <%= f.text_field :source, class: 'form-control' %>
+  <%= f.text_field :source, class: 'input' %>
 
   <div class="buttons">
     <%= f.submit "Save", class: "button is-link" %>

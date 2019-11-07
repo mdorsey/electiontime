@@ -1,29 +1,63 @@
 <%= form_for(@election) do |f| %>
   <%= render 'shared/error_messages', object: f.object %>
 
-  <%= f.label :name, "Name" %>
-  <%= f.text_field :name, class: 'form-control' %>
+  <div class="field">
+    <%= f.label :name, "Name", class: 'label' %>
+    <div class="control">
+      <%= f.text_field :name, class: 'input' %>
+    </div>
+  </div>
 
-  <%= f.label :active, "Active" %>
-  <%= f.check_box :active, class: 'form-control auto-width' %>
+  <div class="field">
+    <%= f.label :active, "Active", class: 'label' %>
+    <div class="control">
+        <%= f.check_box :active %>
+    </div>
+  </div>
+
+  <div class="field">
+    <%= f.label :election_type_id, "Election Type", class: 'label' %>
+    <div class="control">
+      <div class="select">
+        <%= f.select(:election_type_id, options_for_election_type, {:prompt => '- Select -'}) %>
+      </div>
+    </div>
+  </div>
+
+  <div class="field">
+    <%= f.label :election_date, "Election Date", class: 'label' %>
+    <div class="control">
+      <%= f.text_field :election_date, class: 'input', data: {:provide => 'datepicker', 'date-format' => 'MM d, yyyy', 'date-autoclose' => 'true'} %>
+    </div>
+  </div>
+
+  <div class="field">
+    <%= f.label :jurisdiction_id, "Jurisdiction", class: 'label' %>
+    <div class="control">
+      <div class="select">
+        <%= f.select(:jurisdiction_id, options_for_jurisdiction, {:prompt => '- Select -'}) %>
+      </div>
+    </div>
+  </div>
+
+  <div class="field">
+    <%= f.label :district_ids, "Districts", class: 'label' %>
+    <div class="control">
+      <div class="select is-multiple">
+        <%= f.collection_select(:district_ids, District.order(:name), :id, :name, {:include_blank => false, :include_hidden => false}, {:multiple => true}) %>
+      </div>
+    </div>
+  </div>
+
+  <div class="field">
+    <%= f.label :participant_ids, "Participants", class: 'label' %>
+    <div class="control">
+      <div class="select is-multiple">
+        <%= f.collection_select(:participant_ids, Participant.all, :id, :participant_name_for_display, {:include_blank => false, :include_hidden => false}, {:multiple => true}) %>
+      </div>
+    </div>
+  </div>
   
-  <br/>
-
-  <%= f.label :election_type_id, "Election Type" %>
-  <%= f.select(:election_type_id, options_for_election_type, {:prompt => '- Select -'}, {:class => 'form-control'}) %>
-
-  <%= f.label :election_date, "Election Date" %>
-  <%= f.text_field :election_date, class: 'form-control', data: {:provide => 'datepicker', 'date-format' => 'MM d, yyyy', 'date-autoclose' => 'true'} %>
-
-  <%= f.label :jurisdiction_id, "Jurisdiction" %>
-  <%= f.select(:jurisdiction_id, options_for_jurisdiction, {:prompt => '- Select -'}, {:class => 'form-control'}) %>
-
-  <%= f.label :district_ids, "Districts" %>
-  <%= f.collection_select(:district_ids, District.order(:name), :id, :name, {:include_blank => false, :include_hidden => false}, {:multiple => true, :class => 'form-control'}) %>
-
-  <%= f.label :participant_ids, "Participants" %>
-  <%= f.collection_select(:participant_ids, Participant.all, :id, :participant_name_for_display, {:include_blank => false, :include_hidden => false}, {:multiple => true, :class => 'form-control'}) %>
-
   <div class="buttons">
     <%= f.submit "Save", class: "button is-link" %>
     <%= link_to 'Cancel', cancel_path, class: "button", role: "button" %>

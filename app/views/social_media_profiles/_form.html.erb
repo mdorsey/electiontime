@@ -2,13 +2,13 @@
   <%= render 'shared/error_messages', object: f.object %>
 
   <%= f.label :handle, "Handle" %>
-  <%= f.text_field :handle, class: 'form-control' %>
+  <%= f.text_field :handle, class: 'input' %>
 
   <%= f.label :participant_id, "Participant" %>
-  <%= f.select(:participant_id, options_for_participant, {:prompt => '- Select -'}, {:class => 'form-control'}) %>
+  <%= f.select(:participant_id, options_for_participant, {:prompt => '- Select -'}, {:class => 'input'}) %>
 
   <%= f.label :social_media_type_id, "Social Media Type" %>
-  <%= f.select(:social_media_type_id, options_for_social_media_type, {:prompt => '- Select -'}, {:class => 'form-control'}) %>
+  <%= f.select(:social_media_type_id, options_for_social_media_type, {:prompt => '- Select -'}, {:class => 'input'}) %>
 
   <div class="buttons">
     <%= f.submit "Save", class: "button is-link" %>
