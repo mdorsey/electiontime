@@ -24,6 +24,8 @@
   <%= f.label :participant_ids, "Participants" %>
   <%= f.collection_select(:participant_ids, Participant.all, :id, :participant_name_for_display, {:include_blank => false, :include_hidden => false}, {:multiple => true, :class => 'form-control'}) %>
 
-  <%= f.submit "Save", class: "btn btn-primary" %>
-  <%= link_to 'Cancel', cancel_path, class: "btn btn-default", role: "button" %>
+  <div class="buttons">
+    <%= f.submit "Save", class: "button is-link" %>
+    <%= link_to 'Cancel', cancel_path, class: "button", role: "button" %>
+  </div>
 <% end %>

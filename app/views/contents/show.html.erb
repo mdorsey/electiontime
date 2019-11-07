@@ -14,6 +14,8 @@
   <strong>Language: </strong><%= display_language(@content.language_id) %>
 </p>
 
-<%= link_to 'Edit', edit_content_path(@content), class: "btn btn-primary" %>
-<%= link_to 'Delete', @content, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
-<%= link_to 'Back', contents_path, class: "btn btn-default" %>
+<div class="buttons">
+  <%= link_to 'Edit', edit_content_path(@content), class: "button is-link" %>
+  <%= link_to 'Delete', @content, method: :delete, data: { confirm: 'Are you sure?' }, class: "button is-danger" %>
+  <%= link_to 'Back', contents_path, class: "button" %>
+</div>

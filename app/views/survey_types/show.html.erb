@@ -5,6 +5,8 @@
   <strong>Name: </strong><%= @survey_type.name %>
 </p>
 
-<%= link_to 'Edit', edit_survey_type_path(@survey_type), class: "btn btn-primary" %>
-<%= link_to 'Delete', @survey_type, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
-<%= link_to 'Back', survey_types_path, class: "btn btn-default" %>
+<div class="buttons">
+  <%= link_to 'Edit', edit_survey_type_path(@survey_type), class: "button is-link" %>
+  <%= link_to 'Delete', @survey_type, method: :delete, data: { confirm: 'Are you sure?' }, class: "button is-danger" %>
+  <%= link_to 'Back', survey_types_path, class: "button" %>
+</div>

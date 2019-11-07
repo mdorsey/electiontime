@@ -23,9 +23,6 @@ textarea {
 
 .center {
   text-align: center;
-  h1 {
-    margin-bottom: 10px;
-  }
 }
 
 
@@ -96,7 +93,7 @@ footer {
 
 /* FORMS */
 
-input, textarea, select, .uneditable-input {
+input, textarea, select {
   border: 1px solid #bbb;
   margin-bottom: 15px;
   @include box_sizing;
@@ -128,7 +125,7 @@ input {
   margin-left: 0;
 }
 
-.btn {
+.button {
   margin: 10px 10px 10px 0;
   min-width: 10%;
 }

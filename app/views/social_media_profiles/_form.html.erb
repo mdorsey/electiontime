@@ -10,6 +10,8 @@
   <%= f.label :social_media_type_id, "Social Media Type" %>
   <%= f.select(:social_media_type_id, options_for_social_media_type, {:prompt => '- Select -'}, {:class => 'form-control'}) %>
 
-  <%= f.submit "Save", class: "btn btn-primary" %>
-  <%= link_to 'Cancel', cancel_path, class: "btn btn-default", role: "button" %>
+  <div class="buttons">
+    <%= f.submit "Save", class: "button is-link" %>
+    <%= link_to 'Cancel', cancel_path, class: "button", role: "button" %>
+  </div>
 <% end %>

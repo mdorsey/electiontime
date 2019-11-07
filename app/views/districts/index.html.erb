@@ -1,8 +1,10 @@
 <% provide(:title, 'Districts') %>
 <h1>Districts</h1>
 
-<%= link_to '+ New District', new_district_path, class: "btn btn-primary" %>
-<%= link_to 'Back', admin_resources_path, class: "btn btn-default" %>
+<div class="buttons">
+  <%= link_to '+ New District', new_district_path, class: "button is-link" %>
+  <%= link_to 'Back', admin_resources_path, class: "button" %>
+</div>
 
 <ul class="resources-list">
   <%= render @districts %>

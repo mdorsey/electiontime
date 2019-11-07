@@ -14,6 +14,8 @@
   <strong>Alternate Abbreviation: </strong><%= @party.alternate_abbreviation %>
 </p>
 
-<%= link_to 'Edit', edit_party_path(@party), class: "btn btn-primary" %>
-<%= link_to 'Delete', @party, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
-<%= link_to 'Back', parties_path, class: "btn btn-default" %>
+<div class="buttons">
+  <%= link_to 'Edit', edit_party_path(@party), class: "button is-link" %>
+  <%= link_to 'Delete', @party, method: :delete, data: { confirm: 'Are you sure?' }, class: "button is-danger" %>
+  <%= link_to 'Back', parties_path, class: "button" %>
+</div>

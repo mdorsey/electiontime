@@ -13,6 +13,8 @@
   <%= f.label :postal_code, "Postal Code" %>
   <%= f.text_field :postal_code, class: 'form-control' %>
 
-  <%= f.submit "Save", class: "btn btn-primary" %>
-  <%= link_to 'Cancel', cancel_path, class: "btn btn-default", role: "button" %>
+  <div class="buttons">
+    <%= f.submit "Save", class: "button is-link" %>
+    <%= link_to 'Cancel', cancel_path, class: "button", role: "button" %>
+  </div>
 <% end %>

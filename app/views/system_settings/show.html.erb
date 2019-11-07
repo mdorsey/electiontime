@@ -8,6 +8,8 @@
   <strong>Setting: </strong><%= @system_setting.setting %>
 </p>
 
-<%= link_to 'Edit', edit_system_setting_path(@system_setting), class: "btn btn-primary" %>
-<%= link_to 'Delete', @system_setting, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
-<%= link_to 'Back', system_settings_path, class: "btn btn-default" %>
+<div class="buttons">
+  <%= link_to 'Edit', edit_system_setting_path(@system_setting), class: "button is-link" %>
+  <%= link_to 'Delete', @system_setting, method: :delete, data: { confirm: 'Are you sure?' }, class: "button is-danger" %>
+  <%= link_to 'Back', system_settings_path, class: "button" %>
+</div>

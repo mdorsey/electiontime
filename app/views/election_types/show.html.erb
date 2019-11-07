@@ -5,6 +5,8 @@
   <strong>Name: </strong><%= @election_type.name %>
 </p>
 
-<%= link_to 'Edit', edit_election_type_path(@election_type), class: "btn btn-primary" %>
-<%= link_to 'Delete', @election_type, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
-<%= link_to 'Back', election_types_path, class: "btn btn-default" %>
+<div class="buttons">
+  <%= link_to 'Edit', edit_election_type_path(@election_type), class: "button is-link" %>
+  <%= link_to 'Delete', @election_type, method: :delete, data: { confirm: 'Are you sure?' }, class: "button is-danger" %>
+  <%= link_to 'Back', election_types_path, class: "button" %>
+</div>
