@@ -8,5 +8,4 @@
   <%= render @users %>
 </ul>
 
-<%= will_paginate %>
-
+<%= will_paginate renderer: BulmaPagination::Rails, :class => 'is-centered' %>

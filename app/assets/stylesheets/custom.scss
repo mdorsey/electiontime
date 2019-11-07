@@ -1,4 +1,4 @@
-/* mixins, variables, etc. */
+/* MIXINS, VARIABLES */
 
 @mixin box_sizing {
   -moz-box-sizing:    border-box;
@@ -6,7 +6,8 @@
   box-sizing:         border-box;
 }
 
-/* universal */
+
+/* UNIVERSAL */
 
 body {
   padding-top: 60px;
@@ -27,7 +28,8 @@ textarea {
   }
 }
 
-/* typography */
+
+/* TYPOGRAPHY */
 
 h1, h2, h3, h4, h5, h6 {
   line-height: 1;
@@ -54,10 +56,10 @@ p {
 }
 
 
-/* header */
+/* HEADER */
 
 
-/* footer */
+/* FOOTER */
 
 footer {
   margin-top: 45px;
@@ -80,7 +82,8 @@ footer {
   }
 }
 
-/* miscellaneous */
+
+/* DEVELOPER */
 
 .debug_dump {
   clear: both;
@@ -90,7 +93,8 @@ footer {
   @include box_sizing;
 }
 
-/* forms */
+
+/* FORMS */
 
 input, textarea, select, .uneditable-input {
   border: 1px solid #bbb;

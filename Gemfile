@@ -38,9 +38,10 @@ gem 'bcrypt', '~> 3.1.12'
 
 # From Rails Tutorial book
 gem 'jquery-rails', '~> 4.3.1'
-gem 'bootstrap-sass', '3.3.7'
 gem 'will_paginate', '~> 3.1.0'
-gem 'bootstrap-will_paginate', '1.0.0'
+
+# This gem integrates the Bulma pagination component with the will_paginate pagination gem. https://github.com/phoffer/will_paginate-bulma
+gem 'will_paginate-bulma'
 
 # Adds a javascript datepicker. From https://github.com/Nerian/bootstrap-datepicker-rails.
 gem 'bootstrap-datepicker-rails'

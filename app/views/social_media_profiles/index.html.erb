@@ -8,4 +8,4 @@
   <%= render @social_media_profiles %>
 </ul>
 
-<%= will_paginate %>
+<%= will_paginate renderer: BulmaPagination::Rails, :class => 'is-centered' %>
