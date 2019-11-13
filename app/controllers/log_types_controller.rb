@@ -11,7 +11,7 @@ class LogTypesController < ApplicationController
     @log_type = LogType.new(log_type_params)
 
     if @log_type.save
-      flash[:info] = "Log Type created successfully"
+      flash[:success] = "Log Type created successfully"
       redirect_to log_types_url
     else
       render 'new'

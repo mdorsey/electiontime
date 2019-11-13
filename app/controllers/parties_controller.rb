@@ -11,7 +11,7 @@ class PartiesController < ApplicationController
     @party = Party.new(party_params)
 
     if @party.save
-      flash[:info] = "Party created successfully"
+      flash[:success] = "Party created successfully"
       redirect_to parties_url
     else
       render 'new'

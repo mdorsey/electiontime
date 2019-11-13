@@ -11,7 +11,7 @@ class LanguagesController < ApplicationController
     @language = Language.new(language_params)
 
     if @language.save
-      flash[:info] = "Language created successfully"
+      flash[:success] = "Language created successfully"
       redirect_to languages_url
     else
       render 'new'

@@ -11,7 +11,7 @@ class LogsController < ApplicationController
     @log = Log.new(log_params)
 
     if @log.save
-      flash[:info] = "Log created successfully"
+      flash[:success] = "Log created successfully"
       redirect_to logs_url
     else
       render 'new'

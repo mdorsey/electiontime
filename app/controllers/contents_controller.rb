@@ -11,7 +11,7 @@ class ContentsController < ApplicationController
     @content = Content.new(content_params)
 
     if @content.save
-      flash[:info] = "Content created successfully"
+      flash[:success] = "Content created successfully"
       redirect_to contents_url
     else
       render 'new'

@@ -14,7 +14,7 @@ class UsersController < ApplicationController
 
     if @user.save
       @user.send_activation_email
-      flash[:info] = "User created successfully. Confirmation email has been sent to activate the account."
+      flash[:success] = "User created successfully. Confirmation email has been sent to activate the account."
       redirect_to users_url
     else
       render 'new'

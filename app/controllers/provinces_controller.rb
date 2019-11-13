@@ -11,7 +11,7 @@ class ProvincesController < ApplicationController
     @province = Province.new(province_params)
 
     if @province.save
-      flash[:info] = "Province created successfully"
+      flash[:success] = "Province created successfully"
       redirect_to provinces_url
     else
       render 'new'

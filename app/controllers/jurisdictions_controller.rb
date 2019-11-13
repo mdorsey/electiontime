@@ -11,7 +11,7 @@ class JurisdictionsController < ApplicationController
     @jurisdiction = Jurisdiction.new(jurisdiction_params)
 
     if @jurisdiction.save
-      flash[:info] = "Jurisdiction created successfully"
+      flash[:success] = "Jurisdiction created successfully"
       redirect_to jurisdictions_url
     else
       render 'new'

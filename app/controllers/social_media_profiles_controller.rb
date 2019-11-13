@@ -11,7 +11,7 @@ class SocialMediaProfilesController < ApplicationController
     @social_media_profile = SocialMediaProfile.new(social_media_profile_params)
 
     if @social_media_profile.save
-      flash[:info] = "Social Media Profile created successfully"
+      flash[:success] = "Social Media Profile created successfully"
       redirect_to social_media_profiles_url
     else
       render 'new'

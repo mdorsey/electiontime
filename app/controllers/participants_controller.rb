@@ -11,7 +11,7 @@ class ParticipantsController < ApplicationController
     @participant = Participant.new(participant_params)
 
     if @participant.save
-      flash[:info] = "Participant created successfully"
+      flash[:success] = "Participant created successfully"
       redirect_to participants_url
     else
       render 'new'

@@ -1,17 +1,37 @@
 <%= form_for(@log) do |f| %>
   <%= render 'shared/error_messages', object: f.object %>
 
-  <%= f.label :user_id, "User" %>
-  <%= f.select(:user_id, options_for_user, {:prompt => '- Select -'}, {:class => 'input'}) %>
+  <div class="field">
+    <%= f.label :user_id, "User", class: 'label' %>
+    <div class="control">
+      <div class="select">
+        <%= f.select(:user_id, options_for_user, {:prompt => '- Select -'}) %>
+      </div>
+    </div>
+  </div>
 
-  <%= f.label :log_type_id, "Log Type" %>
-  <%= f.select(:log_type_id, options_for_log_type, {:prompt => '- Select -'}, {:class => 'input'}) %>
+  <div class="field">
+    <%= f.label :log_type_id, "Log Type", class: 'label' %>
+    <div class="control">
+      <div class="select">
+        <%= f.select(:log_type_id, options_for_log_type, {:prompt => '- Select -'}) %>
+      </div>
+    </div>
+  </div>
 
-  <%= f.label :message, "Message" %>
-  <%= f.text_field :message, class: 'input' %>
+  <div class="field">
+    <%= f.label :message, "Message", class: 'label' %>
+    <div class="control">
+      <%= f.text_field :message, class: 'input' %>
+    </div>
+  </div>
 
-  <%= f.label :location, "Location" %>
-  <%= f.text_field :location, class: 'input' %>
+  <div class="field">
+    <%= f.label :location, "Location", class: 'label' %>
+    <div class="control">
+      <%= f.text_field :location, class: 'input' %>
+    </div>
+  </div>
 
   <div class="buttons">
     <%= f.submit "Save", class: "button is-link" %>

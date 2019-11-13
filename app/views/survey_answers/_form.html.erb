@@ -1,17 +1,35 @@
 <%= form_for(@survey_answer) do |f| %>
   <%= render 'shared/error_messages', object: f.object %>
 
-  <%= f.label :survey_question_id, "Survey Question" %>
-  <%= f.select(:survey_question_id, options_for_survey_question, {:prompt => '- Select -'}, {:class => 'input'}) %>
+  <div class="field">
+    <%= f.label :survey_question_id, "Survey Question", class: 'label' %>
+    <div class="control">
+      <%= f.select(:survey_question_id, options_for_survey_question, {:prompt => '- Select -'}, {:class => 'input'}) %>
+    </div>
+  </div>
 
-  <%= f.label :participant_id, "Participant" %>
-  <%= f.select(:participant_id, options_for_participant, {:prompt => '- Select -'}, {:class => 'input'}) %>
+  <div class="field">
+    <%= f.label :participant_id, "Participant", class: 'label' %>
+    <div class="control">
+      <div class="select">
+        <%= f.select(:participant_id, options_for_participant, {:prompt => '- Select -'}, {:class => 'input'}) %>
+      </div>
+    </div>
+  </div>
 
-  <%= f.label :answer, "Answer" %>
-  <%= f.text_field :answer, class: 'input' %>
+  <div class="field">
+    <%= f.label :answer, "Answer", class: 'label' %>
+    <div class="control">
+      <%= f.text_area :answer, class: 'textarea' %>
+    </div>
+  </div>
 
-  <%= f.label :source, "Source" %>
-  <%= f.text_field :source, class: 'input' %>
+  <div class="field">
+    <%= f.label :source, "Source", class: 'label' %>
+    <div class="control">
+      <%= f.text_area :source, class: 'textarea' %>
+    </div>
+  </div>
 
   <div class="buttons">
     <%= f.submit "Save", class: "button is-link" %>

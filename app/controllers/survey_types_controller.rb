@@ -11,7 +11,7 @@ class SurveyTypesController < ApplicationController
     @survey_type = SurveyType.new(survey_type_params)
 
     if @survey_type.save
-      flash[:info] = "Survey Type created successfully"
+      flash[:success] = "Survey Type created successfully"
       redirect_to survey_types_url
     else
       render 'new'

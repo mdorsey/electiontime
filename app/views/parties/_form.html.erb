@@ -1,17 +1,33 @@
 <%= form_for(@party) do |f| %>
   <%= render 'shared/error_messages', object: f.object %>
 
-  <%= f.label :name, "Name" %>
-  <%= f.text_field :name, class: 'input' %>
+  <div class="field">
+    <%= f.label :name, "Name", class: 'label' %>
+    <div class="control">
+      <%= f.text_field :name, class: 'input' %>
+    </div>
+  </div>
 
-  <%= f.label :name_abbreviation, "Name Abbreviation" %>
-  <%= f.text_field :name_abbreviation, class: 'input' %>
+  <div class="field">
+    <%= f.label :name_abbreviation, "Name Abbreviation", class: 'label' %>
+    <div class="control">
+      <%= f.text_field :name_abbreviation, class: 'input' %>
+    </div>
+  </div>
 
-  <%= f.label :alternate_name, "Alternate Name" %>
-  <%= f.text_field :alternate_name, class: 'input' %>
+  <div class="field">
+    <%= f.label :alternate_name, "Alternate Name", class: 'label' %>
+    <div class="control">
+      <%= f.text_field :alternate_name, class: 'input' %>
+    </div>
+  </div>
 
-  <%= f.label :alternate_abbreviation, "Alternate Abbreviation" %>
-  <%= f.text_field :alternate_abbreviation, class: 'input' %>
+  <div class="field">
+    <%= f.label :alternate_abbreviation, "Alternate Abbreviation", class: 'label' %>
+    <div class="control">
+      <%= f.text_field :alternate_abbreviation, class: 'input' %>
+    </div>
+  </div>
 
   <div class="buttons">
     <%= f.submit "Save", class: "button is-link" %>

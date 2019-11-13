@@ -11,7 +11,7 @@ class DistrictsController < ApplicationController
     @district = District.new(district_params)
 
     if @district.save
-      flash[:info] = "District created successfully"
+      flash[:success] = "District created successfully"
       redirect_to districts_url
     else
       render 'new'

@@ -11,7 +11,7 @@ class SystemSettingsController < ApplicationController
     @system_setting = SystemSetting.new(system_setting_params)
 
     if @system_setting.save
-      flash[:info] = "System Setting created successfully"
+      flash[:success] = "System Setting created successfully"
       redirect_to system_settings_url
     else
       render 'new'

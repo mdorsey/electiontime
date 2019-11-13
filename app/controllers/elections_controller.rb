@@ -11,7 +11,7 @@ class ElectionsController < ApplicationController
     @election = Election.new(election_params)
 
     if @election.save
-      flash[:info] = "Election created successfully"
+      flash[:success] = "Election created successfully"
       redirect_to elections_url
     else
       render 'new'

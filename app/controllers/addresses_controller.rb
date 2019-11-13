@@ -11,7 +11,7 @@ class AddressesController < ApplicationController
     @address = Address.new(address_params)
 
     if @address.save
-      flash[:info] = "Address created successfully"
+      flash[:success] = "Address created successfully"
       redirect_to addresses_url
     else
       render 'new'

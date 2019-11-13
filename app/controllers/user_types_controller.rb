@@ -11,7 +11,7 @@ class UserTypesController < ApplicationController
     @user_type = UserType.new(user_type_params)
 
     if @user_type.save
-      flash[:info] = "User Type created successfully"
+      flash[:success] = "User Type created successfully"
       redirect_to user_types_url
     else
       render 'new'

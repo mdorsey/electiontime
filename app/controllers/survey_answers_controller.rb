@@ -11,7 +11,7 @@ class SurveyAnswersController < ApplicationController
     @survey_answer = SurveyAnswer.new(survey_answer_params)
 
     if @survey_answer.save
-      flash[:info] = "Survey Answer created successfully"
+      flash[:success] = "Survey Answer created successfully"
       redirect_to survey_answers_url
     else
       render 'new'

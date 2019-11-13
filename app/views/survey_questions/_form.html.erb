@@ -1,14 +1,28 @@
 <%= form_for(@survey_question) do |f| %>
   <%= render 'shared/error_messages', object: f.object %>
 
-  <%= f.label :survey_id, "Survey" %>
-  <%= f.select(:survey_id, options_for_survey, {:prompt => '- Select -'}, {:class => 'input'}) %>
+  <div class="field">
+    <%= f.label :survey_id, "Survey", class: 'label' %>
+    <div class="control">
+      <div class="select">
+        <%= f.select(:survey_id, options_for_survey, {:prompt => '- Select -'}) %>
+      </div>
+    </div>
+  </div>
 
-  <%= f.label :question, "Question" %>
-  <%= f.text_field :question, class: 'input' %>
+  <div class="field">
+    <%= f.label :question, "Question", class: 'label' %>
+    <div class="control">
+      <%= f.text_field :question, class: 'input' %>
+    </div>
+  </div>
 
-  <%= f.label :order, "Order" %>
-  <%= f.text_field :order, class: 'input' %>
+  <div class="field">
+    <%= f.label :order, "Order", class: 'label' %>
+    <div class="control">
+      <%= f.text_field :order, class: 'input' %>
+    </div>
+  </div>
 
   <div class="buttons">
     <%= f.submit "Save", class: "button is-link" %>

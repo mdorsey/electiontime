@@ -11,7 +11,7 @@ class SocialMediaTypesController < ApplicationController
     @social_media_type = SocialMediaType.new(social_media_type_params)
 
     if @social_media_type.save
-      flash[:info] = "Social Media Type created successfully"
+      flash[:success] = "Social Media Type created successfully"
       redirect_to social_media_types_url
     else
       render 'new'

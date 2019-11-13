@@ -1,18 +1,38 @@
 <%= form_for(@survey) do |f| %>
   <%= render 'shared/error_messages', object: f.object %>
 
-  <%= f.label :name, "Name" %>
-  <%= f.text_field :name, class: 'input' %>
+  <div class="field">
+    <%= f.label :name, "Name", class: 'label' %>
+    <div class="control">
+      <%= f.text_field :name, class: 'input' %>
+    </div>
+  </div>
 
-  <%= f.label :description, "Description" %>
-  <%= f.text_field :description, class: 'input' %>
+  <div class="field">
+    <%= f.label :description, "Description", class: 'label' %>
+    <div class="control">
+      <%= f.text_field :description, class: 'input' %>
+    </div>
+  </div>
 
-  <%= f.label :survey_type_id, "Survey Type" %>
-  <%= f.select(:survey_type_id, options_for_survey_type, {:prompt => '- Select -'}, {:class => 'input'}) %>
+  <div class="field">
+    <%= f.label :survey_type_id, "Survey Type", class: 'label' %>
+    <div class="control">
+      <div class="select">
+        <%= f.select(:survey_type_id, options_for_survey_type, {:prompt => '- Select -'}) %>
+      </div>
+    </div>
+  </div>
 
-  <%= f.label :election_id, "Election" %>
-  <%= f.select(:election_id, options_for_election, {:prompt => '- Select -'}, {:class => 'input'}) %>
-
+  <div class="field">
+    <%= f.label :election_id, "Election", class: 'label' %>
+    <div class="control">
+      <div class="select">
+        <%= f.select(:election_id, options_for_election, {:prompt => '- Select -'}) %>
+      </div>
+    </div>
+  </div>
+  
   <div class="buttons">
     <%= f.submit "Save", class: "button is-link" %>
     <%= link_to 'Cancel', cancel_path, class: "button", role: "button" %>
