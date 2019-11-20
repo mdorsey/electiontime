@@ -1,9 +1,10 @@
 <% provide(:title, @election_type.name) %>
 <h1>Election Type: <%= @election_type.name %></h1>
 
-<p>
-  <strong>Name: </strong><%= @election_type.name %>
-</p>
+<div class="field">
+  <label class="label">Name</label>
+  <%= @election_type.name %>
+</div>
 
 <div class="buttons">
   <%= link_to 'Edit', edit_election_type_path(@election_type), class: "button is-link" %>

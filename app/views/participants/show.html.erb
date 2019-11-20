@@ -1,39 +1,60 @@
 <% provide(:title, display_participant(@participant.id)) %>
 <h1>Participant: <%= display_participant(@participant.id) %></h1>
 
-<p>
-  <strong>User: </strong><%= display_user(@participant.user_id) %>
-</p>
-<p>
-  <strong>Party: </strong><%= display_party(@participant.party_id) %>
-</p>
-<p>
-  <strong>District: </strong><%= display_district(@participant.district_id) %>
-</p>
-<p>
-  <strong>Leader Participant: </strong><%= display_participant(@participant.leader_participant_id) %>
-</p>
-<p>
-  <strong>Is Candidate: </strong><%= @participant.is_candidate %>
-</p>
-<p>
-  <strong>Is Incumbent: </strong><%= @participant.is_incumbent %>
-</p>
-<p>
-  <strong>Email: </strong><%= @participant.email %>
-</p>
-<p>
-  <strong>Phone: </strong><%= @participant.phone %>
-</p>
-<p>
-  <strong>Website: </strong><%= @participant.website %>
-</p>
-<p>
-  <strong>Biography: </strong><%= @participant.biography %>
-</p>
-<p>
-  <strong>Address: </strong><%= display_address(@participant.address_id) %>
-</p>
+<div class="field">
+  <label class="label">User</label>
+  <%= display_user(@participant.user_id) %>
+</div>
+
+<div class="field">
+  <label class="label">Party</label>
+  <%= display_party(@participant.party_id) %>
+</div>
+
+<div class="field">
+  <label class="label">District</label>
+  <%= display_district(@participant.district_id) %>
+</div>
+
+<div class="field">
+  <label class="label">Leader Participant</label>
+  <%= display_participant(@participant.leader_participant_id) %>
+</div>
+
+<div class="field">
+  <label class="label">Is Candidate</label>
+  <%= @participant.is_candidate %>
+</div>
+
+<div class="field">
+  <label class="label">Is Incumbent</label>
+  <%= @participant.is_incumbent %>
+</div>
+
+<div class="field">
+  <label class="label">Email</label>
+  <%= @participant.email %>
+</div>
+
+<div class="field">
+  <label class="label">Phone</label>
+  <%= @participant.phone %>
+</div>
+
+<div class="field">
+  <label class="label">Website</label>
+  <%= @participant.website %>
+</div>
+
+<div class="field">
+  <label class="label">Biography</label>
+  <%= @participant.biography %>
+</div>
+
+<div class="field">
+  <label class="label">Address</label>
+  <%= display_address(@participant.address_id) %>
+</div>
 
 <div class="buttons">
   <%= link_to 'Edit', edit_participant_path(@participant), class: "button is-link" %>

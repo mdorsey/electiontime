@@ -1,18 +1,25 @@
 <% provide(:title, @survey.name) %>
 <h1>Survey: <%= @survey.name %></h1>
 
-<p>
-  <strong>Name: </strong><%= @survey.name %>
-</p>
-<p>
-  <strong>Description: </strong><%= @survey.description %>
-</p>
-<p>
-  <strong>Survey Type: </strong><%= display_survey_type(@survey.survey_type_id) %>
-</p>
-<p>
-  <strong>Election: </strong><%= display_election(@survey.election_id) %>
-</p>
+<div class="field">
+  <label class="label">Name</label>
+  <%= @survey.name %>
+</div>
+
+<div class="field">
+  <label class="label">Description</label>
+  <%= @survey.description %>
+</div>
+
+<div class="field">
+  <label class="label">Survey Type:</label>
+  <%= display_survey_type(@survey.survey_type_id) %>
+</div>
+
+<div class="field">
+  <label class="label">Election</label>
+  <%= display_election(@survey.election_id) %>
+</div>
 
 <div class="buttons">
   <%= link_to 'Edit', edit_survey_path(@survey), class: "button is-link" %>

@@ -1,37 +1,48 @@
 <% provide(:title, @election.name) %>
 <h1>Election: <%= @election.name %></h1>
 
-<p>
-  <strong>Name: </strong><%= @election.name %>
-</p>
-<p>
-  <strong>Active: </strong><%= @election.active %>
-</p>
-<p>
-  <strong>Election Type: </strong><%= display_election_type(@election.election_type_id) %>
-</p>
-<p>
-  <strong>Election Date: </strong><%= @election.election_date.strftime("%B %d, %Y") %>
-</p>
-<p>
-  <strong>Jurisdiction: </strong><%= display_jurisdiction(@election.jurisdiction_id) %>
-</p>
-<p>
-  <strong>Districts: </strong>
+<div class="field">
+  <label class="label">Name</label>
+  <%= @election.name %>
+</div>
+
+<div class="field">
+  <label class="label">Active</label>
+  <%= @election.active %>
+</div>
+
+<div class="field">
+  <label class="label">Election Type</label>
+  <%= display_election_type(@election.election_type_id) %>
+</div>
+
+<div class="field">
+  <label class="label">Election Date</label>
+  <%= @election.election_date.strftime("%B %d, %Y") %>
+</div>
+
+<div class="field">
+  <label class="label">Jurisdiction</label>
+  <%= display_jurisdiction(@election.jurisdiction_id) %>
+</div>
+
+<div class="field">
+  <label class="label">Districts</label>
   <ul>
     <% @election.districts.each do |district| %>
       <li><%= district.name %></li>
     <%end %>
   </ul>
-</p>
-<p>
-  <strong>Participants: </strong>
+</div>
+
+<div class="field">
+  <label class="label">Participants</label>
   <ul>
     <% @election.participants.each do |participant| %>
       <li><%= display_participant(participant.id) %></li>
     <%end %>
   </ul>
-</p>
+</div>
 
 <div class="buttons">
   <%= link_to 'Edit', edit_election_path(@election), class: "button is-link" %>

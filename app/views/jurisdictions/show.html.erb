@@ -1,9 +1,10 @@
 <% provide(:title, @jurisdiction.name) %>
 <h1>Jurisdiction: <%= @jurisdiction.name %></h1>
 
-<p>
-  <strong>Name: </strong><%= @jurisdiction.name %>
-</p>
+<div class="field">
+  <label class="label">Name</label>
+  <%= @jurisdiction.name %>
+</div>
 
 <div class="buttons">
   <%= link_to 'Edit', edit_jurisdiction_path(@jurisdiction), class: "button is-link" %>

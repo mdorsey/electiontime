@@ -1,9 +1,10 @@
 <% provide(:title, @social_media_type.name) %>
 <h1>Social Media Type: <%= @social_media_type.name %></h1>
 
-<p>
-  <strong>Name: </strong><%= @social_media_type.name %>
-</p>
+<div class="field">
+  <label class="label">Name</label>
+  <%= @social_media_type.name %>
+</div>
 
 <div class="buttons">
   <%= link_to 'Edit', edit_social_media_type_path(@social_media_type), class: "button is-link" %>

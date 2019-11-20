@@ -1,15 +1,20 @@
 <% provide(:title, @social_media_profile.handle) %>
 <h1>Social Media Profile: <%= @social_media_profile.handle %></h1>
 
-<p>
-  <strong>Handle: </strong><%= @social_media_profile.handle %>
-</p>
-<p>
-  <strong>Participant: </strong><%= display_participant(@social_media_profile.participant_id) %>
-</p>
-<p>
-  <strong>Social Media Type: </strong><%= display_social_media_type(@social_media_profile.social_media_type_id) %>
-</p>
+<div class="field">
+  <label class="label">Handle</label>
+  <%= @social_media_profile.handle %>
+</div>
+
+<div class="field">
+  <label class="label">Participant</label>
+  <%= display_participant(@social_media_profile.participant_id) %>
+</div>
+
+<div class="field">
+  <label class="label">Social Media Type</label>
+  <%= display_social_media_type(@social_media_profile.social_media_type_id) %>
+</div>
 
 <div class="buttons">
   <%= link_to 'Edit', edit_social_media_profile_path(@social_media_profile), class: "button is-link" %>

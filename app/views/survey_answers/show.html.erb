@@ -1,18 +1,25 @@
 <% provide(:title, @survey_answer.answer) %>
 <h1>Survey Answer: <%= @survey_answer.answer %></h1>
 
-<p>
-  <strong>Survey Question: </strong><%= display_survey_question(@survey_answer.survey_question_id) %>
-</p>
-<p>
-  <strong>Participant: </strong><%= display_participant(@survey_answer.participant_id) %>
-</p>
-<p>
-  <strong>Answer: </strong><%= @survey_answer.answer %>
-</p>
-<p>
-  <strong>Source: </strong><%= @survey_answer.source %>
-</p>
+<div class="field">
+  <label class="label">Survey Question</label>
+  <%= display_survey_question(@survey_answer.survey_question_id) %>
+</div>
+
+<div class="field">
+  <label class="label">Participant</label>
+  <%= display_participant(@survey_answer.participant_id) %>
+</div>
+
+<div class="field">
+  <label class="label">Answer</label>
+  <%= @survey_answer.answer %>
+</div>
+
+<div class="field">
+  <label class="label">Source</label>
+  <%= @survey_answer.source %>
+</div>
 
 <div class="buttons">
   <%= link_to 'Edit', edit_survey_answer_path(@survey_answer), class: "button is-link" %>

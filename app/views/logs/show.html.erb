@@ -1,18 +1,25 @@
 <% provide(:title, 'Log') %>
 <h1>Log</h1>
 
-<p>
-  <strong>User: </strong><%= display_user(@log.user_id) %>
-</p>
-<p>
-  <strong>Log Type: </strong><%= display_log_type(@log.log_type_id) %>
-</p>
-<p>
-  <strong>Message: </strong><%= @log.message %>
-</p>
-<p>
-  <strong>Location: </strong><%= @log.location %>
-</p>
+<div class="field">
+  <label class="label">User</label>
+  <%= display_user(@log.user_id) %>
+</div>
+
+<div class="field">
+  <label class="label">Log Type</label>
+  <%= display_log_type(@log.log_type_id) %>
+</div>
+
+<div class="field">
+  <label class="label">Message</label>
+  <%= @log.message %>
+</div>
+
+<div class="field">
+  <label class="label">Location</label>
+  <%= @log.location %>
+</div>
 
 <div class="buttons">
   <%= link_to 'Edit', edit_log_path(@log), class: "button is-link" %>

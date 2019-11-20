@@ -1,9 +1,10 @@
 <% provide(:title, @user_type.name) %>
 <h1>User Type: <%= @user_type.name %></h1>
 
-<p>
-  <strong>Name: </strong><%= @user_type.name %>
-</p>
+<div class="field">
+  <label class="label">Name</label>
+  <%= @user_type.name %>
+</div>
 
 <div class="buttons">
   <%= link_to 'Edit', edit_user_type_path(@user_type), class: "button is-link" %>

@@ -1,9 +1,10 @@
 <% provide(:title, @language.name) %>
 <h1>Language: <%= @language.name %></h1>
 
-<p>
-  <strong>Name: </strong><%= @language.name %>
-</p>
+<div class="field">
+  <label class="label">Name</label>
+  <%= @language.name %>
+</div>
 
 <div class="buttons">
   <%= link_to 'Edit', edit_language_path(@language), class: "button is-link" %>

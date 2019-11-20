@@ -1,15 +1,20 @@
 <% provide(:title, @survey_question.question) %>
 <h1>Survey Question: <%= @survey_question.question %></h1>
 
-<p>
-  <strong>Survey: </strong><%= display_survey(@survey_question.survey_id) %>
-</p>
-<p>
-  <strong>Question: </strong><%= @survey_question.question %>
-</p>
-<p>
-  <strong>Order: </strong><%= @survey_question.order %>
-</p>
+<div class="field">
+  <label class="label">Survey</label>
+  <%= display_survey(@survey_question.survey_id) %>
+</div>
+
+<div class="field">
+  <label class="label">Question</label>
+  <%= @survey_question.question %>
+</div>
+
+<div class="field">
+  <label class="label">Order</label>
+  <%= @survey_question.order %>
+</div>
 
 <div class="buttons">
   <%= link_to 'Edit', edit_survey_question_path(@survey_question), class: "button is-link" %>

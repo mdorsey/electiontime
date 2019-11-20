@@ -1,18 +1,25 @@
 <% provide(:title, @party.name) %>
 <h1>Party: <%= @party.name %></h1>
 
-<p>
-  <strong>Name: </strong><%= @party.name %>
-</p>
-<p>
-  <strong>Name Abbreviation: </strong><%= @party.name_abbreviation %>
-</p>
-<p>
-  <strong>Alternate Name: </strong><%= @party.alternate_name %>
-</p>
-<p>
-  <strong>Alternate Abbreviation: </strong><%= @party.alternate_abbreviation %>
-</p>
+<div class="field">
+  <label class="label">Name</label>
+  <%= @party.name %>
+</div>
+
+<div class="field">
+  <label class="label">Name Abbreviation</label>
+  <%= @party.name_abbreviation %>
+</div>
+
+<div class="field">
+  <label class="label">Alternate Name</label>
+  <%= @party.alternate_name %>
+</div>
+
+<div class="field">
+  <label class="label">Alternate Abbreviation</label>
+  <%= @party.alternate_abbreviation %>
+</div>
 
 <div class="buttons">
   <%= link_to 'Edit', edit_party_path(@party), class: "button is-link" %>

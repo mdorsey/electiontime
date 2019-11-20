@@ -1,18 +1,25 @@
 <% provide(:title, @address.street) %>
 <h1>Address: <%= @address.street %></h1>
 
-<p>
-  <strong>Street: </strong><%= @address.street %>
-</p>
-<p>
-  <strong>City: </strong><%= @address.city %>
-</p>
-<p>
-  <strong>Province: </strong><%= display_province(@address.province_id) %>
-</p>
-<p>
-  <strong>Postal Code: </strong><%= @address.postal_code %>
-</p>
+<div class="field">
+  <label class="label">Street</label>
+  <%= @address.street %>
+</div>
+
+<div class="field">
+  <label class="label">City</label>
+  <%= @address.city %>
+</div>
+
+<div class="field">
+  <label class="label">Province</label>
+  <%= display_province(@address.province_id) %>
+</div>
+
+<div class="field">
+  <label class="label">Postal Code</label>
+  <%= @address.postal_code %>
+</div>
 
 <div class="buttons">
   <%= link_to 'Edit', edit_address_path(@address), class: "button is-link" %>

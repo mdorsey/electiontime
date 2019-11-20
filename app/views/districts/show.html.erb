@@ -1,15 +1,20 @@
 <% provide(:title, @district.name) %>
 <h1>District: <%= @district.name %></h1>
 
-<p>
-  <strong>Name: </strong><%= @district.name %>
-</p>
-<p>
-  <strong>Election Type: </strong><%= display_election_type(@district.election_type_id) %>
-</p>
-<p>
-  <strong>Jurisdiction: </strong><%= display_jurisdiction(@district.jurisdiction_id) %>
-</p>
+<div class="field">
+  <label class="label">Name</label>
+  <%= @district.name %>
+</div>
+
+<div class="field">
+  <label class="label">Election Type</label>
+  <%= display_election_type(@district.election_type_id) %>
+</div>
+
+<div class="field">
+  <label class="label">Jurisdiction</label>
+  <%= display_jurisdiction(@district.jurisdiction_id) %>
+</div>
 
 <div class="buttons">
   <%= link_to 'Edit', edit_district_path(@district), class: "button is-link" %>

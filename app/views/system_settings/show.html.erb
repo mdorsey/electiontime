@@ -1,12 +1,15 @@
 <% provide(:title, @system_setting.name) %>
 <h1>System Setting: <%= @system_setting.name %></h1>
 
-<p>
-  <strong>Name: </strong><%= @system_setting.name %>
-</p>
-<p>
-  <strong>Setting: </strong><%= @system_setting.setting %>
-</p>
+<div class="field">
+  <label class="label">Name</label>
+  <%= @system_setting.name %>
+</div>
+
+<div class="field">
+  <label class="label">Setting</label>
+  <%= @system_setting.setting %>
+</div>
 
 <div class="buttons">
   <%= link_to 'Edit', edit_system_setting_path(@system_setting), class: "button is-link" %>

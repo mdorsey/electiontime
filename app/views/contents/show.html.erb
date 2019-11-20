@@ -1,18 +1,25 @@
 <% provide(:title, @content.location) %>
 <h1>Content: <%= @content.location %></h1>
 
-<p>
-  <strong>Location: </strong><%= @content.location %>
-</p>
-<p>
-  <strong>Content: </strong><%= @content.content %>
-</p>
-<p>
-  <strong>Machine Name: </strong><%= @content.machine_name %>
-</p>
-<p>
-  <strong>Language: </strong><%= display_language(@content.language_id) %>
-</p>
+<div class="field">
+  <label class="label">Location</label>
+  <%= @content.location %>
+</div>
+
+<div class="field">
+  <label class="label">Content</label>
+  <%= @content.content %>
+</div>
+
+<div class="field">
+  <label class="label">Machine Name</label>
+  <%= @content.machine_name %>
+</div>
+
+<div class="field">
+  <label class="label">Language</label>
+  <%= display_language(@content.language_id) %>
+</div>
 
 <div class="buttons">
   <%= link_to 'Edit', edit_content_path(@content), class: "button is-link" %>
