@@ -46,9 +46,6 @@ gem "bulma-rails", "~> 0.8.0"
 # This gem integrates the Bulma pagination component with the will_paginate pagination gem. https://github.com/phoffer/will_paginate-bulma
 gem 'will_paginate-bulma'
 
-# Adds a javascript datepicker. https://github.com/Nerian/bootstrap-datepicker-rails
-gem 'bootstrap-datepicker-rails'
-
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 

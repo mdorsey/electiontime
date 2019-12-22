@@ -29,6 +29,8 @@ class ElectionsController < ApplicationController
   end
 
   def edit
+    # Format the election date
+    @election.election_date = @election.election_date.strftime("%d/%m/%Y")
   end
 
   def new
