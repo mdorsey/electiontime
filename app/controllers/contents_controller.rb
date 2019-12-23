@@ -4,7 +4,7 @@ class ContentsController < ApplicationController
   before_action :set_content, only: [:show, :edit, :update, :destroy]
 
   def index
-    @contents = Content.paginate(page: params[:page]).order('created_at DESC')
+    @contents = Content.paginate(page: params[:page]).order('location ASC')
   end
 
   def create
