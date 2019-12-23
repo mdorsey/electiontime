@@ -10,6 +10,23 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 
+    <!-- Initializes the tinymce editor for any field with class 'tinymce' -->
+    <script>
+      tinymce.init({
+        selector: '.tinymce',
+        height: 500,
+        plugins: [
+          'advlist autolink lists link image charmap print preview anchor',
+          'searchreplace visualblocks code fullscreen',
+          'insertdatetime media table paste code help wordcount'
+        ],
+        toolbar: 'undo redo | formatselect | ' +
+          ' bold italic backcolor | alignleft aligncenter ' +
+          ' alignright alignjustify | bullist numlist outdent indent |' +
+          ' removeformat | help'
+      });
+    </script>   
+
     <%= render 'layouts/shim' %>
   </head>    
   <body>

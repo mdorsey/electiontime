@@ -1,5 +1,27 @@
 {
-  "name": "VoteApp",
+  "name": "voteapp",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "tinymce": "^5.1.5"
+  },
+  "description": "Things you may want to cover:",
+  "version": "1.0.0",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mdorsey/vote_app.git"
+  },
+  "author": "mdorsey",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mdorsey/vote_app/issues"
+  },
+  "homepage": "https://github.com/mdorsey/vote_app#readme"
 }
