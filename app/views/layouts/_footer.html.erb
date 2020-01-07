@@ -1,11 +1,10 @@
 <footer class="footer">
-  <small>
-    ElectionTime.org copyright
-  </small>
-  <nav>
-    <ul>
-      <li><%= link_to "About", about_path %></li>
-      <li><%= link_to "Contact", contact_path %></li>
-    </ul>
-  </nav>
+  <div class="container has-text-centered">
+    <%= link_to "Disclaimer", about_path, class: "footer-item" %>
+    <%= link_to "Privacy Policy", about_path, class: "footer-item" %>
+    <%= link_to "Terms of Use", about_path, class: "footer-item" %>
+    <div>
+      Copyright © 2020, ElectionTime.org
+    </div>
+  </div>
 </footer>

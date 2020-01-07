@@ -1,5 +1,7 @@
 /* MIXINS, VARIABLES */
 
+$navbar-item-img-max-height: 3.5rem;
+$footer-background-color: white;
 
 /* IMPORTS */
 
@@ -30,29 +32,27 @@ p {
 }
 
 
-/* HEADER */
+/* HEADER NAV BAR */
+
+.navbar {
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid black
+}
+
+.navbar-item {
+  font-size: 1.2em;
+  padding: 0 1.5rem;
+}
 
 
 /* FOOTER */
 
 footer {
-  margin-top: 45px;
-  padding-top: 5px;
   border-top: 1px solid black;
-  color: gray;
-  a {
-    color: gray;
-  }
-  small {
-    float: left;
-  }
-  ul {
-    float: right;
-    list-style: none;
-    li {
-      float: left;
-      margin-left: 15px;
-    }
+  
+  .footer-item {
+    padding: 0 1.5rem;
   }
 }
 
@@ -60,10 +60,8 @@ footer {
 /* DEVELOPER */
 
 .debug_dump {
-  clear: both;
-  float: left;
   width: 100%;
-  margin-top: 45px;
+  margin-top: 15px;
 }
 
 
