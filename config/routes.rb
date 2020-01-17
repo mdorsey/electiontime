@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   delete  '/logout',  to: 'sessions#destroy'
 
   # Admin controller
-  get     'admin/resources'
+  get     'admin/dashboard'
   
   resources :account_activations, only: [:edit]
   resources :addresses

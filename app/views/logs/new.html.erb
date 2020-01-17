@@ -1,4 +1,11 @@
 <% provide(:title, 'New Log') %>
 <h1>New Log</h1>
 
-<%= render 'form', election: @log, cancel_path: logs_path %>
+<div class="columns">
+  <div class="column is-narrow">
+    <%= render 'layouts/admin_menu' %>
+  </div>
+  <div class="column">
+    <%= render 'form', election: @log, cancel_path: logs_path %>
+  </div>
+</div>

@@ -1,63 +1,71 @@
 <% provide(:title, display_participant(@participant.id)) %>
 <h1>Participant: <%= display_participant(@participant.id) %></h1>
 
-<div class="field">
-  <label class="label">User</label>
-  <%= display_user(@participant.user_id) %>
+<div class="columns">
+  <div class="column is-narrow">
+    <%= render 'layouts/admin_menu' %>
+  </div>
+  <div class="column">
+    <div class="field">
+      <label class="label">User</label>
+      <%= display_user(@participant.user_id) %>
+    </div>
+
+    <div class="field">
+      <label class="label">Party</label>
+      <%= display_party(@participant.party_id) %>
+    </div>
+
+    <div class="field">
+      <label class="label">District</label>
+      <%= display_district(@participant.district_id) %>
+    </div>
+
+    <div class="field">
+      <label class="label">Leader Participant</label>
+      <%= display_participant(@participant.leader_participant_id) %>
+    </div>
+
+    <div class="field">
+      <label class="label">Is Candidate</label>
+      <%= @participant.is_candidate %>
+    </div>
+
+    <div class="field">
+      <label class="label">Is Incumbent</label>
+      <%= @participant.is_incumbent %>
+    </div>
+
+    <div class="field">
+      <label class="label">Email</label>
+      <%= @participant.email %>
+    </div>
+
+    <div class="field">
+      <label class="label">Phone</label>
+      <%= @participant.phone %>
+    </div>
+
+    <div class="field">
+      <label class="label">Website</label>
+      <%= @participant.website %>
+    </div>
+
+    <div class="field">
+      <label class="label">Biography</label>
+      <%= @participant.biography %>
+    </div>
+
+    <div class="field">
+      <label class="label">Address</label>
+      <%= display_address(@participant.address_id) %>
+    </div>
+
+    <div class="buttons">
+      <%= link_to 'Edit', edit_participant_path(@participant), class: "button is-link" %>
+      <%= link_to 'Delete', @participant, method: :delete, data: { confirm: 'Are you sure?' }, class: "button is-danger" %>
+      <%= link_to 'Back', participants_path, class: "button" %>
+    </div>
+  </div>
 </div>
 
-<div class="field">
-  <label class="label">Party</label>
-  <%= display_party(@participant.party_id) %>
-</div>
-
-<div class="field">
-  <label class="label">District</label>
-  <%= display_district(@participant.district_id) %>
-</div>
-
-<div class="field">
-  <label class="label">Leader Participant</label>
-  <%= display_participant(@participant.leader_participant_id) %>
-</div>
-
-<div class="field">
-  <label class="label">Is Candidate</label>
-  <%= @participant.is_candidate %>
-</div>
-
-<div class="field">
-  <label class="label">Is Incumbent</label>
-  <%= @participant.is_incumbent %>
-</div>
-
-<div class="field">
-  <label class="label">Email</label>
-  <%= @participant.email %>
-</div>
-
-<div class="field">
-  <label class="label">Phone</label>
-  <%= @participant.phone %>
-</div>
-
-<div class="field">
-  <label class="label">Website</label>
-  <%= @participant.website %>
-</div>
-
-<div class="field">
-  <label class="label">Biography</label>
-  <%= @participant.biography %>
-</div>
-
-<div class="field">
-  <label class="label">Address</label>
-  <%= display_address(@participant.address_id) %>
-</div>
-
-<div class="buttons">
-  <%= link_to 'Edit', edit_participant_path(@participant), class: "button is-link" %>
-  <%= link_to 'Delete', @participant, method: :delete, data: { confirm: 'Are you sure?' }, class: "button is-danger" %>
-  <%= link_to 'Back', participants_path, class: "button" %>
-</div>

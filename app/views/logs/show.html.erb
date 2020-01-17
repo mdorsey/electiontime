@@ -1,28 +1,35 @@
 <% provide(:title, 'Log') %>
 <h1>Log</h1>
 
-<div class="field">
-  <label class="label">User</label>
-  <%= display_user(@log.user_id) %>
-</div>
+<div class="columns">
+  <div class="column is-narrow">
+    <%= render 'layouts/admin_menu' %>
+  </div>
+  <div class="column">
+    <div class="field">
+      <label class="label">User</label>
+      <%= display_user(@log.user_id) %>
+    </div>
 
-<div class="field">
-  <label class="label">Log Type</label>
-  <%= display_log_type(@log.log_type_id) %>
-</div>
+    <div class="field">
+      <label class="label">Log Type</label>
+      <%= display_log_type(@log.log_type_id) %>
+    </div>
 
-<div class="field">
-  <label class="label">Message</label>
-  <%= @log.message %>
-</div>
+    <div class="field">
+      <label class="label">Message</label>
+      <%= @log.message %>
+    </div>
 
-<div class="field">
-  <label class="label">Location</label>
-  <%= @log.location %>
-</div>
+    <div class="field">
+      <label class="label">Location</label>
+      <%= @log.location %>
+    </div>
 
-<div class="buttons">
-  <%= link_to 'Edit', edit_log_path(@log), class: "button is-link" %>
-  <%= link_to 'Delete', @log, method: :delete, data: { confirm: 'Are you sure?' }, class: "button is-danger" %>
-  <%= link_to 'Back', logs_path, class: "button" %>
+    <div class="buttons">
+      <%= link_to 'Edit', edit_log_path(@log), class: "button is-link" %>
+      <%= link_to 'Delete', @log, method: :delete, data: { confirm: 'Are you sure?' }, class: "button is-danger" %>
+      <%= link_to 'Back', logs_path, class: "button" %>
+    </div>
+  </div>
 </div>

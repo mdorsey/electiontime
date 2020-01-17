@@ -1,4 +1,11 @@
 <% provide(:title, 'Edit Election Type') %>
 <h1>Edit Election Type</h1>
 
-<%= render 'form', election_type: @election_type, cancel_path: @election_type %>
+<div class="columns">
+  <div class="column is-narrow">
+    <%= render 'layouts/admin_menu' %>
+  </div>
+  <div class="column">
+    <%= render 'form', election_type: @election_type, cancel_path: @election_type %>
+  </div>
+</div>

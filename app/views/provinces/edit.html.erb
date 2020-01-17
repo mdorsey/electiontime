@@ -1,4 +1,11 @@
 <% provide(:title, 'Edit Province') %>
 <h1>Edit Province</h1>
 
-<%= render 'form', province: @province, cancel_path: @province %>
+<div class="columns">
+  <div class="column is-narrow">
+    <%= render 'layouts/admin_menu' %>
+  </div>
+  <div class="column">
+    <%= render 'form', province: @province, cancel_path: @province %>
+  </div>
+</div>

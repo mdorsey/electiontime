@@ -1,18 +1,25 @@
 <% provide(:title, @system_setting.name) %>
 <h1>System Setting: <%= @system_setting.name %></h1>
 
-<div class="field">
-  <label class="label">Name</label>
-  <%= @system_setting.name %>
-</div>
+<div class="columns">
+  <div class="column is-narrow">
+    <%= render 'layouts/admin_menu' %>
+  </div>
+  <div class="column">
+    <div class="field">
+      <label class="label">Name</label>
+      <%= @system_setting.name %>
+    </div>
 
-<div class="field">
-  <label class="label">Setting</label>
-  <%= @system_setting.setting %>
-</div>
+    <div class="field">
+      <label class="label">Setting</label>
+      <%= @system_setting.setting %>
+    </div>
 
-<div class="buttons">
-  <%= link_to 'Edit', edit_system_setting_path(@system_setting), class: "button is-link" %>
-  <%= link_to 'Delete', @system_setting, method: :delete, data: { confirm: 'Are you sure?' }, class: "button is-danger" %>
-  <%= link_to 'Back', system_settings_path, class: "button" %>
+    <div class="buttons">
+      <%= link_to 'Edit', edit_system_setting_path(@system_setting), class: "button is-link" %>
+      <%= link_to 'Delete', @system_setting, method: :delete, data: { confirm: 'Are you sure?' }, class: "button is-danger" %>
+      <%= link_to 'Back', system_settings_path, class: "button" %>
+    </div>
+  </div>
 </div>

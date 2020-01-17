@@ -1,51 +1,58 @@
 <% provide(:title, @election.name) %>
 <h1>Election: <%= @election.name %></h1>
 
-<div class="field">
-  <label class="label">Name</label>
-  <%= @election.name %>
-</div>
+<div class="columns">
+  <div class="column is-narrow">
+    <%= render 'layouts/admin_menu' %>
+  </div>
+  <div class="column">
+    <div class="field">
+      <label class="label">Name</label>
+      <%= @election.name %>
+    </div>
 
-<div class="field">
-  <label class="label">Active</label>
-  <%= @election.active %>
-</div>
+    <div class="field">
+      <label class="label">Active</label>
+      <%= @election.active %>
+    </div>
 
-<div class="field">
-  <label class="label">Election Type</label>
-  <%= display_election_type(@election.election_type_id) %>
-</div>
+    <div class="field">
+      <label class="label">Election Type</label>
+      <%= display_election_type(@election.election_type_id) %>
+    </div>
 
-<div class="field">
-  <label class="label">Election Date</label>
-  <%= @election.election_date.strftime("%B %d, %Y") %>
-</div>
+    <div class="field">
+      <label class="label">Election Date</label>
+      <%= @election.election_date.strftime("%B %d, %Y") %>
+    </div>
 
-<div class="field">
-  <label class="label">Jurisdiction</label>
-  <%= display_jurisdiction(@election.jurisdiction_id) %>
-</div>
+    <div class="field">
+      <label class="label">Jurisdiction</label>
+      <%= display_jurisdiction(@election.jurisdiction_id) %>
+    </div>
 
-<div class="field">
-  <label class="label">Districts</label>
-  <ul>
-    <% @election.districts.each do |district| %>
-      <li><%= district.name %></li>
-    <%end %>
-  </ul>
-</div>
+    <div class="field">
+      <label class="label">Districts</label>
+      <ul>
+        <% @election.districts.each do |district| %>
+          <li><%= district.name %></li>
+        <%end %>
+      </ul>
+    </div>
 
-<div class="field">
-  <label class="label">Participants</label>
-  <ul>
-    <% @election.participants.each do |participant| %>
-      <li><%= display_participant(participant.id) %></li>
-    <%end %>
-  </ul>
-</div>
+    <div class="field">
+      <label class="label">Participants</label>
+      <ul>
+        <% @election.participants.each do |participant| %>
+          <li><%= display_participant(participant.id) %></li>
+        <%end %>
+      </ul>
+    </div>
 
-<div class="buttons">
-  <%= link_to 'Edit', edit_election_path(@election), class: "button is-link" %>
-  <%= link_to 'Delete', @election, method: :delete, data: { confirm: 'Are you sure?' }, class: "button is-danger" %>
-  <%= link_to 'Back', elections_path, class: "button" %>
+    <div class="buttons">
+      <%= link_to 'Edit', edit_election_path(@election), class: "button is-link" %>
+      <%= link_to 'Delete', @election, method: :delete, data: { confirm: 'Are you sure?' }, class: "button is-danger" %>
+      <%= link_to 'Back', elections_path, class: "button" %>
+    </div>
+  </div>
 </div>

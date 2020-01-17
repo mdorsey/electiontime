@@ -1,4 +1,11 @@
 <% provide(:title, 'New Survey') %>
 <h1>New Survey</h1>
 
-<%= render 'form', survey: @survey, cancel_path: surveys_path %>
+<div class="columns">
+  <div class="column is-narrow">
+    <%= render 'layouts/admin_menu' %>
+  </div>
+  <div class="column">
+    <%= render 'form', survey: @survey, cancel_path: surveys_path %>
+  </div>
+</div>

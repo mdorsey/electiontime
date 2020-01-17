@@ -1,23 +1,30 @@
 <% provide(:title, @survey_question.question) %>
 <h1>Survey Question: <%= @survey_question.question %></h1>
 
-<div class="field">
-  <label class="label">Survey</label>
-  <%= display_survey(@survey_question.survey_id) %>
-</div>
+<div class="columns">
+  <div class="column is-narrow">
+    <%= render 'layouts/admin_menu' %>
+  </div>
+  <div class="column">
+    <div class="field">
+      <label class="label">Survey</label>
+      <%= display_survey(@survey_question.survey_id) %>
+    </div>
 
-<div class="field">
-  <label class="label">Question</label>
-  <%= @survey_question.question %>
-</div>
+    <div class="field">
+      <label class="label">Question</label>
+      <%= @survey_question.question %>
+    </div>
 
-<div class="field">
-  <label class="label">Order</label>
-  <%= @survey_question.order %>
-</div>
+    <div class="field">
+      <label class="label">Order</label>
+      <%= @survey_question.order %>
+    </div>
 
-<div class="buttons">
-  <%= link_to 'Edit', edit_survey_question_path(@survey_question), class: "button is-link" %>
-  <%= link_to 'Delete', @survey_question, method: :delete, data: { confirm: 'Are you sure?' }, class: "button is-danger" %>
-  <%= link_to 'Back', survey_questions_path, class: "button" %>
+    <div class="buttons">
+      <%= link_to 'Edit', edit_survey_question_path(@survey_question), class: "button is-link" %>
+      <%= link_to 'Delete', @survey_question, method: :delete, data: { confirm: 'Are you sure?' }, class: "button is-danger" %>
+      <%= link_to 'Back', survey_questions_path, class: "button" %>
+    </div>
+  </div>
 </div>

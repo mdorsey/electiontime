@@ -1,4 +1,11 @@
 <% provide(:title, 'Edit System Setting') %>
 <h1>Edit System Setting</h1>
 
-<%= render 'form', system_setting: @system_setting, cancel_path: @system_setting %>
+<div class="columns">
+  <div class="column is-narrow">
+    <%= render 'layouts/admin_menu' %>
+  </div>
+  <div class="column">
+    <%= render 'form', system_setting: @system_setting, cancel_path: @system_setting %>
+  </div>
+</div>

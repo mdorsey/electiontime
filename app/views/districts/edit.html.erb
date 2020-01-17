@@ -1,4 +1,11 @@
 <% provide(:title, 'Edit District') %>
 <h1>Edit District</h1>
 
-<%= render 'form', district: @district, cancel_path: @district %>
+<div class="columns">
+  <div class="column is-narrow">
+    <%= render 'layouts/admin_menu' %>
+  </div>
+  <div class="column">
+    <%= render 'form', district: @district, cancel_path: @district %>
+  </div>
+</div>

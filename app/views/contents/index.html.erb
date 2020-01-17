@@ -1,14 +1,21 @@
 <% provide(:title, 'Contents') %>
 <h1>Contents</h1>
 
-<div class="buttons">
-  <!-- Turn off turbolinks so that Tinymce will load on the New page -->
-  <%= link_to '+ New Content', new_content_path, class: "button is-link", data: { turbolinks: "false" } %>
-  <%= link_to 'Back', admin_resources_path, class: "button" %>
+<div class="columns">
+  <div class="column is-narrow">
+    <%= render 'layouts/admin_menu' %>
+  </div>
+  <div class="column">
+    <div class="buttons">
+      <!-- Turn off turbolinks so that Tinymce will load on the New page -->
+      <%= link_to '+ New Content', new_content_path, class: "button is-link", data: { turbolinks: "false" } %>
+    </div>
+
+    <ul class="resources-list">
+      <%= render @contents %>
+    </ul>
+
+    <%= will_paginate renderer: BulmaPagination::Rails, :class => 'is-centered' %>
+  </div>
 </div>
 
-<ul class="resources-list">
-  <%= render @contents %>
-</ul>
-
-<%= will_paginate renderer: BulmaPagination::Rails, :class => 'is-centered' %>

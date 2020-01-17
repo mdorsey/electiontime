@@ -1,4 +1,11 @@
 <% provide(:title, 'Edit Party') %>
 <h1>Edit Party</h1>
 
-<%= render 'form', party: @party, cancel_path: @party %>
+<div class="columns">
+  <div class="column is-narrow">
+    <%= render 'layouts/admin_menu' %>
+  </div>
+  <div class="column">
+    <%= render 'form', party: @party, cancel_path: @party %>
+  </div>
+</div>

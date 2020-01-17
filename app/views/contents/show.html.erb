@@ -1,29 +1,37 @@
 <% provide(:title, @content.location) %>
 <h1>Content: <%= @content.location %></h1>
 
-<div class="field">
-  <label class="label">Location</label>
-  <%= @content.location %>
+<div class="columns">
+  <div class="column is-narrow">
+    <%= render 'layouts/admin_menu' %>
+  </div>
+  <div class="column">
+    <div class="field">
+      <label class="label">Location</label>
+      <%= @content.location %>
+    </div>
+
+    <div class="field">
+      <label class="label">Content</label>
+      <%= @content.content %>
+    </div>
+
+    <div class="field">
+      <label class="label">Machine Name</label>
+      <%= @content.machine_name %>
+    </div>
+
+    <div class="field">
+      <label class="label">Language</label>
+      <%= display_language(@content.language_id) %>
+    </div>
+
+    <div class="buttons">
+      <!-- Turn off turbolinks so that Tinymce will load on the Edit page -->
+      <%= link_to 'Edit', edit_content_path(@content), class: "button is-link", data: { turbolinks: "false" } %>
+      <%= link_to 'Delete', @content, method: :delete, data: { confirm: 'Are you sure?' }, class: "button is-danger" %>
+      <%= link_to 'Back', contents_path, class: "button" %>
+    </div>
+  </div>
 </div>
 
-<div class="field">
-  <label class="label">Content</label>
-  <%= @content.content %>
-</div>
-
-<div class="field">
-  <label class="label">Machine Name</label>
-  <%= @content.machine_name %>
-</div>
-
-<div class="field">
-  <label class="label">Language</label>
-  <%= display_language(@content.language_id) %>
-</div>
-
-<div class="buttons">
-  <!-- Turn off turbolinks so that Tinymce will load on the Edit page -->
-  <%= link_to 'Edit', edit_content_path(@content), class: "button is-link", data: { turbolinks: "false" } %>
-  <%= link_to 'Delete', @content, method: :delete, data: { confirm: 'Are you sure?' }, class: "button is-danger" %>
-  <%= link_to 'Back', contents_path, class: "button" %>
-</div>

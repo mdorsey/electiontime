@@ -1,4 +1,11 @@
 <% provide(:title, 'Edit User') %>
 <h1>Edit User</h1>
 
-<%= render 'form', user_type: @user, cancel_path: @user %>
+<div class="columns">
+  <div class="column is-narrow">
+    <%= render 'layouts/admin_menu' %>
+  </div>
+  <div class="column">
+    <%= render 'form', user_type: @user, cancel_path: @user %>
+  </div>
+</div>

@@ -1,4 +1,11 @@
 <% provide(:title, 'Edit Jurisdiction') %>
 <h1>Edit Jurisdiction</h1>
 
-<%= render 'form', jurisdiction: @jurisdiction, cancel_path: @jurisdiction %>
+<div class="columns">
+  <div class="column is-narrow">
+    <%= render 'layouts/admin_menu' %>
+  </div>
+  <div class="column">
+    <%= render 'form', jurisdiction: @jurisdiction, cancel_path: @jurisdiction %>
+  </div>
+</div>

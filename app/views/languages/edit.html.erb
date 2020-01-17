@@ -1,4 +1,11 @@
 <% provide(:title, 'Edit Language') %>
 <h1>Edit Language</h1>
 
-<%= render 'form', language: @language, cancel_path: @language %>
+<div class="columns">
+  <div class="column is-narrow">
+    <%= render 'layouts/admin_menu' %>
+  </div>
+  <div class="column">
+    <%= render 'form', language: @language, cancel_path: @language %>
+  </div>
+</div>

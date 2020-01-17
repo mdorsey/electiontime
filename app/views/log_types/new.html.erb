@@ -1,4 +1,11 @@
 <% provide(:title, 'New Log Type') %>
 <h1>New Log Type</h1>
 
-<%= render 'form', log_type: @log_type, cancel_path: log_types_path %>
+<div class="columns">
+  <div class="column is-narrow">
+    <%= render 'layouts/admin_menu' %>
+  </div>
+  <div class="column">
+    <%= render 'form', log_type: @log_type, cancel_path: log_types_path %>
+  </div>
+</div>

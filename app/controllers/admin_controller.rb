@@ -1,4 +1,4 @@
 class AdminController < ApplicationController
-  def resources
+  def dashboard
   end
 end

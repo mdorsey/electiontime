@@ -1,4 +1,11 @@
 <% provide(:title, 'Edit Content') %>
 <h1>Edit Content</h1>
 
-<%= render 'form', address: @content, cancel_path: @content %>
+<div class="columns">
+  <div class="column is-narrow">
+    <%= render 'layouts/admin_menu' %>
+  </div>
+  <div class="column">
+    <%= render 'form', address: @content, cancel_path: @content %>
+  </div>
+</div>
