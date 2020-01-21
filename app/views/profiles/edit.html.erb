@@ -1,0 +1,98 @@
+<% provide(:title, 'Edit Profile') %>
+<h1>Edit Profile</h1>
+
+<%= form_for(@participant) do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+
+  <div class="field">
+    <%= f.label :user_id, "User", class: 'label' %>
+    <div class="control">
+      <div class="select">
+        <%= f.select(:user_id, options_for_user, {:prompt => '- Select -'}) %>
+      </div>
+    </div>
+  </div>
+
+  <div class="field">
+    <%= f.label :party_id, "Party", class: 'label' %>
+    <div class="control">
+      <div class="select">
+        <%= f.select(:party_id, options_for_party, {:prompt => '- Select -'}) %>
+      </div>
+    </div>
+  </div>
+
+  <div class="field">
+    <%= f.label :district_id, "District", class: 'label' %>
+    <div class="control">
+      <div class="select">
+        <%= f.select(:district_id, options_for_district, {include_blank: "None"}) %>
+      </div>
+    </div>
+  </div>
+
+  <div class="field">
+    <%= f.label :leader_participant_id, "Leader Participant", class: 'label' %>
+    <div class="control">
+      <div class="select">
+        <%= f.select(:leader_participant_id, options_for_participant, {include_blank: "None"}) %>
+      </div>
+    </div>
+  </div>
+
+  <div class="field">
+    <%= f.label :is_candidate, "Is Candidate", class: 'label' %>
+    <div class="control">
+      <%= f.check_box :is_candidate %>
+    </div>
+  </div>
+
+  <div class="field">
+    <%= f.label :is_incumbent, "Is Incumbent", class: 'label' %>
+    <div class="control">
+      <%= f.check_box :is_incumbent %>
+    </div>
+  </div>
+
+  <div class="field">
+    <%= f.label :email, "Email", class: 'label' %>
+    <div class="control">
+      <%= f.text_field :email, class: 'input' %>
+    </div>
+  </div>
+
+  <div class="field">
+    <%= f.label :phone, "Phone", class: 'label' %>
+    <div class="control">
+      <%= f.text_field :phone, class: 'input' %>
+    </div>
+  </div>
+
+  <div class="field">
+    <%= f.label :website, "Website", class: 'label' %>
+    <div class="control">
+      <%= f.text_field :website, class: 'input' %>
+    </div>
+  </div>
+
+  <div class="field">
+    <%= f.label :biography, "Biography", class: 'label' %>
+    <div class="control">
+      <%= f.text_area :biography, class: 'textarea' %>
+    </div>
+  </div>
+
+  <div class="field">
+    <%= f.label :address_id, "Address", class: 'label' %>
+    <div class="control">
+      <div class="select">
+        <%= f.select(:address_id, options_for_address, {include_blank: "None"}) %>
+      </div>
+    </div>
+  </div>
+
+  <div class="buttons">
+    <%= f.submit "Save", class: "button is-link" %>
+    <%= link_to 'Cancel', profile_path(@participant), class: "button", role: "button" %>
+  </div>
+<% end %>

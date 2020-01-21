@@ -26,8 +26,11 @@
                 Account
               </a>
               <div class="navbar-dropdown is-right">
-                <%= link_to "Public Profile", user_path(current_user), class: "navbar-item" %>
-                <%= link_to "Survey Answers", edit_user_path(current_user), class: "navbar-item" %>
+                <% if has_participant? %>
+                  <%= link_to "Public Profile", profile_path(current_participant), class: "navbar-item" %>
+                <% end %>
+
+                <%= link_to "User Settings", user_path(current_user), class: "navbar-item" %>
       
                 <% if is_admin_user? %>
                   <hr class="navbar-divider">  

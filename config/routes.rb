@@ -2,14 +2,14 @@ Rails.application.routes.draw do
  
   # Static_Pages controller  
   root    'static_pages#home'
-  get     '/about',   to: 'static_pages#about'
+  get     '/about', to: 'static_pages#about'
   get     '/contact', to: 'static_pages#contact'
   get     '/volunteer', to: 'static_pages#volunteer'
 
   # Sessions controller
-  get     '/login',   to: 'sessions#new'
-  post    '/login',   to: 'sessions#create'
-  delete  '/logout',  to: 'sessions#destroy'
+  get     '/login', to: 'sessions#new'
+  post    '/login', to: 'sessions#create'
+  delete  '/logout', to: 'sessions#destroy'
 
   # Admin controller
   get     'admin/dashboard'
@@ -28,6 +28,7 @@ Rails.application.routes.draw do
   resources :participants
   resources :password_resets, only: [:new, :create, :edit, :update]
   resources :parties
+  resources :profiles, only: [:edit, :show, :update]
   resources :provinces
   resources :social_media_profiles
   resources :social_media_types

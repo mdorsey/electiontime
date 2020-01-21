@@ -25,7 +25,7 @@ module SessionsHelper
     end
   end
 
-  # Returns true if the given user is the current user.
+  # Returns true if the given user is the current user, false otherwise
   def current_user?(user)
     user == current_user
   end
@@ -63,5 +63,15 @@ module SessionsHelper
   # Stores the URL trying to be accessed.
   def store_location
     session[:forwarding_url] = request.original_url if request.get?
+  end
+
+  # Returns true if the user is linked to a participant, false otherwise.
+  def has_participant?
+    logged_in? && Participant.find_by(user_id: current_user.id)
+  end
+
+  # Returns the participant corresponding to the current user.
+  def current_participant
+    @current_participant = Participant.find_by(user_id: current_user.id)
   end
 end

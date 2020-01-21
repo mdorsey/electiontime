@@ -1,0 +1,60 @@
+<% provide(:title, display_profile_title(@participant)) %>
+<h1><%= display_profile_title(@participant) %></h1>
+
+<div class="field">
+  <label class="label">Party</label>
+  <%= display_party(@participant.party_id) %>
+</div>
+
+<div class="field">
+  <label class="label">District</label>
+  <%= display_district(@participant.district_id) %>
+</div>
+
+<% if !@participant.is_candidate %>
+  <div class="field">
+    <label class="label">Party Leader</label>
+    <%= display_participant(@participant.leader_participant_id) %>
+  </div>
+<% end %>
+
+<div class="field">
+  <label class="label">Is Incumbent</label>
+  <%= @participant.is_incumbent %>
+</div>
+
+<div class="field">
+  <label class="label">Email</label>
+  <%= @participant.email %>
+</div>
+
+<div class="field">
+  <label class="label">Phone</label>
+  <%= @participant.phone %>
+</div>
+
+<div class="field">
+  <label class="label">Website</label>
+  <%= @participant.website %>
+</div>
+
+<div class="field">
+  <label class="label">Address</label>
+  <%= display_address(@participant.address_id) %>
+</div>
+
+<div class="field">
+  <label class="label">Biography</label>
+  <%= @participant.biography %>
+</div>
+
+<div class="field">
+  <label class="label">Social Media Profiles</label>
+  <% @social_media_profiles.each do |s| %>
+    <%= display_social_media_type(s.social_media_type_id) %>: <%= s.handle %>
+  <% end %>
+</div>
+
+<div class="buttons">
+  <%= link_to 'Edit Profile', edit_profile_path(@participant), class: "button is-link" %>
+</div>
