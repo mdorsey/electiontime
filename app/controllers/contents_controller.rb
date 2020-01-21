@@ -4,7 +4,7 @@ class ContentsController < ApplicationController
   before_action :set_content, only: [:show, :edit, :update, :destroy]
 
   def index
-    @contents = Content.paginate(page: params[:page]).order('location ASC')
+    @contents = Content.paginate(page: params[:page]).order('name ASC')
   end
 
   def create
@@ -54,6 +54,6 @@ class ContentsController < ApplicationController
     end
 
     def content_params
-      params.require(:content).permit(:location, :content, :machine_name, :language_id)
+      params.require(:content).permit(:name, :content, :language_id, :content_location_id)
     end
 end

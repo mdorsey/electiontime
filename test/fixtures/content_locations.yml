@@ -2,12 +2,6 @@
 
 one:
   name: MyString
-  content: Abc123
-  content_location: two
-  language: two
 
 two:
   name: MyString
-  content: Abc123
-  content_location: two
-  language: two

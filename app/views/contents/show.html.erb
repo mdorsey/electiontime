@@ -1,5 +1,5 @@
-<% provide(:title, @content.location) %>
-<h1>Content: <%= @content.location %></h1>
+<% provide(:title, @content.name) %>
+<h1>Content: <%= @content.name %></h1>
 
 <div class="columns">
   <div class="column is-narrow">
@@ -7,8 +7,8 @@
   </div>
   <div class="column">
     <div class="field">
-      <label class="label">Location</label>
-      <%= @content.location %>
+      <label class="label">Name</label>
+      <%= @content.name %>
     </div>
 
     <div class="field">
@@ -17,13 +17,13 @@
     </div>
 
     <div class="field">
-      <label class="label">Machine Name</label>
-      <%= @content.machine_name %>
+      <label class="label">Language</label>
+      <%= display_language(@content.language_id) %>
     </div>
 
     <div class="field">
-      <label class="label">Language</label>
-      <%= display_language(@content.language_id) %>
+      <label class="label">Content Location</label>
+      <%= display_content_location(@content.content_location_id) %>
     </div>
 
     <div class="buttons">

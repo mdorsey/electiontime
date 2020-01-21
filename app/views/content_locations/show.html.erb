@@ -1,0 +1,20 @@
+<% provide(:title, @content_location.name) %>
+<h1>Content Location: <%= @content_location.name %></h1>
+
+<div class="columns">
+  <div class="column is-narrow">
+    <%= render 'layouts/admin_menu' %>
+  </div>
+  <div class="column">
+    <div class="field">
+      <label class="label">Name</label>
+      <%= @content_location.name %>
+    </div>
+
+    <div class="buttons">
+      <%= link_to 'Edit', edit_content_location_path(@content_location), class: "button is-link" %>
+      <%= link_to 'Delete', @content_location, method: :delete, data: { confirm: 'Are you sure?' }, class: "button is-danger" %>
+      <%= link_to 'Back', content_locations_path, class: "button" %>
+    </div>
+  </div>
+</div>

@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   
   resources :account_activations, only: [:edit]
   resources :addresses
+  resources :content_locations
   resources :contents
   resources :districts
   resources :election_types

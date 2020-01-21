@@ -16,8 +16,8 @@ class ContentsTest < ApplicationSystemTestCase
 
     fill_in "Content", with: @content.content
     fill_in "Language", with: @content.language_id
-    fill_in "Location", with: @content.location
-    fill_in "Machine name", with: @content.machine_name
+    fill_in "Name", with: @content.name
+    fill_in "Content Location", with: @content.content_location_id
     click_on "Create Content"
 
     assert_text "Content was successfully created"
@@ -30,8 +30,8 @@ class ContentsTest < ApplicationSystemTestCase
 
     fill_in "Content", with: @content.content
     fill_in "Language", with: @content.language_id
-    fill_in "Location", with: @content.location
-    fill_in "Machine name", with: @content.machine_name
+    fill_in "Name", with: @content.name
+    fill_in "Content Location", with: @content.content_location_id
     click_on "Update Content"
 
     assert_text "Content was successfully updated"

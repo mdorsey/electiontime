@@ -2,9 +2,9 @@
   <%= render 'shared/error_messages', object: f.object %>
 
   <div class="field">
-    <%= f.label :location, "Location", class: 'label' %>
+    <%= f.label :name, "Name", class: 'label' %>
     <div class="control">
-      <%= f.text_field :location, class: 'input' %>
+      <%= f.text_field :name, class: 'input' %>
     </div>
   </div>
 
@@ -16,17 +16,19 @@
   </div>
 
   <div class="field">
-    <%= f.label :machine_name, "Machine Name", class: 'label' %>
-    <div class="control">
-      <%= f.text_field :machine_name, class: 'input' %>
-    </div>
-  </div>
-
-  <div class="field">
     <%= f.label :language_id, "Language", class: 'label' %>
     <div class="control">
       <div class="select">
         <%= f.select(:language_id, options_for_language, {:prompt => '- Select -'}) %>
+      </div>
+    </div>
+  </div>
+
+  <div class="field">
+    <%= f.label :content_location_id, "Content Location", class: 'label' %>
+    <div class="control">
+      <div class="select">
+        <%= f.select(:content_location_id, options_for_content_location, {:prompt => '- Select -'}) %>
       </div>
     </div>
   </div>

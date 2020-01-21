@@ -1,4 +1,6 @@
 <% provide(:title, "Home") %>
 <div class="content">
-  <%= sanitize @content_main.content %>
+  <% if @content_main %>
+    <%= sanitize @content_main.content %>
+  <% end %>
 </div>

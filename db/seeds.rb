@@ -6,24 +6,29 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-ElectionType.create!(name: "Federal");
-ElectionType.create!(name: "Provincial");
-ElectionType.create!(name: "Municipal");
+ContentLocation.create!(name: "page_about_main")
+ContentLocation.create!(name: "page_contact_main")
+ContentLocation.create!(name: "page_home_main")
+ContentLocation.create!(name: "page_volunteer_main")
 
-Jurisdiction.create!(name: "Canada");
-Jurisdiction.create!(name: "Alberta");
-Jurisdiction.create!(name: "British Columbia");
-Jurisdiction.create!(name: "Manitoba");
-Jurisdiction.create!(name: "New Brunswick");
-Jurisdiction.create!(name: "Newfoundland and Labrador");
-Jurisdiction.create!(name: "Northwest Territories");
-Jurisdiction.create!(name: "Nova Scotia");
-Jurisdiction.create!(name: "Nunavut");
-Jurisdiction.create!(name: "Ontario");
-Jurisdiction.create!(name: "Prince Edward Island");
-Jurisdiction.create!(name: "Quebec");
-Jurisdiction.create!(name: "Saskatchewan");
-Jurisdiction.create!(name: "Yukon");
+ElectionType.create!(name: "Federal")
+ElectionType.create!(name: "Provincial")
+ElectionType.create!(name: "Municipal")
+
+Jurisdiction.create!(name: "Canada")
+Jurisdiction.create!(name: "Alberta")
+Jurisdiction.create!(name: "British Columbia")
+Jurisdiction.create!(name: "Manitoba")
+Jurisdiction.create!(name: "New Brunswick")
+Jurisdiction.create!(name: "Newfoundland and Labrador")
+Jurisdiction.create!(name: "Northwest Territories")
+Jurisdiction.create!(name: "Nova Scotia")
+Jurisdiction.create!(name: "Nunavut")
+Jurisdiction.create!(name: "Ontario")
+Jurisdiction.create!(name: "Prince Edward Island")
+Jurisdiction.create!(name: "Quebec")
+Jurisdiction.create!(name: "Saskatchewan")
+Jurisdiction.create!(name: "Yukon")
 
 # Federal election districts
 District.create!(name: "Abbotsford", jurisdiction_id: Jurisdiction.find_by(name: "British Columbia").id, election_type_id: ElectionType.find_by(name: "Federal").id)

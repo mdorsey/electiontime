@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_16_030933) do
+ActiveRecord::Schema.define(version: 2020_01_21_172121) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "street"
@@ -22,13 +22,20 @@ ActiveRecord::Schema.define(version: 2019_08_16_030933) do
     t.index ["province_id"], name: "index_addresses_on_province_id"
   end
 
+  create_table "content_locations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "contents", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "location"
+    t.string "name"
     t.text "content", limit: 16777215
-    t.string "machine_name"
     t.bigint "language_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "content_location_id"
+    t.index ["content_location_id"], name: "index_contents_on_content_location_id"
     t.index ["language_id"], name: "index_contents_on_language_id"
   end
 
@@ -223,6 +230,7 @@ ActiveRecord::Schema.define(version: 2019_08_16_030933) do
   end
 
   add_foreign_key "addresses", "provinces"
+  add_foreign_key "contents", "content_locations"
   add_foreign_key "contents", "languages"
   add_foreign_key "districts", "election_types"
   add_foreign_key "districts", "jurisdictions"
