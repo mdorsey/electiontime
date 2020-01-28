@@ -8,6 +8,7 @@ class Participant < ApplicationRecord
   has_and_belongs_to_many :elections
   has_many :social_media_profiles
   has_many :survey_answers
+  has_one_attached :picture
   
   validates(:user, presence: true)
   validates(:party, presence: true)

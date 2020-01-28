@@ -2,6 +2,13 @@
   <%= render 'shared/error_messages', object: f.object %>
 
   <div class="field">
+    <%= f.label :picture, "Picture", class: 'label' %>
+    <div class="control">
+      <%= f.file_field :picture %>
+    </div>
+  </div>
+
+  <div class="field">
     <%= f.label :user_id, "User", class: 'label' %>
     <div class="control">
       <div class="select">

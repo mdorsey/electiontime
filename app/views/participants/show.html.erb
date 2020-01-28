@@ -6,6 +6,14 @@
     <%= render 'layouts/admin_menu' %>
   </div>
   <div class="column">
+
+    <div class="field">
+      <label class="label">Picture</label>
+      <% if @participant.picture.attached? %>
+        <%= image_tag(url_for(@participant.picture), size: "300x300", alt: display_user(@participant.user_id)) %>
+      <% end %>
+    </div>
+
     <div class="field">
       <label class="label">User</label>
       <%= display_user(@participant.user_id) %>
