@@ -6,6 +6,12 @@
     <%= render 'layouts/admin_menu' %>
   </div>
   <div class="column">
+    <div class="buttons">
+      <%= link_to 'Edit', edit_election_path(@election), class: "button is-link" %>
+      <%= link_to 'Delete', @election, method: :delete, data: { confirm: 'Are you sure?' }, class: "button is-danger" %>
+      <%= link_to 'Back', elections_path, class: "button" %>
+    </div>
+    
     <div class="field">
       <label class="label">Name</label>
       <%= @election.name %>
@@ -47,12 +53,6 @@
           <li><%= display_participant(participant.id) %></li>
         <%end %>
       </ul>
-    </div>
-
-    <div class="buttons">
-      <%= link_to 'Edit', edit_election_path(@election), class: "button is-link" %>
-      <%= link_to 'Delete', @election, method: :delete, data: { confirm: 'Are you sure?' }, class: "button is-danger" %>
-      <%= link_to 'Back', elections_path, class: "button" %>
     </div>
   </div>
 </div>

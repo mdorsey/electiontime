@@ -6,12 +6,15 @@
     <%= render 'layouts/admin_menu' %>
   </div>
   <div class="column">
+    <div class="buttons">
+      <%= link_to 'Edit', edit_participant_path(@participant), class: "button is-link" %>
+      <%= link_to 'Delete', @participant, method: :delete, data: { confirm: 'Are you sure?' }, class: "button is-danger" %>
+      <%= link_to 'Back', participants_path, class: "button" %>
+    </div>
 
     <div class="field">
       <label class="label">Picture</label>
-      <% if @participant.picture.attached? %>
-        <%= image_tag(url_for(@participant.picture), size: "300x300", alt: display_user(@participant.user_id)) %>
-      <% end %>
+      <%= image_tag(@picture_url, size: "100x100", alt: display_user(@participant.user_id)) %>
     </div>
 
     <div class="field">
@@ -67,12 +70,6 @@
     <div class="field">
       <label class="label">Address</label>
       <%= display_address(@participant.address_id) %>
-    </div>
-
-    <div class="buttons">
-      <%= link_to 'Edit', edit_participant_path(@participant), class: "button is-link" %>
-      <%= link_to 'Delete', @participant, method: :delete, data: { confirm: 'Are you sure?' }, class: "button is-danger" %>
-      <%= link_to 'Back', participants_path, class: "button" %>
     </div>
   </div>
 </div>

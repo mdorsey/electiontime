@@ -36,9 +36,19 @@ class ParticipantsController < ApplicationController
   end
 
   def show
+    if @participant.picture.attached?
+      @picture_url = url_for(@participant.picture)
+    else
+      @picture_url = Rails.configuration.blank_avatar_name
+    end
   end
 
   def update
+    # Remove any previous pictures, if a new one was selected
+    if params[:participant][:picture].present?
+      @participant.picture.purge
+    end
+
     if @participant.update_attributes(participant_params)
       flash[:success] = "Participant updated"
       redirect_to @participant

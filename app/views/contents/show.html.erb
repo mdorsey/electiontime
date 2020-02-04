@@ -6,6 +6,13 @@
     <%= render 'layouts/admin_menu' %>
   </div>
   <div class="column">
+    <div class="buttons">
+      <!-- Turn off turbolinks so that Tinymce will load on the Edit page -->
+      <%= link_to 'Edit', edit_content_path(@content), class: "button is-link", data: { turbolinks: "false" } %>
+      <%= link_to 'Delete', @content, method: :delete, data: { confirm: 'Are you sure?' }, class: "button is-danger" %>
+      <%= link_to 'Back', contents_path, class: "button" %>
+    </div>
+    
     <div class="field">
       <label class="label">Name</label>
       <%= @content.name %>
@@ -24,13 +31,6 @@
     <div class="field">
       <label class="label">Content Location</label>
       <%= display_content_location(@content.content_location_id) %>
-    </div>
-
-    <div class="buttons">
-      <!-- Turn off turbolinks so that Tinymce will load on the Edit page -->
-      <%= link_to 'Edit', edit_content_path(@content), class: "button is-link", data: { turbolinks: "false" } %>
-      <%= link_to 'Delete', @content, method: :delete, data: { confirm: 'Are you sure?' }, class: "button is-danger" %>
-      <%= link_to 'Back', contents_path, class: "button" %>
     </div>
   </div>
 </div>

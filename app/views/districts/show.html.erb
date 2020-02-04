@@ -6,6 +6,12 @@
     <%= render 'layouts/admin_menu' %>
   </div>
   <div class="column">
+    <div class="buttons">
+      <%= link_to 'Edit', edit_district_path(@district), class: "button is-link" %>
+      <%= link_to 'Delete', @district, method: :delete, data: { confirm: 'Are you sure?' }, class: "button is-danger" %>
+      <%= link_to 'Back', districts_path, class: "button" %>
+    </div>
+    
     <div class="field">
       <label class="label">Name</label>
       <%= @district.name %>
@@ -19,12 +25,6 @@
     <div class="field">
       <label class="label">Jurisdiction</label>
       <%= display_jurisdiction(@district.jurisdiction_id) %>
-    </div>
-
-    <div class="buttons">
-      <%= link_to 'Edit', edit_district_path(@district), class: "button is-link" %>
-      <%= link_to 'Delete', @district, method: :delete, data: { confirm: 'Are you sure?' }, class: "button is-danger" %>
-      <%= link_to 'Back', districts_path, class: "button" %>
     </div>
   </div>
 </div>

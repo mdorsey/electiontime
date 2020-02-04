@@ -6,6 +6,12 @@
     <%= render 'layouts/admin_menu' %>
   </div>
   <div class="column">
+    <div class="buttons">
+      <%= link_to 'Edit', edit_party_path(@party), class: "button is-link" %>
+      <%= link_to 'Delete', @party, method: :delete, data: { confirm: 'Are you sure?' }, class: "button is-danger" %>
+      <%= link_to 'Back', parties_path, class: "button" %>
+    </div>
+    
     <div class="field">
       <label class="label">Name</label>
       <%= @party.name %>
@@ -24,12 +30,6 @@
     <div class="field">
       <label class="label">Alternate Abbreviation</label>
       <%= @party.alternate_abbreviation %>
-    </div>
-
-    <div class="buttons">
-      <%= link_to 'Edit', edit_party_path(@party), class: "button is-link" %>
-      <%= link_to 'Delete', @party, method: :delete, data: { confirm: 'Are you sure?' }, class: "button is-danger" %>
-      <%= link_to 'Back', parties_path, class: "button" %>
     </div>
   </div>
 </div>
