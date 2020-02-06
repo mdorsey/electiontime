@@ -26,6 +26,11 @@ h1 {
   text-align: center;
 }
 
+h2 {
+  @extend .subtitle;
+  @extend .is-2;
+}
+
 p {
   font-size: 1.1em;
   line-height: 1.7em;
@@ -85,4 +90,19 @@ select[multiple] {
 .button {
   margin: 10px 10px 10px 0;
   min-width: 10%;
+}
+
+
+/* GRID */
+
+.show-grid-wrapper {
+  display: grid;
+  grid-template-areas: "grid-label grid-value";
+  grid-auto-columns: fit-content(50%);
+  row-gap: 1rem;
+  column-gap: 2rem;
+}
+
+.grid-label {
+  @extend .label;
 }

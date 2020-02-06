@@ -13,6 +13,17 @@ class ProfilesController < ApplicationController
   end
 
   def update
+    # Remove any previous pictures, if a new one was selected
+    if params[:participant][:picture].present?
+      @participant.picture.purge
+    end
+
+    if @participant.update_attributes(participant_params)
+      flash[:success] = "Profile updated"
+      redirect_to profile_path(@participant)
+    else
+      render 'edit'
+    end
   end
 
   private
@@ -20,10 +31,11 @@ class ProfilesController < ApplicationController
     def set_profile
       @participant = Participant.find(params[:id])
       @social_media_profiles = SocialMediaProfile.where(participant_id: @participant.id)
+      @picture_url = helpers.get_participant_picture_url(@participant.id)
     end
 
     def participant_params
-      params.require(:participant).permit(:email, :phone, :website, :biography, :address_id)
+      params.require(:participant).permit(:picture, :name, :email, :phone, :website, :biography)
     end
 
     # Confirms the correct user attached to the participant, or if the user is an Admin

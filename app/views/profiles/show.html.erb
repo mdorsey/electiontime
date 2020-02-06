@@ -1,58 +1,46 @@
-<% provide(:title, display_profile_title(@participant)) %>
-<h1><%= display_profile_title(@participant) %></h1>
+<% provide(:title, 'Public Profile') %>
 
-<div class="field">
-  <label class="label">Party</label>
-  <%= display_party(@participant.party_id) %>
-</div>
+<h2><%= @participant.name %></h2>
 
-<div class="field">
-  <label class="label">District</label>
-  <%= display_district(@participant.district_id) %>
-</div>
+<%= image_tag(@picture_url, size: "100x100", alt: @participant.name) %>
 
-<% if !@participant.is_candidate %>
-  <div class="field">
-    <label class="label">Party Leader</label>
-    <%= display_participant(@participant.leader_participant_id) %>
+<div class="show-grid-wrapper">
+
+  <div class="grid-label">Email:</div>
+  <div class="grid-value"><%= @participant.email %></div>
+
+  <div class="grid-label">Phone:</div>
+  <div class="grid-value"><%= @participant.phone %></div>
+
+  <div class="grid-label">Website:</div>
+  <div class="grid-value"><%= @participant.website %></div>
+
+  <div class="grid-label">Address:</div>
+  <div class="grid-value"><%= display_address(@participant.address_id) %></div>
+
+  <div class="grid-label">Biography:</div>
+  <div class="grid-value"><%= @participant.biography %></div>
+
+  <div class="grid-label">Social Media Profiles:</div>
+  <div class="grid-value">
+    <% @social_media_profiles.each do |s| %>
+      <%= display_social_media_type(s.social_media_type_id) %>: <%= s.handle %>
+    <% end %>
   </div>
-<% end %>
+  <div class="grid-label">Is Incumbent?</div>
+  <div class="grid-value"><%= @participant.is_incumbent %></div>
 
-<div class="field">
-  <label class="label">Is Incumbent</label>
-  <%= @participant.is_incumbent %>
-</div>
+  <div class="grid-label">Party:</div>
+  <div class="grid-value"><%= display_party(@participant.party_id) %></div>
 
-<div class="field">
-  <label class="label">Email</label>
-  <%= @participant.email %>
-</div>
+  <div class="grid-label">District:</div>
+  <div class="grid-value"><%= display_district(@participant.district_id) %></div>
 
-<div class="field">
-  <label class="label">Phone</label>
-  <%= @participant.phone %>
-</div>
-
-<div class="field">
-  <label class="label">Website</label>
-  <%= @participant.website %>
-</div>
-
-<div class="field">
-  <label class="label">Address</label>
-  <%= display_address(@participant.address_id) %>
-</div>
-
-<div class="field">
-  <label class="label">Biography</label>
-  <%= @participant.biography %>
-</div>
-
-<div class="field">
-  <label class="label">Social Media Profiles</label>
-  <% @social_media_profiles.each do |s| %>
-    <%= display_social_media_type(s.social_media_type_id) %>: <%= s.handle %>
+  <% if !@participant.is_candidate %>
+    <div class="grid-label">Party Leader:</div>
+    <div class="grid-value"><%= display_participant(@participant.leader_participant_id) %></div>
   <% end %>
+
 </div>
 
 <div class="buttons">
