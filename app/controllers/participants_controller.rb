@@ -4,7 +4,7 @@ class ParticipantsController < ApplicationController
   before_action :set_participant, only: [:show, :edit, :update, :destroy]
 
   def index
-    @participants = Participant.paginate(page: params[:page])
+    @participants = Participant.paginate(page: params[:page]).order('name ASC')
   end
 
   def create
@@ -64,6 +64,6 @@ class ParticipantsController < ApplicationController
     end
 
     def participant_params
-      params.require(:participant).permit(:user_id, :picture, :email, :phone, :website, :biography, :is_incumbent, :is_candidate, :address_id, :district_id, :party_id, :leader_participant_id)
+      params.require(:participant).permit(:user_id, :picture, :name, :email, :phone, :website, :biography, :is_incumbent, :is_candidate, :address_id, :district_id, :party_id, :leader_participant_id)
     end
 end

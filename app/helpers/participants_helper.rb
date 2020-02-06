@@ -4,7 +4,7 @@ module ParticipantsHelper
     
     if participant_id
       participant = Participant.find(participant_id)
-      participant_name = display_user(participant.user_id, false) + ' (' + display_party(participant.party_id) + ')'
+      participant_name = participant.participant_name_for_display
     else
       participant_name = ''
     end
