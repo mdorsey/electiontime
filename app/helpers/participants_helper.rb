@@ -21,4 +21,20 @@ module ParticipantsHelper
 
     return participants
   end
+
+  def get_participant_picture_url(participant_id)
+
+    # Start with the default picture
+    picture_url = Rails.configuration.blank_avatar_name
+
+    if participant_id
+      participant = Participant.find(participant_id)
+
+      if participant.picture.attached?
+        picture_url = url_for(participant.picture)
+      end
+    end
+
+    return picture_url
+  end
 end

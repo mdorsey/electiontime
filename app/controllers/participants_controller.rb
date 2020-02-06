@@ -36,11 +36,6 @@ class ParticipantsController < ApplicationController
   end
 
   def show
-    if @participant.picture.attached?
-      @picture_url = url_for(@participant.picture)
-    else
-      @picture_url = Rails.configuration.blank_avatar_name
-    end
   end
 
   def update
@@ -61,6 +56,7 @@ class ParticipantsController < ApplicationController
 
     def set_participant
       @participant = Participant.find(params[:id])
+      @picture_url = helpers.get_participant_picture_url(@participant.id)
     end
 
     def participant_params
