@@ -80,6 +80,16 @@
     </div>
   </div>
 
+  <!-- SOCIAL MEDIA -->
+  <% @social_media_profiles.each do |type, handle| %>
+    <div class="field">
+      <%= label_tag "social_media_type", type, { class: 'label' } %>
+      <div class="control">
+        <%= text_field_tag type, handle, { class: 'input' } %>
+      </div>
+    </div>
+  <% end %>
+
   <div class="buttons">
     <%= p_fields.submit "Save", class: "button is-link" %>
     <%= link_to 'Cancel', profile_path(@participant), class: "button", role: "button" %>

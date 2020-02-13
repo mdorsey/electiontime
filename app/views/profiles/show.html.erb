@@ -23,7 +23,7 @@
 
   <div class="grid-label">Social Media Profiles:</div>
   <div class="grid-value">
-    <% @social_media_profiles.each do |s| %>
+    <% @participant.social_media_profiles.each do |s| %>
       <%= display_social_media_type(s.social_media_type_id) %>: <%= s.handle %>
     <% end %>
   </div>
