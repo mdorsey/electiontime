@@ -422,7 +422,7 @@ User.create!(first_name:  "Michael",
 
 biography = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi finibus nisl ut semper lacinia. Etiam elementum mi a mollis tincidunt. Sed sit amet ultrices nisi. Suspendisse potenti. Ut ultricies est in dictum pretium. Nulla euismod leo sit amet quam malesuada dignissim. Nunc ante ligula, tincidunt at dui id, placerat facilisis enim. Fusce ullamcorper mi eu sodales blandit. Phasellus fermentum risus non auctor dignissim. Suspendisse sem urna, efficitur at enim vel, sagittis euismod ex. Phasellus interdum congue neque, in vestibulum urna malesuada egestas. Etiam ac libero facilisis, porttitor dui quis, iaculis turpis. Donec a magna ipsum. Sed at nisi consectetur justo mattis viverra ac a nunc."
 phone = "123-456-7890"
-address = Address.create!(street: "1919 Main Street", city: "Calgary", province_id: Province.find_by(name: "Alberta").id, postal_code: "T3C 1M2")
+i = 0;
 
 current_election = Election.create!(name: "Canadian Federal Election",
                                     election_date: DateTime.new(2019, 10, 21),
@@ -436,9 +436,11 @@ District.all.each do |district|
 
   Party.all.each do |party|
 
+    i += 1
     first_name = Faker::Name.first_name
     last_name = Faker::Name.last_name
     email = "fakemail_" + district.id.to_s + party.id.to_s + "@electiontime.org"
+    address = Address.create!(street: i.to_s + " Main Street", city: "Calgary", province_id: Province.find_by(name: "Alberta").id, postal_code: "T3C 1M2")
 
     current_user = User.create!(first_name: first_name,
                                 last_name: last_name,             

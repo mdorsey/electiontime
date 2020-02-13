@@ -2,53 +2,86 @@
 
 <h2>Edit Public Profile</h2>
 
-<%= form_for(@participant, url: profile_path(@participant), method: :patch) do |f| %>
-  <%= render 'shared/error_messages', object: f.object %>
+<%= form_for(@participant, url: profile_path(@participant), method: :patch) do |p_fields| %>
+  <%= render 'shared/error_messages', object: p_fields.object %>
 
   <div class="field">
-    <%= f.label :picture, "Picture", class: 'label' %>
+    <%= p_fields.label :picture, "Picture", class: 'label' %>
     <div class="control">
-      <%= f.file_field :picture %>
+      <%= p_fields.file_field :picture %>
     </div>
   </div>
 
   <div class="field">
-    <%= f.label :name, "Name", class: 'label' %>
+    <%= p_fields.label :name, "Name", class: 'label' %>
     <div class="control">
-      <%= f.text_field :name, class: 'input' %>
+      <%= p_fields.text_field :name, class: 'input' %>
     </div>
   </div>
 
   <div class="field">
-    <%= f.label :email, "Email", class: 'label' %>
+    <%= p_fields.label :email, "Email", class: 'label' %>
     <div class="control">
-      <%= f.text_field :email, class: 'input' %>
+      <%= p_fields.text_field :email, class: 'input' %>
     </div>
   </div>
 
   <div class="field">
-    <%= f.label :phone, "Phone", class: 'label' %>
+    <%= p_fields.label :phone, "Phone", class: 'label' %>
     <div class="control">
-      <%= f.text_field :phone, class: 'input' %>
+      <%= p_fields.text_field :phone, class: 'input' %>
     </div>
   </div>
 
   <div class="field">
-    <%= f.label :website, "Website", class: 'label' %>
+    <%= p_fields.label :website, "Website", class: 'label' %>
     <div class="control">
-      <%= f.text_field :website, class: 'input' %>
+      <%= p_fields.text_field :website, class: 'input' %>
     </div>
   </div>
 
+  <!-- ADDRESS -->
+  <%= p_fields.fields_for :address do |a_fields| %>
+    <div class="field">
+      <%= a_fields.label :street, "Street", class: 'label' %>
+      <div class="control">
+        <%= a_fields.text_field :street, class: 'input' %>
+      </div>
+    </div>
+
+    <div class="field">
+      <%= a_fields.label :city, "City", class: 'label' %>
+      <div class="control">
+        <%= a_fields.text_field :city, class: 'input' %>
+      </div>
+    </div>
+  
+    <div class="field">
+      <%= a_fields.label :province_id, "Province", class: 'label' %>
+      <div class="control">
+        <div class="select">
+          <%= a_fields.select(:province_id, options_for_province, {:prompt => '- Select -'}) %>
+        </div>
+      </div>
+    </div>
+    
+    <div class="field">
+      <%= a_fields.label :postal_code, "Postal Code", class: 'label' %>
+      <div class="control">
+        <%= a_fields.text_field :postal_code, class: 'input' %>
+      </div>
+    </div>
+  <% end %>
+
   <div class="field">
-    <%= f.label :biography, "Biography", class: 'label' %>
+    <%= p_fields.label :biography, "Biography", class: 'label' %>
     <div class="control">
-      <%= f.text_area :biography, class: 'textarea' %>
+      <%= p_fields.text_area :biography, class: 'textarea' %>
     </div>
   </div>
 
   <div class="buttons">
-    <%= f.submit "Save", class: "button is-link" %>
+    <%= p_fields.submit "Save", class: "button is-link" %>
     <%= link_to 'Cancel', profile_path(@participant), class: "button", role: "button" %>
   </div>
 <% end %>

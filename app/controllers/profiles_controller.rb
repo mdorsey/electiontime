@@ -35,7 +35,7 @@ class ProfilesController < ApplicationController
     end
 
     def participant_params
-      params.require(:participant).permit(:picture, :name, :email, :phone, :website, :biography)
+      params.require(:participant).permit(:picture, :name, :email, :phone, :website, :biography, address_attributes:[:street, :city, :province_id, :postal_code])
     end
 
     # Confirms the correct user attached to the participant, or if the user is an Admin

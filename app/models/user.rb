@@ -6,6 +6,7 @@ class User < ApplicationRecord
 
   belongs_to :user_type
   has_many :logs
+  has_one :participant
   has_secure_password
 
   before_save   :downcase_email
