@@ -7,30 +7,51 @@ class ProfilesController < ApplicationController
   before_action :correct_participant_user
 
   def edit
-    @social_media_profiles = Hash.new
-
-    SocialMediaType.all.order('name ASC').each do |s|
-      profile = @participant.social_media_profiles.find { |smp| smp.social_media_type_id === s.id }
-
-      if profile
-        @social_media_profiles[s.name] = profile.handle
-      else
-        @social_media_profiles[s.name] = ""
-      end
-    end
   end
 
   def show
-    @picture_url = helpers.get_participant_picture_url(@participant.id)
   end
 
   def update
+
+    params_to_update = profile_params
+
     # Remove any previous pictures, if a new one was selected
     if params[:participant][:picture].present?
       @participant.picture.purge
     end
 
-    if @participant.update_attributes(profile_params)
+    # Add the social media profile params
+    social_media_profile_attributes = Array.new
+    SocialMediaType.all.order('name ASC').each do |t|
+
+      # Get the text box value (handle)
+      handle = params["smt_" + t.id.to_s]
+
+      # Check if the user already has a value set for this Type
+      profile = @participant.social_media_profiles.find { |smp| smp.social_media_type_id === t.id }
+      debugger
+      if profile && !handle.empty?
+        # Update the existing value
+        social_media_profile_attributes << { id: profile.id, handle: handle, social_media_type_id: t.id }
+
+      elsif !handle.empty?
+        # Create a new value since one doesn't already exist
+        social_media_profile_attributes << { handle: handle, social_media_type_id: t.id }
+
+      elsif profile
+        # Delete the existing value since the handle was removed
+        @smp_to_delete = SocialMediaProfile.find(profile.id)
+        @smp_to_delete.destroy
+      end
+    end
+
+    if social_media_profile_attributes.any?
+      params_to_update[:social_media_profiles_attributes] = social_media_profile_attributes
+    end
+
+    # Update all attributes
+    if @participant.update_attributes(params_to_update)
       flash[:success] = "Profile updated"
       redirect_to profile_path(@participant)
     else
@@ -40,8 +61,20 @@ class ProfilesController < ApplicationController
 
   private
 
+    # Set all of the variables that are used in the views
     def set_profile
       @participant = Participant.find(params[:id])
+      @picture_url = helpers.get_participant_picture_url(@participant.id)
+
+      @social_media_profiles = Hash.new
+      SocialMediaType.all.order('name ASC').each do |t|
+        profile = @participant.social_media_profiles.find { |smp| smp.social_media_type_id === t.id }
+        if profile
+          @social_media_profiles[t.id] = profile.handle
+        else
+          @social_media_profiles[t.id] = ""
+        end
+      end
     end
 
     def profile_params

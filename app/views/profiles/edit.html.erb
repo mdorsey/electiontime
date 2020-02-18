@@ -81,11 +81,11 @@
   </div>
 
   <!-- SOCIAL MEDIA -->
-  <% @social_media_profiles.each do |type, handle| %>
+  <% @social_media_profiles.each do |type_id, handle| %>
     <div class="field">
-      <%= label_tag "social_media_type", type, { class: 'label' } %>
+      <%= label_tag("social_media_type", display_social_media_type(type_id), { class: 'label' }) %>
       <div class="control">
-        <%= text_field_tag type, handle, { class: 'input' } %>
+        <%= text_field_tag("smt_" + type_id.to_s, handle, { class: 'input' }) %>
       </div>
     </div>
   <% end %>
