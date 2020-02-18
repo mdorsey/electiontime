@@ -1,6 +1,6 @@
 class ProfilesController < ApplicationController
 
-  # The ID used for the Profiles controller is actually the ID from the Participants table
+  # IMPORTANT NOTE: the ID used for the Profiles controller is the same ID from the Participants table
 
   before_action :set_profile
   before_action :logged_in_user
@@ -30,7 +30,7 @@ class ProfilesController < ApplicationController
 
       # Check if the user already has a value set for this Type
       profile = @participant.social_media_profiles.find { |smp| smp.social_media_type_id === t.id }
-      debugger
+
       if profile && !handle.empty?
         # Update the existing value
         social_media_profile_attributes << { id: profile.id, handle: handle, social_media_type_id: t.id }
