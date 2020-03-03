@@ -401,6 +401,9 @@ SocialMediaType.create!(name: "Twitter")
 SocialMediaType.create!(name: "Instagram")
 SocialMediaType.create!(name: "Youtube")
 
+SurveyType.create!(name: "Candidate")
+SurveyType.create!(name: "Party")
+
 UserType.create!(name: "Admin")
 UserType.create!(name: "Volunteer")
 UserType.create!(name: "Candidate")

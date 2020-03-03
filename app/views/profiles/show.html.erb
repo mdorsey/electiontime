@@ -27,6 +27,7 @@
       <%= display_social_media_type(s.social_media_type_id) %>: <%= s.handle %>
     <% end %>
   </div>
+
   <div class="grid-label">Is Incumbent?</div>
   <div class="grid-value"><%= @participant.is_incumbent %></div>
 
@@ -40,6 +41,15 @@
     <div class="grid-label">Party Leader:</div>
     <div class="grid-value"><%= display_participant(@participant.leader_participant_id) %></div>
   <% end %>
+
+  <div class="grid-label">Survey:</div>
+  <div class="grid-value">
+    <% @survey_questions.each do |question_id, question| %>
+      <%= question %>
+      <%= display_survey_answer(question_id, @participant.id) %>
+      <%= display_survey_source(question_id, @participant.id) %>
+    <% end %>
+  </div>
 
 </div>
 

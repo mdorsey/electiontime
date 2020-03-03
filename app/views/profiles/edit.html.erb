@@ -90,6 +90,16 @@
     </div>
   <% end %>
 
+  <!-- SURVEY QUESTIONS AND ANSWERS -->
+  <% @survey_questions.each do |question_id, question| %>
+    <div class="field">
+      <%= label_tag("survey_question", question, { class: 'label' }) %>
+      <div class="control">
+        <%= text_field_tag("sqa_" + question_id.to_s, display_survey_answer(question_id, @participant.id), { class: 'input' }) %>
+      </div>
+    </div>
+  <% end %>
+
   <div class="buttons">
     <%= p_fields.submit "Save", class: "button is-link" %>
     <%= link_to 'Cancel', profile_path(@participant), class: "button", role: "button" %>
