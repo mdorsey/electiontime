@@ -11,25 +11,21 @@
       <%= link_to 'Delete', @party, method: :delete, data: { confirm: 'Are you sure?' }, class: "button is-danger" %>
       <%= link_to 'Back', parties_path, class: "button" %>
     </div>
-    
-    <div class="field">
-      <label class="label">Name</label>
-      <%= @party.name %>
-    </div>
 
-    <div class="field">
-      <label class="label">Name Abbreviation</label>
-      <%= @party.name_abbreviation %>
-    </div>
+    <div class="show-grid-wrapper">
 
-    <div class="field">
-      <label class="label">Alternate Name</label>
-      <%= @party.alternate_name %>
-    </div>
+      <div class="grid-label">Name:</div>
+      <div class="grid-value"><%= @party.name %></div>
 
-    <div class="field">
-      <label class="label">Alternate Abbreviation</label>
-      <%= @party.alternate_abbreviation %>
+      <div class="grid-label">Name Abbreviation:</div>
+      <div class="grid-value"><%= @party.name_abbreviation %></div>
+
+      <div class="grid-label">Alternate Name:</div>
+      <div class="grid-value"><%= @party.alternate_name %></div>
+
+      <div class="grid-label">Alternate Abbreviation:</div>
+      <div class="grid-value"><%= @party.alternate_abbreviation %></div>
+
     </div>
   </div>
 </div>

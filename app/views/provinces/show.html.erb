@@ -12,9 +12,11 @@
       <%= link_to 'Back', provinces_path, class: "button" %>
     </div>
 
-    <div class="field">
-      <label class="label">Name</label>
-      <%= @province.name %>
+    <div class="show-grid-wrapper">
+
+      <div class="grid-label">Name:</div>
+      <div class="grid-value"><%= @province.name %></div>
+
     </div>
   </div>
 </div>

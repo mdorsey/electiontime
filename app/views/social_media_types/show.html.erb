@@ -11,10 +11,12 @@
       <%= link_to 'Delete', @social_media_type, method: :delete, data: { confirm: 'Are you sure?' }, class: "button is-danger" %>
       <%= link_to 'Back', social_media_types_path, class: "button" %>
     </div>
-    
-    <div class="field">
-      <label class="label">Name</label>
-      <%= @social_media_type.name %>
+
+    <div class="show-grid-wrapper">
+
+      <div class="grid-label">Name:</div>
+      <div class="grid-value"><%= @social_media_type.name %></div>
+
     </div>
   </div>
 </div>

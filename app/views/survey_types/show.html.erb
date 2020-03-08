@@ -11,10 +11,12 @@
       <%= link_to 'Delete', @survey_type, method: :delete, data: { confirm: 'Are you sure?' }, class: "button is-danger" %>
       <%= link_to 'Back', survey_types_path, class: "button" %>
     </div>
-    
-    <div class="field">
-      <label class="label">Name</label>
-      <%= @survey_type.name %>
+
+    <div class="show-grid-wrapper">
+
+      <div class="grid-label">Name:</div>
+      <div class="grid-value"><%= @survey_type.name %></div>
+
     </div>
   </div>
 </div>

@@ -11,20 +11,18 @@
       <%= link_to 'Delete', @district, method: :delete, data: { confirm: 'Are you sure?' }, class: "button is-danger" %>
       <%= link_to 'Back', districts_path, class: "button" %>
     </div>
-    
-    <div class="field">
-      <label class="label">Name</label>
-      <%= @district.name %>
-    </div>
 
-    <div class="field">
-      <label class="label">Election Type</label>
-      <%= display_election_type(@district.election_type_id) %>
-    </div>
+    <div class="show-grid-wrapper">
 
-    <div class="field">
-      <label class="label">Jurisdiction</label>
-      <%= display_jurisdiction(@district.jurisdiction_id) %>
+      <div class="grid-label">Name:</div>
+      <div class="grid-value"><%= @district.name %></div>
+
+      <div class="grid-label">Election Type:</div>
+      <div class="grid-value"><%= display_election_type(@district.election_type_id) %></div>
+
+      <div class="grid-label">Jurisdiction:</div>
+      <div class="grid-value"><%= display_jurisdiction(@district.jurisdiction_id) %></div>
+
     </div>
   </div>
 </div>

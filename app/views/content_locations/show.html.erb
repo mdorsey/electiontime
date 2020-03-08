@@ -11,10 +11,12 @@
       <%= link_to 'Delete', @content_location, method: :delete, data: { confirm: 'Are you sure?' }, class: "button is-danger" %>
       <%= link_to 'Back', content_locations_path, class: "button" %>
     </div>
-    
-    <div class="field">
-      <label class="label">Name</label>
-      <%= @content_location.name %>
+
+    <div class="show-grid-wrapper">
+
+      <div class="grid-label">Name:</div>
+      <div class="grid-value"><%= @content_location.name %></div>
+     
     </div>
   </div>
 </div>

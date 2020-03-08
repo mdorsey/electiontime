@@ -12,69 +12,47 @@
       <%= link_to 'Back', participants_path, class: "button" %>
     </div>
 
-    <div class="field">
-      <label class="label">Picture</label>
-      <%= image_tag(@picture_url, size: "100x100", alt: display_user(@participant.user_id)) %>
-    </div>
+    <div class="show-grid-wrapper">
 
-    <div class="field">
-      <label class="label">User</label>
-      <%= display_user(@participant.user_id) %>
-    </div>
+      <div class="grid-label">Picture:</div>
+      <div class="grid-value"><%= image_tag(@picture_url, size: "100x100", alt: display_user(@participant.user_id)) %></div>
 
-    <div class="field">
-      <label class="label">Name</label>
-      <%= @participant.name %>
-    </div>
+      <div class="grid-label">User:</div>
+      <div class="grid-value"><%= display_user(@participant.user_id) %></div>
 
-    <div class="field">
-      <label class="label">Party</label>
-      <%= display_party(@participant.party_id) %>
-    </div>
+      <div class="grid-label">Name:</div>
+      <div class="grid-value"><%= @participant.name %></div>
 
-    <div class="field">
-      <label class="label">District</label>
-      <%= display_district(@participant.district_id) %>
-    </div>
+      <div class="grid-label">Party:</div>
+      <div class="grid-value"><%= display_party(@participant.party_id) %></div>
 
-    <div class="field">
-      <label class="label">Leader Participant</label>
-      <%= display_participant(@participant.leader_participant_id) %>
-    </div>
+      <div class="grid-label">District:</div>
+      <div class="grid-value"><%= display_district(@participant.district_id) %></div>
 
-    <div class="field">
-      <label class="label">Is Candidate</label>
-      <%= @participant.is_candidate %>
-    </div>
+      <div class="grid-label">Leader Participant:</div>
+      <div class="grid-value"><%= display_participant(@participant.leader_participant_id) %></div>
 
-    <div class="field">
-      <label class="label">Is Incumbent</label>
-      <%= @participant.is_incumbent %>
-    </div>
+      <div class="grid-label">Is Candidate:</div>
+      <div class="grid-value"><%= @participant.is_candidate %></div>
 
-    <div class="field">
-      <label class="label">Email</label>
-      <%= @participant.email %>
-    </div>
+      <div class="grid-label">Is Incumbent:</div>
+      <div class="grid-value"><%= @participant.is_incumbent %></div>
 
-    <div class="field">
-      <label class="label">Phone</label>
-      <%= @participant.phone %>
-    </div>
+      <div class="grid-label">Email:</div>
+      <div class="grid-value"><%= @participant.email %></div>
 
-    <div class="field">
-      <label class="label">Website</label>
-      <%= @participant.website %>
-    </div>
+      <div class="grid-label">Phone:</div>
+      <div class="grid-value"><%= @participant.phone %></div>
 
-    <div class="field">
-      <label class="label">Biography</label>
-      <%= @participant.biography %>
-    </div>
+      <div class="grid-label">Website:</div>
+      <div class="grid-value"><%= @participant.website %></div>
 
-    <div class="field">
-      <label class="label">Address</label>
-      <%= display_address(@participant.address_id) %>
+      <div class="grid-label">Biography:</div>
+      <div class="grid-value"><%= @participant.biography %></div>
+
+      <div class="grid-label">Address:</div>
+      <div class="grid-value"><%= display_address(@participant.address_id) %></div>
+
     </div>
   </div>
 </div>

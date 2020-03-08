@@ -11,48 +11,42 @@
       <%= link_to 'Delete', @election, method: :delete, data: { confirm: 'Are you sure?' }, class: "button is-danger" %>
       <%= link_to 'Back', elections_path, class: "button" %>
     </div>
-    
-    <div class="field">
-      <label class="label">Name</label>
-      <%= @election.name %>
-    </div>
 
-    <div class="field">
-      <label class="label">Active</label>
-      <%= @election.active %>
-    </div>
+    <div class="show-grid-wrapper">
 
-    <div class="field">
-      <label class="label">Election Type</label>
-      <%= display_election_type(@election.election_type_id) %>
-    </div>
+      <div class="grid-label">Name:</div>
+      <div class="grid-value"><%= @election.name %></div>
 
-    <div class="field">
-      <label class="label">Election Date</label>
-      <%= @election.election_date.strftime("%B %d, %Y") %>
-    </div>
+      <div class="grid-label">Active:</div>
+      <div class="grid-value"><%= @election.active %></div>
 
-    <div class="field">
-      <label class="label">Jurisdiction</label>
-      <%= display_jurisdiction(@election.jurisdiction_id) %>
-    </div>
+      <div class="grid-label">Election Type:</div>
+      <div class="grid-value"><%= display_election_type(@election.election_type_id) %></div>
 
-    <div class="field">
-      <label class="label">Districts</label>
-      <ul>
-        <% @election.districts.each do |district| %>
-          <li><%= district.name %></li>
-        <%end %>
-      </ul>
-    </div>
+      <div class="grid-label">Election Date:</div>
+      <div class="grid-value"><%= @election.election_date.strftime("%B %d, %Y") %></div>
 
-    <div class="field">
-      <label class="label">Participants</label>
-      <ul>
-        <% @election.participants.each do |participant| %>
-          <li><%= display_participant(participant.id) %></li>
-        <%end %>
-      </ul>
+      <div class="grid-label">Jurisdiction:</div>
+      <div class="grid-value"><%= display_jurisdiction(@election.jurisdiction_id) %></div>
+
+      <div class="grid-label">Districts:</div>
+      <div class="grid-value">
+        <ul>
+          <% @election.districts.each do |district| %>
+            <li><%= district.name %></li>
+          <%end %>
+        </ul>  
+      </div>
+
+      <div class="grid-label">Participants:</div>
+      <div class="grid-value">
+        <ul>
+          <% @election.participants.each do |participant| %>
+            <li><%= display_participant(participant.id) %></li>
+          <%end %>
+        </ul>
+      </div>
+
     </div>
   </div>
 </div>

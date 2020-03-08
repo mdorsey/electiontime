@@ -11,20 +11,18 @@
       <%= link_to 'Delete', @survey_question, method: :delete, data: { confirm: 'Are you sure?' }, class: "button is-danger" %>
       <%= link_to 'Back', survey_questions_path, class: "button" %>
     </div>
-    
-    <div class="field">
-      <label class="label">Survey</label>
-      <%= display_survey(@survey_question.survey_id) %>
-    </div>
 
-    <div class="field">
-      <label class="label">Question</label>
-      <%= @survey_question.question %>
-    </div>
+    <div class="show-grid-wrapper">
 
-    <div class="field">
-      <label class="label">Order</label>
-      <%= @survey_question.order %>
+      <div class="grid-label">Survey:</div>
+      <div class="grid-value"><%= display_survey(@survey_question.survey_id) %></div>
+
+      <div class="grid-label">Question:</div>
+      <div class="grid-value"><%= @survey_question.question %></div>
+
+      <div class="grid-label">Order:</div>
+      <div class="grid-value"><%= @survey_question.order %></div>
+
     </div>
   </div>
 </div>

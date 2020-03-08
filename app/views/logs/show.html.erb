@@ -11,25 +11,21 @@
       <%= link_to 'Delete', @log, method: :delete, data: { confirm: 'Are you sure?' }, class: "button is-danger" %>
       <%= link_to 'Back', logs_path, class: "button" %>
     </div>
-    
-    <div class="field">
-      <label class="label">User</label>
-      <%= display_user(@log.user_id) %>
-    </div>
 
-    <div class="field">
-      <label class="label">Log Type</label>
-      <%= display_log_type(@log.log_type_id) %>
-    </div>
+    <div class="show-grid-wrapper">
 
-    <div class="field">
-      <label class="label">Message</label>
-      <%= @log.message %>
-    </div>
+      <div class="grid-label">User:</div>
+      <div class="grid-value"><%= display_user(@log.user_id) %></div>
 
-    <div class="field">
-      <label class="label">Location</label>
-      <%= @log.location %>
+      <div class="grid-label">Log Type:</div>
+      <div class="grid-value"><%= display_log_type(@log.log_type_id) %></div>
+
+      <div class="grid-label">Message:</div>
+      <div class="grid-value"><%= @log.message %></div>
+
+      <div class="grid-label">Location:</div>
+      <div class="grid-value"><%= @log.location %></div>
+
     </div>
   </div>
 </div>

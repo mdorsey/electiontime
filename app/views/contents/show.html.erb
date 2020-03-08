@@ -12,25 +12,21 @@
       <%= link_to 'Delete', @content, method: :delete, data: { confirm: 'Are you sure?' }, class: "button is-danger" %>
       <%= link_to 'Back', contents_path, class: "button" %>
     </div>
-    
-    <div class="field">
-      <label class="label">Name</label>
-      <%= @content.name %>
-    </div>
 
-    <div class="field">
-      <label class="label">Content</label>
-      <%= @content.content %>
-    </div>
+    <div class="show-grid-wrapper">
 
-    <div class="field">
-      <label class="label">Language</label>
-      <%= display_language(@content.language_id) %>
-    </div>
+      <div class="grid-label">Name:</div>
+      <div class="grid-value"><%= @content.name %></div>
 
-    <div class="field">
-      <label class="label">Content Location</label>
-      <%= display_content_location(@content.content_location_id) %>
+      <div class="grid-label">Content:</div>
+      <div class="grid-value"><%= @content.content %></div>
+
+      <div class="grid-label">Language:</div>
+      <div class="grid-value"><%= display_language(@content.language_id) %></div>
+
+      <div class="grid-label">Content Location:</div>
+      <div class="grid-value"><%= display_content_location(@content.content_location_id) %></div>
+
     </div>
   </div>
 </div>

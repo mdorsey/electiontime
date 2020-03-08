@@ -11,20 +11,18 @@
       <%= link_to 'Delete', @social_media_profile, method: :delete, data: { confirm: 'Are you sure?' }, class: "button is-danger" %>
       <%= link_to 'Back', social_media_profiles_path, class: "button" %>
     </div>
-    
-    <div class="field">
-      <label class="label">Handle</label>
-      <%= @social_media_profile.handle %>
-    </div>
 
-    <div class="field">
-      <label class="label">Participant</label>
-      <%= display_participant(@social_media_profile.participant_id) %>
-    </div>
+    <div class="show-grid-wrapper">
 
-    <div class="field">
-      <label class="label">Social Media Type</label>
-      <%= display_social_media_type(@social_media_profile.social_media_type_id) %>
+      <div class="grid-label">Handle:</div>
+      <div class="grid-value"><%= @social_media_profile.handle %></div>
+
+      <div class="grid-label">Participant:</div>
+      <div class="grid-value"><%= display_participant(@social_media_profile.participant_id) %></div>
+
+      <div class="grid-label">Social Media Type:</div>
+      <div class="grid-value"><%= display_social_media_type(@social_media_profile.social_media_type_id) %></div>
+
     </div>
   </div>
 </div>

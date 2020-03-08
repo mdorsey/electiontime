@@ -11,45 +11,33 @@
       <%= link_to 'Delete', @user, method: :delete, data: { confirm: 'Are you sure?' }, class: "button is-danger" %>
       <%= link_to 'Back', users_path, class: "button" %>
     </div>
-    
-    <div class="field">
-      <label class="label">First Name</label>
-      <%= @user.first_name %>
-    </div>
 
-    <div class="field">
-      <label class="label">Last Name</label>
-      <%= @user.last_name %>
-    </div>
+    <div class="show-grid-wrapper">
 
-    <div class="field">
-      <label class="label">Email</label>
-      <%= @user.email %>
-    </div>
+      <div class="grid-label">First Name:</div>
+      <div class="grid-value"><%= @user.first_name %></div>
 
-    <div class="field">
-      <label class="label">User Type</label>
-      <%= display_user_type(@user.user_type_id) %>
-    </div>
+      <div class="grid-label">Last Name:</div>
+      <div class="grid-value"><%= @user.last_name %></div>
 
-    <div class="field">
-      <label class="label">Activated</label>
-      <%= @user.activated %>
-    </div>
+      <div class="grid-label">Email:</div>
+      <div class="grid-value"><%= @user.email %></div>
 
-    <div class="field">
-      <label class="label">Activated At</label>
-      <%= @user.activated_at.localtime %>
-    </div>
+      <div class="grid-label">User Type:</div>
+      <div class="grid-value"><%= display_user_type(@user.user_type_id) %></div>
 
-    <div class="field">
-      <label class="label">Created At</label>
-      <%= @user.created_at.localtime %>
-    </div>
+      <div class="grid-label">Activated:</div>
+      <div class="grid-value"><%= @user.activated %></div>
 
-    <div class="field">
-      <label class="label">Updated At</label>
-      <%= @user.updated_at.localtime %>
+      <div class="grid-label">Activated At:</div>
+      <div class="grid-value"><%= @user.activated_at.localtime %></div>
+
+      <div class="grid-label">Created At:</div>
+      <div class="grid-value"><%= @user.created_at.localtime %></div>
+
+      <div class="grid-label">Updated At:</div>
+      <div class="grid-value"><%= @user.updated_at.localtime %></div>
+
     </div>
   </div>
 </div>

@@ -12,24 +12,20 @@
       <%= link_to 'Back', addresses_path, class: "button" %>
     </div>
 
-    <div class="field">
-      <label class="label">Street</label>
-      <%= @address.street %>
-    </div>
+    <div class="show-grid-wrapper">
 
-    <div class="field">
-      <label class="label">City</label>
-      <%= @address.city %>
-    </div>
+      <div class="grid-label">Street:</div>
+      <div class="grid-value"><%= @address.street %></div>
 
-    <div class="field">
-      <label class="label">Province</label>
-      <%= display_province(@address.province_id) %>
-    </div>
+      <div class="grid-label">City:</div>
+      <div class="grid-value"><%= @address.city %></div>
 
-    <div class="field">
-      <label class="label">Postal Code</label>
-      <%= @address.postal_code %>
+      <div class="grid-label">Province:</div>
+      <div class="grid-value"><%= display_province(@address.province_id) %></div>
+
+      <div class="grid-label">Postal Code:</div>
+      <div class="grid-value"><%= @address.postal_code %></div>
+
     </div>
   </div>
 </div>

@@ -11,10 +11,12 @@
       <%= link_to 'Delete', @election_type, method: :delete, data: { confirm: 'Are you sure?' }, class: "button is-danger" %>
       <%= link_to 'Back', election_types_path, class: "button" %>
     </div>
-    
-    <div class="field">
-      <label class="label">Name</label>
-      <%= @election_type.name %>
+
+    <div class="show-grid-wrapper">
+
+      <div class="grid-label">Name:</div>
+      <div class="grid-value"><%= @election_type.name %></div>
+
     </div>
   </div>
 </div>

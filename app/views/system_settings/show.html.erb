@@ -11,15 +11,15 @@
       <%= link_to 'Delete', @system_setting, method: :delete, data: { confirm: 'Are you sure?' }, class: "button is-danger" %>
       <%= link_to 'Back', system_settings_path, class: "button" %>
     </div>
-    
-    <div class="field">
-      <label class="label">Name</label>
-      <%= @system_setting.name %>
-    </div>
 
-    <div class="field">
-      <label class="label">Setting</label>
-      <%= @system_setting.setting %>
+    <div class="show-grid-wrapper">
+
+      <div class="grid-label">Name:</div>
+      <div class="grid-value"><%= @system_setting.name %></div>
+
+      <div class="grid-label">Setting:</div>
+      <div class="grid-value"><%= @system_setting.setting %></div>
+
     </div>
   </div>
 </div>
