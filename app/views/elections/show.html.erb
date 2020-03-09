@@ -41,7 +41,7 @@
       <div class="grid-label">Participants:</div>
       <div class="grid-value">
         <ul>
-          <% @election.participants.each do |participant| %>
+          <% @election.participants.order(:name).each do |participant| %>
             <li><%= display_participant(participant.id) %></li>
           <%end %>
         </ul>
