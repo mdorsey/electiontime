@@ -4,7 +4,7 @@ class ParticipantsController < ApplicationController
   before_action :set_participant, only: [:show, :edit, :update, :destroy]
 
   def index
-    @participants = Participant.paginate(page: params[:page]).order('name ASC')
+    @participants = Participant.search(params[:search]).paginate(page: params[:page]).order('name ASC')
   end
 
   def create

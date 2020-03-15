@@ -4,7 +4,7 @@ class LogTypesController < ApplicationController
   before_action :set_log_type, only: [:show, :edit, :update, :destroy]
 
   def index
-    @log_types = LogType.paginate(page: params[:page]).order('name ASC')
+    @log_types = LogType.search(params[:search]).paginate(page: params[:page]).order('name ASC')
   end
 
   def create

@@ -92,6 +92,11 @@ select[multiple] {
   min-width: 10%;
 }
 
+.search-button {
+  @extend .button;
+  margin: 0;
+}
+
 
 /* GRID */
 

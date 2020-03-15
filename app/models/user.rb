@@ -19,6 +19,14 @@ class User < ApplicationRecord
   validates(:password, presence: true, length: { minimum: 6 }, allow_nil: true)
   validates(:user_type, presence: true)
 
+  def self.search(search_text)
+    if search_text
+      where('first_name LIKE ? OR last_name LIKE ? OR email LIKE ?', "%#{search_text}%", "%#{search_text}%", "%#{search_text}%")
+    else
+      unscoped
+    end
+  end
+
   # Returns the hash digest of the given string.
   def User.digest(string)
     cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST : BCrypt::Engine.cost

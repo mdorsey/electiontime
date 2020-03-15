@@ -6,15 +6,8 @@
     <%= render 'layouts/admin_menu' %>
   </div>
   <div class="column">
-    <div class="buttons">
-      <%= link_to '+ New District', new_district_path, class: "button is-link" %>
-    </div>
-
-    <ul class="resources-list">
-      <%= render @districts %>
-    </ul>
-
-    <%= will_paginate renderer: BulmaPagination::Rails, :class => 'is-centered' %>
+    <%= render 'layouts/admin_list', new_object_text: "+ New District", new_object_path: new_district_path, 
+      objects_path: districts_path, placeholder_text: "Search by name...", objects_list: @districts %>
   </div>
 </div>
 

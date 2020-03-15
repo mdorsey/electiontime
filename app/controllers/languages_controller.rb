@@ -4,7 +4,7 @@ class LanguagesController < ApplicationController
   before_action :set_language, only: [:show, :edit, :update, :destroy]
 
   def index
-    @languages = Language.paginate(page: params[:page]).order('name ASC')
+    @languages = Language.search(params[:search]).paginate(page: params[:page]).order('name ASC')
   end
 
   def create

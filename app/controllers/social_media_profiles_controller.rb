@@ -4,7 +4,7 @@ class SocialMediaProfilesController < ApplicationController
   before_action :set_social_media_profile, only: [:show, :edit, :update, :destroy]
 
   def index
-    @social_media_profiles = SocialMediaProfile.paginate(page: params[:page]).order('handle ASC')
+    @social_media_profiles = SocialMediaProfile.search(params[:search]).paginate(page: params[:page]).order('handle ASC')
   end
 
   def create

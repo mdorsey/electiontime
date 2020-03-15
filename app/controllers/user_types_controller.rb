@@ -4,7 +4,7 @@ class UserTypesController < ApplicationController
   before_action :set_user_type, only: [:show, :edit, :update, :destroy]
 
   def index
-    @user_types = UserType.paginate(page: params[:page]).order('name ASC')
+    @user_types = UserType.search(params[:search]).paginate(page: params[:page]).order('name ASC')
   end
   
   def create

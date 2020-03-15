@@ -4,7 +4,7 @@ class PartiesController < ApplicationController
   before_action :set_party, only: [:show, :edit, :update, :destroy]
 
   def index
-    @parties = Party.paginate(page: params[:page]).order('name ASC')
+    @parties = Party.search(params[:search]).paginate(page: params[:page]).order('name ASC')
   end
 
   def create

@@ -4,7 +4,7 @@ class LogsController < ApplicationController
   before_action :set_log, only: [:show, :edit, :update, :destroy]
 
   def index
-    @logs = Log.paginate(page: params[:page]).order('created_at DESC')
+    @logs = Log.search(params[:search]).paginate(page: params[:page]).order('created_at DESC')
   end
 
   def create

@@ -4,7 +4,7 @@ class SurveyQuestionsController < ApplicationController
   before_action :set_survey_question, only: [:show, :edit, :update, :destroy]
 
   def index
-    @survey_questions = SurveyQuestion.paginate(page: params[:page]).order('question ASC')
+    @survey_questions = SurveyQuestion.search(params[:search]).paginate(page: params[:page]).order('question ASC')
   end
 
   def create

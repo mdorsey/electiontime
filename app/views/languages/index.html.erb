@@ -6,14 +6,7 @@
     <%= render 'layouts/admin_menu' %>
   </div>
   <div class="column">
-    <div class="buttons">
-      <%= link_to '+ New Language', new_language_path, class: "button is-link" %>
-    </div>
-
-    <ul class="resources-list">
-      <%= render @languages %>
-    </ul>
-
-    <%= will_paginate renderer: BulmaPagination::Rails, :class => 'is-centered' %>
+    <%= render 'layouts/admin_list', new_object_text: "+ New Language", new_object_path: new_language_path, 
+      objects_path: languages_path, placeholder_text: "Search by name...", objects_list: @languages %>
   </div>
 </div>

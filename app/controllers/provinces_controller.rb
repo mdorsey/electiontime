@@ -4,7 +4,7 @@ class ProvincesController < ApplicationController
   before_action :set_province, only: [:show, :edit, :update, :destroy]
 
   def index
-    @provinces = Province.paginate(page: params[:page]).order('name ASC')
+    @provinces = Province.search(params[:search]).paginate(page: params[:page]).order('name ASC')
   end
 
   def create

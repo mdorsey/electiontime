@@ -4,7 +4,7 @@ class JurisdictionsController < ApplicationController
   before_action :set_jurisdiction, only: [:show, :edit, :update, :destroy]
 
   def index
-    @jurisdictions = Jurisdiction.paginate(page: params[:page]).order('name ASC')
+    @jurisdictions = Jurisdiction.search(params[:search]).paginate(page: params[:page]).order('name ASC')
   end
 
   def create

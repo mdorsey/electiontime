@@ -4,7 +4,7 @@ class ContentLocationsController < ApplicationController
   before_action :set_content_location, only: [:show, :edit, :update, :destroy]
 
   def index
-    @content_locations = ContentLocation.paginate(page: params[:page]).order('name ASC')
+    @content_locations = ContentLocation.search(params[:search]).paginate(page: params[:page]).order('name ASC')
   end
 
   def create

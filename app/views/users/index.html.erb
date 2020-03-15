@@ -6,15 +6,8 @@
     <%= render 'layouts/admin_menu' %>
   </div>
   <div class="column">
-    <div class="buttons">
-      <%= link_to '+ New User', new_user_path, class: "button is-link" %>
-    </div>
-
-    <ul class="resources-list">
-      <%= render @users %>
-    </ul>
-
-    <%= will_paginate renderer: BulmaPagination::Rails, :class => 'is-centered' %>
+    <%= render 'layouts/admin_list', new_object_text: "+ New User", new_object_path: new_user_path, 
+      objects_path: users_path, placeholder_text: "Search by first name, last name, or email...", objects_list: @users %>
   </div>
 </div>
 

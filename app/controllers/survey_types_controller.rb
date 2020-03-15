@@ -4,7 +4,7 @@ class SurveyTypesController < ApplicationController
   before_action :set_survey_type, only: [:show, :edit, :update, :destroy]
 
   def index
-    @survey_types = SurveyType.paginate(page: params[:page]).order('name ASC')
+    @survey_types = SurveyType.search(params[:search]).paginate(page: params[:page]).order('name ASC')
   end
 
   def create

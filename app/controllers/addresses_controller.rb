@@ -4,7 +4,7 @@ class AddressesController < ApplicationController
   before_action :set_address, only: [:show, :edit, :update, :destroy]
 
   def index
-    @addresses = Address.paginate(page: params[:page]).order('id ASC')
+    @addresses = Address.search(params[:search]).paginate(page: params[:page]).order('id ASC')
   end
 
   def create

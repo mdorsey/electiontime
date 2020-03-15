@@ -6,14 +6,7 @@
     <%= render 'layouts/admin_menu' %>
   </div>
   <div class="column">
-    <div class="buttons">
-      <%= link_to '+ New Survey Answer', new_survey_answer_path, class: "button is-link" %>
-    </div>
-
-    <ul class="resources-list">
-      <%= render @survey_answers %>
-    </ul>
-
-    <%= will_paginate renderer: BulmaPagination::Rails, :class => 'is-centered' %>
+    <%= render 'layouts/admin_list', new_object_text: "+ New Survey Answer", new_object_path: new_survey_answer_path, 
+      objects_path: survey_answers_path, placeholder_text: "Search by answer...", objects_list: @survey_answers %>
   </div>
 </div>

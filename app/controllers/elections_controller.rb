@@ -4,7 +4,7 @@ class ElectionsController < ApplicationController
   before_action :set_election, only: [:show, :edit, :update, :destroy]
 
   def index
-    @elections = Election.paginate(page: params[:page]).order('name ASC')
+    @elections = Election.search(params[:search]).paginate(page: params[:page]).order('name ASC')
   end
 
   def create

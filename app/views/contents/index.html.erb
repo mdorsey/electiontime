@@ -6,16 +6,8 @@
     <%= render 'layouts/admin_menu' %>
   </div>
   <div class="column">
-    <div class="buttons">
-      <!-- Turn off turbolinks so that Tinymce will load on the New page -->
-      <%= link_to '+ New Content', new_content_path, class: "button is-link", data: { turbolinks: "false" } %>
-    </div>
-
-    <ul class="resources-list">
-      <%= render @contents %>
-    </ul>
-
-    <%= will_paginate renderer: BulmaPagination::Rails, :class => 'is-centered' %>
+    <%= render 'layouts/admin_list', new_object_text: "+ New Content", new_object_path: new_content_path, 
+      objects_path: contents_path, placeholder_text: "Search by name...", objects_list: @contents %>
   </div>
 </div>
 

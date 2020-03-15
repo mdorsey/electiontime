@@ -4,7 +4,7 @@ class SystemSettingsController < ApplicationController
   before_action :set_system_setting, only: [:show, :edit, :update, :destroy]
 
   def index
-    @system_settings = SystemSetting.paginate(page: params[:page]).order('name ASC')
+    @system_settings = SystemSetting.search(params[:search]).paginate(page: params[:page]).order('name ASC')
   end
 
   def create

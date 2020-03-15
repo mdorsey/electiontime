@@ -6,7 +6,7 @@ class UsersController < ApplicationController
   before_action :correct_user, only: [:edit, :update, :show]
 
   def index
-    @users = User.paginate(page: params[:page]).order('last_name ASC')
+    @users = User.search(params[:search]).paginate(page: params[:page]).order('last_name ASC')
   end
   
   def create

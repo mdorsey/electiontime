@@ -7,4 +7,12 @@ class Content < ApplicationRecord
   validates(:content, presence: true)
   validates(:language, presence: true)
   validates(:content_location, presence: true)
+
+  def self.search(search_text)
+    if search_text
+      where('name LIKE ?', "%#{search_text}%")
+    else
+      unscoped
+    end
+  end
 end

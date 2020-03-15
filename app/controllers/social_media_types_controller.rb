@@ -4,7 +4,7 @@ class SocialMediaTypesController < ApplicationController
   before_action :set_social_media_type, only: [:show, :edit, :update, :destroy]
 
   def index
-    @social_media_types = SocialMediaType.paginate(page: params[:page]).order('name ASC')
+    @social_media_types = SocialMediaType.search(params[:search]).paginate(page: params[:page]).order('name ASC')
   end
   
   def create

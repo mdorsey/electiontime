@@ -8,4 +8,12 @@ class District < ApplicationRecord
   validates(:name, presence: true, length: { maximum: 255 })
   validates(:election_type, presence: true)
   validates(:jurisdiction, presence: true)
+
+  def self.search(search_text)
+    if search_text
+      where('name LIKE ?', "%#{search_text}%")
+    else
+      unscoped
+    end
+  end
 end

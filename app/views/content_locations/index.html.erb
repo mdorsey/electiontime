@@ -6,14 +6,7 @@
     <%= render 'layouts/admin_menu' %>
   </div>
   <div class="column">
-    <div class="buttons">
-      <%= link_to '+ New Content Location', new_content_location_path, class: "button is-link" %>
-    </div>
-
-    <ul class="resources-list">
-      <%= render @content_locations %>
-    </ul>
-
-    <%= will_paginate renderer: BulmaPagination::Rails, :class => 'is-centered' %>
+    <%= render 'layouts/admin_list', new_object_text: "+ New Content Location", new_object_path: new_content_location_path, 
+      objects_path: content_locations_path, placeholder_text: "Search by name...", objects_list: @content_locations %>
   </div>
 </div>

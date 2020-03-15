@@ -4,7 +4,7 @@ class ElectionTypesController < ApplicationController
   before_action :set_election_type, only: [:show, :edit, :update, :destroy]
 
   def index
-    @election_types = ElectionType.paginate(page: params[:page]).order('name ASC')
+    @election_types = ElectionType.search(params[:search]).paginate(page: params[:page]).order('name ASC')
   end
 
   def create

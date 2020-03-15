@@ -4,7 +4,7 @@ class DistrictsController < ApplicationController
   before_action :set_district, only: [:show, :edit, :update, :destroy]
 
   def index
-    @districts = District.paginate(page: params[:page]).order('name ASC')
+    @districts = District.search(params[:search]).paginate(page: params[:page]).order('name ASC')
   end
 
   def create
