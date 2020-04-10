@@ -15,7 +15,7 @@ module ParticipantsHelper
   def options_for_participant
     participants = Array.new
 
-    Participant.all.each do |j|
+    Participant.all.order(name: :asc).each do |j|
       participants.push([display_participant(j.id), j.id])
     end
 

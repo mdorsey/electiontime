@@ -29,13 +29,15 @@
   </div>
 
   <div class="grid-label">Is Incumbent?</div>
-  <div class="grid-value"><%= @participant.is_incumbent %></div>
+  <div class="grid-value"><%= display_boolean_as_yes_or_no(@participant.is_incumbent) %></div>
 
   <div class="grid-label">Party:</div>
   <div class="grid-value"><%= display_party(@participant.party_id) %></div>
 
-  <div class="grid-label">District:</div>
-  <div class="grid-value"><%= display_district(@participant.district_id) %></div>
+  <% if @participant.is_candidate %>
+    <div class="grid-label">District:</div>
+    <div class="grid-value"><%= display_district(@participant.district_id) %></div>
+  <% end %>
 
   <% if !@participant.is_candidate %>
     <div class="grid-label">Party Leader:</div>

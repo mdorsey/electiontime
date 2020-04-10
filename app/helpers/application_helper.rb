@@ -10,4 +10,12 @@ module ApplicationHelper
     end
   end
 
+  def display_boolean_as_yes_or_no(bool)
+    if bool
+      "Yes"
+    else
+      "No"
+    end
+  end
+
 end
