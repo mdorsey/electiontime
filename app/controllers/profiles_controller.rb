@@ -2,9 +2,19 @@ class ProfilesController < ApplicationController
 
   # IMPORTANT NOTE: the ID used for the Profiles controller is the same ID from the Participants table
 
-  before_action :set_profile
   before_action :logged_in_user
-  before_action :correct_participant_user
+  before_action :set_profile, only: [:show, :edit, :update]
+  before_action :correct_participant_user, only: [:show, :edit, :update]
+
+  def index
+
+    @profiles = Participant.where(user_id: current_user.id).order(name: :asc)
+
+    # If there is only 1 profile for this user, then redirect to the Show page
+    if (@profiles.count === 1)
+      redirect_to profile_path(@profiles.first.id)
+    end
+  end
 
   def edit
   end

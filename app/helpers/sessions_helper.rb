@@ -65,13 +65,8 @@ module SessionsHelper
     session[:forwarding_url] = request.original_url if request.get?
   end
 
-  # Returns true if the user is linked to a participant, false otherwise.
+  # Returns true if the current user is linked to at least one participant, false otherwise.
   def has_participant?
     logged_in? && Participant.find_by(user_id: current_user.id)
-  end
-
-  # Returns the participant corresponding to the current user.
-  def current_participant
-    @current_participant = Participant.find_by(user_id: current_user.id)
   end
 end

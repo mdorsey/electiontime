@@ -27,7 +27,7 @@
               </a>
               <div class="navbar-dropdown is-right">
                 <% if has_participant? %>
-                  <%= link_to "Public Profile", profile_path(current_participant), class: "navbar-item" %>
+                  <%= link_to "Public Profile", profiles_path, class: "navbar-item" %>
                 <% end %>
 
                 <%= link_to "User Settings", user_path(current_user), class: "navbar-item" %>

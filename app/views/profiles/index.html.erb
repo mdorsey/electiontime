@@ -1,0 +1,10 @@
+<% provide(:title, 'Public Profiles') %>
+<h1>Public Profiles</h1>
+
+<ul>
+  <% @profiles.each do |p| %>
+    <li>
+      <%= link_to display_participant(p.id), profile_path(p.id) %>
+    </li>
+  <% end %>
+</ul>

@@ -28,7 +28,7 @@ Rails.application.routes.draw do
   resources :participants
   resources :password_resets, only: [:new, :create, :edit, :update]
   resources :parties
-  resources :profiles, only: [:edit, :show, :update]
+  resources :profiles, only: [:index, :edit, :show, :update]
   resources :provinces
   resources :social_media_profiles
   resources :social_media_types
