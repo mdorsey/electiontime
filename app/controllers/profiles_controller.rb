@@ -107,7 +107,7 @@ class ProfilesController < ApplicationController
 
       # Social media profiles
       @social_media_profiles = Hash.new
-      SocialMediaType.all.order('name ASC').each do |t|
+      SocialMediaType.all.order(name: :asc).each do |t|
         profile = @participant.social_media_profiles.find { |smp| smp.social_media_type_id === t.id }
         if profile
           @social_media_profiles[t.id] = profile.handle

@@ -9,7 +9,7 @@ class Participant < ApplicationRecord
   has_many :social_media_profiles
   has_many :survey_answers
   has_one_attached :picture
-  accepts_nested_attributes_for :address, update_only: true
+  accepts_nested_attributes_for :address
   accepts_nested_attributes_for :social_media_profiles
   accepts_nested_attributes_for :survey_answers
   

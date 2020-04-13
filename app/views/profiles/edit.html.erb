@@ -2,7 +2,7 @@
 
 <h2>Edit Public Profile</h2>
 
-<%= form_for(@participant, url: profile_path(@participant), method: :patch) do |p_fields| %>
+<%= form_for(setup_participant_form(@participant), url: profile_path(@participant), method: :patch) do |p_fields| %>
   <%= render 'shared/error_messages', object: p_fields.object %>
 
   <div class="field">

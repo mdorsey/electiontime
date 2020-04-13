@@ -37,4 +37,11 @@ module ParticipantsHelper
 
     return picture_url
   end
+
+  def setup_participant_form(participant)
+    # If the participant doesn't have an address, then create a new unsaved one that will be persisted when the form is submitted
+    participant.address ||= Address.new
+    
+    return participant
+  end
 end
