@@ -31,6 +31,12 @@ h2 {
   @extend .is-2;
 }
 
+h3 {
+  @extend .subtitle;
+  @extend .is-3;
+  margin-top: 1.5rem
+}
+
 p {
   font-size: 1.1em;
   line-height: 1.7em;

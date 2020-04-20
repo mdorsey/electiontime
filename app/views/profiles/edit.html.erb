@@ -40,7 +40,16 @@
     </div>
   </div>
 
+  <div class="field">
+    <%= p_fields.label :biography, "Biography", class: 'label' %>
+    <div class="control">
+      <%= p_fields.text_area :biography, class: 'textarea' %>
+    </div>
+  </div>
+
   <!-- ADDRESS -->
+  <h3>Address</h3>
+
   <%= p_fields.fields_for :address do |a_fields| %>
     <div class="field">
       <%= a_fields.label :street, "Street", class: 'label' %>
@@ -73,14 +82,9 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= p_fields.label :biography, "Biography", class: 'label' %>
-    <div class="control">
-      <%= p_fields.text_area :biography, class: 'textarea' %>
-    </div>
-  </div>
-
   <!-- SOCIAL MEDIA -->
+  <h3>Social Media Profiles</h3>
+
   <% @social_media_profiles.each do |type_id, handle| %>
     <div class="field">
       <%= label_tag("social_media_type", display_social_media_type(type_id), { class: 'label' }) %>
@@ -91,6 +95,8 @@
   <% end %>
 
   <!-- SURVEY QUESTIONS AND ANSWERS -->
+  <h3>Survey</h3>
+
   <% @survey_questions.each do |question_id, question| %>
     <div class="field">
       <%= label_tag("survey_question", question, { class: 'label' }) %>

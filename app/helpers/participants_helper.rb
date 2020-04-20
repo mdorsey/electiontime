@@ -31,7 +31,7 @@ module ParticipantsHelper
       participant = Participant.find(participant_id)
 
       if participant.picture.attached?
-        picture_url = url_for(participant.picture)
+        picture_url = participant.picture
       end
     end
 

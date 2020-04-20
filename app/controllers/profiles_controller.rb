@@ -3,8 +3,8 @@ class ProfilesController < ApplicationController
   # IMPORTANT NOTE: the ID used for the Profiles controller is the same ID from the Participants table
 
   before_action :logged_in_user
-  before_action :set_profile, only: [:show, :edit, :update]
   before_action :correct_participant_user, only: [:show, :edit, :update]
+  before_action :set_profile, only: [:show, :edit, :update]
 
   def index
 
@@ -23,6 +23,11 @@ class ProfilesController < ApplicationController
   end
 
   def update
+    # Remove any previous pictures, if a new one was selected
+    if params[:participant][:picture].present?
+      @participant.picture.purge
+    end
+
     if @participant.update_profile(params, profile_params, @survey_questions)
       flash[:success] = "Profile updated"
       redirect_to profile_path(@participant)
@@ -33,10 +38,8 @@ class ProfilesController < ApplicationController
 
   private
 
-    # Set all of the variables that are used in the views
     def set_profile
       @participant = Participant.find(params[:id])
-      @picture_url = helpers.get_participant_picture_url(@participant.id)
 
       # Social media profiles
       @social_media_profiles = Hash.new

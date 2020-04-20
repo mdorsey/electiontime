@@ -2,7 +2,7 @@
 
 <h2><%= @participant.name %></h2>
 
-<%= image_tag(@picture_url, size: "100x100", alt: @participant.name) %>
+<%= image_tag(get_participant_picture_url(@participant.id), size: "100x100", alt: @participant.name) %>
 
 <div class="show-grid-wrapper">
 
@@ -21,28 +21,24 @@
   <div class="grid-label">Biography:</div>
   <div class="grid-value"><%= @participant.biography %></div>
 
-  <div class="grid-label">Social Media Profiles:</div>
-  <div class="grid-value">
-    <% @participant.social_media_profiles.each do |s| %>
-      <%= display_social_media_type(s.social_media_type_id) %>: <%= s.handle %>
-    <% end %>
-  </div>
-
-  <div class="grid-label">Is Incumbent?</div>
-  <div class="grid-value"><%= display_boolean_as_yes_or_no(@participant.is_incumbent) %></div>
-
   <div class="grid-label">Party:</div>
   <div class="grid-value"><%= display_party(@participant.party_id) %></div>
 
   <% if @participant.is_candidate %>
     <div class="grid-label">District:</div>
     <div class="grid-value"><%= display_district(@participant.district_id) %></div>
-  <% end %>
-
-  <% if !@participant.is_candidate %>
+  <% else %>
     <div class="grid-label">Party Leader:</div>
     <div class="grid-value"><%= display_participant(@participant.leader_participant_id) %></div>
   <% end %>
+
+  <div class="grid-label">Social Media Profiles:</div>
+  <div class="grid-value">
+    <% @participant.social_media_profiles.each do |s| %>
+      <%= display_social_media_type(s.social_media_type_id) %>: <%= s.handle %>
+      <br />
+    <% end %>
+  </div>
 
   <div class="grid-label">Survey:</div>
   <div class="grid-value">
@@ -50,6 +46,7 @@
       <%= question %>
       <%= display_survey_answer(question_id, @participant.id) %>
       <%= display_survey_source(question_id, @participant.id) %>
+      <br />
     <% end %>
   </div>
 

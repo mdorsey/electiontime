@@ -32,17 +32,16 @@ class Participant < ApplicationRecord
   end
 
   def participant_name_for_display
-    "#{name} (#{party.name})"
+    if self.is_candidate
+      "#{name} (#{party.name})"
+    else
+      "#{name}"
+    end
   end
 
   def update_profile(raw_params, permitted_params, survey_questions)
 
     params_to_update = permitted_params
-
-    # Remove any previous pictures, if a new one was selected
-    if raw_params[:participant][:picture].present?
-      self.picture.purge
-    end
 
     # Add the Social Media Profile params
     social_media_profiles_attributes = Array.new

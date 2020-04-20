@@ -56,7 +56,6 @@ class ParticipantsController < ApplicationController
 
     def set_participant
       @participant = Participant.find(params[:id])
-      @picture_url = helpers.get_participant_picture_url(@participant.id)
     end
 
     def participant_params
