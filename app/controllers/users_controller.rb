@@ -32,6 +32,7 @@ class UsersController < ApplicationController
   end
 
   def edit
+    display_proper_view(@user, 'edit', 'edit_own_settings')
   end
 
   def new
@@ -39,6 +40,7 @@ class UsersController < ApplicationController
   end
 
   def show
+    display_proper_view(@user, 'show', 'show_own_settings')
   end
 
   def update
@@ -46,7 +48,7 @@ class UsersController < ApplicationController
       flash[:success] = "Profile updated"
       redirect_to @user
     else
-      render 'edit'
+      display_proper_view(@user, 'edit', 'edit_own_settings')
     end
   end
 
@@ -60,9 +62,19 @@ class UsersController < ApplicationController
       params.require(:user).permit(:first_name, :last_name, :email, :user_type_id, :password, :password_confirmation)
     end
 
-    # Confirms the correct user, or if the user is an Admin.
+    # Confirms the correct user, or if the user is an Admin
     def correct_user
       @user = User.find(params[:id])
       redirect_to(root_url) unless (current_user?(@user) || is_admin_user?)
+    end
+
+    def display_proper_view(user, admin_view, own_settings_view)
+      if current_user?(user)
+        render own_settings_view
+      elsif is_admin_user?
+        render admin_view
+      else
+        redirect_to root_url
+      end
     end
 end

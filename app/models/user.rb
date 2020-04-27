@@ -6,7 +6,7 @@ class User < ApplicationRecord
 
   belongs_to :user_type
   has_many :logs
-  has_one :participant
+  has_many :participants
   has_secure_password
 
   before_save   :downcase_email
@@ -99,7 +99,7 @@ class User < ApplicationRecord
 
     # Before deletion, check if the object is in use
     def allow_destroy
-      unless logs.empty?
+      unless (logs.empty? && participants.empty?)
         throw :abort
       end
     end

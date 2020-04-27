@@ -1,0 +1,20 @@
+<% provide(:title, 'User Settings') %>
+
+<h2>User Settings: <%= display_user(@user.id) %></h2>
+
+<div class="show-grid-wrapper">
+
+  <div class="grid-label">First Name:</div>
+  <div class="grid-value"><%= @user.first_name %></div>
+
+  <div class="grid-label">Last Name:</div>
+  <div class="grid-value"><%= @user.last_name %></div>
+
+  <div class="grid-label">Email:</div>
+  <div class="grid-value"><%= @user.email %></div>
+
+</div>
+
+<div class="buttons">
+  <%= link_to 'Edit User Settings', edit_user_path(@user), class: "button is-link" %>
+</div>
