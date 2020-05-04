@@ -6,6 +6,9 @@ Rails.application.routes.draw do
   get     '/contact', to: 'static_pages#contact'
   get     '/volunteer', to: 'static_pages#volunteer'
 
+  # Comparison_Pages controller  
+  get     '/find-my-election', to: 'comparison_pages#find_my_election'
+
   # Sessions controller
   get     '/login', to: 'sessions#new'
   post    '/login', to: 'sessions#create'

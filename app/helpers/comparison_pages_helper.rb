@@ -1,0 +1,2 @@
+module ComparisonPagesHelper
+end
