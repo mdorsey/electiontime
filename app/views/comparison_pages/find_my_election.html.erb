@@ -1,1 +1,14 @@
 <% provide(:title, "Find My Election") %>
+<h1>Find My Election</h1>
+
+<ul>
+  <% @elections.each do |e| %>
+    <li>
+      <%= link_to e.name, controller: "comparison_pages", action: "election_summary", election_id: e.id %> -
+      <%= e.name %> - 
+      <%= display_election_type(e.election_type_id) %> - 
+      <%= display_election_date(e.election_date) %> - 
+      <%= display_jurisdiction(e.jurisdiction_id) %>
+    </li>
+  <% end %>
+</ul>

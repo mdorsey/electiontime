@@ -1,1 +1,29 @@
 <% provide(:title, "Election Summary") %>
+<h1>Election Summary</h1>
+
+<div class="show-grid-wrapper">
+
+  <div class="grid-label">Name:</div>
+  <div class="grid-value"><%= @election.name %></div>
+
+  <div class="grid-label">Election Type:</div>
+  <div class="grid-value"><%= display_election_type(@election.election_type_id) %></div>
+
+  <div class="grid-label">Election Date:</div>
+  <div class="grid-value"><%= display_election_date(@election.election_date) %></div>
+
+  <div class="grid-label">Jurisdiction:</div>
+  <div class="grid-value"><%= display_jurisdiction(@election.jurisdiction_id) %></div>
+
+  <%= link_to "Compare Party Leaders", controller: "comparison_pages", action: "compare_party_leaders", election_id: @election.id %>
+
+  <%= link_to "Compare Party Platforms", controller: "comparison_pages", action: "compare_party_platforms", election_id: @election.id %>
+
+  Compare Candidates by District
+  <ul>
+    <% @election.districts.each do |district| %>
+      <li><%= link_to district.name, controller: "comparison_pages", action: "compare_candidates", election_id: @election.id, district_id: district.id %></li>
+    <%end %>
+  </ul>
+
+</div>

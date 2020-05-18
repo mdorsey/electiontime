@@ -4,6 +4,10 @@ module ElectionsHelper
     return Election.find(election_id).name
   end
 
+  def display_election_date(election_date)
+    return election_date.strftime("%B %d, %Y")
+  end
+
   def options_for_election
     elections = Array.new
 

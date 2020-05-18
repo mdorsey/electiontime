@@ -8,6 +8,10 @@ Rails.application.routes.draw do
 
   # Comparison_Pages controller  
   get     '/find-my-election', to: 'comparison_pages#find_my_election'
+  get     '/find-my-election/:election_id', to: 'comparison_pages#election_summary'
+  get     '/find-my-election/:election_id/compare-candidates/:district_id', to: 'comparison_pages#compare_candidates'
+  get     '/find-my-election/:election_id/compare-party-leaders', to: 'comparison_pages#compare_party_leaders'
+  get     '/find-my-election/:election_id/compare-party-platforms', to: 'comparison_pages#compare_party_platforms'
 
   # Sessions controller
   get     '/login', to: 'sessions#new'

@@ -24,7 +24,7 @@
       <div class="grid-value"><%= display_election_type(@election.election_type_id) %></div>
 
       <div class="grid-label">Election Date:</div>
-      <div class="grid-value"><%= @election.election_date.strftime("%B %d, %Y") %></div>
+      <div class="grid-value"><%= display_election_date(@election.election_date) %></div>
 
       <div class="grid-label">Jurisdiction:</div>
       <div class="grid-value"><%= display_jurisdiction(@election.jurisdiction_id) %></div>
