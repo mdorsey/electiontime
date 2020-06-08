@@ -46,6 +46,9 @@ gem "bulma-rails", "~> 0.8.0"
 # This gem integrates the Bulma pagination component with the will_paginate pagination gem. https://github.com/phoffer/will_paginate-bulma
 gem 'will_paginate-bulma'
 
+# Breadcrumb management (https://github.com/piotrmurach/loaf)
+gem 'loaf'
+
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 

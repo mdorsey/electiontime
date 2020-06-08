@@ -1,5 +1,10 @@
 class StaticPagesController < ApplicationController
 
+  # Breadcrumbs
+  breadcrumb 'About', :about_path, only: [:about]
+  breadcrumb 'Contact', :contact_path, only: [:contact]
+  breadcrumb 'Get Involved', :volunteer_path, only: [:volunteer]
+
   def about
     @content_location = ContentLocation.find_by(name: "page_about_main")
     if @content_location

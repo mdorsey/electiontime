@@ -4,6 +4,10 @@ class PasswordResetsController < ApplicationController
   before_action :valid_user, only: [:edit, :update]
   before_action :check_expiration, only: [:edit, :update]
 
+  # Breadcrumbs
+  breadcrumb 'Forgot Password', :new_password_reset_path, only: [:new]
+  breadcrumb 'Reset Password', :edit_password_reset_path, only: [:edit]
+
   def new
   end
 

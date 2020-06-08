@@ -28,12 +28,14 @@
     </script>   
 
     <%= render 'layouts/shim' %>
-  </head>    
+  </head>
   <body>
     <%= render 'layouts/header' %>
 
     <section class="section">
       <div class="container">
+        <%= render 'layouts/breadcrumb' %>
+
         <% flash.each do |message_type, message| %>
           <div class="notification is-<%= message_type %>">
             <%= message %>

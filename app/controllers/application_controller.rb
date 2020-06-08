@@ -3,6 +3,9 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   include SessionsHelper
 
+  # Breadcrumbs
+  breadcrumb 'Home', :root_path
+
   private
 
     # Confirms an admin user.

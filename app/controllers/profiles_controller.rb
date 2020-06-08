@@ -6,6 +6,10 @@ class ProfilesController < ApplicationController
   before_action :correct_participant_user, only: [:show, :edit, :update]
   before_action :set_profile, only: [:show, :edit, :update]
 
+  # Breadcrumbs
+  breadcrumb 'Public Profiles', :profiles_path
+  breadcrumb -> { @participant.participant_name_for_display }, -> { profile_path(@participant) }, only: [:edit, :show]
+
   def index
 
     @profiles = Participant.where(user_id: current_user.id).order(name: :asc)
