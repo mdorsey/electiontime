@@ -15,14 +15,14 @@
   <div class="grid-label">Jurisdiction:</div>
   <div class="grid-value"><%= display_jurisdiction(@election.jurisdiction_id) %></div>
 
-  <%= link_to "Compare Party Leaders", controller: "comparison_pages", action: "compare_party_leaders", election_id: @election.id %>
+  <%= link_to "Compare Party Leaders", compare_party_leaders_path(@election) %>
 
-  <%= link_to "Compare Party Platforms", controller: "comparison_pages", action: "compare_party_platforms", election_id: @election.id %>
+  <%= link_to "Compare Party Platforms", compare_party_platforms_path(@election) %>
 
   Compare Candidates by District
   <ul>
     <% @election.districts.each do |district| %>
-      <li><%= link_to district.name, controller: "comparison_pages", action: "compare_candidates", election_id: @election.id, district_id: district.id %></li>
+      <li><%= link_to district.name, compare_candidates_path(election_id: @election.id, district_id: district.id) %></li>
     <%end %>
   </ul>
 

@@ -1,10 +1,12 @@
 <% if defined?(breadcrumb_trail) && breadcrumb_trail.count > 1 %>
-  <nav class="breadcrumb" aria-label="breadcrumbs">
+  <nav class="breadcrumb has-succeeds-separator is-small" aria-label="breadcrumbs">
     <ul>
-      <% breadcrumb_trail do |crumb| %>
-        <li>
-          <%= link_to crumb.name, crumb.url, (crumb.current? ? {'aria-current' => 'page'} : {}) %>
-        </li>
+      <% breadcrumb_trail.each_with_index do |crumb, index| %>
+        <% if index == breadcrumb_trail.count-1 %>
+          <li class="is-active"><%= link_to crumb.name, crumb.url, {'aria-current' => 'page'} %></li>
+        <% else %>
+          <li><%= link_to crumb.name, crumb.url %></li>
+        <% end %>
       <% end %>
     </ul>
   </nav>

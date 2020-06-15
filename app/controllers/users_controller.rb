@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   before_action :admin_user, only: [:index, :create, :new, :destroy]
   before_action :set_user, only: [:show, :edit, :update, :destroy]
   before_action :logged_in_user, only: [:edit, :update, :show]
-  before_action :correct_user, only: [:edit, :update, :show]  
+  before_action :correct_user, only: [:edit, :update, :show]
 
   def index
     @users = User.search(params[:search]).paginate(page: params[:page]).order('last_name ASC')

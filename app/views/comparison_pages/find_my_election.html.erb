@@ -4,7 +4,7 @@
 <ul class="find-my-election-list">
   <% @elections.each do |e| %>
     <li>
-      <%= link_to controller: "comparison_pages", action: "election_summary", election_id: e.id do %>
+      <%= link_to election_summary_path(e) do %>
         <div class="box">
           <article class="election-banner">
             <h3><%= e.name %></h3>
