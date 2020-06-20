@@ -30,6 +30,14 @@ class ComparisonPagesController < ApplicationController
 
     def set_election
       @election = Election.find(params[:election_id])
+
+      # Get the parties and leaders associated with this election
+      @participant_parties = @election.participants.where(is_candidate: false)
+      @participant_party_leaders = []
+      @participant_parties.each do |party|
+        leader = Participant.find(party.leader_participant_id)
+        @participant_party_leaders << leader
+      end
     end
 
     def set_district

@@ -31,11 +31,11 @@ class Participant < ApplicationRecord
     end
   end
 
-  def participant_name_for_display
-    if self.is_candidate
-      "#{name} (#{party.name})"
-    else
+  def participant_name_for_display(name_only = false)
+    if name_only || !self.is_candidate
       "#{name}"
+    else
+      "#{name} (#{party.name})"
     end
   end
 
