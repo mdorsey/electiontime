@@ -14,7 +14,11 @@ class ComparisonPagesController < ApplicationController
     @elections = Election.where(active: true).order('election_date DESC')
   end
 
-  def election_summary    
+  def election_summary
+    # If the Compare Candidates submit button has been clicked
+    if (params[:district_id] && District.find(params[:district_id]))
+      redirect_to compare_candidates_path(election_id: @election.id, district_id: params[:district_id])
+    end
   end
 
   def compare_candidates

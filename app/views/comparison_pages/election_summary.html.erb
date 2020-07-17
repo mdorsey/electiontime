@@ -44,16 +44,21 @@
   </nav>
 <% end %>
 
-<nav class="level">
-  <div class="level-item has-text-centered">
-    <div>
-      <h3>Compare Candidates</h3>
-      Select your riding:
-      <div class="control">
-        <div class="select">
-          <%= select_tag(:district_id, options_for_select(options_for_district)) %>
+<%= form_with(url: election_summary_path(@election), method: "get", local: true) do |f| %>
+  <nav class="level">
+    <div class="level-item has-text-centered">
+      <div>
+        <h3>Compare Candidates</h3>
+        <%= f.label "Select your riding", class: 'label' %>
+        <div class="control">
+          <div class="select">
+            <%= f.select(:district_id, options_for_select(options_for_district)) %>
+          </div>
+        </div>
+        <div class="buttons">
+          <%= f.submit "Go!", class: "button is-link" %>
         </div>
       </div>
     </div>
-  </div>
-</nav>
+  </nav>
+<% end %>
