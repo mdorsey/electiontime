@@ -1,4 +1,51 @@
 <% provide(:title, "Compare Party Leaders") %>
 <h1>Compare Party Leaders</h1>
 
-<%= @election.name %>
+<!-- BIOGRAPHIES -->
+<h3>Biographies</h3>
+<div class="columns is-multiline">
+  <% @participant_party_leaders.each do |pl| %>
+    <div class="column is-one-third">
+      <div class="columns">
+        <div class="column is-narrow">
+          <figure class="image is-128x128">
+            <%= image_tag(get_participant_picture_url(pl.id), alt: display_participant(pl.id)) %>
+          </figure>
+        </div>
+        <div class="column">
+          <p class="participant-name"><%= display_participant(pl.id, true) %></p>
+          <p><%= display_party(pl.party_id) %></p>
+        </div>
+      </div>
+
+      <p><%= pl.biography %></p>
+    </div>
+  <% end %>
+</div>
+
+<!-- SURVEY ANSWERS -->
+
+<!-- CONTACT -->
+<h3>Contact</h3>
+<div class="columns is-multiline">
+  <% @participant_party_leaders.each do |pl| %>
+    <div class="column is-one-third">
+      <div class="columns">
+        <div class="column is-narrow">
+          <figure class="image is-128x128">
+            <%= image_tag(get_participant_picture_url(pl.id), alt: display_participant(pl.id)) %>
+          </figure>
+        </div>
+        <div class="column">
+          <p class="participant-name"><%= display_participant(pl.id, true) %></p>
+          <p><%= display_party(pl.party_id) %></p>
+        </div>
+      </div>
+
+      <p>Email: <%= mail_to pl.email, pl.email, target: "_blank" %></p>
+      <p>Phone: <%= pl.phone %></p>
+      <p>Website: <%= link_to pl.website, pl.website, target: "_blank" %></p>
+      <p>Address: <%= display_address(pl.address_id) %></p>
+    </div>
+  <% end %>
+</div>

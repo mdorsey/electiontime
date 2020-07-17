@@ -15,14 +15,15 @@
 <%= link_to compare_party_leaders_path(@election) do %>
   <h3>Compare Party Leaders</h3>
   <nav class="level">
-    <% @participant_party_leaders.each do |participant_party_leader| %>
-      <div class="level-item has-text-centered">
+    <% @participant_party_leaders.each do |pl| %>
+      <div class="level-item">
         <div>
-          <%= image_tag(get_participant_picture_url(participant_party_leader.id), size: "100x100", alt: display_participant(participant_party_leader.id)) %>
+          <figure class="image is-128x128">
+            <%= image_tag(get_participant_picture_url(pl.id), alt: display_participant(pl.id)) %>
+          </figure>
+          <%= display_participant(pl.id, true) %>
           <br />
-          <%= display_participant(participant_party_leader.id, true) %>
-          <br />
-          <%= display_party(participant_party_leader.party_id) %>
+          <%= display_party(pl.party_id) %>
         </div>
       </div>
     <% end %>
@@ -33,10 +34,11 @@
   <h3>Compare Party Platforms</h3>
   <nav class="level">
     <% @participant_parties.each do |participant_party| %>
-      <div class="level-item has-text-centered">
+      <div class="level-item">
         <div>
-          <%= image_tag(get_participant_picture_url(participant_party.id), size: "100x100", alt: display_participant(participant_party.id)) %>
-          <br />
+          <figure class="image is-128x128">
+            <%= image_tag(get_participant_picture_url(participant_party.id), alt: display_participant(participant_party.id)) %>
+          </figure>
           <%= display_participant(participant_party.id) %>
         </div>
       </div>
