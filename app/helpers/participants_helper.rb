@@ -24,8 +24,8 @@ module ParticipantsHelper
 
   def get_participant_picture_url(participant_id)
 
-    # Start with the default picture
-    picture_url = Rails.configuration.blank_avatar_name
+    # Start with the default picture from the System Settings
+    picture_url = SystemSetting.find_by(name: "blank_avatar_name").setting
 
     if participant_id
       participant = Participant.find(participant_id)

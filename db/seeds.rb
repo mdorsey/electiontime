@@ -404,6 +404,8 @@ SocialMediaType.create!(name: "Youtube")
 SurveyType.create!(name: "Candidate")
 SurveyType.create!(name: "Party")
 
+SystemSetting.create!(name: "blank_avatar_name", setting: "blank_avatar.png")
+
 UserType.create!(name: "Admin")
 UserType.create!(name: "Volunteer")
 UserType.create!(name: "Candidate")

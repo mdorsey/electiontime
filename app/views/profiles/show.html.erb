@@ -2,7 +2,9 @@
 
 <h2><%= @participant.name %></h2>
 
-<%= image_tag(get_participant_picture_url(@participant.id), size: "100x100", alt: @participant.name) %>
+<figure class="image is-128x128">
+  <%= image_tag(get_participant_picture_url(@participant.id), alt: @participant.name) %>
+</figure>
 
 <div class="show-grid-wrapper">
 
