@@ -3,6 +3,7 @@ class SocialMediaType < ApplicationRecord
   has_many :social_media_profiles
 
   validates(:name, presence: true, length: { maximum: 255 })
+  validates(:website, presence: true, length: { maximum: 255 })
 
   before_destroy :allow_destroy
 

@@ -8,6 +8,13 @@
     </div>
   </div>
 
+  <div class="field">
+    <%= f.label :website, "Website", class: 'label' %>
+    <div class="control">
+      <%= f.text_field :website, class: 'input' %>
+    </div>
+  </div>
+
   <div class="buttons">
     <%= f.submit "Save", class: "button is-link" %>
     <%= link_to 'Cancel', cancel_path, class: "button", role: "button" %>

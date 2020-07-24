@@ -15,6 +15,7 @@ class SocialMediaTypesTest < ApplicationSystemTestCase
     click_on "New Social Media Type"
 
     fill_in "Name", with: @social_media_type.name
+    fill_in "Website", with: @social_media_type.website
     click_on "Create Social media type"
 
     assert_text "Social media type was successfully created"
@@ -26,6 +27,7 @@ class SocialMediaTypesTest < ApplicationSystemTestCase
     click_on "Edit", match: :first
 
     fill_in "Name", with: @social_media_type.name
+    fill_in "Website", with: @social_media_type.website
     click_on "Update Social media type"
 
     assert_text "Social media type was successfully updated"

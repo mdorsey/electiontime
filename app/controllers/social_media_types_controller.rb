@@ -54,6 +54,6 @@ class SocialMediaTypesController < ApplicationController
     end
 
     def social_media_type_params
-      params.require(:social_media_type).permit(:name)
+      params.require(:social_media_type).permit(:name, :website)
     end
 end
