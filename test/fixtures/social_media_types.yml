@@ -3,7 +3,9 @@
 one:
   name: MyString
   website: MyWebsite
+  icon: MyIcon
 
 two:
   name: MyString
   website: MyWebsite
+  icon: MyIcon

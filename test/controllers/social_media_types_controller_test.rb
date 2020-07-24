@@ -20,7 +20,7 @@ class SocialMediaTypesControllerTest < ActionDispatch::IntegrationTest
 
   test "should create social_media_type" do
     assert_difference('SocialMediaType.count') do
-      post social_media_types_url, params: { social_media_type: { name: @social_media_type.name, website: @social_media_type.website } }
+      post social_media_types_url, params: { social_media_type: { name: @social_media_type.name, website: @social_media_type.website, icon: @social_media_type.icon } }
     end
 
     assert_redirected_to social_media_types_url
@@ -37,7 +37,7 @@ class SocialMediaTypesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update social_media_type" do
-    patch social_media_type_url(@social_media_type), params: { social_media_type: { name: @social_media_type.name, website: @social_media_type.website } }
+    patch social_media_type_url(@social_media_type), params: { social_media_type: { name: @social_media_type.name, website: @social_media_type.website, icon: @social_media_type.icon } }
     assert_redirected_to social_media_type_url(@social_media_type)
   end
 

@@ -398,6 +398,7 @@ Province.create!(name: "Yukon")
 
 SocialMediaType.create!(name: "Facebook", website: "https://www.facebook.com/")
 SocialMediaType.create!(name: "Instagram", website: "https://www.instagram.com/")
+SocialMediaType.create!(name: "LinkedIn", website: "https://www.linkedin.com/in/")
 SocialMediaType.create!(name: "Medium", website: "https://medium.com/")
 SocialMediaType.create!(name: "Twitter", website: "https://twitter.com/")
 SocialMediaType.create!(name: "Youtube", website: "https://www.youtube.com/")

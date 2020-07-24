@@ -16,6 +16,7 @@ class SocialMediaTypesTest < ApplicationSystemTestCase
 
     fill_in "Name", with: @social_media_type.name
     fill_in "Website", with: @social_media_type.website
+    fill_in "Icon", with: @social_media_type.icon
     click_on "Create Social media type"
 
     assert_text "Social media type was successfully created"
@@ -28,6 +29,7 @@ class SocialMediaTypesTest < ApplicationSystemTestCase
 
     fill_in "Name", with: @social_media_type.name
     fill_in "Website", with: @social_media_type.website
+    fill_in "Icon", with: @social_media_type.icon
     click_on "Update Social media type"
 
     assert_text "Social media type was successfully updated"

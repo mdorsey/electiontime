@@ -4,6 +4,7 @@ class SocialMediaType < ApplicationRecord
 
   validates(:name, presence: true, length: { maximum: 255 })
   validates(:website, presence: true, length: { maximum: 255 })
+  validates(:icon, length: { maximum: 255 })
 
   before_destroy :allow_destroy
 
