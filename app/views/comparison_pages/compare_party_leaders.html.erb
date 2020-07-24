@@ -48,7 +48,7 @@
       <p>Address: <%= display_address(pl.address_id) %></p>
 
       <% pl.social_media_profiles.each do |s| %>
-        <%= link_to display_social_media_profile(s.id), display_social_media_profile(s.id), target: "_blank" %>
+        <%= link_to image_tag(get_social_media_type_icon(s.social_media_type_id)), social_media_profile_link(s.id), target: "_blank" %>
       <% end %>
     </div>
   <% end %>
