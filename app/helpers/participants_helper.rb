@@ -3,8 +3,7 @@ module ParticipantsHelper
   def display_participant(participant_id, name_only = false)
     
     if participant_id
-      participant = Participant.find(participant_id)
-      participant_name = participant.participant_name_for_display(name_only)
+      participant_name = Participant.find(participant_id).participant_name_for_display(name_only)
     else
       participant_name = ''
     end

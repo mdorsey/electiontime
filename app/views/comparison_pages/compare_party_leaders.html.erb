@@ -46,6 +46,10 @@
       <p>Phone: <%= pl.phone %></p>
       <p>Website: <%= link_to pl.website, pl.website, target: "_blank" %></p>
       <p>Address: <%= display_address(pl.address_id) %></p>
+
+      <% pl.social_media_profiles.each do |s| %>
+        <%= link_to display_social_media_profile(s.id), display_social_media_profile(s.id), target: "_blank" %>
+      <% end %>
     </div>
   <% end %>
 </div>
