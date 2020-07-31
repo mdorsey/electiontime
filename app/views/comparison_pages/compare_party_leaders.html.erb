@@ -31,25 +31,39 @@
   <% @participant_party_leaders.each do |pl| %>
     <div class="column is-one-third">
       <div class="columns">
+
+        <!-- Profile picture -->
         <div class="column is-narrow">
           <figure class="image is-128x128">
             <%= image_tag(get_participant_picture_url(pl.id), alt: display_participant(pl.id)) %>
           </figure>
         </div>
+
+        <!-- Name and party -->
         <div class="column">
           <p class="participant-name"><%= display_participant(pl.id, true) %></p>
           <p><%= display_party(pl.party_id) %></p>
         </div>
       </div>
 
+      <!-- Contact information -->
       <p>Email: <%= mail_to pl.email, pl.email, target: "_blank" %></p>
       <p>Phone: <%= pl.phone %></p>
       <p>Website: <%= link_to pl.website, pl.website, target: "_blank" %></p>
       <p>Address: <%= display_address(pl.address_id) %></p>
 
-      <% pl.social_media_profiles.each do |s| %>
-        <%= link_to image_tag(get_social_media_type_icon(s.social_media_type_id)), social_media_profile_link(s.id), target: "_blank" %>
-      <% end %>
+      <!-- Social media icons -->
+      <nav class="level is-mobile">
+        <div class="level-left">
+          <% get_social_media_profiles_in_alphabetical_order(pl.id).each do |s| %>
+            <div class="level-item mr-4">
+              <figure class="image is-32x32">
+                <%= link_to image_tag(get_social_media_type_icon(s.social_media_type_id)), social_media_profile_link(s.id), target: "_blank" %>
+              </figure>
+            </div>
+          <% end %>
+        </div>
+      </nav>
     </div>
   <% end %>
 </div>
