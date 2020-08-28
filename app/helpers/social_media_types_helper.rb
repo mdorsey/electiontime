@@ -15,14 +15,6 @@ module SocialMediaTypesHelper
   end
 
   def get_social_media_type_icon(social_media_type_id)
-
-    icon_url = ''
-    icon = SocialMediaType.find(social_media_type_id).icon
-
-    unless icon.empty?
-      icon_url = 'social_media_icons/' + icon
-    end
-
-    return icon_url
+    return SocialMediaType.find(social_media_type_id).icon
   end
 end

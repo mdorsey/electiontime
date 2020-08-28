@@ -52,9 +52,9 @@
         <div class="level-left">
           <% get_social_media_profiles_in_alphabetical_order(pl.id).each do |s| %>
             <div class="level-item mr-4">
-              <figure class="image is-32x32">
-                <%= link_to image_tag(get_social_media_type_icon(s.social_media_type_id)), social_media_profile_link(s.id), target: "_blank" %>
-              </figure>
+              <%= link_to(social_media_profile_link(s.id), target: "_blank") do %>
+                <i class="<%= get_social_media_type_icon(s.social_media_type_id) %>"></i>
+              <% end %>
             </div>
           <% end %>
         </div>
