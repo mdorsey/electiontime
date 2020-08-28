@@ -6,45 +6,38 @@
 <div class="columns is-multiline">
   <% @participant_party_leaders.each do |pl| %>
     <div class="column is-one-third">
-      <div class="columns">
-        <div class="column is-narrow">
-          <figure class="image is-128x128">
-            <%= image_tag(get_participant_picture_url(pl.id), alt: display_participant(pl.id)) %>
-          </figure>
-        </div>
-        <div class="column">
-          <p class="participant-name"><%= display_participant(pl.id, true) %></p>
-          <p><%= display_party(pl.party_id) %></p>
-        </div>
-      </div>
+      <!-- Header -->
+      <%= render 'layouts/comparison_participant_header', participant_id: pl.id, party_id: pl.party_id %>
 
+      <!-- Biography -->
       <p><%= pl.biography %></p>
     </div>
   <% end %>
 </div>
 
-<!-- SURVEY ANSWERS -->
+<!-- SURVEY QUESTIONS AND ANSWERS -->
+<% @survey_questions.each do |question_id, question| %>
+  <h3><%= question %></h3>
+  <div class="columns is-multiline">
+    <% @participant_party_leaders.each do |pl| %>
+      <div class="column is-one-third">
+        <!-- Header -->
+        <%= render 'layouts/comparison_participant_header', participant_id: pl.id, party_id: pl.party_id %>
 
-<!-- CONTACT -->
+        <!-- Survey Answer -->
+        <p><%= display_survey_answer(question_id, pl.id) %></p>
+      </div>
+    <% end %>
+  </div>
+<% end %>
+
+<!-- CONTACTS -->
 <h3>Contact</h3>
 <div class="columns is-multiline">
   <% @participant_party_leaders.each do |pl| %>
     <div class="column is-one-third">
-      <div class="columns">
-
-        <!-- Profile picture -->
-        <div class="column is-narrow">
-          <figure class="image is-128x128">
-            <%= image_tag(get_participant_picture_url(pl.id), alt: display_participant(pl.id)) %>
-          </figure>
-        </div>
-
-        <!-- Name and party -->
-        <div class="column">
-          <p class="participant-name"><%= display_participant(pl.id, true) %></p>
-          <p><%= display_party(pl.party_id) %></p>
-        </div>
-      </div>
+      <!-- Header -->
+      <%= render 'layouts/comparison_participant_header', participant_id: pl.id, party_id: pl.party_id %>
 
       <!-- Contact information -->
       <p>Email: <%= mail_to pl.email, pl.email, target: "_blank" %></p>

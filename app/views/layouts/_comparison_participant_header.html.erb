@@ -1,0 +1,14 @@
+<div class="columns">
+  <!-- Profile picture -->
+  <div class="column is-narrow">
+    <figure class="image is-128x128">
+      <%= image_tag(get_participant_picture_url(participant_id), alt: display_participant(participant_id)) %>
+    </figure>
+  </div>
+
+  <!-- Name and party -->
+  <div class="column">
+    <p class="participant-name"><%= display_participant(participant_id, true) %></p>
+    <p><%= display_party(party_id) %></p>
+  </div>
+</div>

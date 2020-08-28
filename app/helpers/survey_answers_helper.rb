@@ -16,9 +16,9 @@ module SurveyAnswersHelper
 
     source_text = ''
 
-    survey_source = SurveyAnswer.find_by(survey_question_id: survey_question_id, participant_id: participant_id)
-    if survey_source
-      source_text = survey_source.source
+    survey_answer = SurveyAnswer.find_by(survey_question_id: survey_question_id, participant_id: participant_id)
+    if survey_answer
+      source_text = survey_answer.source
     end
 
     return source_text 

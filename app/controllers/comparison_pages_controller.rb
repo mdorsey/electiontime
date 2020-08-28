@@ -22,12 +22,15 @@ class ComparisonPagesController < ApplicationController
   end
 
   def compare_candidates
+    @survey_questions = get_survey_questions("Candidate")
   end
 
   def compare_party_leaders
+    @survey_questions = get_survey_questions("Candidate")
   end
 
   def compare_party_platforms
+    @survey_questions = get_survey_questions("Party")
   end
 
   private
@@ -46,5 +49,19 @@ class ComparisonPagesController < ApplicationController
 
     def set_district
       @district = District.find(params[:district_id])
+    end
+
+    def get_survey_questions(survey_type_name)
+      survey_questions = Hash.new
+      survey_type = SurveyType.find_by(name: survey_type_name)
+      survey = @election.surveys.find_by(survey_type_id: survey_type.id)
+
+      if survey
+        SurveyQuestion.where(survey_id: survey.id).order(order: :asc).each do |q|
+          survey_questions[q.id] = q.question
+        end
+      end
+
+      return survey_questions
     end
 end
