@@ -7,7 +7,7 @@
   <% @participant_party_leaders.each do |pl| %>
     <div class="column is-one-third">
       <!-- Header -->
-      <%= render 'layouts/comparison_participant_header', participant_id: pl.id, party_id: pl.party_id %>
+      <%= render 'shared/comparison_participant_header', participant_id: pl.id, party_id: pl.party_id %>
 
       <!-- Biography -->
       <p><%= pl.biography %></p>
@@ -22,7 +22,7 @@
     <% @participant_party_leaders.each do |pl| %>
       <div class="column is-one-third">
         <!-- Header -->
-        <%= render 'layouts/comparison_participant_header', participant_id: pl.id, party_id: pl.party_id %>
+        <%= render 'shared/comparison_participant_header', participant_id: pl.id, party_id: pl.party_id %>
 
         <!-- Survey Answer -->
         <p><%= display_survey_answer(question_id, pl.id) %></p>
@@ -37,7 +37,7 @@
   <% @participant_party_leaders.each do |pl| %>
     <div class="column is-one-third">
       <!-- Header -->
-      <%= render 'layouts/comparison_participant_header', participant_id: pl.id, party_id: pl.party_id %>
+      <%= render 'shared/comparison_participant_header', participant_id: pl.id, party_id: pl.party_id %>
 
       <!-- Contact information -->
       <p>Email: <%= mail_to pl.email, pl.email, target: "_blank" %></p>

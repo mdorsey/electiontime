@@ -3,10 +3,10 @@
 
 <div class="columns">
   <div class="column is-narrow">
-    <%= render 'layouts/admin_menu' %>
+    <%= render 'shared/admin_menu' %>
   </div>
   <div class="column">
-    <%= render 'layouts/admin_list', new_object_text: "+ New Survey Question", new_object_path: new_survey_question_path, 
+    <%= render 'shared/admin_list', new_object_text: "+ New Survey Question", new_object_path: new_survey_question_path, 
       objects_path: survey_questions_path, placeholder_text: "Search by question...", objects_list: @survey_questions %>
   </div>
 </div>
