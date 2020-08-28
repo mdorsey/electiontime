@@ -1,8 +1,10 @@
 <% provide(:title, "Compare Party Leaders") %>
 <h1>Compare Party Leaders</h1>
 
+<%= render 'shared/comparison_nav_menu', survey_questions: @survey_questions %>
+
 <!-- BIOGRAPHIES -->
-<h3>Biographies</h3>
+<a id="biographies"><h3>Biographies</h3></a>
 <div class="columns is-multiline">
   <% @participant_party_leaders.each do |pl| %>
     <div class="column is-one-third">
@@ -17,7 +19,7 @@
 
 <!-- SURVEY QUESTIONS AND ANSWERS -->
 <% @survey_questions.each do |question_id, question| %>
-  <h3><%= question %></h3>
+  <a id="question_<%= question_id %>"><h3><%= question %></h3></a>
   <div class="columns is-multiline">
     <% @participant_party_leaders.each do |pl| %>
       <div class="column is-one-third">
@@ -32,7 +34,7 @@
 <% end %>
 
 <!-- CONTACTS -->
-<h3>Contact</h3>
+<a id="contacts"><h3>Contacts</h3></a>
 <div class="columns is-multiline">
   <% @participant_party_leaders.each do |pl| %>
     <div class="column is-one-third">

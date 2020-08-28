@@ -1,0 +1,29 @@
+<nav class="level comparison_nav_menu">
+  <div class="level-item">
+    <div class="dropdown" onclick="toggle_comparison_nav_menu()">
+      <div class="dropdown-trigger">
+        <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
+          <span>Jump to a section:</span>
+          <span class="icon is-small">
+            <i class="fas fa-angle-down" aria-hidden="true"></i>
+          </span>
+        </button>
+      </div>
+      <div class="dropdown-menu" id="dropdown-menu" role="menu">
+        <div class="dropdown-content">
+          <a href="#biographies" class="dropdown-item">
+            Biographies
+          </a>
+          <% @survey_questions.each do |question_id, question| %>
+            <a href="#question_<%= question_id %>" class="dropdown-item">
+              <%= question %>
+            </a>
+          <% end %>
+          <a href="#contacts" class="dropdown-item">
+            Contacts
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>

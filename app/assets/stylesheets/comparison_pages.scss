@@ -2,18 +2,27 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.find-my-election-list {
-  li {
-    margin-bottom: 30px;
-  }
+.box:hover {
+  border: 1px solid black;
+}
+
+.comparison_nav_menu {
+  border: 1px solid black;
+  position: sticky;
+  position: -webkit-sticky;
+  top: 0;
+  z-index: 9999;
+  background-color: lightgrey;
 }
 
 .election-banner {
   text-align: center;
 }
 
-.box:hover {
-  border: 1px solid black
+.find-my-election-list {
+  li {
+    margin-bottom: 30px;
+  }
 }
 
 .participant-name {
