@@ -39,12 +39,15 @@ class ComparisonPagesController < ApplicationController
       @election = Election.find(params[:election_id])
 
       # Get the parties and leaders associated with this election
-      @participant_parties = @election.participants.where(is_candidate: false)
+      @participant_parties = @election.participants.where(is_candidate: false).order(name: :asc)
       @participant_party_leaders = []
       @participant_parties.each do |party|
         leader = Participant.find(party.leader_participant_id)
         @participant_party_leaders << leader
       end
+
+      # Order the leaders alphabetically
+      @participant_party_leaders.sort! { |a,b| a.name.downcase <=> b.name.downcase }
     end
 
     def set_district

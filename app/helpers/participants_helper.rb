@@ -1,7 +1,6 @@
 module ParticipantsHelper
 
   def display_participant(participant_id, name_only = false)
-    
     if participant_id
       participant_name = Participant.find(participant_id).participant_name_for_display(name_only)
     else
@@ -42,5 +41,9 @@ module ParticipantsHelper
     participant.address ||= Address.new
     
     return participant
+  end
+
+  def is_participant_the_incumbent(participant_id)
+    return Participant.find(participant_id).is_incumbent
   end
 end
