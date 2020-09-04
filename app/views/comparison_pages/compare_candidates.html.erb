@@ -1,5 +1,17 @@
-<% provide(:title, "Compare Candidates") %>
-<h1>Compare Candidates</h1>
+<% provide(:title, "Compare Candidates in " + @district.name) %>
+<h1>Compare Candidates in <%= @district.name %></h1>
 
-<%= @election.name %>
-<%= @district.name %>
+<!-- INTRO -->
+<%= render 'shared/comparison_intro' %>
+
+<!-- NAV MENU -->
+<%= render 'shared/comparison_nav_menu', survey_questions: @survey_questions %>
+
+<!-- BIOGRAPHIES -->
+<%= render 'shared/comparison_biography', participants: @candidates %>
+
+<!-- SURVEY QUESTIONS AND ANSWERS -->
+<%= render 'shared/comparison_survey', survey_questions: @survey_questions, participants: @candidates %>
+
+<!-- CONTACTS -->
+<%= render 'shared/comparison_contact', participants: @candidates %>

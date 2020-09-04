@@ -25,6 +25,7 @@ class ComparisonPagesController < ApplicationController
   end
 
   def compare_candidates
+    @candidates = @election.candidates_for_display(@district.id)
     @survey_questions = @election.survey_questions_by_type("Candidate")
   end
 
