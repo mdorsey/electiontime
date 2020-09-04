@@ -1,67 +1,17 @@
 <% provide(:title, "Compare Party Leaders") %>
 <h1>Compare Party Leaders</h1>
 
-<p>Candidates are listed alphabetically</p>
-<p><i class="fas fa-star"></i> = incumbent</p>
+<!-- INTRO -->
+<%= render 'shared/comparison_intro' %>
 
+<!-- NAV MENU -->
 <%= render 'shared/comparison_nav_menu', survey_questions: @survey_questions %>
 
 <!-- BIOGRAPHIES -->
-<a id="biographies"><h3>Biographies</h3></a>
-<div class="columns is-multiline">
-  <% @party_leaders.each do |pl| %>
-    <div class="column is-one-third">
-      <!-- Header -->
-      <%= render 'shared/comparison_participant_header', participant_id: pl.id, party_id: pl.party_id %>
-
-      <!-- Biography -->
-      <p><%= pl.biography %></p>
-    </div>
-  <% end %>
-</div>
+<%= render 'shared/comparison_biography', participants: @party_leaders %>
 
 <!-- SURVEY QUESTIONS AND ANSWERS -->
-<% @survey_questions.each do |question_id, question| %>
-  <a id="question_<%= question_id %>"><h3><%= question %></h3></a>
-  <div class="columns is-multiline">
-    <% @party_leaders.each do |pl| %>
-      <div class="column is-one-third">
-        <!-- Header -->
-        <%= render 'shared/comparison_participant_header', participant_id: pl.id, party_id: pl.party_id %>
-
-        <!-- Survey Answer -->
-        <p><%= display_survey_answer(question_id, pl.id) %></p>
-      </div>
-    <% end %>
-  </div>
-<% end %>
+<%= render 'shared/comparison_survey', survey_questions: @survey_questions, participants: @party_leaders %>
 
 <!-- CONTACTS -->
-<a id="contacts"><h3>Contacts</h3></a>
-<div class="columns is-multiline">
-  <% @party_leaders.each do |pl| %>
-    <div class="column is-one-third">
-      <!-- Header -->
-      <%= render 'shared/comparison_participant_header', participant_id: pl.id, party_id: pl.party_id %>
-
-      <!-- Contact information -->
-      <p>Email: <%= mail_to pl.email, pl.email, target: "_blank" %></p>
-      <p>Phone: <%= pl.phone %></p>
-      <p>Website: <%= link_to pl.website, pl.website, target: "_blank" %></p>
-      <p>Address: <%= display_address(pl.address_id) %></p>
-
-      <!-- Social media icons -->
-      <nav class="level is-mobile">
-        <div class="level-left">
-          <% get_social_media_profiles_in_alphabetical_order(pl.id).each do |s| %>
-            <div class="level-item mr-4">
-              <%= link_to(social_media_profile_link(s.id), target: "_blank") do %>
-                <i class="<%= get_social_media_type_icon(s.social_media_type_id) %>"></i>
-              <% end %>
-            </div>
-          <% end %>
-        </div>
-      </nav>
-    </div>
-  <% end %>
-</div>
+<%= render 'shared/comparison_contact', participants: @party_leaders %>
