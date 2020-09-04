@@ -9,7 +9,7 @@
 <!-- BIOGRAPHIES -->
 <a id="biographies"><h3>Biographies</h3></a>
 <div class="columns is-multiline">
-  <% @participant_party_leaders.each do |pl| %>
+  <% @party_leaders.each do |pl| %>
     <div class="column is-one-third">
       <!-- Header -->
       <%= render 'shared/comparison_participant_header', participant_id: pl.id, party_id: pl.party_id %>
@@ -24,7 +24,7 @@
 <% @survey_questions.each do |question_id, question| %>
   <a id="question_<%= question_id %>"><h3><%= question %></h3></a>
   <div class="columns is-multiline">
-    <% @participant_party_leaders.each do |pl| %>
+    <% @party_leaders.each do |pl| %>
       <div class="column is-one-third">
         <!-- Header -->
         <%= render 'shared/comparison_participant_header', participant_id: pl.id, party_id: pl.party_id %>
@@ -39,7 +39,7 @@
 <!-- CONTACTS -->
 <a id="contacts"><h3>Contacts</h3></a>
 <div class="columns is-multiline">
-  <% @participant_party_leaders.each do |pl| %>
+  <% @party_leaders.each do |pl| %>
     <div class="column is-one-third">
       <!-- Header -->
       <%= render 'shared/comparison_participant_header', participant_id: pl.id, party_id: pl.party_id %>

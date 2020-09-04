@@ -15,6 +15,9 @@ class ComparisonPagesController < ApplicationController
   end
 
   def election_summary
+    @parties = @election.parties_for_display
+    @party_leaders = @election.party_leaders_for_display
+
     # If the Compare Candidates submit button has been clicked
     if (params[:district_id] && District.find(params[:district_id]))
       redirect_to compare_candidates_path(election_id: @election.id, district_id: params[:district_id])
@@ -22,49 +25,26 @@ class ComparisonPagesController < ApplicationController
   end
 
   def compare_candidates
-    @survey_questions = get_survey_questions("Candidate")
+    @survey_questions = @election.survey_questions_by_type("Candidate")
   end
 
   def compare_party_leaders
-    @survey_questions = get_survey_questions("Candidate")
+    @party_leaders = @election.party_leaders_for_display
+    @survey_questions = @election.survey_questions_by_type("Candidate")
   end
 
   def compare_party_platforms
-    @survey_questions = get_survey_questions("Party")
+    @parties = @election.parties_for_display
+    @survey_questions = @election.survey_questions_by_type("Party")
   end
 
   private
 
     def set_election
       @election = Election.find(params[:election_id])
-
-      # Get the parties and leaders associated with this election
-      @participant_parties = @election.participants.where(is_candidate: false).order(name: :asc)
-      @participant_party_leaders = []
-      @participant_parties.each do |party|
-        leader = Participant.find(party.leader_participant_id)
-        @participant_party_leaders << leader
-      end
-
-      # Order the leaders alphabetically
-      @participant_party_leaders.sort! { |a,b| a.name.downcase <=> b.name.downcase }
     end
 
     def set_district
       @district = District.find(params[:district_id])
-    end
-
-    def get_survey_questions(survey_type_name)
-      survey_questions = Hash.new
-      survey_type = SurveyType.find_by(name: survey_type_name)
-      survey = @election.surveys.find_by(survey_type_id: survey_type.id)
-
-      if survey
-        SurveyQuestion.where(survey_id: survey.id).order(order: :asc).each do |q|
-          survey_questions[q.id] = q.question
-        end
-      end
-
-      return survey_questions
     end
 end

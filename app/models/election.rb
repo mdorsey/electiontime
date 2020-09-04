@@ -21,6 +21,40 @@ class Election < ApplicationRecord
     end
   end
 
+  def parties_for_display
+    self.participants.where(is_candidate: false).order(name: :asc)
+  end
+
+  def party_leaders_for_display
+    party_leaders = []
+    
+    parties = self.parties_for_display
+    parties.each do |party|
+      if party.leader_participant_id
+        party_leaders << Participant.find(party.leader_participant_id)
+      end
+    end
+
+    # Order the leaders alphabetically
+    party_leaders.sort! { |a,b| a.name.downcase <=> b.name.downcase }
+
+    return party_leaders
+  end
+
+  def survey_questions_by_type(survey_type_name)
+    survey_questions = Hash.new
+    survey_type = SurveyType.find_by(name: survey_type_name)
+    survey = self.surveys.find_by(survey_type_id: survey_type.id)
+
+    if survey
+      SurveyQuestion.where(survey_id: survey.id).order(order: :asc).each do |q|
+        survey_questions[q.id] = q.question
+      end
+    end
+
+    return survey_questions
+  end
+
   private
 
     # Before deletion, check if the object is in use
