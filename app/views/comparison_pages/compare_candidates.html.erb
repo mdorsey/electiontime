@@ -2,7 +2,7 @@
 <h1>Compare Candidates in <%= @district.name %></h1>
 
 <!-- INTRO -->
-<%= render 'shared/comparison_intro' %>
+<%= render 'shared/comparison_intro', participant_title: 'Candidates', display_incumbent: true %>
 
 <!-- NAV MENU -->
 <%= render 'shared/comparison_nav_menu', survey_questions: @survey_questions %>

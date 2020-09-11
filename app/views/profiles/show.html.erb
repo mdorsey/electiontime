@@ -49,13 +49,12 @@
     </nav>
   </div>
 
-  <div class="grid-label">Survey:</div>
+  <div class="grid-label">Survey Questions:</div>
   <div class="grid-value">
     <% @survey_questions.each do |question_id, question| %>
-      <%= question %>
-      <%= display_survey_answer(question_id, @participant.id) %>
-      <%= display_survey_source(question_id, @participant.id) %>
-      <br />
+      <p><%= question %></p>
+      <p><%= display_survey_answer(question_id, @participant.id) %></p>
+      <p><%= display_survey_source(question_id, @participant.id) %></p>
     <% end %>
   </div>
 
