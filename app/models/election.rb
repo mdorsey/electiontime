@@ -30,7 +30,7 @@ class Election < ApplicationRecord
   end
 
   def party_leaders_for_display
-    party_leaders = []
+    party_leaders = Array.new
     
     parties = self.parties_for_display
     parties.each do |party|

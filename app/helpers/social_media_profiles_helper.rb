@@ -15,7 +15,7 @@ module SocialMediaProfilesHelper
   def get_social_media_profiles_in_alphabetical_order(participant_id)
 
     participant = Participant.find(participant_id)
-    social_media_profiles = []
+    social_media_profiles = Array.new
 
     SocialMediaType.all.order(name: :asc).each do |t|
       profile = participant.social_media_profiles.find { |smp| smp.social_media_type_id === t.id }
