@@ -8,13 +8,19 @@
 }
 
 .resources-list {
-  list-style: none;
   margin: 10px 0 20px 0;
   padding: 0;
-
   li {
     overflow: auto;
     padding: 10px 0;
     border-bottom: 1px solid lightgray;
+  }
+}
+
+.instructions {
+  margin-top: 30px;
+  font-size: 0.8em;
+  ol {
+    padding-left: 20px;
   }
 }

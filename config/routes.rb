@@ -19,7 +19,9 @@ Rails.application.routes.draw do
   delete  '/logout', to: 'sessions#destroy'
 
   # Admin controller
-  get     'admin/dashboard'
+  get     'admin/dashboard', to: 'admin#dashboard'
+  get     'admin/import_districts', to: 'admin#import_districts'
+  post    'admin/import_districts', to: 'admin#import_districts_submit'
   
   resources :account_activations, only: [:edit]
   resources :addresses

@@ -1,0 +1,74 @@
+<% provide(:title, 'Import Districts') %>
+<h1>Import Districts</h1>
+
+<div class="columns">
+  <div class="column is-narrow">
+    <%= render 'shared/admin_menu' %>
+  </div>
+  <div class="column">
+
+    <% if @errors.any? %>
+      <div id="error-explanation">
+        <div class="notification is-danger">
+          Failure! The import contained <%= pluralize(@count, "error") %>. No changes have been made, please try again.
+        </div>
+        <ul>
+          <% @errors.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% elsif @count > 0 %>
+      <div class="notification is-success">
+        Success! <%= pluralize(@count, "rows") %> were imported.
+      </div>
+    <% end %>
+
+    <%= form_with(url: admin_import_districts_path, method: "post", local: true) do |f| %>
+      <div class="field">
+        <%= f.label "Election", class: 'label' %>
+        <div class="control">
+          <div class="select">
+            <%= f.select(:election_id, options_for_election, {:prompt => '- Select -'}, {:required => true}) %>
+          </div>
+        </div>
+      </div>
+    
+      <div class="field">
+        <%= f.label "Jurisdiction", class: 'label' %>
+        <div class="control">
+          <div class="select">
+            <%= f.select(:jurisdiction_id, options_for_jurisdiction, {:prompt => '- Select -'}, {:required => true}) %>
+          </div>
+        </div>
+      </div>
+
+      <div class="field">
+        <%= f.label "Overwrite all existing districts for this election", class: 'label' %>
+        <div class="control">
+          <%= f.check_box :overwrite %>
+        </div>
+      </div>
+
+      <div class="field">
+        <%= f.label "CSV file", class: 'label' %>
+        <div class="control">
+          <%= f.file_field :file, {:required => true} %>
+        </div>
+      </div>
+
+      <div class="buttons">
+        <%= f.submit "Import", class: "button is-link" %>
+      </div>
+    <% end %>
+
+    <div class="instructions">
+      <p><strong>CSV file instructions:</strong></p>
+      <p>The first row is for column headings.</p>
+      <p>Columns should contain the following data in this exact order:</p>
+      <ol>
+        <li>District name</li>
+      </ol>
+    </div>
+  </div>
+</div>
