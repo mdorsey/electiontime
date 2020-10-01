@@ -3,10 +3,10 @@
 
 <div class="columns">
   <div class="column is-narrow">
-    <%= render 'shared/admin_menu' %>
+    <%= render 'admin/admin_menu' %>
   </div>
   <div class="column">
-    <%= render 'shared/admin_list', new_object_text: "+ New Log", new_object_path: new_log_path, 
+    <%= render 'admin/admin_list', new_object_text: "+ New Log", new_object_path: new_log_path, 
       objects_path: logs_path, placeholder_text: "Search by message...", objects_list: @logs %>
   </div>
 </div>

@@ -3,7 +3,7 @@
   <% participants.each do |p| %>
     <div class="column is-one-third">
       <!-- Header -->
-      <%= render 'shared/comparison_participant_header', participant_id: p.id, party_id: p.party_id %>
+      <%= render 'comparison_pages/comparison_participant_header', participant_id: p.id, party_id: p.party_id %>
 
       <!-- Contact information -->
       <p>Email: <%= mail_to p.email, p.email, target: "_blank" %></p>

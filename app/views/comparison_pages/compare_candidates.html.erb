@@ -2,16 +2,16 @@
 <h1>Compare Candidates in <%= @district.name %></h1>
 
 <!-- INTRO -->
-<%= render 'shared/comparison_intro', participant_title: 'Candidates', display_incumbent: true %>
+<%= render 'comparison_pages/comparison_intro', participant_title: 'Candidates', display_incumbent: true %>
 
 <!-- NAV MENU -->
-<%= render 'shared/comparison_nav_menu', survey_questions: @survey_questions %>
+<%= render 'comparison_pages/comparison_nav_menu', survey_questions: @survey_questions %>
 
 <!-- BIOGRAPHIES -->
-<%= render 'shared/comparison_biography', participants: @candidates %>
+<%= render 'comparison_pages/comparison_biography', participants: @candidates %>
 
 <!-- SURVEY QUESTIONS AND ANSWERS -->
-<%= render 'shared/comparison_survey', survey_questions: @survey_questions, participants: @candidates %>
+<%= render 'comparison_pages/comparison_survey', survey_questions: @survey_questions, participants: @candidates %>
 
 <!-- CONTACTS -->
-<%= render 'shared/comparison_contact', participants: @candidates %>
+<%= render 'comparison_pages/comparison_contact', participants: @candidates %>
