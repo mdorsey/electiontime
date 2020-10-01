@@ -22,6 +22,8 @@ Rails.application.routes.draw do
   get     'admin/dashboard', to: 'admin#dashboard'
   get     'admin/import_districts', to: 'admin#import_districts'
   post    'admin/import_districts', to: 'admin#import_districts_submit'
+  get     'admin/import_participants', to: 'admin#import_participants'
+  post    'admin/import_participants', to: 'admin#import_participants_submit'
   
   resources :account_activations, only: [:edit]
   resources :addresses

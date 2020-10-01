@@ -1,5 +1,5 @@
-<% provide(:title, 'Import Districts') %>
-<h1>Import Districts</h1>
+<% provide(:title, 'Import Participants') %>
+<h1>Import Participants</h1>
 
 <div class="columns">
   <div class="column is-narrow">
@@ -7,9 +7,9 @@
   </div>
   <div class="column">
 
-    <%= render partial: 'importer_status_messages', locals: {errors: @errors, rows_count: @new_districts_count, success_message: @success_message } %>
+    <%= render partial: 'importer_status_messages', locals: {errors: @errors, rows_count: @new_participants_count, success_message: @success_message } %>
 
-    <%= form_with(url: admin_import_districts_path, method: "post", local: true) do |f| %>
+    <%= form_with(url: admin_import_participants_path, method: "post", local: true) do |f| %>
       <div class="field">
         <%= f.label "Election", class: 'label' %>
         <div class="control">
@@ -18,18 +18,9 @@
           </div>
         </div>
       </div>
-    
-      <div class="field">
-        <%= f.label "Jurisdiction", class: 'label' %>
-        <div class="control">
-          <div class="select">
-            <%= f.select(:jurisdiction_id, options_for_jurisdiction, {:prompt => '- Select -'}, {:required => true}) %>
-          </div>
-        </div>
-      </div>
 
       <div class="field">
-        <%= f.label "Overwrite all existing districts for this election", class: 'label' %>
+        <%= f.label "Overwrite all existing participants for this election", class: 'label' %>
         <div class="control">
           <%= f.check_box :overwrite %>
         </div>
@@ -52,7 +43,14 @@
       <p>The first row is for column headings.</p>
       <p>Columns should contain the following data in this exact order:</p>
       <ol>
-        <li>District name</li>
+        <li>User First Name</li>
+        <li>User Last Name</li>
+        <li>User Email</li>
+        <li>Participant Name</li>
+        <li>Participant Party</li>
+        <li>Participant District</li>
+        <li>Participant is a Candidate or Party?</li>
+        <li>Participant is the incumbent? (Y or N)</li>
       </ol>
     </div>
   </div>

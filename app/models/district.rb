@@ -20,20 +20,22 @@ class District < ApplicationRecord
   # Bulk upload of districts into an election
   def self.import(file, election_id, jurisdiction_id, overwrite)
 
-    count = 0
+    new_districts_count = 0
     errors = Array.new
     election = Election.find(election_id)
 
     # Verify the file type
     if file.content_type != "text/csv"
       errors << "File is of type '" + file.content_type + "'. It must be a CSV."
-      count += 1
     else
-      # Test that each object will be created successfully
-      CSV.foreach(file.path, headers: false).with_index do |row, i|
+
+      # Error checking
+      CSV.foreach(file.path, headers: true).with_index do |row, i|
+
+        row_number = (i + 1).to_s
+
         if !District.new(name: row[0], jurisdiction_id: jurisdiction_id, election_type_id: election.election_type_id).valid?
-          errors << "Row " + i.to_s
-          count += 1
+          errors << "Row " + row_number + " has an invalid District"
         end
       end
     end
@@ -47,11 +49,11 @@ class District < ApplicationRecord
       # Create each district and add it to the election
       CSV.foreach(file.path, headers: true) do |row|
         if election.districts.create(name: row[0], jurisdiction_id: jurisdiction_id, election_type_id: election.election_type_id).valid?
-          count += 1
+          new_districts_count += 1
         end
       end
     end
 
-    return [count, errors]
+    return [errors, new_districts_count]
   end
 end

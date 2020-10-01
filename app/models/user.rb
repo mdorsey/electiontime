@@ -9,7 +9,7 @@ class User < ApplicationRecord
   has_many :participants
   has_secure_password
 
-  before_save   :downcase_email
+  before_save :downcase_email
   before_create :create_activation_digest
   before_destroy :allow_destroy
 
@@ -36,6 +36,10 @@ class User < ApplicationRecord
   # Returns a random token.
   def User.new_token
     SecureRandom.urlsafe_base64
+  end
+
+  def User.random_password
+    SecureRandom.base64(20)
   end
 
   # Remembers a user in the database for use in persistent sessions.

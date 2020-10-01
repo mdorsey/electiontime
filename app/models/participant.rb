@@ -105,6 +105,140 @@ class Participant < ApplicationRecord
     return self.update_attributes(params_to_update)
   end
 
+  # Bulk upload of participants into an election
+  def self.import(file, election_id, overwrite)
+
+    new_users_count = 0
+    new_participants_count = 0
+    errors = Array.new
+    election = Election.find(election_id)
+    temp_random_password = User.random_password
+    temp_user_type_id = UserType.find_by(name: 'Candidate').id
+
+    # Verify the file type
+    if file.content_type != "text/csv"
+      errors << "File is of type '" + file.content_type + "'. It must be a CSV."
+    else
+
+      # Error checking
+      CSV.foreach(file.path, headers: true).with_index do |row, i|
+
+        first_name = row[0]
+        last_name = row[1]
+        email = row[2]
+        participant_name = row[3]
+        party_name = row[4]
+        district_name = row[5]
+        candidate_or_party = row[6]
+        incumbent = row[7]
+
+        row_number = (i + 1).to_s
+
+        # Check that the user can be ceated successfully (if it doesn't already exist)
+        if !User.find_by(email: email)
+          if !User.new(first_name: first_name, 
+                        last_name: last_name, 
+                        email: email, 
+                        user_type_id: temp_user_type_id, 
+                        password: temp_random_password, 
+                        password_confirmation: temp_random_password, 
+                        activated: true, 
+                        activated_at: Time.zone.now).valid?
+            errors << "Row " + row_number + " has an invalid User: " + email
+          end
+        end
+
+        # Check that the party exists
+        if !Party.find_by(name: party_name)
+          errors << "Row " + row_number + " has a Party that doesn't exist: " + party_name
+        end
+
+        # Check that the district exists and is part of this election
+        district = District.find_by(name: district_name)
+        if district
+          if !election.districts.exists?(id: district.id)
+            errors << "Row " + row_number + " has a District that doesn't belong to the election: " + district_name
+          end
+        else
+          errors << "Row " + row_number + " has a District that doesn't exist: " + district_name
+        end
+
+        # Check the participant fields
+        if participant_name.blank?
+          errors << "Row " + row_number + " has a blank Participant Name"
+        end
+
+        if (candidate_or_party != "Candidate" && candidate_or_party != "Party")
+          errors << "Row " + row_number + " has an invalid entry for Candidate or Party"
+        end
+
+        if (incumbent != "Y" && incumbent != "N")
+          errors << "Row " + row_number + " has an invalid entry for Incumbent"
+        end
+      end
+    end
+
+    if errors.empty?
+      if overwrite == "1"
+        # Remove all previously existing participants for this election
+        election.participants.delete_all
+      end
+
+      # Create each user and participant, then add participants to the election
+      CSV.foreach(file.path, headers: true) do |row|
+
+        first_name = row[0]
+        last_name = row[1]
+        email = row[2]
+        participant_name = row[3]
+        party_name = row[4]
+        district_name = row[5]
+        candidate_or_party = row[6]
+        incumbent = row[7]
+
+        if (candidate_or_party === "Candidate")
+          user_type_id = UserType.find_by(name: 'Candidate').id
+          is_candidate = true
+        else
+          user_type_id = UserType.find_by(name: 'Party Representative').id
+          is_candidate = false
+        end
+
+        if (incumbent === "Y")
+          is_incumbent = true
+        else
+          is_incumbent = false
+        end
+
+        real_random_password = User.random_password
+
+        # Find the user or create a new one
+        user = User.find_or_create_by(email: email) do |u|
+          u.first_name = first_name
+          u.last_name = last_name
+          u.user_type_id = user_type_id
+          u.password = real_random_password
+          u.password_confirmation = real_random_password
+          u.activated = true
+          u.activated_at = Time.zone.now
+
+          new_users_count += 1
+        end
+    
+        if election.participants.create(user_id: user.id,
+                                        name: participant_name,
+                                        party_id: Party.find_by(name: party_name).id,
+                                        district_id: District.find_by(name: district_name).id,
+                                        is_candidate: is_candidate,
+                                        is_incumbent: is_incumbent).valid?
+          new_participants_count += 1
+        end
+      end
+    end
+
+    return [errors, new_users_count, new_participants_count]
+  end
+
   private
 
     # Before deletion, check if the object is in use

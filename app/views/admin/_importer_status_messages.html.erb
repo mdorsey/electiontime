@@ -1,0 +1,16 @@
+<% if errors.any? %>
+  <div id="error-explanation">
+    <div class="notification is-danger">
+      Failure! The import contained <%= pluralize(errors.count, "error") %>. No changes have been made, please try again.
+    </div>
+    <ul>
+      <% errors.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+<% elsif rows_count > 0 %>
+  <div class="notification is-success">
+    <%= success_message %>
+  </div>
+<% end %>
