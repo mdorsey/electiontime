@@ -20,6 +20,15 @@
       </div>
 
       <div class="field">
+        <%= f.label "Data Source", class: 'label' %>
+        <div class="control">
+          <div class="select">
+            <%= f.select(:data_source, options_for_import_participants_data_source, {:prompt => '- Select -'}, {:required => true}) %>
+          </div>
+        </div>
+      </div>
+
+      <div class="field">
         <%= f.label "Overwrite all existing participants for this election", class: 'label' %>
         <div class="control">
           <%= f.check_box :overwrite %>
@@ -42,15 +51,25 @@
       <p><strong>CSV file instructions:</strong></p>
       <p>The first row is for column headings.</p>
       <p>Columns should contain the following data in this exact order:</p>
+      <p>CANDIDATES</p>
       <ol>
-        <li>User First Name</li>
-        <li>User Last Name</li>
-        <li>User Email</li>
+        <li>Owner First Name</li>
+        <li>Owner Last Name</li>
+        <li>Owner Email</li>
         <li>Participant Name</li>
         <li>Participant Party</li>
-        <li>Participant District</li>
-        <li>Participant is a Candidate or Party?</li>
         <li>Participant is the incumbent? (Y or N)</li>
+        <li>Participant District</li>
+      </ol>
+      <p>PARTIES AND PARTY LEADERS</p>
+      <ol>
+        <li>Owner First Name</li>
+        <li>Owner Last Name</li>
+        <li>Owner Email</li>
+        <li>Participant Name</li>
+        <li>Participant Party</li>
+        <li>Participant is the incumbent? (Y or N)</li>
+        <li>Party Leader Participant Name</li>
       </ol>
     </div>
   </div>

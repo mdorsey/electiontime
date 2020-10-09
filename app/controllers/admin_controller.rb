@@ -23,7 +23,7 @@ class AdminController < ApplicationController
   end
 
   def import_participants_submit
-    @errors, @new_users_count, @new_participants_count = Participant.import(params[:file], params[:election_id], params[:overwrite])
+    @errors, @new_users_count, @new_participants_count = Participant.import(params[:file], params[:election_id], params[:data_source], params[:overwrite])
     @success_message = "Success! #{@new_participants_count} " + 'row'.pluralize(@new_participants_count) + " were imported, and #{@new_users_count} " + 'user'.pluralize(@new_users_count) + " were created."
     render 'import_participants'
   end

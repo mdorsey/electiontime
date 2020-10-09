@@ -106,14 +106,21 @@ class Participant < ApplicationRecord
   end
 
   # Bulk upload of participants into an election
-  def self.import(file, election_id, overwrite)
+  def self.import(file, election_id, data_source, overwrite)
 
     new_users_count = 0
     new_participants_count = 0
     errors = Array.new
     election = Election.find(election_id)
     temp_random_password = User.random_password
-    temp_user_type_id = UserType.find_by(name: 'Candidate').id
+
+    if (data_source === "Candidates")
+      is_candidate = true
+      user_type_id = UserType.find_by(name: 'Candidate').id
+    else
+      is_candidate = false
+      user_type_id = UserType.find_by(name: 'Party Representative').id
+    end
 
     # Verify the file type
     if file.content_type != "text/csv"
@@ -128,23 +135,21 @@ class Participant < ApplicationRecord
         email = row[2]
         participant_name = row[3]
         party_name = row[4]
-        district_name = row[5]
-        candidate_or_party = row[6]
-        incumbent = row[7]
+        incumbent = row[5]
 
         row_number = (i + 1).to_s
 
-        # Check that the user can be ceated successfully (if it doesn't already exist)
+        # Check that the owner can be ceated successfully (if it doesn't already exist)
         if !User.find_by(email: email)
           if !User.new(first_name: first_name, 
                         last_name: last_name, 
                         email: email, 
-                        user_type_id: temp_user_type_id, 
+                        user_type_id: user_type_id, 
                         password: temp_random_password, 
                         password_confirmation: temp_random_password, 
                         activated: true, 
                         activated_at: Time.zone.now).valid?
-            errors << "Row " + row_number + " has an invalid User: " + email
+            errors << "Row " + row_number + " has an invalid Owner: " + email
           end
         end
 
@@ -153,23 +158,30 @@ class Participant < ApplicationRecord
           errors << "Row " + row_number + " has a Party that doesn't exist: " + party_name
         end
 
-        # Check that the district exists and is part of this election
-        district = District.find_by(name: district_name)
-        if district
-          if !election.districts.exists?(id: district.id)
-            errors << "Row " + row_number + " has a District that doesn't belong to the election: " + district_name
+        if is_candidate
+          district_name = row[6]
+          
+          # Check that the district exists and is part of this election
+          district = District.find_by(name: district_name)
+          if district
+            if !election.districts.exists?(id: district.id)
+              errors << "Row " + row_number + " has a District that doesn't belong to the election: " + district_name
+            end
+          else
+            errors << "Row " + row_number + " has a District that doesn't exist: " + district_name
           end
+
         else
-          errors << "Row " + row_number + " has a District that doesn't exist: " + district_name
+          party_leader_participant_name = row[6]
+
+          # Check that the participant exists
+          if !Participant.find_by(name: party_leader_participant_name)
+            errors << "Row " + row_number + " has an invalid Party Leader Participant Name: " + party_leader_participant_name
+          end
         end
 
-        # Check the participant fields
         if participant_name.blank?
           errors << "Row " + row_number + " has a blank Participant Name"
-        end
-
-        if (candidate_or_party != "Candidate" && candidate_or_party != "Party")
-          errors << "Row " + row_number + " has an invalid entry for Candidate or Party"
         end
 
         if (incumbent != "Y" && incumbent != "N")
@@ -184,7 +196,7 @@ class Participant < ApplicationRecord
         election.participants.delete_all
       end
 
-      # Create each user and participant, then add participants to the election
+      # Create each owner and participant, then add participants to the election
       CSV.foreach(file.path, headers: true) do |row|
 
         first_name = row[0]
@@ -192,17 +204,7 @@ class Participant < ApplicationRecord
         email = row[2]
         participant_name = row[3]
         party_name = row[4]
-        district_name = row[5]
-        candidate_or_party = row[6]
-        incumbent = row[7]
-
-        if (candidate_or_party === "Candidate")
-          user_type_id = UserType.find_by(name: 'Candidate').id
-          is_candidate = true
-        else
-          user_type_id = UserType.find_by(name: 'Party Representative').id
-          is_candidate = false
-        end
+        incumbent = row[5]
 
         if (incumbent === "Y")
           is_incumbent = true
@@ -212,8 +214,8 @@ class Participant < ApplicationRecord
 
         real_random_password = User.random_password
 
-        # Find the user or create a new one
-        user = User.find_or_create_by(email: email) do |u|
+        # Find the owner or create a new one
+        owner = User.find_or_create_by(email: email) do |u|
           u.first_name = first_name
           u.last_name = last_name
           u.user_type_id = user_type_id
@@ -224,14 +226,32 @@ class Participant < ApplicationRecord
 
           new_users_count += 1
         end
-    
-        if election.participants.create(user_id: user.id,
-                                        name: participant_name,
-                                        party_id: Party.find_by(name: party_name).id,
-                                        district_id: District.find_by(name: district_name).id,
-                                        is_candidate: is_candidate,
-                                        is_incumbent: is_incumbent).valid?
-          new_participants_count += 1
+
+        if is_candidate
+          district_name = row[6]
+
+          # Create the participant candidate
+          if election.participants.create(user_id: owner.id,
+                                          name: participant_name,
+                                          party_id: Party.find_by(name: party_name).id,
+                                          district_id: District.find_by(name: district_name).id,
+                                          is_candidate: is_candidate,
+                                          is_incumbent: is_incumbent).valid?
+            new_participants_count += 1
+          end
+
+        else
+          party_leader_participant_name = row[6]
+
+          # Create the participant party
+          if election.participants.create(user_id: owner.id,
+                                          name: participant_name,
+                                          party_id: Party.find_by(name: party_name).id,
+                                          leader_participant_id: Participant.find_by(name: party_leader_participant_name).id,
+                                          is_candidate: is_candidate,
+                                          is_incumbent: is_incumbent).valid?
+            new_participants_count += 1
+          end
         end
       end
     end

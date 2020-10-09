@@ -10,10 +10,12 @@
   <div class="column">
     <p class="participant-name">
       <%= display_participant(participant_id, true) %>
-      <% if is_participant_the_incumbent(participant_id) %>
+      <% if is_participant_an_incumbent(participant_id) %>
         <i class="fas fa-star"></i>
       <% end %>
     </p>
-    <p><%= display_party(party_id) %></p>
+    <% if is_participant_a_candidate(participant_id) %>
+      <p><%= display_party(party_id) %></p>
+    <% end %>
   </div>
 </div>

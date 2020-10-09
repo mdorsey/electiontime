@@ -8,7 +8,12 @@
       <!-- Contact information -->
       <p>Email: <%= mail_to p.email, p.email, target: "_blank" %></p>
       <p>Phone: <%= p.phone %></p>
-      <p>Website: <%= link_to p.website, p.website, target: "_blank" %></p>
+      <p>
+        Website: 
+        <% if p.website %>
+          <%= link_to p.website, p.website, target: "_blank" %>
+        <% end %>
+      </p>
       <p>Address: <%= display_address(p.address_id) %></p>
 
       <!-- Social media icons -->

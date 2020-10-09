@@ -42,8 +42,4 @@ module ParticipantsHelper
     
     return participant
   end
-
-  def is_participant_the_incumbent(participant_id)
-    return Participant.find(participant_id).is_incumbent
-  end
 end
