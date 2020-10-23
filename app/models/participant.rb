@@ -137,7 +137,7 @@ class Participant < ApplicationRecord
         party_name = row[4]
         incumbent = row[5]
 
-        row_number = (i + 1).to_s
+        row_number = (i + 2).to_s
 
         # Check that the owner can be ceated successfully (if it doesn't already exist)
         if !User.find_by(email: email)
@@ -165,7 +165,7 @@ class Participant < ApplicationRecord
           district = District.find_by(name: district_name)
           if district
             if !election.districts.exists?(id: district.id)
-              errors << "Row " + row_number + " has a District that doesn't belong to the election: " + district_name
+              errors << "Row " + row_number + " has a District that exists but doesn't belong to this election: " + district_name
             end
           else
             errors << "Row " + row_number + " has a District that doesn't exist: " + district_name

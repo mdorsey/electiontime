@@ -30,6 +30,63 @@ Jurisdiction.create!(name: "Quebec")
 Jurisdiction.create!(name: "Saskatchewan")
 Jurisdiction.create!(name: "Yukon")
 
+Language.create!(name: "English")
+
+LogType.create!(name: "User Log-In")
+
+Party.create!(name: "Independent")
+Party.create!(name: "Liberal Party of Canada", name_abbreviation: "Liberal", alternate_name: "Parti libéral du Canada", alternate_abbreviation: "Libéral")
+Party.create!(name: "People's Party of Canada", name_abbreviation: "PPC", alternate_name: "Parti populaire du Canada", alternate_abbreviation: "PPC")
+Party.create!(name: "Conservative Party of Canada", name_abbreviation: "Conservative", alternate_name: "Parti conservateur du Canada", alternate_abbreviation: "Conservateur")
+Party.create!(name: "New Democratic Party", name_abbreviation: "NDP", alternate_name: "Nouveau Parti démocratique", alternate_abbreviation: "NPD")
+Party.create!(name: "Bloc Québécois", name_abbreviation: "BQ")
+Party.create!(name: "Green Party of Canada", name_abbreviation: "Green", alternate_name: "Parti vert du Canada", alternate_abbreviation: "Vert")
+
+Province.create!(name: "Alberta")
+Province.create!(name: "British Columbia")
+Province.create!(name: "Manitoba")
+Province.create!(name: "New Brunswick")
+Province.create!(name: "Newfoundland and Labrador")
+Province.create!(name: "Northwest Territories")
+Province.create!(name: "Nova Scotia")
+Province.create!(name: "Nunavut")
+Province.create!(name: "Ontario")
+Province.create!(name: "Prince Edward Island")
+Province.create!(name: "Quebec")
+Province.create!(name: "Saskatchewan")
+Province.create!(name: "Yukon")
+
+SocialMediaType.create!(name: "Facebook", website: "https://www.facebook.com/", icon: "fab fa-facebook-square fa-2x")
+SocialMediaType.create!(name: "Instagram", website: "https://www.instagram.com/", icon: "fab fa-instagram-square fa-2x")
+SocialMediaType.create!(name: "LinkedIn", website: "https://www.linkedin.com/in/", icon: "fab fa-linkedin fa-2x")
+SocialMediaType.create!(name: "Medium", website: "https://medium.com/", icon: "fab fa-medium fa-2x")
+SocialMediaType.create!(name: "Twitter", website: "https://twitter.com/", icon: "fab fa-twitter-square fa-2x")
+SocialMediaType.create!(name: "Youtube", website: "https://www.youtube.com/", icon: "fab fa-youtube-square fa-2x")
+
+SurveyType.create!(name: "Candidate")
+SurveyType.create!(name: "Party")
+
+SystemSetting.create!(name: "blank_avatar_name", setting: "blank_avatar.png")
+
+UserType.create!(name: "Admin")
+UserType.create!(name: "Volunteer")
+UserType.create!(name: "Candidate")
+UserType.create!(name: "Party Representative")
+
+User.create!(first_name:  "Michael",
+             last_name: "Dorsey",
+             email: "michael.william.dorsey@gmail.com",
+             user_type_id: UserType.find_by(name: 'Admin').id,
+             password: "password",
+             password_confirmation: "password",
+             activated: true,
+             activated_at: Time.zone.now)
+
+
+# -----------------------------------------------------
+# TEMPORARY FAKE DATA FOR TESTING PURPOSES
+# -----------------------------------------------------
+
 # Federal election districts
 District.create!(name: "Abbotsford", jurisdiction_id: Jurisdiction.find_by(name: "British Columbia").id, election_type_id: ElectionType.find_by(name: "Federal").id)
 District.create!(name: "Abitibi—Baie-James--Nunavik--Eeyou", jurisdiction_id: Jurisdiction.find_by(name: "Quebec").id, election_type_id: ElectionType.find_by(name: "Federal").id)
@@ -369,63 +426,6 @@ District.create!(name: "York--Simcoe", jurisdiction_id: Jurisdiction.find_by(nam
 District.create!(name: "York South--Weston", jurisdiction_id: Jurisdiction.find_by(name: "Ontario").id, election_type_id: ElectionType.find_by(name: "Federal").id)
 District.create!(name: "Yorkton--Melville", jurisdiction_id: Jurisdiction.find_by(name: "Saskatchewan").id, election_type_id: ElectionType.find_by(name: "Federal").id)
 District.create!(name: "Yukon", jurisdiction_id: Jurisdiction.find_by(name: "Yukon ").id, election_type_id: ElectionType.find_by(name: "Federal").id)
-
-Language.create!(name: "English")
-
-LogType.create!(name: "User Log-In")
-
-Party.create!(name: "Independent")
-Party.create!(name: "Liberal Party of Canada", name_abbreviation: "Liberal", alternate_name: "Parti libéral du Canada", alternate_abbreviation: "Libéral")
-Party.create!(name: "People's Party of Canada", name_abbreviation: "PPC", alternate_name: "Parti populaire du Canada", alternate_abbreviation: "PPC")
-Party.create!(name: "Conservative Party of Canada", name_abbreviation: "Conservative", alternate_name: "Parti conservateur du Canada", alternate_abbreviation: "Conservateur")
-Party.create!(name: "New Democratic Party", name_abbreviation: "NDP", alternate_name: "Nouveau Parti démocratique", alternate_abbreviation: "NPD")
-Party.create!(name: "Bloc Québécois", name_abbreviation: "BQ")
-Party.create!(name: "Green Party of Canada", name_abbreviation: "Green", alternate_name: "Parti vert du Canada", alternate_abbreviation: "Vert")
-
-Province.create!(name: "Alberta")
-Province.create!(name: "British Columbia")
-Province.create!(name: "Manitoba")
-Province.create!(name: "New Brunswick")
-Province.create!(name: "Newfoundland and Labrador")
-Province.create!(name: "Northwest Territories")
-Province.create!(name: "Nova Scotia")
-Province.create!(name: "Nunavut")
-Province.create!(name: "Ontario")
-Province.create!(name: "Prince Edward Island")
-Province.create!(name: "Quebec")
-Province.create!(name: "Saskatchewan")
-Province.create!(name: "Yukon")
-
-SocialMediaType.create!(name: "Facebook", website: "https://www.facebook.com/", icon: "fab fa-facebook-square fa-2x")
-SocialMediaType.create!(name: "Instagram", website: "https://www.instagram.com/", icon: "fab fa-instagram-square fa-2x")
-SocialMediaType.create!(name: "LinkedIn", website: "https://www.linkedin.com/in/", icon: "fab fa-linkedin fa-2x")
-SocialMediaType.create!(name: "Medium", website: "https://medium.com/", icon: "fab fa-medium fa-2x")
-SocialMediaType.create!(name: "Twitter", website: "https://twitter.com/", icon: "fab fa-twitter-square fa-2x")
-SocialMediaType.create!(name: "Youtube", website: "https://www.youtube.com/", icon: "fab fa-youtube-square fa-2x")
-
-SurveyType.create!(name: "Candidate")
-SurveyType.create!(name: "Party")
-
-SystemSetting.create!(name: "blank_avatar_name", setting: "blank_avatar.png")
-
-UserType.create!(name: "Admin")
-UserType.create!(name: "Volunteer")
-UserType.create!(name: "Candidate")
-UserType.create!(name: "Party Representative")
-
-User.create!(first_name:  "Michael",
-             last_name: "Dorsey",
-             email: "michael.william.dorsey@gmail.com",
-             user_type_id: UserType.find_by(name: 'Admin').id,
-             password:              "password",
-             password_confirmation: "password",
-             activated: true,
-             activated_at: Time.zone.now)
-
-
-# -----------------------------------------------------
-# TEMPORARY FAKE DATA FOR TESTING PURPOSES
-# -----------------------------------------------------
 
 biography = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi finibus nisl ut semper lacinia. Etiam elementum mi a mollis tincidunt. Sed sit amet ultrices nisi. Suspendisse potenti. Ut ultricies est in dictum pretium. Nulla euismod leo sit amet quam malesuada dignissim. Nunc ante ligula, tincidunt at dui id, placerat facilisis enim. Fusce ullamcorper mi eu sodales blandit. Phasellus fermentum risus non auctor dignissim. Suspendisse sem urna, efficitur at enim vel, sagittis euismod ex. Phasellus interdum congue neque, in vestibulum urna malesuada egestas. Etiam ac libero facilisis, porttitor dui quis, iaculis turpis. Donec a magna ipsum. Sed at nisi consectetur justo mattis viverra ac a nunc."
 phone = "123-456-7890"
