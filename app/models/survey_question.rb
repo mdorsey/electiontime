@@ -4,6 +4,7 @@ class SurveyQuestion < ApplicationRecord
   has_many :survey_answers
 
   validates(:survey, presence: true)
+  validates(:topic, presence: true, length: { maximum: 255 })
   validates(:question, presence: true, length: { maximum: 255 })
   validates(:order, presence: true, numericality: { only_integer: true })
 

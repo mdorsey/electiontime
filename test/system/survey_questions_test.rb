@@ -16,6 +16,7 @@ class SurveyQuestionsTest < ApplicationSystemTestCase
 
     fill_in "Order", with: @survey_question.order
     fill_in "Question", with: @survey_question.question
+    fill_in "Topic", with: @survey_question.topic
     fill_in "Survey", with: @survey_question.survey_id
     click_on "Create Survey question"
 
@@ -29,6 +30,7 @@ class SurveyQuestionsTest < ApplicationSystemTestCase
 
     fill_in "Order", with: @survey_question.order
     fill_in "Question", with: @survey_question.question
+    fill_in "Topic", with: @survey_question.topic
     fill_in "Survey", with: @survey_question.survey_id
     click_on "Update Survey question"
 

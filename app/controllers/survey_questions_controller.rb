@@ -54,6 +54,6 @@ class SurveyQuestionsController < ApplicationController
     end
 
     def survey_question_params
-      params.require(:survey_question).permit(:survey_id, :question, :order)
+      params.require(:survey_question).permit(:survey_id, :topic, :question, :order)
     end
 end

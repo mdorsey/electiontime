@@ -514,17 +514,17 @@ current_election.participants = Participant.all
 survey_candidate = Survey.create!(name: "Canadian Federal Election - Candidate", survey_type_id: SurveyType.find_by(name: 'Candidate').id, election_id: current_election.id)
 survey_party = Survey.create!(name: "Canadian Federal Election - Party", survey_type_id: SurveyType.find_by(name: 'Party').id, election_id: current_election.id)
 
-candidate_question_1 = SurveyQuestion.create!(survey_id: survey_candidate.id, question: "What is your plan to combat climate change?", order: 1)
-candidate_question_2 = SurveyQuestion.create!(survey_id: survey_candidate.id, question: "What is your plan for managing the coronavirus?", order: 2)
-candidate_question_3 = SurveyQuestion.create!(survey_id: survey_candidate.id, question: "What is the most important issue for the people of your district? And how are you planning to address it?", order: 3)
+candidate_question_1 = SurveyQuestion.create!(survey_id: survey_candidate.id, topic: "Climate change", question: "What is your plan to combat climate change?", order: 1)
+candidate_question_2 = SurveyQuestion.create!(survey_id: survey_candidate.id, topic: "COVID-19", question: "What is your plan for managing the coronavirus?", order: 2)
+candidate_question_3 = SurveyQuestion.create!(survey_id: survey_candidate.id, topic: "Local issues", question: "What is the most important issue for the people of your district? And how are you planning to address it?", order: 3)
 
-party_question_1 = SurveyQuestion.create!(survey_id: survey_party.id, question: "What is your plan to combat climate change?", order: 1)
-party_question_2 = SurveyQuestion.create!(survey_id: survey_party.id, question: "What is your plan for managing the coronavirus?", order: 2)
-party_question_3 = SurveyQuestion.create!(survey_id: survey_party.id, question: "What is the most important issue for the people of your district? And how are you planning to address it?", order: 3)
+party_question_1 = SurveyQuestion.create!(survey_id: survey_party.id, topic: "Climate change", question: "What is your plan to combat climate change?", order: 1)
+party_question_2 = SurveyQuestion.create!(survey_id: survey_party.id, topic: "COVID-19", question: "What is your plan for managing the coronavirus?", order: 2)
+party_question_3 = SurveyQuestion.create!(survey_id: survey_party.id, topic: "Local issues", question: "What is the most important issue for the people of your district? And how are you planning to address it?", order: 3)
 
 Participant.all.each do |participant|
   answer = Faker::Lorem.paragraph(sentence_count: 10, supplemental: true, random_sentences_to_add: 5)
-  source = Faker::Lorem.sentences(number: 1, supplemental: true)
+  source = Faker::Lorem.paragraph(sentence_count: 1)
 
   if participant.is_candidate
     survey_answer_1 = SurveyAnswer.create!(survey_question_id: candidate_question_1.id, participant_id: participant.id, answer: answer, source: source)

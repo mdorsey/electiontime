@@ -1,5 +1,6 @@
-<% survey_questions.each do |question_id, question| %>
-  <a id="question_<%= question_id %>"><h3><%= question %></h3></a>
+<% survey_questions.each do |question_id, topic| %>
+  <a id="question_<%= question_id %>"><h3><%= topic %></h3></a>
+  <%= display_survey_question(question_id) %>
   <div class="columns is-multiline">
     <% participants.each do |p| %>
       <div class="column is-one-third">

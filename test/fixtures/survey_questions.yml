@@ -2,10 +2,12 @@
 
 one:
   survey: two
+  topic: MyTopic
   question: MyString
   order: 1
 
 two:
   survey: two
+  topic: MyTopic
   question: MyString
   order: 2

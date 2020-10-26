@@ -14,9 +14,9 @@
           <a href="#biographies" class="dropdown-item">
             Biographies
           </a>
-          <% survey_questions.each do |question_id, question| %>
+          <% survey_questions.each do |question_id, topic| %>
             <a href="#question_<%= question_id %>" class="dropdown-item">
-              <%= question %>
+              <%= topic %>
             </a>
           <% end %>
           <a href="#contacts" class="dropdown-item">

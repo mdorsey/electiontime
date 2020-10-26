@@ -52,7 +52,7 @@ class Election < ApplicationRecord
 
     if survey
       SurveyQuestion.where(survey_id: survey.id).order(order: :asc).each do |q|
-        survey_questions[q.id] = q.question
+        survey_questions[q.id] = q.topic
       end
     end
 

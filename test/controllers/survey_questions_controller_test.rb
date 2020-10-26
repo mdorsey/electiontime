@@ -20,7 +20,7 @@ class SurveyQuestionsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create survey_question" do
     assert_difference('SurveyQuestion.count') do
-      post survey_questions_url, params: { survey_question: { order: @survey_question.order, question: @survey_question.question, survey_id: @survey_question.survey_id } }
+      post survey_questions_url, params: { survey_question: { order: @survey_question.order, topic: @survey_question.topic, question: @survey_question.question, survey_id: @survey_question.survey_id } }
     end
 
     assert_redirected_to survey_questions_url
@@ -37,7 +37,7 @@ class SurveyQuestionsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update survey_question" do
-    patch survey_question_url(@survey_question), params: { survey_question: { order: @survey_question.order, question: @survey_question.question, survey_id: @survey_question.survey_id } }
+    patch survey_question_url(@survey_question), params: { survey_question: { order: @survey_question.order, topic: @survey_question.topic, question: @survey_question.question, survey_id: @survey_question.survey_id } }
     assert_redirected_to survey_question_url(@survey_question)
   end
 
