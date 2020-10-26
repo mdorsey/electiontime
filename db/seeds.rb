@@ -427,10 +427,6 @@ District.create!(name: "York South--Weston", jurisdiction_id: Jurisdiction.find_
 District.create!(name: "Yorkton--Melville", jurisdiction_id: Jurisdiction.find_by(name: "Saskatchewan").id, election_type_id: ElectionType.find_by(name: "Federal").id)
 District.create!(name: "Yukon", jurisdiction_id: Jurisdiction.find_by(name: "Yukon ").id, election_type_id: ElectionType.find_by(name: "Federal").id)
 
-biography = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi finibus nisl ut semper lacinia. Etiam elementum mi a mollis tincidunt. Sed sit amet ultrices nisi. Suspendisse potenti. Ut ultricies est in dictum pretium. Nulla euismod leo sit amet quam malesuada dignissim. Nunc ante ligula, tincidunt at dui id, placerat facilisis enim. Fusce ullamcorper mi eu sodales blandit. Phasellus fermentum risus non auctor dignissim. Suspendisse sem urna, efficitur at enim vel, sagittis euismod ex. Phasellus interdum congue neque, in vestibulum urna malesuada egestas. Etiam ac libero facilisis, porttitor dui quis, iaculis turpis. Donec a magna ipsum. Sed at nisi consectetur justo mattis viverra ac a nunc."
-phone = "123-456-7890"
-address = Address.create!(street: "123 Main Street", city: "Calgary", province_id: Province.find_by(name: "Alberta").id, postal_code: "T3C 1M2")
-
 current_election = Election.create!(name: "Canadian Federal Election",
                                     election_date: DateTime.new(2021, 10, 21),
                                     election_type_id: ElectionType.find_by(name: "Federal").id,
@@ -439,13 +435,19 @@ current_election = Election.create!(name: "Canadian Federal Election",
 
 current_election.districts = District.all
 
+avatar_id = 1
+
 District.all.each do |district|
 
   Party.all.each do |party|
 
     first_name = Faker::Name.first_name
     last_name = Faker::Name.last_name
-    email = "fakemail_" + district.id.to_s + party.id.to_s + "@electiontime.org"
+    email = Faker::Internet.email
+    biography = Faker::Lorem.paragraph(sentence_count: 20, supplemental: true, random_sentences_to_add: 10)
+    phone = Faker::PhoneNumber.phone_number
+    address = Address.create!(street: Faker::Address.street_address, city: Faker::Address.city, province_id: Province.find_by(name: "Alberta").id, postal_code: Faker::Address.postcode)
+    website = Faker::Internet.url
 
     current_user = User.create!(first_name: first_name,
                                 last_name: last_name,             
@@ -456,17 +458,23 @@ District.all.each do |district|
                                 activated: true,
                                 activated_at: Time.zone.now)
     
-    Participant.create!(user_id: current_user.id,
+    candidate = Participant.create!(user_id: current_user.id,
                         is_candidate: true,
                         is_incumbent: false,
                         district_id: district.id,
                         party_id: party.id,
                         name: current_user.first_name + " " + current_user.last_name,
                         email: current_user.email,
-                        website: "http://www.fakewebsite.com",
+                        website: website,
                         phone: phone,
                         address: address,
                         biography: biography)
+
+    candidate.picture.attach(io: File.open('/home/michael/vote_app/vote_app/app/assets/images/seed_avatar' + avatar_id.to_s + '.png'), filename: 'seed_avatar' + avatar_id.to_s + '.png')
+    avatar_id += 1
+    if avatar_id === 6
+      avatar_id = 1
+    end
   end
 end
 
@@ -474,20 +482,57 @@ end
 Party.where.not(name: "Independent").each do |party|
 
   party_member = Participant.where(party_id: party.id).first
+  phone = Faker::PhoneNumber.phone_number
+  address = Address.create!(street: Faker::Address.street_address, city: Faker::Address.city, province_id: Province.find_by(name: "Alberta").id, postal_code: Faker::Address.postcode)
+  website = Faker::Internet.url
+  email = Faker::Internet.email
+  biography = Faker::Lorem.paragraph(sentence_count: 20, supplemental: true, random_sentences_to_add: 10)
 
-  Participant.create!(user_id: party_member.id,
-                      is_candidate: false,
-                      is_incumbent: false,
-                      party_id: party.id,
-                      name: party.name,
-                      email: "party@party.ca",
-                      website: "http://www.party.ca",
-                      phone: phone,
-                      address: address,
-                      biography: party.name,
-                      leader_participant_id: party_member.id)
+  party_participant = Participant.create!(user_id: party_member.id,
+                                          is_candidate: false,
+                                          is_incumbent: false,
+                                          party_id: party.id,
+                                          name: party.name,
+                                          email: email,
+                                          website: website,
+                                          phone: phone,
+                                          address: address,
+                                          biography: biography,
+                                          leader_participant_id: party_member.id)
 
+  party_participant.picture.attach(io: File.open('/home/michael/vote_app/vote_app/app/assets/images/seed_avatar' + avatar_id.to_s + '.png'), filename: 'seed_avatar' + avatar_id.to_s + '.png')
+  avatar_id += 1
+  if avatar_id === 6
+    avatar_id = 1
+  end
 end
 
 # Add all participants to the current election
 current_election.participants = Participant.all
+
+# Create the surveys
+survey_candidate = Survey.create!(name: "Canadian Federal Election - Candidate", survey_type_id: SurveyType.find_by(name: 'Candidate').id, election_id: current_election.id)
+survey_party = Survey.create!(name: "Canadian Federal Election - Party", survey_type_id: SurveyType.find_by(name: 'Party').id, election_id: current_election.id)
+
+candidate_question_1 = SurveyQuestion.create!(survey_id: survey_candidate.id, question: "What is your plan to combat climate change?", order: 1)
+candidate_question_2 = SurveyQuestion.create!(survey_id: survey_candidate.id, question: "What is your plan for managing the coronavirus?", order: 2)
+candidate_question_3 = SurveyQuestion.create!(survey_id: survey_candidate.id, question: "What is the most important issue for the people of your district? And how are you planning to address it?", order: 3)
+
+party_question_1 = SurveyQuestion.create!(survey_id: survey_party.id, question: "What is your plan to combat climate change?", order: 1)
+party_question_2 = SurveyQuestion.create!(survey_id: survey_party.id, question: "What is your plan for managing the coronavirus?", order: 2)
+party_question_3 = SurveyQuestion.create!(survey_id: survey_party.id, question: "What is the most important issue for the people of your district? And how are you planning to address it?", order: 3)
+
+Participant.all.each do |participant|
+  answer = Faker::Lorem.paragraph(sentence_count: 10, supplemental: true, random_sentences_to_add: 5)
+  source = Faker::Lorem.sentences(number: 1, supplemental: true)
+
+  if participant.is_candidate
+    survey_answer_1 = SurveyAnswer.create!(survey_question_id: candidate_question_1.id, participant_id: participant.id, answer: answer, source: source)
+    survey_answer_2 = SurveyAnswer.create!(survey_question_id: candidate_question_2.id, participant_id: participant.id, answer: answer, source: source)
+    survey_answer_3 = SurveyAnswer.create!(survey_question_id: candidate_question_3.id, participant_id: participant.id, answer: answer, source: source)
+  else 
+    survey_answer_1 = SurveyAnswer.create!(survey_question_id: party_question_1.id, participant_id: participant.id, answer: answer, source: source)
+    survey_answer_2 = SurveyAnswer.create!(survey_question_id: party_question_2.id, participant_id: participant.id, answer: answer, source: source)
+    survey_answer_3 = SurveyAnswer.create!(survey_question_id: party_question_3.id, participant_id: participant.id, answer: answer, source: source)
+  end
+end
