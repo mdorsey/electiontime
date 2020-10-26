@@ -56,12 +56,12 @@ Province.create!(name: "Quebec")
 Province.create!(name: "Saskatchewan")
 Province.create!(name: "Yukon")
 
-SocialMediaType.create!(name: "Facebook", website: "https://www.facebook.com/", icon: "fab fa-facebook-square fa-2x")
-SocialMediaType.create!(name: "Instagram", website: "https://www.instagram.com/", icon: "fab fa-instagram-square fa-2x")
-SocialMediaType.create!(name: "LinkedIn", website: "https://www.linkedin.com/in/", icon: "fab fa-linkedin fa-2x")
-SocialMediaType.create!(name: "Medium", website: "https://medium.com/", icon: "fab fa-medium fa-2x")
-SocialMediaType.create!(name: "Twitter", website: "https://twitter.com/", icon: "fab fa-twitter-square fa-2x")
-SocialMediaType.create!(name: "Youtube", website: "https://www.youtube.com/", icon: "fab fa-youtube-square fa-2x")
+social_media_type_1 = SocialMediaType.create!(name: "Facebook", website: "https://www.facebook.com/", icon: "fab fa-facebook-square fa-2x")
+social_media_type_2 = SocialMediaType.create!(name: "Instagram", website: "https://www.instagram.com/", icon: "fab fa-instagram-square fa-2x")
+social_media_type_3 = SocialMediaType.create!(name: "LinkedIn", website: "https://www.linkedin.com/in/", icon: "fab fa-linkedin fa-2x")
+social_media_type_4 = SocialMediaType.create!(name: "Medium", website: "https://medium.com/", icon: "fab fa-medium fa-2x")
+social_media_type_5 = SocialMediaType.create!(name: "Twitter", website: "https://twitter.com/", icon: "fab fa-twitter-square fa-2x")
+social_media_type_6 = SocialMediaType.create!(name: "Youtube", website: "https://www.youtube.com/", icon: "fab fa-youtube-square fa-2x")
 
 SurveyType.create!(name: "Candidate")
 SurveyType.create!(name: "Party")
@@ -475,6 +475,16 @@ District.all.each do |district|
     if avatar_id === 6
       avatar_id = 1
     end
+
+    if (avatar_id < 3)
+      SocialMediaProfile.create!(handle: first_name, participant_id: candidate.id, social_media_type_id: social_media_type_1.id)
+      SocialMediaProfile.create!(handle: first_name, participant_id: candidate.id, social_media_type_id: social_media_type_2.id)
+      SocialMediaProfile.create!(handle: first_name, participant_id: candidate.id, social_media_type_id: social_media_type_3.id)
+    else
+      SocialMediaProfile.create!(handle: first_name, participant_id: candidate.id, social_media_type_id: social_media_type_4.id)
+      SocialMediaProfile.create!(handle: first_name, participant_id: candidate.id, social_media_type_id: social_media_type_5.id)
+      SocialMediaProfile.create!(handle: first_name, participant_id: candidate.id, social_media_type_id: social_media_type_6.id)
+    end
   end
 end
 
@@ -504,6 +514,16 @@ Party.where.not(name: "Independent").each do |party|
   avatar_id += 1
   if avatar_id === 6
     avatar_id = 1
+  end
+
+  if (avatar_id < 3)
+    SocialMediaProfile.create!(handle: email, participant_id: party_participant.id, social_media_type_id: social_media_type_1.id)
+    SocialMediaProfile.create!(handle: email, participant_id: party_participant.id, social_media_type_id: social_media_type_2.id)
+    SocialMediaProfile.create!(handle: email, participant_id: party_participant.id, social_media_type_id: social_media_type_3.id)
+  else
+    SocialMediaProfile.create!(handle: email, participant_id: party_participant.id, social_media_type_id: social_media_type_4.id)
+    SocialMediaProfile.create!(handle: email, participant_id: party_participant.id, social_media_type_id: social_media_type_5.id)
+    SocialMediaProfile.create!(handle: email, participant_id: party_participant.id, social_media_type_id: social_media_type_6.id)
   end
 end
 
