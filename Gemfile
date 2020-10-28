@@ -1,6 +1,8 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
+# LAST UPDATED: OCT 28, 2020
+
 ruby '2.6.1'
 
 gem 'rails', '~> 5.2.2'
@@ -15,13 +17,13 @@ gem 'puma', '~> 5.0', '>= 5.0.4'
 gem 'sass-rails', '~> 6.0'
 
 # Use Uglifier as compressor for JavaScript assets
-gem 'uglifier', '>= 1.3.0'
+gem 'uglifier', '~> 4.2'
 
 # Turbolinks makes navigating your web application faster. https://github.com/turbolinks/turbolinks
-gem 'turbolinks', '~> 5'
+gem 'turbolinks', '~> 5.2', '>= 5.2.1'
 
 # Use ActiveModel has_secure_password
-gem 'bcrypt', '~> 3.1.12'
+gem 'bcrypt', '~> 3.1', '>= 3.1.16'
 
 # Provides jQuery support
 gem 'jquery-rails', '~> 4.3.1'
