@@ -48,7 +48,7 @@ gem 'bootsnap', '>= 1.1.0', require: false
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console. https://github.com/deivid-rodriguez/byebug/
-  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'byebug', '~> 11.1', '>= 11.1.3'
 end
 
 group :development do
@@ -57,8 +57,8 @@ group :development do
 
   # Spring speeds up development by keeping your application running in the background. https://github.com/rails/spring
   gem 'spring'
-  gem 'listen', '>= 3.0.5', '< 3.2'
-  gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'listen', '~> 3.2', '>= 3.2.1'
+  gem 'spring-watcher-listen', '~> 2.0', '>= 2.0.1'
 
   # Rails Database Viewer and SQL Query Runner. https://github.com/igorkasyanchuk/rails_db
   gem 'rails_db', '2.0.4'
