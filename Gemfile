@@ -26,19 +26,19 @@ gem 'turbolinks', '~> 5.2', '>= 5.2.1'
 gem 'bcrypt', '~> 3.1', '>= 3.1.16'
 
 # Provides jQuery support
-gem 'jquery-rails', '~> 4.3.1'
+gem 'jquery-rails', '~> 4.4'
 
 # Provides a simple API for performing paginated queries with Active Record
-gem 'will_paginate', '~> 3.1.0'
+gem 'will_paginate', '~> 3.3'
 
 # Integrates Bulma with the rails asset pipeline. https://github.com/joshuajansen/bulma-rails
 gem "bulma-rails", "~> 0.9.0"
 
 # Integrates the Bulma pagination component with the will_paginate gem. https://github.com/phoffer/will_paginate-bulma
-gem 'will_paginate-bulma'
+gem 'will_paginate-bulma', '~> 1.0'
 
-# Breadcrumb management. https://github.com/piotrmurach/loaf
-gem 'loaf'
+# Manages and displays breadcrumb trails. https://github.com/piotrmurach/loaf
+gem 'loaf', '~> 0.9.0'
 
 # Image manipulator
 # gem 'mini_magick', '~> 4.8'
