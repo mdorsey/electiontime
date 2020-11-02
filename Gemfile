@@ -5,7 +5,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.6.1'
 
-gem 'rails', '~> 5.2.2'
+gem 'rails', '~> 6.0', '>= 6.0.3.4'
 
 # Use mysql as the database for Active Record
 gem 'mysql2', '~> 0.5.3'
@@ -53,7 +53,7 @@ end
 
 group :development do
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code. https://github.com/rails/web-console/
-  gem 'web-console', '>= 3.3.0'
+  gem 'web-console', '~> 4.0', '>= 4.0.4'
 
   # Spring speeds up development by keeping your application running in the background. https://github.com/rails/spring
   gem 'spring'
@@ -61,10 +61,10 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0', '>= 2.0.1'
 
   # Rails Database Viewer and SQL Query Runner. https://github.com/igorkasyanchuk/rails_db
-  gem 'rails_db', '2.0.4'
+  gem 'rails_db', '~> 2.3', '>= 2.3.1'
 
   # For creating fake data. https://github.com/faker-ruby/faker/
-  gem 'faker', '1.7.3'
+  gem 'faker', '~> 2.14'
 end
 
 group :test do
