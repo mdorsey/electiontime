@@ -9,24 +9,27 @@
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
     <script src="https://kit.fontawesome.com/701a10f68b.js" crossorigin="anonymous"></script>
 
     <!-- Initializes the tinymce editor for any field with class 'tinymce' -->
+    <script src="https://cdn.tiny.cloud/1/axgrmds7yd4yps0wzgfe0edfb4qutfyznx7hp0q87hacr8dx/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
     <script>
       tinymce.init({
         selector: '.tinymce',
         height: 500,
+        menubar: false,
         plugins: [
           'advlist autolink lists link image charmap print preview anchor',
           'searchreplace visualblocks code fullscreen',
           'insertdatetime media table paste code help wordcount'
         ],
-        toolbar: 'undo redo | formatselect | ' +
+          toolbar: 'undo redo | formatselect | ' +
           ' bold italic backcolor | alignleft aligncenter ' +
-          ' alignright alignjustify | bullist numlist outdent indent |' +
+          ' alignright alignjustify | bullist numlist outdent indent | ' +
           ' removeformat | help'
       });
-    </script>   
+    </script>
 
     <%= render 'layouts/shim' %>
   </head>

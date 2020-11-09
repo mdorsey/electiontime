@@ -6,7 +6,7 @@
     <%= render 'admin/admin_menu' %>
   </div>
   <div class="column">
-    <%= render 'admin/admin_list', new_object_text: "+ New Survey Question", new_object_path: new_survey_question_path, 
+    <%= render 'admin/admin_list', new_object_text: "+ New Survey Question", new_object_path: new_survey_question_path, use_turbolinks: "true",
       objects_path: survey_questions_path, placeholder_text: "Search by question...", objects_list: @survey_questions %>
   </div>
 </div>

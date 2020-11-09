@@ -1,5 +1,5 @@
 <div class="buttons">
-  <%= link_to new_object_text, new_object_path, class: "button is-link" %>
+  <%= link_to new_object_text, new_object_path, class: "button is-link", data: { turbolinks: use_turbolinks } %>
 </div>
 
 <%= form_tag objects_path, :method => 'get' do %>
