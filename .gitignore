@@ -13,11 +13,14 @@
 !/log/.keep
 !/tmp/.keep
 
-# Ignore uploaded files in development
+# Ignore pidfiles, but keep the directory.
+/tmp/pids/*
+!/tmp/pids/
+!/tmp/pids/.keep
+
+# Ignore uploaded files in development.
 /storage/*
 !/storage/.keep
-
-/yarn-error.log
 
 /public/assets
 .byebug_history
@@ -28,5 +31,9 @@
 # Ignore database config
 /config/database.yml
 
-# Ignore node_modules
+/public/packs
+/public/packs-test
 /node_modules
+/yarn-error.log
+yarn-debug.log*
+.yarn-integrity
