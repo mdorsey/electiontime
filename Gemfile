@@ -65,6 +65,9 @@ group :development do
 
   # Used to check for security issues in Gems. https://github.com/rubysec/bundler-audit
   gem 'bundler-audit'
+
+  # Provides intellisense, code completion, and inline documentation for Ruby. https://marketplace.visualstudio.com/items?itemName=castwide.solargraph
+  gem 'solargraph'
 end
 
 group :test do
