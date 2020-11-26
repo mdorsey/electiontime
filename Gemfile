@@ -31,9 +31,6 @@ gem 'bcrypt', '~> 3.1', '>= 3.1.16'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
 
-# Provides jQuery support
-gem 'jquery-rails', '~> 4.4'
-
 # Provides a simple API for performing paginated queries with Active Record
 gem 'will_paginate', '~> 3.3'
 
