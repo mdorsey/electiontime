@@ -41,7 +41,7 @@ gem "bulma-rails", "~> 0.9.0"
 gem 'will_paginate-bulma', '~> 1.0'
 
 # Manages and displays breadcrumb trails. https://github.com/piotrmurach/loaf
-gem 'loaf', '~> 0.9.0'
+gem 'loaf', '~> 0.10.0'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -62,6 +62,9 @@ group :development do
 
   # For creating fake data. https://github.com/faker-ruby/faker/
   gem 'faker', '~> 2.14'
+
+  # Used to check for security issues in Gems. https://github.com/rubysec/bundler-audit
+  gem 'bundler-audit'
 end
 
 group :test do
