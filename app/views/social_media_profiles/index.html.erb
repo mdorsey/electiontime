@@ -7,6 +7,6 @@
   </div>
   <div class="column">
     <%= render 'admin/admin_list', new_object_text: "+ New Social Media Profile", new_object_path: new_social_media_profile_path, use_turbolinks: "true",
-      objects_path: social_media_profiles_path, placeholder_text: "Search by handle...", objects_list: @social_media_profiles %>
+      object_count: @social_media_profiles.count, objects_path: social_media_profiles_path, placeholder_text: "Search by handle...", objects_list: @social_media_profiles %>
   </div>
 </div>

@@ -7,7 +7,7 @@
   </div>
   <div class="column">
     <%= render 'admin/admin_list', new_object_text: "+ New Content", new_object_path: new_content_path, use_turbolinks: "false",
-      objects_path: contents_path, placeholder_text: "Search by name...", objects_list: @contents %>
+      object_count: @contents.count, objects_path: contents_path, placeholder_text: "Search by name...", objects_list: @contents %>
   </div>
 </div>
 

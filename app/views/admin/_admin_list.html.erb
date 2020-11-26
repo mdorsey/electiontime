@@ -2,6 +2,10 @@
   <%= link_to new_object_text, new_object_path, class: "button is-link", data: { turbolinks: use_turbolinks } %>
 </div>
 
+<div class="objects-count">
+  Count: <%= number_with_delimiter(object_count, :delimiter => ',') %>
+</div>
+
 <%= form_tag objects_path, :method => 'get' do %>
   <div class="field has-addons">
     <div class="control is-expanded">
@@ -10,10 +14,13 @@
     <div class="control">
       <%= submit_tag "Search", :name => nil, class: "search-button is-primary" %>
     </div>
+    <div class="control">
+      <%= link_to 'Reset', objects_path, class: "search-button is-light" %>
+    </div>
   </div>
 <% end %>
 
-<ul class="resources-list">
+<ul class="objects-list">
   <%= render objects_list %>
 </ul>
 
