@@ -1,6 +1,7 @@
 class AdminController < ApplicationController
   
   def dashboard
+    @elections_active = Election.where(active: true).count
   end
 
   def import_districts
