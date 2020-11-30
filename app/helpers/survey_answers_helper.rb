@@ -1,6 +1,12 @@
 module SurveyAnswersHelper
 
-  def display_survey_answer(survey_question_id, participant_id)
+  def display_survey_answer(survey_answer_id)
+    survey_answer = SurveyAnswer.find(survey_answer_id)
+    text = display_participant(survey_answer.participant_id, true) + ': ' + survey_answer.answer[0, 100] + '...'
+    return text
+  end
+
+  def display_survey_answer_text(survey_question_id, participant_id)
 
     answer_text = ''
 
@@ -12,7 +18,7 @@ module SurveyAnswersHelper
     return answer_text
   end
 
-  def display_survey_source(survey_question_id, participant_id)
+  def display_survey_source_text(survey_question_id, participant_id)
 
     source_text = ''
 

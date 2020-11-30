@@ -53,8 +53,8 @@
   <div class="grid-value">
     <% @survey_questions.each do |question_id, question| %>
       <p><%= question %></p>
-      <p><%= display_survey_answer(question_id, @participant.id) %></p>
-      <p><%= display_survey_source(question_id, @participant.id) %></p>
+      <p><%= display_survey_answer_text(question_id, @participant.id) %></p>
+      <p><%= display_survey_source_text(question_id, @participant.id) %></p>
     <% end %>
   </div>
 

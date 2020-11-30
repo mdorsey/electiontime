@@ -18,7 +18,7 @@
       <div class="grid-value"><%= @election.name %></div>
 
       <div class="grid-label">Active:</div>
-      <div class="grid-value"><%= @election.active %></div>
+      <div class="grid-value"><%= display_boolean_as_yes_or_no(@election.active) %></div>
 
       <div class="grid-label">Election Type:</div>
       <div class="grid-value"><%= display_election_type(@election.election_type_id) %></div>
@@ -29,11 +29,26 @@
       <div class="grid-label">Jurisdiction:</div>
       <div class="grid-value"><%= display_jurisdiction(@election.jurisdiction_id) %></div>
 
+      <div class="grid-label">Surveys:</div>
+      <div class="grid-value">
+        <ul>
+          <% @election.surveys.each do |survey| %>
+            <li><%= link_to survey.name, survey %></li>
+          <%end %>
+        </ul>  
+      </div>
+
+      <div class="grid-label"># of Districts:</div>
+      <div class="grid-value"><%= number_with_delimiter(@election.districts.count, :delimiter => ',') %></div>
+
+      <div class="grid-label"># of Participants:</div>
+      <div class="grid-value"><%= number_with_delimiter(@election.participants.count, :delimiter => ',') %></div>
+
       <div class="grid-label">Districts:</div>
       <div class="grid-value">
         <ul>
-          <% @election.districts.each do |district| %>
-            <li><%= district.name %></li>
+          <% @election.districts.order(:name).each do |district| %>
+            <li><%= link_to district.name, district %></li>
           <%end %>
         </ul>  
       </div>
@@ -42,7 +57,7 @@
       <div class="grid-value">
         <ul>
           <% @election.participants.order(:name).each do |participant| %>
-            <li><%= display_participant(participant.id) %></li>
+            <li><%= link_to display_participant(participant.id), participant %></li>
           <%end %>
         </ul>
       </div>

@@ -101,7 +101,7 @@
     <div class="field">
       <%= label_tag("survey_question", question, { class: 'label' }) %>
       <div class="control">
-        <%= text_area_tag("sqa_" + question_id.to_s, display_survey_answer(question_id, @participant.id), { class: 'textarea' }) %>
+        <%= text_area_tag("sqa_" + question_id.to_s, display_survey_answer_text(question_id, @participant.id), { class: 'textarea' }) %>
       </div>
     </div>
   <% end %>

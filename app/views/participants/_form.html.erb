@@ -37,7 +37,7 @@
     <%= f.label :district_id, "District", class: 'label' %>
     <div class="control">
       <div class="select">
-        <%= f.select(:district_id, options_for_district, {include_blank: "None"}) %>
+        <%= f.select(:district_id, options_for_district, {include_blank: "- None -"}) %>
       </div>
     </div>
   </div>
@@ -46,7 +46,7 @@
     <%= f.label :leader_participant_id, "Leader Participant", class: 'label' %>
     <div class="control">
       <div class="select">
-        <%= f.select(:leader_participant_id, options_for_participant, {include_blank: "None"}) %>
+        <%= f.select(:leader_participant_id, options_for_participant, {include_blank: "- None -"}) %>
       </div>
     </div>
   </div>
@@ -97,7 +97,7 @@
     <%= f.label :address_id, "Address", class: 'label' %>
     <div class="control">
       <div class="select">
-        <%= f.select(:address_id, options_for_address, {include_blank: "None"}) %>
+        <%= f.select(:address_id, options_for_address, {include_blank: "- None -"}) %>
       </div>
     </div>
   </div>

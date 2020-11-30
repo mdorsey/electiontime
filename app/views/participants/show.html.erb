@@ -18,7 +18,7 @@
       <div class="grid-value"><%= image_tag(get_participant_picture_url(@participant.id), class: "image is-128x128", alt: display_user(@participant.user_id)) %></div>
 
       <div class="grid-label">Owner:</div>
-      <div class="grid-value"><%= display_user(@participant.user_id) %></div>
+      <div class="grid-value"><%= link_to display_user(@participant.user_id), @participant.user %></div>
 
       <div class="grid-label">Name:</div>
       <div class="grid-value"><%= @participant.name %></div>
@@ -52,6 +52,33 @@
 
       <div class="grid-label">Address:</div>
       <div class="grid-value"><%= display_address(@participant.address_id) %></div>
+
+      <div class="grid-label">Elections:</div>
+      <div class="grid-value">
+        <ul>
+          <% @participant.elections.each do |election| %>
+            <li><%= link_to election.name, election %></li>
+          <%end %>
+        </ul>  
+      </div>
+
+      <div class="grid-label">Social Media Profiles:</div>
+      <div class="grid-value">
+        <ul>
+          <% @participant.social_media_profiles.each do |social_media_profile| %>
+            <li><%= link_to display_social_media_profile(social_media_profile.id), social_media_profile %></li>
+          <%end %>
+        </ul>  
+      </div>
+
+      <div class="grid-label">Survey Answers:</div>
+      <div class="grid-value">
+        <ul>
+          <% @participant.survey_answers.each do |survey_answer| %>
+            <li><%= link_to display_survey_answer(survey_answer.id), survey_answer %></li>
+          <%end %>
+        </ul>  
+      </div>
 
     </div>
   </div>

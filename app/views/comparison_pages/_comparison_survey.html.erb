@@ -8,7 +8,7 @@
         <%= render 'comparison_pages/comparison_participant_header', participant_id: p.id, party_id: p.party_id %>
 
         <!-- Survey Answer -->
-        <p><%= display_survey_answer(question_id, p.id) %></p>
+        <p><%= display_survey_answer_text(question_id, p.id) %></p>
       </div>
     <% end %>
   </div>
