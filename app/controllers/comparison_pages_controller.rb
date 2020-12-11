@@ -11,7 +11,8 @@ class ComparisonPagesController < ApplicationController
   breadcrumb 'Compare Party Platforms', -> { compare_party_platforms_path(@election) }, only: [:compare_party_platforms]
 
   def find_my_election
-    @elections = Election.where(active: true).order('election_date DESC')
+    @elections_future = Election.where("active = true AND election_date >= ?", Time.now.utc.midnight).order('election_date ASC')
+    @elections_past = Election.where("active = true AND election_date < ?", Time.now.utc.midnight).order('election_date DESC')
   end
 
   def election_summary

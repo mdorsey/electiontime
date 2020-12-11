@@ -2,6 +2,8 @@
 
 $navbar-item-img-max-height: 3.5rem;
 $footer-background-color: white;
+$box-shadow: none;
+
 
 /* IMPORTS */
 
@@ -21,20 +23,27 @@ textarea {
 
 /* TYPOGRAPHY */
 
+body {
+  font-family: Arial, sans-serif;
+}
+
 h1 {
   @extend .title;
+  @extend .is-3;
   text-align: center;
 }
 
 h2 {
   @extend .subtitle;
-  @extend .is-2;
+  @extend .is-4;
+  text-align: center;
 }
 
 h3 {
   @extend .subtitle;
-  @extend .is-3;
-  margin-top: 1.5rem
+  @extend .is-5;
+  text-align: center;
+  // margin-top: 1.5rem
 }
 
 p {

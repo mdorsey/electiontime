@@ -1,19 +1,36 @@
 <% provide(:title, "Find My Election") %>
-<h1>Find My Election</h1>
 
-<ul class="find-my-election-list">
-  <% @elections.each do |e| %>
+<h1>Upcoming Elections</h1>
+<ul>
+  <% @elections_future.each do |e| %>
     <li>
       <%= link_to election_summary_path(e) do %>
         <div class="box">
           <article class="election-banner">
-            <h3><%= e.name %></h3>
-            <p>Type: <%= display_election_type(e.election_type_id) %></p>
-            <p>Jurisdiction: <%= display_jurisdiction(e.jurisdiction_id) %></p>
-            <p>Date: <%= display_election_date(e.election_date) %></p>
+            <h2><%= e.name %></h2>
+            <p><%= display_election_date(e.election_date) %></p>
           </article>
         </div>
       <% end %>
     </li>
   <% end %>
 </ul>
+
+<% unless @elections_past.empty? %>
+  <hr>
+  <h1>Past Elections</h1>
+  <ul>
+    <% @elections_past.each do |e| %>
+      <li>
+        <%= link_to election_summary_path(e) do %>
+          <div class="box">
+            <article class="election-banner">
+              <h2><%= e.name %></h2>
+              <p><%= display_election_date(e.election_date) %></p>
+            </article>
+          </div>
+        <% end %>
+      </li>
+    <% end %>
+  </ul>
+<% end %>

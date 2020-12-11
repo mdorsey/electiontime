@@ -2,6 +2,11 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.box {
+  border: 1px solid lightgrey;
+  margin-bottom: 3em;
+}
+
 .box:hover {
   border: 1px solid black;
 }
@@ -19,12 +24,16 @@
   text-align: center;
 }
 
-.find-my-election-list {
-  li {
-    margin-bottom: 30px;
-  }
-}
-
 .participant-name {
   font-weight: bold;
+}
+
+.select-your-riding {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .label, .select {
+    margin-right: 1em;
+  }
 }

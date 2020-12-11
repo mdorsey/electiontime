@@ -1,66 +1,43 @@
-<% provide(:title, "Election Summary") %>
-<h1>Election Summary</h1>
+<% provide(:title, @election.name) %>
 
-<nav class="level">
-  <div class="level-item has-text-centered">
-    <div>
-      <h3><%= @election.name %></h3>
-      <p>Type: <%= display_election_type(@election.election_type_id) %></p>
-      <p>Jurisdiction: <%= display_jurisdiction(@election.jurisdiction_id) %></p>
-      <p>Date: <%= display_election_date(@election.election_date) %></p>
-    </div>
-  </div>
-</nav>
+<h1><%= @election.name %></h1>
+<h3><%= display_election_date(@election.election_date) %></h3>
 
 <%= link_to compare_party_leaders_path(@election) do %>
-  <h3>Compare Party Leaders</h3>
-  <nav class="level">
-    <% @party_leaders.each do |pl| %>
-      <div class="level-item">
-        <div>
-          <figure class="image is-128x128">
-            <%= image_tag(get_participant_picture_url(pl.id), alt: display_participant(pl.id)) %>
-          </figure>
-          <%= display_participant(pl.id, true) %>
-          <br />
-          <%= display_party(pl.party_id) %>
+  <div class="box">
+    <h3>Compare Party Leaders</h3>
+    <div class="columns is-multiline">
+      <% @party_leaders.each do |pl| %>
+        <div class="column is-one-third">
+          <%= render 'comparison_pages/comparison_participant_header', participant_id: pl.id, party_id: pl.party_id %>
         </div>
-      </div>
-    <% end %>
-  </nav>
+      <% end %>
+    </div>
+  </div>
 <% end %>
 
 <%= link_to compare_party_platforms_path(@election) do %>
-  <h3>Compare Party Platforms</h3>
-  <nav class="level">
-    <% @parties.each do |party| %>
-      <div class="level-item">
-        <div>
-          <figure class="image is-128x128">
-            <%= image_tag(get_participant_picture_url(party.id), alt: display_participant(party.id)) %>
-          </figure>
-          <%= display_participant(party.id) %>
+  <div class="box">
+    <h3>Compare Party Platforms</h3>
+    <div class="columns is-multiline">
+      <% @parties.each do |party| %>
+        <div class="column is-one-third">
+          <%= render 'comparison_pages/comparison_participant_header', participant_id: party.id, party_id: party.party_id %>
         </div>
-      </div>
-    <% end %>
-  </nav>
+      <% end %>
+    </div>
+  </div>
 <% end %>
 
 <%= form_with(url: election_summary_path(@election), method: "get", local: true) do |f| %>
-  <nav class="level">
-    <div class="level-item has-text-centered">
-      <div>
-        <h3>Compare Candidates</h3>
-        <%= f.label "Select your riding", class: 'label' %>
-        <div class="control">
-          <div class="select">
-            <%= f.select(:district_id, options_for_select(options_for_district(@election.id))) %>
-          </div>
-        </div>
-        <div class="buttons">
-          <%= f.submit "Go!", class: "button is-link" %>
-        </div>
+  <div class="box">
+    <h3>Compare Candidates</h3>
+    <div class="select-your-riding">
+      <%= f.label "Select your riding", class: 'label' %>
+      <div class="select">
+        <%= f.select(:district_id, options_for_select(options_for_district(@election.id))) %>
       </div>
+      <%= f.submit "Go!", class: "button is-link" %>
     </div>
-  </nav>
+  </div>
 <% end %>
