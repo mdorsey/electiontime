@@ -17,4 +17,19 @@ module ElectionsHelper
 
     return elections
   end
+
+  def get_election_picture_url(election_id)
+
+    picture_url = ''
+
+    if election_id
+      election = Election.find(election_id)
+
+      if election.picture.attached?
+        picture_url = election.picture
+      end
+    end
+
+    return picture_url
+  end
 end

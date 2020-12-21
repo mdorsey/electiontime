@@ -15,7 +15,11 @@
     <div class="show-grid-wrapper">
 
       <div class="grid-label">Picture:</div>
-      <div class="grid-value"><%= image_tag(get_participant_picture_url(@participant.id), class: "image is-128x128", alt: display_user(@participant.user_id)) %></div>
+      <div class="grid-value">
+        <figure class="image is-128x128">
+          <%= image_tag(get_participant_picture_url(@participant.id), alt: display_user(@participant.user_id)) %>
+        </figure>
+      </div>
 
       <div class="grid-label">Owner:</div>
       <div class="grid-value"><%= link_to display_user(@participant.user_id), @participant.user %></div>

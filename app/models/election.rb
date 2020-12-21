@@ -5,6 +5,7 @@ class Election < ApplicationRecord
   has_and_belongs_to_many :districts
   has_and_belongs_to_many :participants
   has_many :surveys
+  has_one_attached :picture
 
   validates(:name, presence: true, length: { maximum: 255 })
   validates(:election_date, presence: true)

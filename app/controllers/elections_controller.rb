@@ -41,6 +41,10 @@ class ElectionsController < ApplicationController
   end
 
   def update
+    # Remove any previous picture, if a new one was selected
+    if params[:election][:picture].present?
+      @election.picture.purge
+    end
 
     if @election.update_attributes(election_params)
 
@@ -68,6 +72,6 @@ class ElectionsController < ApplicationController
     end
 
     def election_params
-      params.require(:election).permit(:name, :election_date, :election_type_id, :jurisdiction_id, :active, :district_ids => [], :participant_ids => [])
+      params.require(:election).permit(:picture, :name, :election_date, :election_type_id, :jurisdiction_id, :active, :district_ids => [], :participant_ids => [])
     end
 end

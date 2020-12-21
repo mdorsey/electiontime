@@ -7,6 +7,9 @@
       <%= link_to election_summary_path(e) do %>
         <div class="box">
           <article class="election-banner">
+            <figure class="image is-flag">
+              <%= image_tag(get_election_picture_url(e.id), alt: e.name) %>
+            </figure>
             <h2><%= e.name %></h2>
             <p><%= display_election_date(e.election_date) %></p>
           </article>
@@ -25,6 +28,9 @@
         <%= link_to election_summary_path(e) do %>
           <div class="box">
             <article class="election-banner">
+              <figure class="image is-flag">
+                <%= image_tag(get_election_picture_url(e.id), alt: e.name) %>
+              </figure>
               <h2><%= e.name %></h2>
               <p><%= display_election_date(e.election_date) %></p>
             </article>

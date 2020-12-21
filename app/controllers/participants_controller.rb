@@ -39,7 +39,7 @@ class ParticipantsController < ApplicationController
   end
 
   def update
-    # Remove any previous pictures, if a new one was selected
+    # Remove any previous picture, if a new one was selected
     if params[:participant][:picture].present?
       @participant.picture.purge
     end

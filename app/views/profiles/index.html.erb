@@ -4,7 +4,9 @@
 <ul>
   <% @profiles.each do |p| %>
     <li>
-      <%= image_tag(get_participant_picture_url(p.id), class: "image is-128x128", alt: p.name) %>
+      <figure class="image is-128x128">
+        <%= image_tag(get_participant_picture_url(p.id), alt: p.name) %>
+      </figure>
       <%= link_to display_participant(p.id), profile_path(p.id) %>
     </li>
   <% end %>
