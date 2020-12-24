@@ -1,5 +1,9 @@
 <% survey_questions.each do |question_id, topic| %>
-  <a id="question_<%= question_id %>"><h3><%= topic %></h3></a>
+  <a id="question_<%= question_id %>">
+    <div class="section-heading">
+      <%= topic %>
+    </div>
+  </a>
   <%= display_survey_question(question_id) %>
   <div class="columns is-multiline">
     <% participants.each do |p| %>

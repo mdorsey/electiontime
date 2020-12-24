@@ -1,6 +1,6 @@
-<% provide(:title, 'Public Profile') %>
+<% provide(:title, @participant.name) %>
 
-<h2><%= @participant.name %></h2>
+<h1><%= @participant.name %></h1>
 
 <figure class="image is-128x128">
   <%= image_tag(get_participant_picture_url(@participant.id), alt: @participant.name) %>

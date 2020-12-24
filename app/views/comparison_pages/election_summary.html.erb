@@ -1,11 +1,13 @@
 <% provide(:title, @election.name) %>
 
 <h1><%= @election.name %></h1>
-<h3><%= display_election_date(@election.election_date) %></h3>
+<h2><%= display_election_date(@election.election_date) %></h2>
 
 <%= link_to compare_party_leaders_path(@election) do %>
   <div class="box">
-    <h3>Compare Party Leaders</h3>
+    <div class="section-heading">
+      Compare Party Leaders
+    </div>
     <div class="columns is-multiline">
       <% @party_leaders.each do |pl| %>
         <div class="column is-one-third">
@@ -18,7 +20,9 @@
 
 <%= link_to compare_party_platforms_path(@election) do %>
   <div class="box">
-    <h3>Compare Party Platforms</h3>
+    <div class="section-heading">
+      Compare Party Platforms
+    </div>
     <div class="columns is-multiline">
       <% @parties.each do |party| %>
         <div class="column is-one-third">
@@ -31,7 +35,9 @@
 
 <%= form_with(url: election_summary_path(@election), method: "get", local: true) do |f| %>
   <div class="box">
-    <h3>Compare Candidates</h3>
+    <div class="section-heading">
+      Compare Candidates
+    </div>
     <div class="select-your-riding">
       <%= f.label "Select your riding", class: 'label' %>
       <div class="select">

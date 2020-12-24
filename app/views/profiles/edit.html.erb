@@ -1,6 +1,6 @@
 <% provide(:title, 'Edit Public Profile') %>
 
-<h2>Edit Public Profile</h2>
+<h1>Edit Public Profile</h1>
 
 <%= form_for(setup_participant_form(@participant), url: profile_path(@participant), method: :patch) do |p_fields| %>
   <%= render 'shared/error_messages', object: p_fields.object %>
@@ -48,7 +48,7 @@
   </div>
 
   <!-- ADDRESS -->
-  <h3>Address</h3>
+  Address
 
   <%= p_fields.fields_for :address do |a_fields| %>
     <div class="field">
@@ -83,7 +83,7 @@
   <% end %>
 
   <!-- SOCIAL MEDIA -->
-  <h3>Social Media Profiles</h3>
+  Social Media Profiles
 
   <% @social_media_profiles.each do |type_id, handle| %>
     <div class="field">
@@ -95,7 +95,7 @@
   <% end %>
 
   <!-- SURVEY QUESTIONS AND ANSWERS -->
-  <h3>Survey</h3>
+  Survey
 
   <% @survey_questions.each do |question_id, question| %>
     <div class="field">

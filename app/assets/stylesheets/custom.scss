@@ -27,27 +27,28 @@ body {
   font-family: Arial, sans-serif;
 }
 
+/* Page title */
 h1 {
   @extend .title;
   @extend .is-3;
   text-align: center;
 }
 
+/* Page subtitle */
 h2 {
-  @extend .subtitle;
-  @extend .is-4;
-  text-align: center;
-}
-
-h3 {
   @extend .subtitle;
   @extend .is-5;
   text-align: center;
-  // margin-top: 1.5rem
 }
 
 p {
   line-height: 1.7em;
+}
+
+.section-heading {
+  @extend .subtitle;
+  @extend .is-4;
+  text-align: center;
 }
 
 
