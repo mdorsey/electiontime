@@ -48,8 +48,11 @@
       <div class="grid-label"># of Districts:</div>
       <div class="grid-value"><%= number_with_delimiter(@election.districts.count, :delimiter => ',') %></div>
 
-      <div class="grid-label"># of Participants:</div>
-      <div class="grid-value"><%= number_with_delimiter(@election.participants.count, :delimiter => ',') %></div>
+      <div class="grid-label"># of Candidates:</div>
+      <div class="grid-value"><%= number_with_delimiter(get_number_of_election_candidates(@election.id), :delimiter => ',') %></div>
+
+      <div class="grid-label"># of Parties:</div>
+      <div class="grid-value"><%= number_with_delimiter(get_number_of_election_parties(@election.id), :delimiter => ',') %></div>
 
       <div class="grid-label">Districts:</div>
       <div class="grid-value">

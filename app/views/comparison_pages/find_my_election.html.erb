@@ -2,18 +2,10 @@
 
 <h1>Upcoming Elections</h1>
 <ul>
-  <% @elections_future.each do |e| %>
+  <% @elections_future.each do |election| %>
     <li>
-      <%= link_to election_summary_path(e) do %>
-        <div class="box">
-          <article class="election-banner">
-            <figure class="image is-flag">
-              <%= image_tag(get_election_picture_url(e.id), alt: e.name) %>
-            </figure>
-            <h2><%= e.name %></h2>
-            <p><%= display_election_date(e.election_date) %></p>
-          </article>
-        </div>
+      <%= link_to election_summary_path(election) do %>
+        <%= render 'comparison_pages/find_my_election_box', election: election %>
       <% end %>
     </li>
   <% end %>
@@ -23,18 +15,10 @@
   <hr>
   <h1>Past Elections</h1>
   <ul>
-    <% @elections_past.each do |e| %>
+    <% @elections_past.each do |election| %>
       <li>
-        <%= link_to election_summary_path(e) do %>
-          <div class="box">
-            <article class="election-banner">
-              <figure class="image is-flag">
-                <%= image_tag(get_election_picture_url(e.id), alt: e.name) %>
-              </figure>
-              <h2><%= e.name %></h2>
-              <p><%= display_election_date(e.election_date) %></p>
-            </article>
-          </div>
+        <%= link_to election_summary_path(election) do %>
+          <%= render 'comparison_pages/find_my_election_box', election: election %>
         <% end %>
       </li>
     <% end %>

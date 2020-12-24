@@ -137,6 +137,5 @@ select[multiple] {
 /* IMAGES */
 
 .image.is-flag {
-  height: 154px;
-  width: 256px;
+  max-width: 256px;
 }

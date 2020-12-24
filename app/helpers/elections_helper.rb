@@ -32,4 +32,12 @@ module ElectionsHelper
 
     return picture_url
   end
+
+  def get_number_of_election_candidates(election_id)
+    return Election.find(election_id).participants.where(is_candidate: true).count
+  end
+
+  def get_number_of_election_parties(election_id)
+    return Election.find(election_id).participants.where(is_candidate: false).count
+  end
 end
