@@ -1,16 +1,35 @@
 <% provide(:title, @election.name) %>
 
-<h1><%= @election.name %></h1>
-<h2><%= display_election_date(@election.election_date) %></h2>
+<div class="election-summary-header">
+  <div class="election-details-and-flag-container">
+    <div class="columns">
+  
+      <!-- Flag image -->
+      <div class="column is-narrow">
+        <figure class="image is-flag">
+          <%= image_tag(get_election_picture_url(@election.id), alt: @election.name) %>
+        </figure>
+      </div>
+    
+      <!-- Election details -->
+      <div class="column">
+        <p class="election-name">
+          <%= @election.name %>
+        </p>
+        <p><%= display_election_date(@election.election_date) %></p>
+      </div>
+    </div>
+  </div>
+</div>
 
 <%= link_to compare_party_leaders_path(@election) do %>
   <div class="box">
     <div class="section-heading">
       Compare Party Leaders
     </div>
-    <div class="columns is-multiline">
+    <div class="columns is-multiline is-mobile">
       <% @party_leaders.each do |pl| %>
-        <div class="column is-one-third">
+      <div class="column is-half-mobile is-half-tablet is-one-third-desktop is-one-third-widescreen is-one-third-fullhd">
           <%= render 'comparison_pages/comparison_participant_header', participant_id: pl.id, party_id: pl.party_id %>
         </div>
       <% end %>
@@ -23,9 +42,9 @@
     <div class="section-heading">
       Compare Party Platforms
     </div>
-    <div class="columns is-multiline">
+    <div class="columns is-multiline is-mobile">
       <% @parties.each do |party| %>
-        <div class="column is-one-third">
+        <div class="column is-half-mobile is-half-tablet is-one-third-desktop is-one-third-widescreen is-one-third-fullhd">
           <%= render 'comparison_pages/comparison_participant_header', participant_id: party.id, party_id: party.party_id %>
         </div>
       <% end %>
@@ -38,12 +57,18 @@
     <div class="section-heading">
       Compare Candidates
     </div>
-    <div class="select-your-riding">
-      <%= f.label "Select your riding", class: 'label' %>
-      <div class="select">
-        <%= f.select(:district_id, options_for_select(options_for_district(@election.id))) %>
+    <div class="columns is-mobile is-multiline is-centered is-vcentered">
+      <div class="column is-narrow">
+        <%= f.label "Select your riding", class: 'label' %>
       </div>
-      <%= f.submit "Go!", class: "button is-link" %>
+      <div class="column is-narrow">
+        <div class="select">
+          <%= f.select(:district_id, options_for_select(options_for_district(@election.id))) %>
+        </div>
+      </div>
+      <div class="column is-narrow">
+        <%= f.submit "Go!", class: "button is-link" %>
+      </div>
     </div>
   </div>
 <% end %>

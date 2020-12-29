@@ -1,5 +1,5 @@
 <div class="box">
-  <div class="find-my-election-box">
+  <div class="election-details-and-flag-container">
     <div class="columns">
 
       <!-- Flag image -->
@@ -11,7 +11,9 @@
     
       <!-- Election details -->
       <div class="column">
-        <p><%= election.name %></p>
+        <p class="election-name">
+          <%= election.name %>
+        </p>
         <p><%= display_election_date(election.election_date) %></p>
         <p><%= number_with_delimiter(get_number_of_election_candidates(election.id), :delimiter => ',') %> candidates</p>
         <p><%= number_with_delimiter(get_number_of_election_parties(election.id), :delimiter => ',') %> parties</p>
