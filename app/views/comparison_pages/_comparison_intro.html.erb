@@ -1,5 +1,29 @@
-<p><%= participant_title %> are listed alphabetically</p>
+<div class="election-summary-header">
+  <div class="election-details-and-flag-container">
+    <div class="columns">
+  
+      <!-- Flag image -->
+      <div class="column is-narrow">
+        <figure class="image is-flag-small">
+          <%= image_tag(get_election_picture_url(@election.id), alt: @election.name) %>
+        </figure>
+      </div>
+    
+      <!-- Election details -->
+      <div class="column">
+        <p class="election-name-small">
+          <%= @election.name %>
+        </p>
+        <p><%= display_election_date(@election.election_date) %></p>
+      </div>
+    </div>
+  </div>
+</div>
 
-<% if display_incumbent %>
-  <p><i class="fas fa-star"></i> = incumbent</p>
-<% end %>
+<h1><%= page_heading %></h1>
+<div class="comparison-intro">
+  <p><%= participant_title %> are listed alphabetically</p>
+  <% if display_incumbent %>
+    <p><i class="fas fa-star"></i> = incumbent</p>
+  <% end %>
+</div>

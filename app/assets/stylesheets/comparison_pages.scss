@@ -11,6 +11,16 @@
   border: 1px solid black;
 }
 
+.comparison-intro {
+  margin-top: -1em;
+  margin-bottom: 1.5em;
+
+  p {
+    text-align: center;
+    font-style: italic;
+  }
+}
+
 .comparison_nav_menu {
   border: 1px solid black;
   position: sticky;
@@ -29,6 +39,11 @@
 .election-name {
   font-weight: bold;
   font-size: 1.3em;
+}
+
+.election-name-small {
+  font-weight: bold;
+  font-size: 1.1em;
 }
 
 .election-summary-header {
