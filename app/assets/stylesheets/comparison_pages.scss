@@ -13,7 +13,6 @@
 
 .comparison-candidates-grid {
   margin-top: 1.5em;
-  margin-bottom: 2em;
 }
 
 .comparison-intro {
@@ -33,6 +32,10 @@
   top: 0;
   z-index: 1;
   background-color: lightgrey;
+
+  .button {
+    margin: 0.25em 0;
+  }
 }
 
 .election-details-and-flag-container {
@@ -61,4 +64,5 @@
 .survey-question-text {
   font-size: 1.1em;
   font-style: italic;
+  margin-top: -1.0em;
 }

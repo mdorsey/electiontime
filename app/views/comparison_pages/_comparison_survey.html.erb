@@ -1,9 +1,10 @@
 <% survey_questions.each do |question_id, topic| %>
   <a id="question_<%= question_id %>">
-    <div class="comparison-section-heading">
-      <%= topic %>
-    </div>
+    <hr>
   </a>
+  <div class="comparison-section-heading">
+    <%= topic %>
+  </div>
   <div class="survey-question-text">
     <p><%= display_survey_question(question_id) %></p>
   </div>
@@ -20,5 +21,4 @@
       <% end %>
     </div>
   </div>
-  <hr>
 <% end %>
