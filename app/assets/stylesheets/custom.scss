@@ -39,10 +39,15 @@ p {
   line-height: 1.7em;
 }
 
-.section-heading {
-  @extend .subtitle;
+.election-section-heading {
+  @extend .title;
   @extend .is-4;
   text-align: center;
+}
+
+.comparison-section-heading {
+  @extend .title;
+  @extend .is-4;
 }
 
 

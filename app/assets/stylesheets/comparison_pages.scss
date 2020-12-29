@@ -11,6 +11,11 @@
   border: 1px solid black;
 }
 
+.comparison-candidates-grid {
+  margin-top: 1.5em;
+  margin-bottom: 2em;
+}
+
 .comparison-intro {
   margin-top: -1em;
   margin-bottom: 1.5em;
@@ -42,8 +47,7 @@
 }
 
 .election-name-small {
-  font-weight: bold;
-  font-size: 1.1em;
+  font-size: 1.2em;
 }
 
 .election-summary-header {
@@ -52,4 +56,9 @@
 
 .participant-name {
   font-weight: bold;
+}
+
+.survey-question-text {
+  font-size: 1.1em;
+  font-style: italic;
 }
