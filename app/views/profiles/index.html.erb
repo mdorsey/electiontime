@@ -4,7 +4,7 @@
 <ul>
   <% @profiles.each do |p| %>
     <li>
-      <figure class="image is-128x128">
+      <figure class="image is-avatar">
         <%= image_tag(get_participant_picture_url(p.id), alt: p.name) %>
       </figure>
       <%= link_to display_participant(p.id), profile_path(p.id) %>

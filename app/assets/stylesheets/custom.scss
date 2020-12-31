@@ -10,13 +10,6 @@ $box-shadow: none;
 @import 'bulma';
 
 
-/* --- UNIVERSAL --- */
-
-textarea {
-  resize: vertical;
-}
-
-
 /* --- TYPOGRAPHY --- */
 
 body {
@@ -111,6 +104,10 @@ select[multiple] {
   margin: 0;
 }
 
+textarea {
+  resize: vertical;
+}
+
 
 /* --- GRID --- */
 
@@ -136,6 +133,11 @@ select[multiple] {
 
 /* --- IMAGES --- */
 
+.is-avatar, .is-avatar-small {
+  height: 128px;
+  width: 128px;
+}
+
 .image.is-flag {
   max-width: 256px;
 }
@@ -143,3 +145,12 @@ select[multiple] {
 .image.is-flag-small {
   max-width: 128px;
 }
+
+
+/* --- BREAKPOINT: Extra small devices (phones, 600px and down) --- */
+@media only screen and (max-width: 600px) {
+  .is-avatar-small {
+    height: 96px;
+    width: 96px;
+  }
+} 
