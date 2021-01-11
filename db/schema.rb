@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_02_215015) do
+ActiveRecord::Schema.define(version: 2021_01_11_202032) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -56,7 +56,9 @@ ActiveRecord::Schema.define(version: 2020_11_02_215015) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "content_location_id"
+    t.bigint "election_id"
     t.index ["content_location_id"], name: "index_contents_on_content_location_id"
+    t.index ["election_id"], name: "index_contents_on_election_id"
     t.index ["language_id"], name: "index_contents_on_language_id"
   end
 
@@ -257,6 +259,7 @@ ActiveRecord::Schema.define(version: 2020_11_02_215015) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "addresses", "provinces"
   add_foreign_key "contents", "content_locations"
+  add_foreign_key "contents", "elections"
   add_foreign_key "contents", "languages"
   add_foreign_key "districts", "election_types"
   add_foreign_key "districts", "jurisdictions"

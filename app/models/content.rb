@@ -2,6 +2,7 @@ class Content < ApplicationRecord
 
   belongs_to :language
   belongs_to :content_location
+  belongs_to :election, optional: true
 
   validates(:name, presence: true, length: { maximum: 255 })
   validates(:content, presence: true)

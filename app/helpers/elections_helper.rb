@@ -1,7 +1,14 @@
 module ElectionsHelper
 
   def display_election(election_id)
-    return Election.find(election_id).name
+
+    name = ''
+
+    if election_id
+      name = Election.find(election_id).name
+    end
+
+    return name
   end
 
   def display_election_date(election_date)
