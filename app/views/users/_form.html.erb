@@ -32,6 +32,13 @@
   </div>
 
   <div class="field">
+    <%= f.label :activated, "Activated", class: 'label' %>
+    <div class="control">
+      <%= f.check_box :activated %>
+    </div>
+  </div>
+
+  <div class="field">
     <%= f.label :password, "Password", class: 'label' %>
     <div class="control">
       <%= f.password_field :password, class: 'input' %>
