@@ -22,6 +22,12 @@
   </div>
 </div>
 
+<div class="content">
+  <% if @content_top %>
+    <%= sanitize @content_top.content %>
+  <% end %>
+</div>
+
 <%= link_to compare_party_leaders_path(@election) do %>
   <div class="box">
     <div class="election-section-heading">
@@ -69,6 +75,11 @@
       <div class="column is-12-mobile is-narrow-tablet is-narrow-desktop is-narrow-widescreen is-narrow-fullhd">
         <%= f.submit "Go!", class: "button is-link" %>
       </div>
+    </div>
+    <div class="content">
+      <% if @content_bottom %>
+        <%= sanitize @content_bottom.content %>
+      <% end %>
     </div>
   </div>
 <% end %>

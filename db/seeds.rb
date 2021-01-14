@@ -6,10 +6,12 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-ContentLocation.create!(name: "page_about_main")
-ContentLocation.create!(name: "page_contact_main")
-ContentLocation.create!(name: "page_home_main")
-ContentLocation.create!(name: "page_volunteer_main")
+ContentLocation.create!(name: "page_about_location_main")
+ContentLocation.create!(name: "page_contact_location_main")
+ContentLocation.create!(name: "page_home_location_main")
+ContentLocation.create!(name: "page_volunteer_location_main")
+ContentLocation.create!(name: "page_election_summary_location_top")
+ContentLocation.create!(name: "page_election_summary_location_bottom")
 
 ElectionType.create!(name: "Federal")
 ElectionType.create!(name: "Provincial")

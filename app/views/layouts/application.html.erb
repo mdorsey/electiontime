@@ -17,17 +17,17 @@
     <script>
       tinymce.init({
         selector: '.tinymce',
-        height: 500,
-        menubar: false,
+        height: 600,
+        menubar: true,
         plugins: [
           'advlist autolink lists link image charmap print preview anchor',
-          'searchreplace visualblocks code fullscreen',
-          'insertdatetime media table paste code help wordcount'
+          'searchreplace visualblocks code fullscreen hr pagebreak nonbreaking',
+          'insertdatetime media table paste code help wordcount emoticons'
         ],
-          toolbar: 'undo redo | formatselect | ' +
-          ' bold italic backcolor | alignleft aligncenter ' +
+        toolbar: 'undo redo | fontselect fontsizeselect formatselect | ' +
+          ' bold italic underline strikethrough | alignleft aligncenter ' +
           ' alignright alignjustify | bullist numlist outdent indent | ' +
-          ' removeformat | help'
+          ' forecolor backcolor removeformat'
       });
     </script>
 

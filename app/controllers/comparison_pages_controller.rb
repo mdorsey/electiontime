@@ -19,6 +19,18 @@ class ComparisonPagesController < ApplicationController
     @parties = @election.parties_for_display
     @party_leaders = @election.party_leaders_for_display
 
+    # Election-specific content - top of the page
+    @content_location_top = ContentLocation.find_by(name: "page_election_summary_location_top")
+    if @content_location_top
+      @content_top = Content.find_by(content_location_id: @content_location_top.id, election_id: @election.id)
+    end
+
+    # Election-specific content - bottom of the page
+    @content_location_bottom = ContentLocation.find_by(name: "page_election_summary_location_bottom")
+    if @content_location_bottom
+      @content_bottom = Content.find_by(content_location_id: @content_location_bottom.id, election_id: @election.id)
+    end
+
     # If the Compare Candidates submit button has been clicked
     if (params[:district_id] && District.find(params[:district_id]))
       redirect_to compare_candidates_path(election_id: @election.id, district_id: params[:district_id])

@@ -45,6 +45,15 @@
         </ul>  
       </div>
 
+      <div class="grid-label">Contents:</div>
+      <div class="grid-value">
+        <ul>
+          <% @election.contents.each do |content| %>
+            <li><%= link_to content.name, content %></li>
+          <%end %>
+        </ul>  
+      </div>
+
       <div class="grid-label"># of Districts:</div>
       <div class="grid-value"><%= number_with_delimiter(@election.districts.count, :delimiter => ',') %></div>
 
