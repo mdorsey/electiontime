@@ -1,13 +1,14 @@
-<% provide(:title, 'Public Profiles') %>
-<h1>Public Profiles</h1>
+<% provide(:title, 'Public Profiles You Manage') %>
+<h1>Public Profiles You Manage</h1>
 
-<ul>
-  <% @profiles.each do |p| %>
-    <li>
-      <figure class="image is-avatar">
-        <%= image_tag(get_participant_picture_url(p.id), alt: p.name) %>
-      </figure>
-      <%= link_to display_participant(p.id), profile_path(p.id) %>
-    </li>
-  <% end %>
-</ul>
+<div class="profiles-list">
+  <ul>
+    <% @profiles.each do |p| %>
+      <li>
+        <%= link_to profile_path(p.id) do %>
+          <%= render 'comparison_pages/comparison_participant_header', participant_id: p.id, party_id: p.party_id, avatar_image_class: 'is-avatar' %>
+        <% end %>
+      </li>
+    <% end %>
+  </ul>
+</div>

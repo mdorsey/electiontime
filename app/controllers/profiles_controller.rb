@@ -11,13 +11,7 @@ class ProfilesController < ApplicationController
   breadcrumb -> { @participant.participant_name_for_display }, -> { profile_path(@participant) }, only: [:edit, :show]
 
   def index
-
     @profiles = Participant.where(user_id: current_user.id).order(name: :asc)
-
-    # If there is only 1 profile for this user, then redirect to the Show page
-    if (@profiles.count === 1)
-      redirect_to profile_path(@profiles.first.id)
-    end
   end
 
   def edit
