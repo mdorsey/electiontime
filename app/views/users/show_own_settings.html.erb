@@ -1,6 +1,9 @@
-<% provide(:title, 'User Settings') %>
+<% provide(:title, 'Settings') %>
+<h1>Settings</h1>
 
-<h1>User Settings</h1>
+<div class="buttons">
+  <%= link_to 'Edit', edit_user_path(@user), class: "button is-link" %>
+</div>
 
 <div class="show-grid-wrapper">
 
@@ -13,8 +16,4 @@
   <div class="grid-label">Email:</div>
   <div class="grid-value"><%= @user.email %></div>
 
-</div>
-
-<div class="buttons">
-  <%= link_to 'Edit User Settings', edit_user_path(@user), class: "button is-link" %>
 </div>

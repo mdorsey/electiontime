@@ -1,9 +1,10 @@
-<% provide(:title, 'Edit User Settings') %>
-
-<h1>Edit User Settings</h1>
+<% provide(:title, 'Edit Settings') %>
+<h1>Edit Settings</h1>
 
 <%= form_for(@user) do |f| %>
   <%= render 'shared/error_messages', object: f.object %>
+
+  <h2>Profile Details</h2>
 
   <div class="field">
     <%= f.label :first_name, "First Name", class: 'label' %>
@@ -25,6 +26,9 @@
       <%= f.email_field :email, class: 'input' %>
     </div>
   </div>
+
+  <hr>
+  <h2>Change Your Password</h2>
 
   <div class="field">
     <%= f.label :password, "Password", class: 'label' %>

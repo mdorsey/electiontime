@@ -30,7 +30,7 @@
                   <%= link_to "Public Profiles", profiles_path, class: "navbar-item" %>
                 <% end %>
 
-                <%= link_to "User Settings", user_path(current_user), class: "navbar-item" %>
+                <%= link_to "Settings", user_path(current_user), class: "navbar-item" %>
       
                 <% if is_admin_user? %>
                   <hr class="navbar-divider">  
