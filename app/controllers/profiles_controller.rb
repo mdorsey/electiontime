@@ -21,11 +21,6 @@ class ProfilesController < ApplicationController
   end
 
   def update
-    # Remove any previous pictures, if a new one was selected
-    if params[:participant][:picture].present?
-      @participant.picture.purge
-    end
-
     if @participant.update_profile(params, profile_params, @survey_questions)
       flash[:success] = "Profile updated"
       redirect_to profile_path(@participant)

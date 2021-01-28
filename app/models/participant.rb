@@ -19,7 +19,7 @@ class Participant < ApplicationRecord
   validates(:email, length: { maximum: 255 })
   validates(:website, length: { maximum: 255 })
   validates(:phone, length: { maximum: 255 })
-  validates(:biography, length: { maximum: 5000, too_long: "%{count} characters is the maximum allowed" })
+  validate :biography_max_character_length
 
   before_destroy :allow_destroy
 
@@ -43,6 +43,11 @@ class Participant < ApplicationRecord
 
     params_to_update = permitted_params
 
+    # Remove the existing picture, if a new one was selected
+    if raw_params[:participant][:picture].present?
+      self.picture.purge
+    end
+
     # Add the Social Media Profile params
     social_media_profiles_attributes = Array.new
     SocialMediaType.all.order(name: :asc).each do |t|
@@ -53,11 +58,11 @@ class Participant < ApplicationRecord
       # Check if the user already has a value set for this Type
       profile = self.social_media_profiles.find { |smp| smp.social_media_type_id === t.id }
 
-      if profile && !handle.empty?
+      if profile && handle.present?
         # Update the existing value
         social_media_profiles_attributes << { id: profile.id, handle: handle, social_media_type_id: t.id }
 
-      elsif !handle.empty?
+      elsif handle.present?
         # Create a new value since one doesn't already exist
         social_media_profiles_attributes << { handle: handle, social_media_type_id: t.id }
 
@@ -82,16 +87,16 @@ class Participant < ApplicationRecord
       # Check if the user already has a value set
       existing_answer = self.survey_answers.find { |sa| sa.survey_question_id === question_id }
 
-      if existing_answer && !form_answer.empty?
+      if existing_answer && form_answer.present?
         # Update the existing value
         survey_answers_attributes << { id: existing_answer.id, survey_question_id: question_id, answer: form_answer }
 
-      elsif !form_answer.empty?
+      elsif form_answer.present?
         # Create a new value since one doesn't already exist
         survey_answers_attributes << { survey_question_id: question_id, answer: form_answer }
 
       elsif existing_answer
-        # Delete the existing value since the handle was removed
+        # Delete the existing value since the answer was removed
         @sa_to_delete = SurveyAnswer.find(existing_answer.id)
         @sa_to_delete.destroy
       end
@@ -265,6 +270,21 @@ class Participant < ApplicationRecord
     def allow_destroy
       unless (social_media_profiles.empty? && survey_answers.empty?)
         throw :abort
+      end
+    end
+
+    def biography_max_character_length
+      system_setting = SystemSetting.find_by(name: "biography_max_character_length")
+
+      if system_setting
+        max_length = system_setting.setting.to_i
+      else
+        # Default setting
+        max_length = 1000
+      end
+
+      if biography.present? && biography.length > max_length
+        errors.add(:biography, "must be less than " + max_length.to_s + " characters")
       end
     end
 end

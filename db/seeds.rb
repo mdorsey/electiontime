@@ -68,7 +68,9 @@ social_media_type_6 = SocialMediaType.create!(name: "Youtube", website: "https:/
 SurveyType.create!(name: "Candidate")
 SurveyType.create!(name: "Party")
 
+SystemSetting.create!(name: "biography_max_character_length", setting: "1000")
 SystemSetting.create!(name: "blank_avatar_name", setting: "blank_avatar.png")
+SystemSetting.create!(name: "survey_answer_max_character_length", setting: "1000")
 
 UserType.create!(name: "Admin")
 UserType.create!(name: "Volunteer")

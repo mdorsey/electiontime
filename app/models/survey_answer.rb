@@ -5,7 +5,8 @@ class SurveyAnswer < ApplicationRecord
 
   validates(:survey_question, presence: true)
   validates(:participant, presence: true)
-  validates(:answer, presence: true, length: { maximum: 5000, too_long: "%{count} characters is the maximum allowed" })
+  validates(:answer, presence: true)
+  validate :survey_answer_max_character_length
 
   def self.search(search_text)
     if search_text
@@ -14,4 +15,21 @@ class SurveyAnswer < ApplicationRecord
       unscoped
     end
   end
+
+  private
+
+    def survey_answer_max_character_length
+      system_setting = SystemSetting.find_by(name: "survey_answer_max_character_length")
+
+      if system_setting
+        max_length = system_setting.setting.to_i
+      else
+        # Default setting
+        max_length = 1000
+      end
+
+      if answer.present? && answer.length > max_length
+        errors.add(:answer, "must be less than " + max_length.to_s + " characters")
+      end
+    end
 end
