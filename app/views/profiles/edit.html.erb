@@ -90,18 +90,20 @@
   <h2>Biography and Survey Answers</h2>
 
   <div class="field">
-    <label class="label">Tell us about yourself (max <%= get_biography_max_character_length %> characters)</label>
+    <label class="label">Tell us about yourself</label>
     <div class="control">
       <%= p_fields.text_area :biography, class: 'textarea' %>
     </div>
+    <div id="biography_characters_remaining" class="character_counter"></div>
   </div>
 
   <% @survey_questions.each do |question_id, question| %>
     <div class="field">
-      <label class="label"><%= question %> (max <%= get_survey_answer_max_character_length %> characters)</label>
+      <%= label_tag("survey_question", question, { class: 'label' }) %>
       <div class="control">
-        <%= text_area_tag("sqa_" + question_id.to_s, display_survey_answer_text(question_id, @participant.id), { class: 'textarea' }) %>
+        <%= text_area_tag("sqa_" + question_id.to_s, display_survey_answer_text(question_id, @participant.id), { class: 'textarea survey_answer' }) %>
       </div>
+      <div id="survey_answer_characters_remaining_<%= question_id.to_s %>" class="character_counter"></div>
     </div>
   <% end %>
 
@@ -110,3 +112,7 @@
     <%= link_to 'Cancel', profile_path(@participant), class: "button", role: "button" %>
   </div>
 <% end %>
+
+<%= hidden_field_tag('biography_max_character_length', get_biography_max_character_length()) %>
+<%= hidden_field_tag('survey_answer_max_character_length', get_survey_answer_max_character_length()) %>
+<%= javascript_pack_tag 'profiles' %>

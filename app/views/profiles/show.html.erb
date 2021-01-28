@@ -2,7 +2,8 @@
 <h1><%= display_participant(@participant.id) %></h1>
 
 <div class="buttons">
-  <%= link_to 'Edit', edit_profile_path(@participant), class: "button is-link" %>
+  <!-- Turn off turbolinks so that javascript will load on the Edit page -->
+  <%= link_to 'Edit', edit_profile_path(@participant), class: "button is-link", data: { turbolinks: "false" } %>
   <%= link_to 'Back', profiles_path, class: "button" %>
 </div>
 
