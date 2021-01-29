@@ -76,7 +76,12 @@
   <% end %>
 
   <h2>Social Media Profiles</h2>
-  <p>Enter your handle for each social media network you use</p>
+  
+  <div class="help-text">
+    Enter the handle for any social media networks you use. Omit any special symbols such as "@". 
+    For example, to link to facebook.com/yourname or twitter.com/yourname, enter <u>yourname</u> in the appropriate field.
+    You will be able to confirm that your handles are linked after saving. 
+  </div>
 
   <% @social_media_profiles.each do |type_id, handle| %>
     <div class="field">
