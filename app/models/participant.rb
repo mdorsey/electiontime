@@ -284,7 +284,7 @@ class Participant < ApplicationRecord
       end
 
       if biography.present? && biography.length > max_length
-        errors.add(:biography, "must be less than " + max_length.to_s + " characters")
+        errors.add(:biography, "must be less than or equal to " + max_length.to_s + " characters")
       end
     end
 end

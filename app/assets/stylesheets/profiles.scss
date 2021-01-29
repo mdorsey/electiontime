@@ -2,16 +2,24 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.character-counter-green {
+  color: green;
+}
+
+.character-counter-red {
+  color: red;
+}
+
 .profiles-list {
   li {
     margin: 1em 0;
   }
 }
 
-.survey-answer {
+.survey-answer-display {
   margin-bottom: 1em;
 }
 
-.survey-question {
+.survey-question-display {
   font-style: italic;
 }

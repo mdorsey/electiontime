@@ -94,16 +94,16 @@
     <div class="control">
       <%= p_fields.text_area :biography, class: 'textarea' %>
     </div>
-    <div id="biography_characters_remaining" class="character_counter"></div>
+    <div id="biography_characters_remaining"></div>
   </div>
 
   <% @survey_questions.each do |question_id, question| %>
     <div class="field">
       <%= label_tag("survey_question", question, { class: 'label' }) %>
       <div class="control">
-        <%= text_area_tag("sqa_" + question_id.to_s, display_survey_answer_text(question_id, @participant.id), { class: 'textarea survey_answer' }) %>
+        <%= text_area_tag("sqa_" + question_id.to_s, display_survey_answer_text(question_id, @participant.id), { class: 'textarea survey-answers-input' }) %>
       </div>
-      <div id="survey_answer_characters_remaining_<%= question_id.to_s %>" class="character_counter"></div>
+      <div id="survey_answer_characters_remaining_<%= question_id.to_s %>"></div>
     </div>
   <% end %>
 

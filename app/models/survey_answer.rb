@@ -29,7 +29,7 @@ class SurveyAnswer < ApplicationRecord
       end
 
       if answer.present? && answer.length > max_length
-        errors.add(:answer, "must be less than " + max_length.to_s + " characters")
+        errors.add(:answer, "must be less than or equal to " + max_length.to_s + " characters")
       end
     end
 end
