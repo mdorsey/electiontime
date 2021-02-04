@@ -16,6 +16,7 @@ class Participant < ApplicationRecord
   validates(:name, length: { maximum: 255 }, presence: true)
   validates(:email, length: { maximum: 255 })
   validates(:website, length: { maximum: 255 })
+  validates(:address, length: { maximum: 255 })
   validates(:phone, length: { maximum: 255 })
   validate :biography_max_character_length
 

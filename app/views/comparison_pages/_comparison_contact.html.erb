@@ -12,15 +12,19 @@
         <%= render 'comparison_pages/comparison_participant_header', participant_id: p.id, party_id: p.party_id, avatar_image_class: 'is-avatar' %>
   
         <!-- Contact information -->
-        <p>Email: <%= mail_to p.email, p.email, target: "_blank" %></p>
-        <p>Phone: <%= p.phone %></p>
-        <p>
-          Website: 
-          <% if p.website %>
-            <%= link_to p.website, p.website, target: "_blank" %>
-          <% end %>
-        </p>
-  
+        <% if p.email %>
+          <p>Email: <%= mail_to p.email, p.email, target: "_blank" %></p>
+        <% end %>
+        <% if p.phone %>
+          <p>Phone: <%= p.phone %></p>
+        <% end %>
+        <% if p.address %>
+          <p>Address: <%= p.address %></p>
+        <% end %>
+        <% if p.website %>
+          <p>Website: <%= link_to p.website, p.website, target: "_blank" %></p>
+        <% end %>
+          
         <!-- Social media icons -->
         <nav class="level is-mobile">
           <div class="level-left">

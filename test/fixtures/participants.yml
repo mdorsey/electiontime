@@ -6,7 +6,7 @@ one:
   phone: MyString
   website: MyString
   biography: MyText
-  address: one
+  address: MyString
   district: one
   party: two
   is_candidate: true
@@ -18,7 +18,7 @@ two:
   phone: MyString
   website: MyString
   biography: MyText
-  address: two
+  address: MyString
   district: two
   party: two
   is_candidate: false
