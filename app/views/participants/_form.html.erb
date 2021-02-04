@@ -93,15 +93,6 @@
     </div>
   </div>
 
-  <div class="field">
-    <%= f.label :address_id, "Address", class: 'label' %>
-    <div class="control">
-      <div class="select">
-        <%= f.select(:address_id, options_for_address, {include_blank: "- None -"}) %>
-      </div>
-    </div>
-  </div>
-
   <div class="buttons">
     <%= f.submit "Save", class: "button is-link" %>
     <%= link_to 'Cancel', cancel_path, class: "button", role: "button" %>

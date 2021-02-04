@@ -1,7 +1,7 @@
 <% provide(:title, 'Edit Public Profile') %>
 <h1>Edit Public Profile</h1>
 
-<%= form_for(setup_participant_form(@participant), url: profile_path(@participant), method: :patch) do |p_fields| %>
+<%= form_for(@participant, url: profile_path(@participant), method: :patch) do |p_fields| %>
   <%= render 'shared/error_messages', object: p_fields.object %>
 
   <h2>Personal Details</h2>
@@ -42,38 +42,6 @@
       <%= p_fields.text_field :website, class: 'input' %>
     </div>
   </div>
-
-  <%= p_fields.fields_for :address do |a_fields| %>
-    <div class="field">
-      <%= a_fields.label :street, "Street Address", class: 'label' %>
-      <div class="control">
-        <%= a_fields.text_field :street, class: 'input' %>
-      </div>
-    </div>
-
-    <div class="field">
-      <%= a_fields.label :city, "City", class: 'label' %>
-      <div class="control">
-        <%= a_fields.text_field :city, class: 'input' %>
-      </div>
-    </div>
-  
-    <div class="field">
-      <%= a_fields.label :province_id, "Province", class: 'label' %>
-      <div class="control">
-        <div class="select">
-          <%= a_fields.select(:province_id, options_for_province, {:prompt => '- Select -'}) %>
-        </div>
-      </div>
-    </div>
-    
-    <div class="field">
-      <%= a_fields.label :postal_code, "Postal Code", class: 'label' %>
-      <div class="control">
-        <%= a_fields.text_field :postal_code, class: 'input' %>
-      </div>
-    </div>
-  <% end %>
 
   <h2>Social Media Profiles</h2>
   

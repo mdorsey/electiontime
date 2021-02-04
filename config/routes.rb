@@ -26,7 +26,6 @@ Rails.application.routes.draw do
   post    'admin/import_participants', to: 'admin#import_participants_submit'
   
   resources :account_activations, only: [:edit]
-  resources :addresses
   resources :content_locations
   resources :contents
   resources :districts
@@ -40,7 +39,6 @@ Rails.application.routes.draw do
   resources :password_resets, only: [:new, :create, :edit, :update]
   resources :parties
   resources :profiles, only: [:index, :edit, :show, :update]
-  resources :provinces
   resources :social_media_profiles
   resources :social_media_types
   resources :survey_answers

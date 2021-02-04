@@ -44,20 +44,6 @@ Party.create!(name: "New Democratic Party", name_abbreviation: "NDP", alternate_
 Party.create!(name: "Bloc Québécois", name_abbreviation: "BQ")
 Party.create!(name: "Green Party of Canada", name_abbreviation: "Green", alternate_name: "Parti vert du Canada", alternate_abbreviation: "Vert")
 
-Province.create!(name: "Alberta")
-Province.create!(name: "British Columbia")
-Province.create!(name: "Manitoba")
-Province.create!(name: "New Brunswick")
-Province.create!(name: "Newfoundland and Labrador")
-Province.create!(name: "Northwest Territories")
-Province.create!(name: "Nova Scotia")
-Province.create!(name: "Nunavut")
-Province.create!(name: "Ontario")
-Province.create!(name: "Prince Edward Island")
-Province.create!(name: "Quebec")
-Province.create!(name: "Saskatchewan")
-Province.create!(name: "Yukon")
-
 social_media_type_1 = SocialMediaType.create!(name: "Facebook", website: "https://www.facebook.com/", icon: "fab fa-facebook-square fa-2x")
 social_media_type_2 = SocialMediaType.create!(name: "Instagram", website: "https://www.instagram.com/", icon: "fab fa-instagram-square fa-2x")
 social_media_type_3 = SocialMediaType.create!(name: "LinkedIn", website: "https://www.linkedin.com/in/", icon: "fab fa-linkedin fa-2x")
@@ -450,7 +436,7 @@ District.all.each do |district|
     email = Faker::Internet.email
     biography = Faker::Lorem.paragraph(sentence_count: 20, supplemental: true, random_sentences_to_add: 10)
     phone = Faker::PhoneNumber.phone_number
-    address = Address.create!(street: Faker::Address.street_address, city: Faker::Address.city, province_id: Province.find_by(name: "Alberta").id, postal_code: Faker::Address.postcode)
+    address = Faker::Address.full_address
     website = Faker::Internet.url
 
     current_user = User.create!(first_name: first_name,
@@ -497,7 +483,7 @@ Party.where.not(name: "Independent").each do |party|
 
   party_member = Participant.where(party_id: party.id).first
   phone = Faker::PhoneNumber.phone_number
-  address = Address.create!(street: Faker::Address.street_address, city: Faker::Address.city, province_id: Province.find_by(name: "Alberta").id, postal_code: Faker::Address.postcode)
+  address = Faker::Address.full_address
   website = Faker::Internet.url
   email = Faker::Internet.email
   biography = Faker::Lorem.paragraph(sentence_count: 20, supplemental: true, random_sentences_to_add: 10)

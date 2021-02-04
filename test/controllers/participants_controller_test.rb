@@ -20,7 +20,7 @@ class ParticipantsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create participant" do
     assert_difference('Participant.count') do
-      post participants_url, params: { participant: { user_id: @participant.user_id, email: @participant.email, phone: @participant.phone, website: @participant.website, biography: @participant.biography, address_id: @participant.address_id, district_id: @participant.district_id, party_id: @participant.party_id, is_candidate: @participant.is_candidate, is_incumbent: @participant.is_incumbent } }
+      post participants_url, params: { participant: { user_id: @participant.user_id, email: @participant.email, phone: @participant.phone, website: @participant.website, biography: @participant.biography, address: @participant.address, district_id: @participant.district_id, party_id: @participant.party_id, is_candidate: @participant.is_candidate, is_incumbent: @participant.is_incumbent } }
     end
 
     assert_redirected_to participants_url
@@ -37,7 +37,7 @@ class ParticipantsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update participant" do
-    patch participant_url(@participant), params: { participant: { user_id: @participant.user_id, email: @participant.email, phone: @participant.phone, website: @participant.website, biography: @participant.biography, address_id: @participant.address_id, district_id: @participant.district_id, party_id: @participant.party_id, is_candidate: @participant.is_candidate, is_incumbent: @participant.is_incumbent } }
+    patch participant_url(@participant), params: { participant: { user_id: @participant.user_id, email: @participant.email, phone: @participant.phone, website: @participant.website, biography: @participant.biography, address: @participant.address, district_id: @participant.district_id, party_id: @participant.party_id, is_candidate: @participant.is_candidate, is_incumbent: @participant.is_incumbent } }
     assert_redirected_to participant_url(@participant)
   end
 
