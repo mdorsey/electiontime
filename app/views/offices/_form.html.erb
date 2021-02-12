@@ -1,0 +1,31 @@
+<%= form_for(@office) do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+
+  <div class="field">
+    <%= f.label :name, "Name", class: 'label' %>
+    <div class="control">
+      <%= f.text_field :name, class: 'input' %>
+    </div>
+  </div>
+
+  <div class="field">
+    <%= f.label :order, "Order", class: 'label' %>
+    <div class="control">
+      <%= f.text_field :order, class: 'input' %>
+    </div>
+  </div>
+
+  <div class="field">
+    <%= f.label :election_id, "Election", class: 'label' %>
+    <div class="control">
+      <div class="select">
+        <%= f.select(:election_id, options_for_election, {:prompt => '- Select -'}) %>
+      </div>
+    </div>
+  </div>
+
+  <div class="buttons">
+    <%= f.submit "Save", class: "button is-link" %>
+    <%= link_to 'Cancel', cancel_path, class: "button", role: "button" %>
+  </div>
+<% end %>

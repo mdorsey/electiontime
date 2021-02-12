@@ -35,6 +35,7 @@ Rails.application.routes.draw do
   resources :languages
   resources :log_types
   resources :logs
+  resources :offices
   resources :participants
   resources :password_resets, only: [:new, :create, :edit, :update]
   resources :parties

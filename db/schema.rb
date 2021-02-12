@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_12_162459) do
+ActiveRecord::Schema.define(version: 2021_02_12_163125) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -116,6 +116,15 @@ ActiveRecord::Schema.define(version: 2021_02_12_162459) do
     t.datetime "updated_at", null: false
     t.index ["log_type_id"], name: "index_logs_on_log_type_id"
     t.index ["user_id"], name: "index_logs_on_user_id"
+  end
+
+  create_table "offices", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
+    t.integer "order"
+    t.bigint "election_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["election_id"], name: "index_offices_on_election_id"
   end
 
   create_table "participants", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -244,6 +253,7 @@ ActiveRecord::Schema.define(version: 2021_02_12_162459) do
   add_foreign_key "elections", "jurisdictions"
   add_foreign_key "logs", "log_types"
   add_foreign_key "logs", "users"
+  add_foreign_key "offices", "elections"
   add_foreign_key "participants", "districts"
   add_foreign_key "participants", "participants", column: "leader_participant_id"
   add_foreign_key "participants", "parties"
