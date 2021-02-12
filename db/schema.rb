@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_12_160600) do
+ActiveRecord::Schema.define(version: 2021_02_12_162459) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -60,13 +60,6 @@ ActiveRecord::Schema.define(version: 2021_02_12_160600) do
     t.datetime "updated_at", null: false
     t.index ["election_type_id"], name: "index_districts_on_election_type_id"
     t.index ["jurisdiction_id"], name: "index_districts_on_jurisdiction_id"
-  end
-
-  create_table "districts_elections", id: false, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.bigint "election_id", null: false
-    t.bigint "district_id", null: false
-    t.index ["district_id", "election_id"], name: "index_districts_elections_on_district_id_and_election_id"
-    t.index ["election_id", "district_id"], name: "index_districts_elections_on_election_id_and_district_id"
   end
 
   create_table "election_types", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
