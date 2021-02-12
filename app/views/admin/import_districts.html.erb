@@ -1,5 +1,5 @@
-<% provide(:title, 'Import Districts') %>
-<h1>Import Districts</h1>
+<% provide(:title, 'Import Offices & Districts') %>
+<h1>Import Offices & Districts</h1>
 
 <div class="columns">
   <div class="column is-narrow">
@@ -18,18 +18,9 @@
           </div>
         </div>
       </div>
-    
-      <div class="field">
-        <%= f.label "Jurisdiction", class: 'label' %>
-        <div class="control">
-          <div class="select">
-            <%= f.select(:jurisdiction_id, options_for_jurisdiction, {:prompt => '- Select -'}, {:required => true}) %>
-          </div>
-        </div>
-      </div>
 
       <div class="field">
-        <%= f.label "Overwrite all existing districts for this election", class: 'label' %>
+        <%= f.label "Overwrite all existing offices and districts for this election", class: 'label' %>
         <div class="control">
           <%= f.check_box :overwrite %>
         </div>
@@ -50,8 +41,11 @@
     <div class="instructions">
       <p><strong>CSV file instructions:</strong></p>
       <p>The first row is for column headings.</p>
+      <p>Enter offices in the order you want them to be displayed, from top to bottom.</p>
+      <p>All offices must have a corresponding district, and vice-versa.</p>
       <p>Columns should contain the following data in this exact order:</p>
       <ol>
+        <li>Office name</li>
         <li>District name</li>
       </ol>
     </div>

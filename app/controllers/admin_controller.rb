@@ -11,8 +11,8 @@ class AdminController < ApplicationController
   end
 
   def import_districts_submit
-    @errors, @new_districts_count = District.import(params[:file], params[:election_id], params[:jurisdiction_id], params[:overwrite])
-    @success_message = "Success! #{@new_districts_count} " + 'row'.pluralize(@new_districts_count) + " were imported."
+    @errors, @new_offices_count, @new_districts_count = District.import(params[:file], params[:election_id], params[:overwrite])
+    @success_message = "Success! #{@new_offices_count} " + 'office'.pluralize(@new_offices_count) + " and #{@new_districts_count} " + 'district'.pluralize(@new_districts_count) + " were created."
     render 'import_districts'
   end
 
