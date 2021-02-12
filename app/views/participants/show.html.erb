@@ -30,17 +30,20 @@
       <div class="grid-label">Party:</div>
       <div class="grid-value"><%= display_party(@participant.party_id) %></div>
 
+      <div class="grid-label">Office:</div>
+      <div class="grid-value"><%= display_office(@participant.office_id) %></div>
+
       <div class="grid-label">District:</div>
       <div class="grid-value"><%= display_district(@participant.district_id) %></div>
-
-      <div class="grid-label">Leader Participant:</div>
-      <div class="grid-value"><%= display_participant(@participant.leader_participant_id) %></div>
 
       <div class="grid-label">Is Candidate:</div>
       <div class="grid-value"><%= display_boolean_as_yes_or_no(@participant.is_candidate) %></div>
 
       <div class="grid-label">Is Incumbent:</div>
       <div class="grid-value"><%= display_boolean_as_yes_or_no(@participant.is_incumbent) %></div>
+
+      <div class="grid-label">Is Party Leader:</div>
+      <div class="grid-value"><%= display_boolean_as_yes_or_no(@participant.is_party_leader) %></div>
 
       <div class="grid-label">Email:</div>
       <div class="grid-value"><%= @participant.email %></div>

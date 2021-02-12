@@ -34,19 +34,19 @@
   </div>
 
   <div class="field">
-    <%= f.label :district_id, "District", class: 'label' %>
+    <%= f.label :office_id, "Office", class: 'label' %>
     <div class="control">
       <div class="select">
-        <%= f.select(:district_id, options_for_district, {include_blank: "- None -"}) %>
+        <%= f.select(:office_id, options_for_office, {include_blank: "- None -"}) %>
       </div>
     </div>
   </div>
 
   <div class="field">
-    <%= f.label :leader_participant_id, "Leader Participant", class: 'label' %>
+    <%= f.label :district_id, "District", class: 'label' %>
     <div class="control">
       <div class="select">
-        <%= f.select(:leader_participant_id, options_for_participant, {include_blank: "- None -"}) %>
+        <%= f.select(:district_id, options_for_district, {include_blank: "- None -"}) %>
       </div>
     </div>
   </div>
@@ -62,6 +62,13 @@
     <%= f.label :is_incumbent, "Is Incumbent", class: 'label' %>
     <div class="control">
       <%= f.check_box :is_incumbent %>
+    </div>
+  </div>
+
+  <div class="field">
+    <%= f.label :is_party_leader, "Is Party Leader", class: 'label' %>
+    <div class="control">
+      <%= f.check_box :is_party_leader %>
     </div>
   </div>
 

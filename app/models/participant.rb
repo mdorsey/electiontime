@@ -3,7 +3,7 @@ class Participant < ApplicationRecord
   belongs_to :user
   belongs_to :party
   belongs_to :district, optional: true
-  belongs_to :leader_participant, class_name: "Participant", optional: true
+  belongs_to :office, optional: true
   has_and_belongs_to_many :elections
   has_many :social_media_profiles
   has_many :survey_answers
@@ -251,7 +251,6 @@ class Participant < ApplicationRecord
           if election.participants.create(user_id: owner.id,
                                           name: participant_name,
                                           party_id: Party.find_by(name: party_name).id,
-                                          leader_participant_id: Participant.find_by(name: party_leader_participant_name).id,
                                           is_candidate: is_candidate,
                                           is_incumbent: is_incumbent).valid?
             new_participants_count += 1

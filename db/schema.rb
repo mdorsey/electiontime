@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_12_173259) do
+ActiveRecord::Schema.define(version: 2021_02_12_182603) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -137,11 +137,12 @@ ActiveRecord::Schema.define(version: 2021_02_12_173259) do
     t.boolean "is_candidate"
     t.bigint "district_id"
     t.bigint "party_id"
-    t.bigint "leader_participant_id"
     t.string "name"
     t.string "address"
+    t.boolean "is_party_leader", default: false
+    t.bigint "office_id"
     t.index ["district_id"], name: "index_participants_on_district_id"
-    t.index ["leader_participant_id"], name: "fk_rails_de8d82c2c8"
+    t.index ["office_id"], name: "index_participants_on_office_id"
     t.index ["party_id"], name: "index_participants_on_party_id"
     t.index ["user_id"], name: "index_participants_on_user_id"
   end
@@ -252,7 +253,7 @@ ActiveRecord::Schema.define(version: 2021_02_12_173259) do
   add_foreign_key "logs", "users"
   add_foreign_key "offices", "elections"
   add_foreign_key "participants", "districts"
-  add_foreign_key "participants", "participants", column: "leader_participant_id"
+  add_foreign_key "participants", "offices"
   add_foreign_key "participants", "parties"
   add_foreign_key "participants", "users"
   add_foreign_key "social_media_profiles", "participants"
