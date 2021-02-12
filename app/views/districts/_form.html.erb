@@ -9,19 +9,10 @@
   </div>
 
   <div class="field">
-    <%= f.label :election_type_id, "Election Type", class: 'label' %>
+    <%= f.label :office_id, "Office", class: 'label' %>
     <div class="control">
       <div class="select">
-        <%= f.select(:election_type_id, options_for_election_type, {:prompt => '- Select -'}) %>
-      </div>
-    </div>
-  </div>
-
-  <div class="field">
-    <%= f.label :jurisdiction_id, "Jurisdiction", class: 'label' %>
-    <div class="control">
-      <div class="select">
-        <%= f.select(:jurisdiction_id, options_for_jurisdiction, {:prompt => '- Select -'}) %>
+        <%= f.select(:office_id, options_for_office, {:prompt => '- Select -'}) %>
       </div>
     </div>
   </div>
