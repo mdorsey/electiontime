@@ -36,6 +36,12 @@
       <div class="grid-label">Jurisdiction:</div>
       <div class="grid-value"><%= display_jurisdiction(@election.jurisdiction_id) %></div>
 
+      <div class="grid-label">Compare Parties:</div>
+      <div class="grid-value"><%= display_boolean_as_yes_or_no(@election.compare_parties) %></div>
+
+      <div class="grid-label">Compare Party Leaders:</div>
+      <div class="grid-value"><%= display_boolean_as_yes_or_no(@election.compare_party_leaders) %></div>
+      
       <div class="grid-label">Surveys:</div>
       <div class="grid-value">
         <ul>

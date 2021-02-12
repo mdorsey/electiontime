@@ -48,6 +48,20 @@
   </div>
 
   <div class="field">
+    <%= f.label :compare_parties, "Compare Parties", class: 'label' %>
+    <div class="control">
+      <%= f.check_box :compare_parties %>
+    </div>
+  </div>
+
+  <div class="field">
+    <%= f.label :compare_party_leaders, "Compare Party Leaders", class: 'label' %>
+    <div class="control">
+      <%= f.check_box :compare_party_leaders %>
+    </div>
+  </div>
+
+  <div class="field">
     <%= f.label :district_ids, "Districts", class: 'label' %>
     <div class="control">
       <div class="select is-multiple">

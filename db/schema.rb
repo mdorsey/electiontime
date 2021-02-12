@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_04_042410) do
+ActiveRecord::Schema.define(version: 2021_02_12_160600) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -83,6 +83,8 @@ ActiveRecord::Schema.define(version: 2021_02_04_042410) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "active", default: false
+    t.boolean "compare_parties", default: false
+    t.boolean "compare_party_leaders", default: false
     t.index ["election_type_id"], name: "index_elections_on_election_type_id"
     t.index ["jurisdiction_id"], name: "index_elections_on_jurisdiction_id"
   end

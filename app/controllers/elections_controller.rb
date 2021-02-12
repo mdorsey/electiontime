@@ -72,6 +72,6 @@ class ElectionsController < ApplicationController
     end
 
     def election_params
-      params.require(:election).permit(:picture, :name, :election_date, :election_type_id, :jurisdiction_id, :active, :district_ids => [], :participant_ids => [])
+      params.require(:election).permit(:picture, :name, :election_date, :election_type_id, :jurisdiction_id, :active, :compare_parties, :compare_party_leaders, :district_ids => [], :participant_ids => [])
     end
 end
