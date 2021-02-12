@@ -20,7 +20,7 @@ class DistrictsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create district" do
     assert_difference('District.count') do
-      post districts_url, params: { district: { election_type_id: @district.election_type_id, jurisdiction_id: @district.jurisdiction_id, name: @district.name } }
+      post districts_url, params: { district: { name: @district.name } }
     end
 
     assert_redirected_to districts_url
@@ -37,7 +37,7 @@ class DistrictsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update district" do
-    patch district_url(@district), params: { district: { election_type_id: @district.election_type_id, jurisdiction_id: @district.jurisdiction_id, name: @district.name } }
+    patch district_url(@district), params: { district: { name: @district.name } }
     assert_redirected_to district_url(@district)
   end
 

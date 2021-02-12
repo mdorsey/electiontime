@@ -23,6 +23,18 @@
       <div class="grid-label">Election:</div>
       <div class="grid-value"><%= display_election(@office.election_id) %></div>
 
+      <div class="grid-label"># of Districts:</div>
+      <div class="grid-value"><%= number_with_delimiter(@office.districts.count, :delimiter => ',') %></div>
+
+      <div class="grid-label">Districts:</div>
+      <div class="grid-value">
+        <ul>
+          <% @office.districts.order(:name).each do |district| %>
+            <li><%= link_to district.name, district %></li>
+          <%end %>
+        </ul>  
+      </div>
+
     </div>
   </div>
 </div>

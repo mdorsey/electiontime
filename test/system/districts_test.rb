@@ -14,8 +14,6 @@ class DistrictsTest < ApplicationSystemTestCase
     visit districts_url
     click_on "New District"
 
-    fill_in "Election type", with: @district.election_type_id
-    fill_in "Jurisdiction", with: @district.jurisdiction_id
     fill_in "Name", with: @district.name
     click_on "Create District"
 
@@ -27,8 +25,6 @@ class DistrictsTest < ApplicationSystemTestCase
     visit districts_url
     click_on "Edit", match: :first
 
-    fill_in "Election type", with: @district.election_type_id
-    fill_in "Jurisdiction", with: @district.jurisdiction_id
     fill_in "Name", with: @district.name
     click_on "Update District"
 

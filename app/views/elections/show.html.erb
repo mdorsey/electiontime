@@ -41,6 +41,15 @@
 
       <div class="grid-label">Compare Party Leaders:</div>
       <div class="grid-value"><%= display_boolean_as_yes_or_no(@election.compare_party_leaders) %></div>
+
+      <div class="grid-label">Offices:</div>
+      <div class="grid-value">
+        <ul>
+          <% @election.offices.order(:name).each do |office| %>
+            <li><%= link_to office.name, office %></li>
+          <%end %>
+        </ul>  
+      </div>
       
       <div class="grid-label">Surveys:</div>
       <div class="grid-value">
@@ -60,23 +69,11 @@
         </ul>  
       </div>
 
-      <div class="grid-label"># of Districts:</div>
-      <div class="grid-value"><%= number_with_delimiter(@election.districts.count, :delimiter => ',') %></div>
-
       <div class="grid-label"># of Candidates:</div>
       <div class="grid-value"><%= number_with_delimiter(get_number_of_election_candidates(@election.id), :delimiter => ',') %></div>
 
       <div class="grid-label"># of Parties:</div>
       <div class="grid-value"><%= number_with_delimiter(get_number_of_election_parties(@election.id), :delimiter => ',') %></div>
-
-      <div class="grid-label">Districts:</div>
-      <div class="grid-value">
-        <ul>
-          <% @election.districts.order(:name).each do |district| %>
-            <li><%= link_to district.name, district %></li>
-          <%end %>
-        </ul>  
-      </div>
 
       <div class="grid-label">Participants:</div>
       <div class="grid-value">

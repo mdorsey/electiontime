@@ -62,15 +62,6 @@
   </div>
 
   <div class="field">
-    <%= f.label :district_ids, "Districts", class: 'label' %>
-    <div class="control">
-      <div class="select is-multiple">
-        <%= f.collection_select(:district_ids, District.order(:name), :id, :name, {:include_blank => false, :include_hidden => false}, {:multiple => true}) %>
-      </div>
-    </div>
-  </div>
-
-  <div class="field">
     <%= f.label :participant_ids, "Participants", class: 'label' %>
     <div class="control">
       <div class="select is-multiple">

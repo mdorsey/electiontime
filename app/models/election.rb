@@ -2,10 +2,10 @@ class Election < ApplicationRecord
   
   belongs_to :election_type
   belongs_to :jurisdiction
-  has_and_belongs_to_many :districts
-  has_and_belongs_to_many :participants
   has_many :contents
+  has_many :offices
   has_many :surveys
+  has_and_belongs_to_many :participants
   has_one_attached :picture
 
   validates(:name, presence: true, length: { maximum: 255 })
@@ -32,19 +32,7 @@ class Election < ApplicationRecord
   end
 
   def party_leaders_for_display
-    party_leaders = Array.new
-    
-    parties = self.parties_for_display
-    parties.each do |party|
-      if party.leader_participant_id
-        party_leaders << Participant.find(party.leader_participant_id)
-      end
-    end
-
-    # Order the leaders alphabetically
-    party_leaders.sort! { |a,b| a.name.downcase <=> b.name.downcase }
-
-    return party_leaders
+    self.participants.where(is_party_leader: true).order(name: :asc)
   end
 
   def survey_questions_by_type(survey_type_name)
