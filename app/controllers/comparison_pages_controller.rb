@@ -16,8 +16,14 @@ class ComparisonPagesController < ApplicationController
   end
 
   def election_summary
-    @parties = @election.parties_for_display
-    @party_leaders = @election.party_leaders_for_display
+
+    if @election.compare_parties
+      @parties = @election.parties_for_display
+    end
+
+    if @election.compare_party_leaders
+      @party_leaders = @election.party_leaders_for_display
+    end
 
     # Election-specific content - top of the page
     @content_location_top = ContentLocation.find_by(name: "page_election_summary_location_top")

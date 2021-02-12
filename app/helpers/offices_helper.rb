@@ -1,8 +1,14 @@
 module OfficesHelper
 
   def display_office(office_id)
-    office = Office.find(office_id)
-    office_text = office.name + ' (' + display_election(office.election_id) + ')'
+
+    if office_id
+      office = Office.find(office_id)
+      office_text = office.name + ' (' + display_election(office.election_id) + ')'
+    else
+      office_text = ''
+    end
+
     return office_text
   end
 

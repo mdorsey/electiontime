@@ -11,12 +11,12 @@ module DistrictsHelper
     return district_text
   end
 
-  def options_for_district(election_id = false)
+  def options_for_district(office_id = false)
     districts = Array.new
 
-    if election_id
-      # Get the districts for a particular election
-      Election.find(election_id).districts.order('name ASC').each do |j|
+    if office_id
+      # Get the districts for a particular office
+      Office.find(office_id).districts.order('name ASC').each do |j|
         districts.push([j.name, j.id])
       end
     else 
