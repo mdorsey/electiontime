@@ -178,25 +178,21 @@ class Participant < ApplicationRecord
           if office_name.blank?
             errors << "Row " + row_number + " has a blank office. A candidate must have an office"
           else
-            office = Office.find_by(name: office_name)
+            office = election.offices.find_by(name: office_name)
             if office
-              if election.offices.exists?(id: office.id)
-                if office.districts.empty?
-                  if district_name.present?
-                    errors << "Row " + row_number + " has a district for an office that shouldn't have districts"
-                  end
-                else
-                  if district_name.blank?
-                    errors << "Row " + row_number + " has a blank district for an office that should have districts"
-                  elsif !office.districts.exists?(name: district_name)
-                    errors << "Row " + row_number + " has a district that exists but doesn't belong to the office: " + district_name  
-                  end
+              if office.districts.empty?
+                if district_name.present?
+                  errors << "Row " + row_number + " has a district for an office that shouldn't have districts"
                 end
               else
-                errors << "Row " + row_number + " has an office that exists but doesn't belong to this election: " + office_name
+                if district_name.blank?
+                  errors << "Row " + row_number + " has a blank district for an office that should have districts"
+                elsif !office.districts.exists?(name: district_name)
+                  errors << "Row " + row_number + " has a district that doesn't belong to the office: " + district_name  
+                end
               end
             else
-              errors << "Row " + row_number + " has an office that doesn't exist: " + office_name
+              errors << "Row " + row_number + " has an office that doesn't belong to the election: " + office_name
             end
           end
         end
@@ -274,8 +270,10 @@ class Participant < ApplicationRecord
 
         if is_candidate
           # Create the participant candidate
+          office = election.offices.find_by(name: office_name)
+
           if district_name.present?
-            district_id = District.find_by(name: district_name).id
+            district_id = office.districts.find_by(name: district_name).id
           else
             district_id = nil
           end
@@ -283,7 +281,7 @@ class Participant < ApplicationRecord
           if election.participants.create(user_id: owner.id,
                                           name: participant_name,
                                           party_id: Party.find_by(name: party_name).id,
-                                          office_id: Office.find_by(name: office_name).id,
+                                          office_id: office.id,
                                           district_id: district_id,
                                           is_candidate: is_candidate,
                                           is_incumbent: is_incumbent,
