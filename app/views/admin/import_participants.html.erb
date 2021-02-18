@@ -20,15 +20,6 @@
       </div>
 
       <div class="field">
-        <%= f.label "Data Source", class: 'label' %>
-        <div class="control">
-          <div class="select">
-            <%= f.select(:data_source, options_for_import_participants_data_source, {:prompt => '- Select -'}, {:required => true}) %>
-          </div>
-        </div>
-      </div>
-
-      <div class="field">
         <%= f.label "Overwrite all existing participants for this election", class: 'label' %>
         <div class="control">
           <%= f.check_box :overwrite %>
@@ -50,26 +41,20 @@
     <div class="instructions">
       <p><strong>CSV file instructions:</strong></p>
       <p>The first row is for column headings.</p>
+      <p>If a participant is a Candidate (C): Office is required and the district must belong to the office. If an office doesn't have districts, leave the district blank.</p>
+      <p>If a participant is a Party (P): Office and district must be blank, and party leader must be N.</p>
       <p>Columns should contain the following data in this exact order:</p>
-      <p>CANDIDATES</p>
       <ol>
-        <li>Owner First Name</li>
-        <li>Owner Last Name</li>
-        <li>Owner Email</li>
-        <li>Participant Name</li>
-        <li>Participant Party</li>
+        <li>Participant is a candidate or party? (C or P)</li>
+        <li>Participant is the party leader? (Y or N)</li>
         <li>Participant is the incumbent? (Y or N)</li>
-        <li>Participant District</li>
-      </ol>
-      <p>PARTIES AND PARTY LEADERS</p>
-      <ol>
-        <li>Owner First Name</li>
-        <li>Owner Last Name</li>
-        <li>Owner Email</li>
-        <li>Participant Name</li>
-        <li>Participant Party</li>
-        <li>Participant is the incumbent? (Y or N)</li>
-        <li>Party Leader Participant Name</li>
+        <li>Owner's First Name</li>
+        <li>Owner's Last Name</li>
+        <li>Owner's Email</li>
+        <li>Participant's Name</li>
+        <li>Participant's Party</li>
+        <li>Office</li>
+        <li>District</li>
       </ol>
     </div>
   </div>

@@ -110,21 +110,14 @@ class Participant < ApplicationRecord
   end
 
   # Bulk upload of participants into an election
-  def self.import(file, election_id, data_source, overwrite)
+  def self.import(file, election_id, overwrite)
 
     new_users_count = 0
     new_participants_count = 0
     errors = Array.new
     election = Election.find(election_id)
     temp_random_password = User.random_password
-
-    if (data_source === "Candidates")
-      is_candidate = true
-      user_type_id = UserType.find_by(name: 'Candidate').id
-    else
-      is_candidate = false
-      user_type_id = UserType.find_by(name: 'Party Representative').id
-    end
+    temp_user_type_id = UserType.find_by(name: 'Candidate').id
 
     # Verify the file type
     if file.content_type != "text/csv"
@@ -134,21 +127,37 @@ class Participant < ApplicationRecord
       # Error checking
       CSV.foreach(file.path, headers: true).with_index do |row, i|
 
-        first_name = row[0]
-        last_name = row[1]
-        email = row[2]
-        participant_name = row[3]
-        party_name = row[4]
-        incumbent = row[5]
-
         row_number = (i + 2).to_s
+
+        c_or_p = row[0]
+        party_leader = row[1]
+        incumbent = row[2]
+        first_name = row[3]
+        last_name = row[4]
+        email = row[5]
+        participant_name = row[6]
+        party_name = row[7]
+        office_name = row[8]
+        district_name = row[9]
+
+        if (c_or_p != "C" && c_or_p != "P")
+          errors << "Row " + row_number + " has an invalid entry for Candidate (C) or Party (P)"
+        end
+
+        if (party_leader != "Y" && party_leader != "N")
+          errors << "Row " + row_number + " has an invalid entry for Party Leader (Y or N)"
+        end
+
+        if (incumbent != "Y" && incumbent != "N")
+          errors << "Row " + row_number + " has an invalid entry for Incumbent (Y or N)"
+        end
 
         # Check that the owner can be ceated successfully (if it doesn't already exist)
         if !User.find_by(email: email)
           if !User.new(first_name: first_name, 
                         last_name: last_name, 
                         email: email, 
-                        user_type_id: user_type_id, 
+                        user_type_id: temp_user_type_id, 
                         password: temp_random_password, 
                         password_confirmation: temp_random_password, 
                         activated: true, 
@@ -157,39 +166,53 @@ class Participant < ApplicationRecord
           end
         end
 
-        # Check that the party exists
-        if !Party.find_by(name: party_name)
-          errors << "Row " + row_number + " has a Party that doesn't exist: " + party_name
-        end
-
-        if is_candidate
-          district_name = row[6]
-          
-          # Check that the district exists and is part of this election
-          district = District.find_by(name: district_name)
-          if district
-            if !election.districts.exists?(id: district.id)
-              errors << "Row " + row_number + " has a District that exists but doesn't belong to this election: " + district_name
-            end
-          else
-            errors << "Row " + row_number + " has a District that doesn't exist: " + district_name
-          end
-
-        else
-          party_leader_participant_name = row[6]
-
-          # Check that the participant exists
-          if !Participant.find_by(name: party_leader_participant_name)
-            errors << "Row " + row_number + " has an invalid Party Leader Participant Name: " + party_leader_participant_name
-          end
-        end
-
         if participant_name.blank?
           errors << "Row " + row_number + " has a blank Participant Name"
         end
 
-        if (incumbent != "Y" && incumbent != "N")
-          errors << "Row " + row_number + " has an invalid entry for Incumbent"
+        if !Party.find_by(name: party_name)
+          errors << "Row " + row_number + " has a party that doesn't exist: " + party_name
+        end
+
+        if (c_or_p === "C")
+          if office_name.blank?
+            errors << "Row " + row_number + " has a blank office. A candidate must have an office"
+          else
+            office = Office.find_by(name: office_name)
+            if office
+              if election.offices.exists?(id: office.id)
+                if office.districts.empty?
+                  if district_name.present?
+                    errors << "Row " + row_number + " has a district for an office that shouldn't have districts"
+                  end
+                else
+                  if district_name.blank?
+                    errors << "Row " + row_number + " has a blank district for an office that should have districts"
+                  elsif !office.districts.exists?(name: district_name)
+                    errors << "Row " + row_number + " has a district that exists but doesn't belong to the office: " + district_name  
+                  end
+                end
+              else
+                errors << "Row " + row_number + " has an office that exists but doesn't belong to this election: " + office_name
+              end
+            else
+              errors << "Row " + row_number + " has an office that doesn't exist: " + office_name
+            end
+          end
+        end
+
+        if (c_or_p === "P")
+          if (party_leader === "Y")
+            errors << "Row " + row_number + " is a party leader. A party cannot be its own party leader"
+          end
+
+          if office_name.present?
+            errors << "Row " + row_number + " has an office. It should be blank when the participant is a Party"
+          end
+
+          if district_name.present?
+            errors << "Row " + row_number + " has a district. It should be blank when the participant is a Party"
+          end
         end
       end
     end
@@ -197,18 +220,36 @@ class Participant < ApplicationRecord
     if errors.empty?
       if overwrite == "1"
         # Remove all previously existing participants for this election
-        election.participants.delete_all
+        election.participants.destroy_all
       end
 
       # Create each owner and participant, then add participants to the election
       CSV.foreach(file.path, headers: true) do |row|
 
-        first_name = row[0]
-        last_name = row[1]
-        email = row[2]
-        participant_name = row[3]
-        party_name = row[4]
-        incumbent = row[5]
+        c_or_p = row[0]
+        party_leader = row[1]
+        incumbent = row[2]
+        first_name = row[3]
+        last_name = row[4]
+        email = row[5]
+        participant_name = row[6]
+        party_name = row[7]
+        office_name = row[8]
+        district_name = row[9]
+
+        if (c_or_p === "C")
+          is_candidate = true
+          user_type_id = UserType.find_by(name: 'Candidate').id
+        else
+          is_candidate = false
+          user_type_id = UserType.find_by(name: 'Party Representative').id
+        end
+
+        if (party_leader === "Y")
+          is_party_leader = true
+        else
+          is_party_leader = false
+        end
 
         if (incumbent === "Y")
           is_incumbent = true
@@ -232,27 +273,32 @@ class Participant < ApplicationRecord
         end
 
         if is_candidate
-          district_name = row[6]
-
           # Create the participant candidate
+          if district_name.present?
+            district_id = District.find_by(name: district_name).id
+          else
+            district_id = nil
+          end
+
           if election.participants.create(user_id: owner.id,
                                           name: participant_name,
                                           party_id: Party.find_by(name: party_name).id,
-                                          district_id: District.find_by(name: district_name).id,
+                                          office_id: Office.find_by(name: office_name).id,
+                                          district_id: district_id,
                                           is_candidate: is_candidate,
-                                          is_incumbent: is_incumbent).valid?
+                                          is_incumbent: is_incumbent,
+                                          is_party_leader: is_party_leader).valid?
             new_participants_count += 1
           end
 
         else
-          party_leader_participant_name = row[6]
-
           # Create the participant party
           if election.participants.create(user_id: owner.id,
                                           name: participant_name,
                                           party_id: Party.find_by(name: party_name).id,
                                           is_candidate: is_candidate,
-                                          is_incumbent: is_incumbent).valid?
+                                          is_incumbent: is_incumbent,
+                                          is_party_leader: is_party_leader).valid?
             new_participants_count += 1
           end
         end
