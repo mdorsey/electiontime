@@ -27,8 +27,8 @@ class Election < ApplicationRecord
     self.participants.where(is_candidate: false).order(name: :asc)
   end
 
-  def candidates_for_display(district_id)
-    self.participants.where(district_id: district_id).order(name: :asc)
+  def candidates_for_display(office_id, district_id)
+    self.participants.where(office_id: office_id, district_id: district_id).order(name: :asc)
   end
 
   def party_leaders_for_display
