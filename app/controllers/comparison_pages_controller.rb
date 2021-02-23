@@ -1,14 +1,16 @@
 class ComparisonPagesController < ApplicationController
 
-  before_action :set_election, only: [:election_summary, :compare_candidates, :compare_party_leaders, :compare_party_platforms]
-  before_action :set_office_district, only: [:compare_candidates]
+  before_action :set_election, only: [:election_summary, :compare_candidates, :compare_candidates_in_district, :compare_party_leaders, :compare_party_platforms]
+  before_action :set_office, only: [:compare_candidates, :compare_candidates_in_district]
+  before_action :set_district, only: [:compare_candidates_in_district]
 
   # Breadcrumbs
   breadcrumb 'Find My Election', :find_my_election_path
-  breadcrumb -> { @election.name }, -> { election_summary_path(@election) }, only: [:election_summary, :compare_candidates, :compare_party_leaders, :compare_party_platforms]
-  breadcrumb -> { @office.name + ' for ' + @district.name }, -> { compare_candidates_path(election_id: @election.id, office_id: @office.id, district_id: @district.id) }, only: [:compare_candidates]
-  breadcrumb 'Compare Party Leaders', -> { compare_party_leaders_path(@election) }, only: [:compare_party_leaders]
-  breadcrumb 'Compare Party Platforms', -> { compare_party_platforms_path(@election) }, only: [:compare_party_platforms]
+  breadcrumb -> { @election.name }, -> { election_summary_path(@election) }, only: [:election_summary, :compare_candidates, :compare_candidates_in_district, :compare_party_leaders, :compare_party_platforms]
+  breadcrumb -> { 'Candidates for ' + @office.name }, -> { compare_candidates_path(election_id: @election.id, office_id: @office.id) }, only: [:compare_candidates]
+  breadcrumb -> { 'Candidates for ' + @office.name + ' in ' + @district.name }, -> { compare_candidates_in_district_path(election_id: @election.id, office_id: @office.id, district_id: @district.id) }, only: [:compare_candidates_in_district]
+  breadcrumb 'Party Leaders', -> { compare_party_leaders_path(@election) }, only: [:compare_party_leaders]
+  breadcrumb 'Party Platforms', -> { compare_party_platforms_path(@election) }, only: [:compare_party_platforms]
 
   def find_my_election
     @elections_future = Election.where("active = true AND election_date >= ?", Time.now.utc.midnight).order('election_date ASC')
@@ -37,13 +39,18 @@ class ComparisonPagesController < ApplicationController
       @content_bottom = Content.find_by(content_location_id: @content_location_bottom.id, election_id: @election.id)
     end
 
-    # If the Compare Candidates submit button has been clicked
+    # If the District submit button has been clicked
     if (params[:office_id] && Office.find(params[:office_id]) && params[:district_id] && District.find(params[:district_id]))
-      redirect_to compare_candidates_path(election_id: @election.id, office_id: params[:office_id], district_id: params[:district_id])
+      redirect_to compare_candidates_in_district_path(election_id: @election.id, office_id: params[:office_id], district_id: params[:district_id])
     end
   end
 
   def compare_candidates
+    @candidates = @election.candidates_for_display(@office.id)
+    @survey_questions = @election.survey_questions_by_type("Candidate")
+  end
+
+  def compare_candidates_in_district
     @candidates = @election.candidates_for_display(@office.id, @district.id)
     @survey_questions = @election.survey_questions_by_type("Candidate")
   end
@@ -64,8 +71,11 @@ class ComparisonPagesController < ApplicationController
       @election = Election.find(params[:election_id])
     end
 
-    def set_office_district
+    def set_office
       @office = Office.find(params[:office_id])
+    end
+
+    def set_district
       @district = District.find(params[:district_id])
     end
 end

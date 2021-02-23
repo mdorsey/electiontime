@@ -36,9 +36,9 @@
         Compare Party Leaders
       </div>
       <div class="columns is-multiline is-mobile">
-        <% @party_leaders.each do |pl| %>
+        <% @party_leaders.each do |p| %>
           <div class="column is-half-mobile is-half-tablet is-one-third-desktop is-one-third-widescreen is-one-third-fullhd">
-            <%= render 'comparison_pages/comparison_participant_header', participant_id: pl.id, party_id: pl.party_id, avatar_image_class: 'is-avatar-small' %>
+            <%= render 'comparison_pages/comparison_participant_header', participant_id: p.id, party_id: p.party_id, avatar_image_class: 'is-avatar-small' %>
           </div>
         <% end %>
       </div>
@@ -54,9 +54,9 @@
         Compare Party Platforms
       </div>
       <div class="columns is-multiline is-mobile">
-        <% @parties.each do |party| %>
+        <% @parties.each do |p| %>
           <div class="column is-half-mobile is-half-tablet is-one-third-desktop is-one-third-widescreen is-one-third-fullhd">
-            <%= render 'comparison_pages/comparison_participant_header', participant_id: party.id, party_id: party.party_id, avatar_image_class: 'is-avatar-small' %>
+            <%= render 'comparison_pages/comparison_participant_header', participant_id: p.id, party_id: p.party_id, avatar_image_class: 'is-avatar-small' %>
           </div>
         <% end %>
       </div>
@@ -66,26 +66,49 @@
 
 <!-- COMPARE CANDIDATES FOR OFFICE -->
 <% @election.offices.order(:order).each do |office| %>
-  <%= form_with(url: election_summary_path(@election), method: "get", local: true) do |f| %>
-    <%= hidden_field_tag :office_id, office.id %>
-    <div class="box">
-      <div class="election-section-heading">
-        Compare Candidates for <%= office.name %>
-      </div>
-      <div class="columns is-multiline is-mobile is-centered is-vcentered">
-        <div class="column is-12-mobile is-narrow-tablet is-narrow-desktop is-narrow-widescreen is-narrow-fullhd">
-          <%= f.label "Select your district", class: 'label' %>
+
+  <% if office.districts.empty? %>
+
+    <!-- WITHOUT DISTRICTS -->
+    <%= link_to compare_candidates_path(election_id: @election.id, office_id: office.id) do %>
+      <div class="box">
+        <div class="election-section-heading">
+          Compare Candidates for <%= office.name %>
         </div>
-        <div class="column is-12-mobile is-narrow-tablet is-narrow-desktop is-narrow-widescreen is-narrow-fullhd">
-          <div class="select">
-            <%= f.select(:district_id, options_for_select(options_for_district(office.id))) %>
+        <div class="columns is-multiline is-mobile">
+          <% @election.candidates_for_display(office.id).each do |p| %>
+            <div class="column is-half-mobile is-half-tablet is-one-third-desktop is-one-third-widescreen is-one-third-fullhd">
+              <%= render 'comparison_pages/comparison_participant_header', participant_id: p.id, party_id: p.party_id, avatar_image_class: 'is-avatar-small' %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+
+  <% else %>
+
+    <!-- WITH DISTRICTS -->
+    <%= form_with(url: election_summary_path(@election), method: "get", local: true) do |f| %>
+      <%= hidden_field_tag :office_id, office.id %>
+      <div class="box">
+        <div class="election-section-heading">
+          Compare Candidates for <%= office.name %>
+        </div>
+        <div class="columns is-multiline is-mobile is-centered is-vcentered">
+          <div class="column is-12-mobile is-narrow-tablet is-narrow-desktop is-narrow-widescreen is-narrow-fullhd">
+            <%= f.label "Select your district", class: 'label' %>
+          </div>
+          <div class="column is-12-mobile is-narrow-tablet is-narrow-desktop is-narrow-widescreen is-narrow-fullhd">
+            <div class="select">
+              <%= f.select(:district_id, options_for_select(options_for_district(office.id))) %>
+            </div>
+          </div>
+          <div class="column is-12-mobile is-narrow-tablet is-narrow-desktop is-narrow-widescreen is-narrow-fullhd">
+            <%= f.submit "Go!", class: "button is-link" %>
           </div>
         </div>
-        <div class="column is-12-mobile is-narrow-tablet is-narrow-desktop is-narrow-widescreen is-narrow-fullhd">
-          <%= f.submit "Go!", class: "button is-link" %>
-        </div>
       </div>
-    </div>
+    <% end %>
   <% end %>
 <% end %>
 

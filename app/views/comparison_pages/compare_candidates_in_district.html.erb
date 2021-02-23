@@ -1,7 +1,7 @@
-<% provide(:title, "Compare Candidates for " + @office.name) %>
+<% provide(:title, "Compare Candidates for " + @office.name + " in " + @district.name) %>
 
 <!-- INTRO -->
-<%= render 'comparison_pages/comparison_intro', page_heading: 'Compare Candidates for ' + @office.name, participant_title: 'Candidates', display_incumbent: true %>
+<%= render 'comparison_pages/comparison_intro', page_heading: 'Compare Candidates for ' + @office.name + ' in ' + @district.name, participant_title: 'Candidates', display_incumbent: true %>
 
 <!-- NAV MENU -->
 <%= render 'comparison_pages/comparison_nav_menu', survey_questions: @survey_questions %>
