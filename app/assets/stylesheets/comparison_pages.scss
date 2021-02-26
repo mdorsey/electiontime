@@ -2,13 +2,15 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+@import 'variables';
+
 .box {
-  border: 1px solid lightgrey;
+  border: 1px solid $primary-color;
   margin-bottom: 3em;
 }
 
 .box:hover {
-  border: 1px solid black;
+  box-shadow: 0 0 0 1px $primary-color;
 }
 
 .comparison-candidates-grid {
@@ -26,12 +28,11 @@
 }
 
 .comparison_nav_menu {
-  border: 1px solid black;
   position: sticky;
   position: -webkit-sticky;
   top: 0;
   z-index: 1;
-  background-color: lightgrey;
+  background-color: $primary-color;
 
   .button {
     margin: 0.25em 0;
@@ -47,6 +48,7 @@
 .election-name {
   font-weight: bold;
   font-size: 1.3em;
+  color: $primary-color;
 }
 
 .election-name-small {

@@ -1,12 +1,4 @@
-/* --- MIXINS, VARIABLES --- */
-
-$navbar-item-img-max-height: 3.5rem;
-$footer-background-color: white;
-$box-shadow: none;
-
-
-/* --- IMPORTS --- */
-
+@import 'variables';
 @import 'bulma';
 
 
@@ -14,34 +6,43 @@ $box-shadow: none;
 
 body {
   font-family: Arial, sans-serif;
+  background-color: $wallpaper-color;
 }
 
 h1 {
   @extend .title;
   @extend .is-3;
   text-align: center;
+  color: $primary-color;
 }
 
 h2 {
   @extend .subtitle;
   @extend .is-5;
   margin-top: 1.5rem;
+  color: $primary-color;
 }
 
 p {
   line-height: 1.7em;
 }
 
+hr {
+  background-color: $primary-color;
+}
+
 .election-section-heading {
   @extend .title;
   @extend .is-4;
   text-align: center;
+  color: $primary-color;
 }
 
 .comparison-section-heading {
   @extend .title;
   @extend .is-4;
   margin-top: 3rem;
+  color: $primary-color;
 }
 
 .help-text {
@@ -57,19 +58,20 @@ p {
 .navbar {
   padding-top: 0.75rem;
   padding-bottom: 0.75rem;
-  border-bottom: 1px solid black
+  border-bottom: 1px solid $primary-color;
 }
 
 .navbar-item {
   font-size: 1.2em;
   padding: 0 1.5rem;
+  color: $primary-color;
 }
 
 
 /* --- FOOTER --- */
 
 footer {
-  border-top: 1px solid black;
+  border-top: 1px solid $primary-color;
   
   .footer-item {
     padding: 0 1.5rem;
@@ -135,7 +137,7 @@ textarea {
 /* --- FONT AWESOME --- */
 
 .fab {
-  color: black;
+  color: $secondary-color;
 }
 
 
@@ -152,6 +154,11 @@ textarea {
 
 .image.is-flag-small {
   max-width: 128px;
+}
+
+.is-logo {
+  height: 50px;
+  width: 200px
 }
 
 
