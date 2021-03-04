@@ -11,7 +11,7 @@ require("channels")
 // Load jQuery
 require("jquery")
 
-// Load the custom global javascript
+// Load the custom global javascript file
 require("global")
 
 // Uncomment to copy all static images under ../images to the output folder and reference

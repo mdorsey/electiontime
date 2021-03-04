@@ -1,0 +1,14 @@
+@import 'variables';
+@import 'bulma';
+
+.navbar {
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid $primary-color;
+}
+
+.navbar-item {
+  font-size: 1.2em;
+  padding: 0 1.5rem;
+  color: $primary-color;
+}

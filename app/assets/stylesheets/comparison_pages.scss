@@ -3,6 +3,7 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 @import 'variables';
+@import 'bulma';
 
 .box {
   border: 1px solid $primary-color;
@@ -39,6 +40,13 @@
   }
 }
 
+.comparison-section-heading {
+  @extend .title;
+  @extend .is-4;
+  margin-top: 3rem;
+  color: $primary-color;
+}
+
 .election-details-and-flag-container {
   display: flex;
   flex-direction: row;
@@ -53,6 +61,13 @@
 
 .election-name-small {
   font-size: 1.2em;
+}
+
+.election-section-heading {
+  @extend .title;
+  @extend .is-4;
+  text-align: center;
+  color: $primary-color;
 }
 
 .election-summary-header {

@@ -1,0 +1,29 @@
+@import 'variables';
+@import 'bulma';
+
+.is-avatar, .is-avatar-small {
+  height: 128px;
+  width: 128px;
+}
+
+.image.is-flag {
+  max-width: 256px;
+}
+
+.image.is-flag-small {
+  max-width: 128px;
+}
+
+.is-logo {
+  height: 50px;
+  width: 200px
+}
+
+
+/* --- BREAKPOINT: Extra small devices (phones, 600px and down) --- */
+@media only screen and (max-width: 600px) {
+  .is-avatar-small {
+    height: 96px;
+    width: 96px;
+  }
+} 

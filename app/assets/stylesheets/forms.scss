@@ -1,0 +1,27 @@
+@import 'variables';
+@import 'bulma';
+
+select[multiple] {
+  height: 200px;
+}
+
+textarea {
+  resize: vertical;
+}
+
+.button {
+  margin: 10px 10px 10px 0;
+  min-width: 10%;
+}
+
+.error-explanation {
+  ul {
+    color: red;
+    margin: 0 0 30px 0;
+  }
+}
+
+.search-button {
+  @extend .button;
+  margin: 0;
+}

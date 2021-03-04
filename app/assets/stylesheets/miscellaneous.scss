@@ -1,0 +1,32 @@
+@import 'variables';
+@import 'bulma';
+
+
+/* --- DEVELOPER --- */
+
+.debug_dump {
+  width: 100%;
+  margin-top: 15px;
+}
+
+
+/* --- FONT AWESOME --- */
+
+.fab {
+  color: $secondary-color;
+}
+
+
+/* --- GRID --- */
+
+.show-grid-wrapper {
+  display: grid;
+  grid-template-areas: "grid-label grid-value";
+  grid-auto-columns: fit-content(50%);
+  row-gap: 1rem;
+  column-gap: 2rem;
+}
+
+.grid-label {
+  @extend .label;
+}

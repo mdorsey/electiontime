@@ -1,0 +1,36 @@
+@import 'variables';
+@import 'bulma';
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: $wallpaper-color;
+}
+
+h1 {
+  @extend .title;
+  @extend .is-3;
+  text-align: center;
+  color: $primary-color;
+}
+
+h2 {
+  @extend .subtitle;
+  @extend .is-5;
+  margin-top: 1.5rem;
+  color: $primary-color;
+}
+
+p {
+  line-height: 1.7em;
+}
+
+hr {
+  background-color: $primary-color;
+}
+
+.help-text {
+  font-size: 0.9em;
+  font-style: italic;
+  margin-top: -1.0em;
+  margin-bottom: 1.0em;
+}
