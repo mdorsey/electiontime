@@ -1,0 +1,16 @@
+// Variables must be imported before 'bulma' in order to override the bulma variables
+@import 'variables';
+
+@import 'bulma';
+
+@import 'core/typography.scss';
+@import 'core/images.scss';
+@import 'core/miscellaneous.scss';
+
+@import 'components/admin_pages.scss';
+@import 'components/comparison_pages.scss';
+@import 'components/footer.scss';
+@import 'components/forms.scss';
+@import 'components/navbar.scss';
+@import 'components/profiles_pages.scss';
+@import 'components/static_pages.scss';
