@@ -2,24 +2,30 @@
 $first-color: #008080;
 $second-color: #800080;
 $wallpaper-color: white;
+$body-background-color: $wallpaper-color;
 $navbar-background-color: $wallpaper-color;
 $footer-background-color: $wallpaper-color;
 
+
 /* Buttons */
 $primary: $second-color;
+
 
 /* Links */
 $link: grey;
 $link-hover: $second-color;
 $link-focus: $second-color;
 
+
 /* Navbar */
 $navbar-item-color: $first-color;
 $navbar-item-hover-color: $second-color;
 $navbar-dropdown-item-hover-color: $second-color;
 
+
 /* Admin menu */
 $menu-item-active-background-color: $second-color;
+
 
 /* Box shadows */
 $box-shadow: none;
