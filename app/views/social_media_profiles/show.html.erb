@@ -7,9 +7,9 @@
   </div>
   <div class="column">
     <div class="buttons">
-      <%= link_to 'Edit', edit_social_media_profile_path(@social_media_profile), class: "button is-link" %>
+      <%= link_to 'Edit', edit_social_media_profile_path(@social_media_profile), class: "button is-primary" %>
       <%= link_to 'Delete', @social_media_profile, method: :delete, data: { confirm: 'Are you sure?' }, class: "button is-danger" %>
-      <%= link_to 'Back', social_media_profiles_path, class: "button" %>
+      <%= link_to 'Back', social_media_profiles_path, class: "button is-light" %>
     </div>
 
     <div class="show-grid-wrapper">

@@ -7,7 +7,7 @@
 }
 
 .menu {
-  border-right: 1px solid $primary-color;
+  border-right: 1px solid $first-color;
   padding-right: 0.5rem;
 }
 
@@ -22,6 +22,5 @@
   li {
     overflow: auto;
     padding: 10px 0;
-    border-bottom: 1px solid $secondary-color;
   }
 }

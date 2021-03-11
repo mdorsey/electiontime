@@ -7,9 +7,9 @@
   </div>
   <div class="column">
     <div class="buttons">
-      <%= link_to 'Edit', edit_survey_answer_path(@survey_answer), class: "button is-link" %>
+      <%= link_to 'Edit', edit_survey_answer_path(@survey_answer), class: "button is-primary" %>
       <%= link_to 'Delete', @survey_answer, method: :delete, data: { confirm: 'Are you sure?' }, class: "button is-danger" %>
-      <%= link_to 'Back', survey_answers_path, class: "button" %>
+      <%= link_to 'Back', survey_answers_path, class: "button is-light" %>
     </div>
 
     <div class="show-grid-wrapper">

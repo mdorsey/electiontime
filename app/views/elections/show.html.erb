@@ -7,9 +7,9 @@
   </div>
   <div class="column">
     <div class="buttons">
-      <%= link_to 'Edit', edit_election_path(@election), class: "button is-link" %>
+      <%= link_to 'Edit', edit_election_path(@election), class: "button is-primary" %>
       <%= link_to 'Delete', @election, method: :delete, data: { confirm: 'Are you sure?' }, class: "button is-danger" %>
-      <%= link_to 'Back', elections_path, class: "button" %>
+      <%= link_to 'Back', elections_path, class: "button is-light" %>
     </div>
 
     <div class="show-grid-wrapper">

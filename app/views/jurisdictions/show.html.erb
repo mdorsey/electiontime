@@ -7,9 +7,9 @@
   </div>
   <div class="column">
     <div class="buttons">
-      <%= link_to 'Edit', edit_jurisdiction_path(@jurisdiction), class: "button is-link" %>
+      <%= link_to 'Edit', edit_jurisdiction_path(@jurisdiction), class: "button is-primary" %>
       <%= link_to 'Delete', @jurisdiction, method: :delete, data: { confirm: 'Are you sure?' }, class: "button is-danger" %>
-      <%= link_to 'Back', jurisdictions_path, class: "button" %>
+      <%= link_to 'Back', jurisdictions_path, class: "button is-light" %>
     </div>
 
     <div class="show-grid-wrapper">

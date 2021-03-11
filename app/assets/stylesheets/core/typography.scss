@@ -7,14 +7,14 @@ h1 {
   @extend .title;
   @extend .is-3;
   text-align: center;
-  color: $primary-color;
+  color: $first-color;
 }
 
 h2 {
   @extend .subtitle;
   @extend .is-5;
   margin-top: 1.5rem;
-  color: $primary-color;
+  color: $first-color;
 }
 
 p {
@@ -22,7 +22,7 @@ p {
 }
 
 hr {
-  background-color: $primary-color;
+  background-color: $first-color;
 }
 
 .help-text {
