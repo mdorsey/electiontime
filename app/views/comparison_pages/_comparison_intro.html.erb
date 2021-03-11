@@ -22,8 +22,17 @@
 
 <h1><%= page_heading %></h1>
 <div class="comparison-intro">
-  <p><%= participant_title %> are listed alphabetically</p>
+  <p>
+    <%= participant_title %> are listed alphabetically
+  </p>
   <% if display_incumbent %>
-    <p><i class="fas fa-star"></i> = incumbent</p>
+    <p>
+      <span class="icon-text">
+        <span class="icon">
+          <i class="fas fa-star"></i>
+        </span>
+        <span>Incumbent</span>
+      </span>
+    </p>
   <% end %>
 </div>

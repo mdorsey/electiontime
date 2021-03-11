@@ -52,6 +52,12 @@
   color: $first-color;
 }
 
+.contact-details {
+  span {
+    margin: 0.2em 0;
+  }
+}
+
 .election-details-and-flag-container {
   display: flex;
   flex-direction: row;

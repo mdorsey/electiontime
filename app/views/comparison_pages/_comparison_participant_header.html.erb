@@ -11,7 +11,9 @@
     <p class="participant-name">
       <%= display_participant(participant_id, true) %>
       <% if is_participant_an_incumbent(participant_id) %>
-        <i class="fas fa-star"></i>
+        <span class="icon">
+          <i class="fas fa-star"></i>
+        </span>
       <% end %>
     </p>
     <% if is_participant_a_candidate(participant_id) %>

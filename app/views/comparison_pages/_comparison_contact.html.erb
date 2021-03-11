@@ -12,31 +12,49 @@
         <%= render 'comparison_pages/comparison_participant_header', participant_id: p.id, party_id: p.party_id, avatar_image_class: 'is-avatar' %>
   
         <!-- Contact information -->
-        <% if p.email %>
-          <p>Email: <%= mail_to p.email, p.email, target: "_blank" %></p>
-        <% end %>
-        <% if p.phone %>
-          <p>Phone: <%= p.phone %></p>
-        <% end %>
-        <% if p.address %>
-          <p>Address: <%= p.address %></p>
-        <% end %>
-        <% if p.website %>
-          <p>Website: <%= link_to p.website, p.website, target: "_blank" %></p>
-        <% end %>
-          
-        <!-- Social media icons -->
-        <nav class="level is-mobile">
-          <div class="level-left">
-            <% get_social_media_profiles_in_alphabetical_order(p.id).each do |s| %>
-              <div class="level-item mr-4">
-                <%= link_to(social_media_profile_link(s.id), target: "_blank") do %>
-                  <i class="<%= get_social_media_type_icon(s.social_media_type_id) %>"></i>
-                <% end %>
-              </div>
+        <div class="contact-details">
+          <% if p.email %>
+            <div class="icon-text">
+              <span class="icon">
+                <i class="fas fa-at"></i>
+              </span>
+              <span><%= mail_to p.email, p.email, target: "_blank" %></span>
+            </div>
+          <% end %>
+          <% if p.phone %>
+            <div class="icon-text">
+              <span class="icon">
+                <i class="fas fa-phone-alt"></i>
+              </span>
+              <span><%= p.phone %></span>
+            </div>
+          <% end %>
+          <% if p.address %>
+            <div class="icon-text">
+              <span class="icon">
+                <i class="fas fa-map-marker-alt"></i>
+              </span>
+              <span><%= p.address %></span>
+            </div>
+          <% end %>
+          <% if p.website %>
+            <div class="icon-text">
+              <span class="icon">
+                <i class="fas fa-globe"></i>
+              </span>
+              <span><%= link_to p.website, p.website, target: "_blank" %></span>
+            </div>
+          <% end %>
+            
+          <!-- Social media icons -->
+          <% get_social_media_profiles_in_alphabetical_order(p.id).each do |s| %>
+            <%= link_to(social_media_profile_link(s.id), target: "_blank") do %>
+              <span class="icon is-medium">
+                <i class="<%= get_social_media_type_icon(s.social_media_type_id) %>"></i>
+              </span>
             <% end %>
-          </div>
-        </nav>
+          <% end %>
+        </div>
       </div>
     <% end %>
   </div>

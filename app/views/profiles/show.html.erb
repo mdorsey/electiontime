@@ -41,17 +41,13 @@
 
   <div class="grid-label">Social Media Profiles:</div>
   <div class="grid-value">
-    <nav class="level is-mobile">
-      <div class="level-left">
-        <% get_social_media_profiles_in_alphabetical_order(@participant.id).each do |s| %>
-          <div class="level-item mr-4">
-            <%= link_to(social_media_profile_link(s.id), target: "_blank") do %>
-              <i class="<%= get_social_media_type_icon(s.social_media_type_id) %>"></i>
-            <% end %>
-          </div>
-        <% end %>
-      </div>
-    </nav>
+    <% get_social_media_profiles_in_alphabetical_order(@participant.id).each do |s| %>
+      <%= link_to(social_media_profile_link(s.id), target: "_blank") do %>
+        <span class="icon is-medium">
+          <i class="<%= get_social_media_type_icon(s.social_media_type_id) %>"></i>
+        </span>
+      <% end %>
+    <% end %>
   </div>
 
   <div class="grid-label">Biography:</div>
