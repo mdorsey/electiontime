@@ -7,7 +7,7 @@ global.toggle_burger_menu = function() {
 }
 
 // Toggle the comparison pages navigation menu select box (using Bulma CSS)
-global.toggle_comparison_nav_menu = function() {
+global.toggle_comparison_menu_dropdown = function() {
   var dropdown = $('.dropdown');
   dropdown.toggleClass('is-active');
 }

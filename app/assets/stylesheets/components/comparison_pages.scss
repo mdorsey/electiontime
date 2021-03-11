@@ -21,15 +21,27 @@
   }
 }
 
-.comparison_nav_menu {
+.comparison-menu {
   position: sticky;
   position: -webkit-sticky;
   top: 0;
   z-index: 1;
-  background-color: $first-color;
+  background-color: $wallpaper-color;
+  border: 4px solid $first-color;
+  border-radius: 5px;
 
-  .button {
-    margin: 0.25em 0;
+  .button {   
+    margin: 0.1em 0;
+    color: $text;
+    border-style: none;    
+  }
+
+  .dropdown-item {
+    font-size: 1em;
+  }
+
+  span {
+    font-size: 1.2em;
   }
 }
 

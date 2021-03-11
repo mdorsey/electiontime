@@ -23,11 +23,11 @@ function update_counter(counter_element, count) {
   counter_element.textContent = count + " characters remaining";
 
   if (count >= 0) {
-    counter_element.classList.remove("character-counter-red");
-    counter_element.classList.add("character-counter-green");
+    counter_element.classList.remove("character-counter-bad");
+    counter_element.classList.add("character-counter-good");
   } else {
-    counter_element.classList.remove("character-counter-green");
-    counter_element.classList.add("character-counter-red");
+    counter_element.classList.remove("character-counter-good");
+    counter_element.classList.add("character-counter-bad");
   }
 }
 
