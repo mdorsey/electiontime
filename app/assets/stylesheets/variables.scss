@@ -1,27 +1,26 @@
-/* --- COLORS --- */
+/* Colors */
 $first-color: #008080;
 $second-color: #800080;
-
-/* background colors */
 $wallpaper-color: white;
 $navbar-background-color: $wallpaper-color;
 $footer-background-color: $wallpaper-color;
 
-/* is-primary buttons */
+/* Buttons */
 $primary: $second-color;
 
-/* links */
+/* Links */
 $link: grey;
 $link-hover: $second-color;
 $link-focus: $second-color;
 
-/* admin menu */
+/* Navbar */
+$navbar-item-color: $first-color;
+$navbar-item-hover-color: $second-color;
+$navbar-dropdown-item-hover-color: $second-color;
+
+/* Admin menu */
 $menu-item-active-background-color: $second-color;
 
-
-/* --- MISC --- */
-$navbar-item-img-max-height: 3.5rem;
-
+/* Box shadows */
 $box-shadow: none;
-
 $button-focus-box-shadow-size: none;

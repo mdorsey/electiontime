@@ -1,11 +1,24 @@
 .navbar {
   padding-top: 0.75rem;
   padding-bottom: 0.75rem;
-  border-bottom: 1px solid $first-color;
+  border-bottom: 2px solid $first-color;
 }
 
 .navbar-item {
   font-size: 1.2em;
   padding: 0 1.5rem;
-  color: $first-color;
+
+  img {
+    max-height: 3rem;
+  }
 }
+
+
+/* --- BREAKPOINT: Extra small devices (phones, 600px and down) --- */
+@media only screen and (max-width: 600px) {
+  .navbar-item {
+    img {
+      max-height: 1.75rem;
+    }
+  }
+} 
