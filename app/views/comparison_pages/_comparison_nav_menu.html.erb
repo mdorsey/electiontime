@@ -11,15 +11,15 @@
       </div>
       <div class="dropdown-menu" id="dropdown-menu" role="menu">
         <div class="dropdown-content">
-          <a href="#biographies" class="dropdown-item">
+          <a id="scroll_to_biographies" href="#" class="dropdown-item">
             Biographies
           </a>
           <% survey_questions.each do |question_id, topic| %>
-            <a href="#question_<%= question_id %>" class="dropdown-item">
+            <a id="scroll_to_question_<%= question_id %>" href="#" class="dropdown-item">
               <%= topic %>
             </a>
           <% end %>
-          <a href="#contacts" class="dropdown-item">
+          <a id="scroll_to_contacts" href="#" class="dropdown-item">
             Contacts
           </a>
         </div>
