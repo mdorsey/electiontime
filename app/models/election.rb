@@ -14,6 +14,13 @@ class Election < ApplicationRecord
   validates(:jurisdiction, presence: true)
 
   before_destroy :allow_destroy
+  after_validation :set_slug, only: [:create, :update]
+
+  # Force Rails to use both slug and id instead of just the id, by overwriting the to_param method
+  def to_param
+    return nil unless persisted?
+    [id, slug].join('-')
+  end
 
   def self.search(search_text)
     if search_text
@@ -61,4 +68,8 @@ class Election < ApplicationRecord
         throw :abort
       end
     end
+
+    def set_slug
+      self.slug = name.to_s.parameterize
+    end 
 end

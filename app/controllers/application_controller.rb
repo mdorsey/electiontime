@@ -6,14 +6,19 @@ class ApplicationController < ActionController::Base
   # Breadcrumbs
   breadcrumb 'Home', :root_path
 
+  # Catch not_found exceptions
+  rescue_from ActiveRecord::RecordNotFound do |_exception|
+    render file: 'public/404', status: :not_found
+  end
+
   private
 
-    # Confirms an admin user.
+    # Confirms an admin user
     def admin_user
       redirect_to(root_url) unless (current_user && current_user.user_type_id === UserType.find_by(name: 'Admin').id)
     end
 
-    # Confirms a logged-in user.
+    # Confirms a logged-in user
     def logged_in_user
       unless logged_in?
         store_location
@@ -21,5 +26,4 @@ class ApplicationController < ActionController::Base
         redirect_to login_url
       end
     end
-    
 end
