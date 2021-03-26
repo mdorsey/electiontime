@@ -30,7 +30,7 @@
 
 <!-- COMPARE PARTY LEADERS (if enabled) -->
 <% if @party_leaders %>
-  <%= link_to compare_party_leaders_path(@election) do %>
+  <%= link_to compare_party_leaders_path(@election.slug) do %>
     <div class="box">
       <div class="election-section-heading">
         Compare Party Leaders
@@ -48,7 +48,7 @@
 
 <!-- COMPARE PARTY PLATFORMS (if enabled) -->
 <% if @parties %>
-  <%= link_to compare_party_platforms_path(@election) do %>
+  <%= link_to compare_party_platforms_path(@election.slug) do %>
     <div class="box">
       <div class="election-section-heading">
         Compare Party Platforms
@@ -70,7 +70,7 @@
   <% if office.districts.empty? %>
 
     <!-- WITHOUT DISTRICTS -->
-    <%= link_to compare_candidates_path(election_id: @election.id, office_id: office.id) do %>
+    <%= link_to compare_candidates_path(election_slug: @election.slug, office_id: office.id) do %>
       <div class="box">
         <div class="election-section-heading">
           Compare Candidates for <%= office.name %>
@@ -88,7 +88,7 @@
   <% else %>
 
     <!-- WITH DISTRICTS -->
-    <%= form_with(url: election_summary_path(@election), method: "get", local: true) do |f| %>
+    <%= form_with(url: election_summary_path(@election.slug), method: "get", local: true) do |f| %>
       <%= hidden_field_tag :office_id, office.id %>
       <div class="box">
         <div class="election-section-heading">

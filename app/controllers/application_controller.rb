@@ -6,11 +6,6 @@ class ApplicationController < ActionController::Base
   # Breadcrumbs
   breadcrumb 'Home', :root_path
 
-  # Catch not_found exceptions
-  rescue_from ActiveRecord::RecordNotFound do |_exception|
-    render file: 'public/404', status: :not_found
-  end
-
   private
 
     # Confirms an admin user

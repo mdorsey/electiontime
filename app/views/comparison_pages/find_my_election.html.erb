@@ -4,7 +4,7 @@
 <ul>
   <% @elections_future.each do |election| %>
     <li>
-      <%= link_to election_summary_path(election) do %>
+      <%= link_to election_summary_path(election.slug) do %>
         <%= render 'comparison_pages/find_my_election_box', election: election %>
       <% end %>
     </li>
@@ -19,7 +19,7 @@
   <ul>
     <% @elections_past.each do |election| %>
       <li>
-        <%= link_to election_summary_path(election) do %>
+        <%= link_to election_summary_path(election.slug) do %>
           <%= render 'comparison_pages/find_my_election_box', election: election %>
         <% end %>
       </li>

@@ -6,25 +6,17 @@ Rails.application.routes.draw do
   get     '/contact', to: 'static_pages#contact'
   get     '/volunteer', to: 'static_pages#volunteer'
 
-  # Comparison_Pages controller  
-  get     '/find-my-election', to: 'comparison_pages#find_my_election'
-  get     '/find-my-election/:election_id', to: 'comparison_pages#election_summary', as: 'election_summary'
-  get     '/find-my-election/:election_id/compare-candidates/:office_id', to: 'comparison_pages#compare_candidates', as: 'compare_candidates'
-  get     '/find-my-election/:election_id/compare-candidates/:office_id/:district_id', to: 'comparison_pages#compare_candidates_in_district', as: 'compare_candidates_in_district'
-  get     '/find-my-election/:election_id/compare-party-leaders', to: 'comparison_pages#compare_party_leaders', as: 'compare_party_leaders'
-  get     '/find-my-election/:election_id/compare-party-platforms', to: 'comparison_pages#compare_party_platforms', as: 'compare_party_platforms'
-
   # Sessions controller
   get     '/login', to: 'sessions#new'
   post    '/login', to: 'sessions#create'
   delete  '/logout', to: 'sessions#destroy'
 
   # Admin controller
-  get     'admin/dashboard', to: 'admin#dashboard'
-  get     'admin/import_districts', to: 'admin#import_districts'
-  post    'admin/import_districts', to: 'admin#import_districts_submit'
-  get     'admin/import_participants', to: 'admin#import_participants'
-  post    'admin/import_participants', to: 'admin#import_participants_submit'
+  get     '/admin/dashboard', to: 'admin#dashboard'
+  get     '/admin/import_districts', to: 'admin#import_districts'
+  post    '/admin/import_districts', to: 'admin#import_districts_submit'
+  get     '/admin/import_participants', to: 'admin#import_participants'
+  post    '/admin/import_participants', to: 'admin#import_participants_submit'
   
   resources :account_activations, only: [:edit]
   resources :content_locations
@@ -50,6 +42,14 @@ Rails.application.routes.draw do
   resources :system_settings
   resources :user_types
   resources :users
-  
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
+  # Comparison_Pages controller  
+  # These routes MUST be last in the list
+  get     '/find-my-election', to: 'comparison_pages#find_my_election'
+  get     '/:election_slug', to: 'comparison_pages#election_summary', as: 'election_summary'
+  get     '/:election_slug/candidates/:office_id', to: 'comparison_pages#compare_candidates', as: 'compare_candidates'
+  get     '/:election_slug/candidates/:office_id/:district_id', to: 'comparison_pages#compare_candidates_in_district', as: 'compare_candidates_in_district'
+  get     '/:election_slug/leaders', to: 'comparison_pages#compare_party_leaders', as: 'compare_party_leaders'
+  get     '/:election_slug/parties', to: 'comparison_pages#compare_party_platforms', as: 'compare_party_platforms'
+
 end

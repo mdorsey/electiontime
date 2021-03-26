@@ -8,19 +8,14 @@ class Election < ApplicationRecord
   has_and_belongs_to_many :participants
   has_one_attached :picture
 
-  validates(:name, presence: true, length: { maximum: 255 })
+  validates(:name, presence: true, length: { maximum: 255 }, uniqueness: { case_sensitive: false })
   validates(:election_date, presence: true)
   validates(:election_type, presence: true)
   validates(:jurisdiction, presence: true)
 
   before_destroy :allow_destroy
-  after_validation :set_slug, only: [:create, :update]
-
-  # Force Rails to use both slug and id instead of just the id, by overwriting the to_param method
-  def to_param
-    return nil unless persisted?
-    [id, slug].join('-')
-  end
+  after_create :update_slug
+  before_update :assign_slug
 
   def self.search(search_text)
     if search_text
@@ -69,7 +64,15 @@ class Election < ApplicationRecord
       end
     end
 
-    def set_slug
-      self.slug = name.to_s.parameterize
-    end 
+    def create_slug
+      name.to_s.parameterize
+    end
+
+    def update_slug
+      update_attributes slug: assign_slug
+    end
+
+    def assign_slug
+      self.slug = create_slug
+    end
 end
