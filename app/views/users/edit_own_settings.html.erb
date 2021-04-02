@@ -32,14 +32,21 @@
   <h2>Change Your Password</h2>
 
   <div class="field">
-    <%= f.label :password, "Password", class: 'label' %>
+    <%= f.label :password, "Current Password", class: 'label' %>
+    <div class="control">
+      <%= f.password_field :password_current, class: 'input' %>
+    </div>
+  </div>
+
+  <div class="field">
+    <%= f.label :password, "New Password", class: 'label' %>
     <div class="control">
       <%= f.password_field :password, class: 'input' %>
     </div>
   </div>
 
   <div class="field">
-    <%= f.label :password_confirmation, "Password Confirmation", class: 'label' %>
+    <%= f.label :password_confirmation, "New Password Confirmation", class: 'label' %>
     <div class="control">
       <%= f.password_field :password_confirmation, class: 'input' %>
     </div>

@@ -44,7 +44,21 @@ class UsersController < ApplicationController
   end
 
   def update
-    if @user.update_attributes(user_params)
+    try_update = true
+
+    # Check if the user is on the edit_own_settings page
+    if (params.include?(:password_current))
+      # Check if the user is trying to change their password 
+      if (user_params[:password] || user_params[:password_confirmation] || params[:password_current])
+        # Verify that the old password is correct
+        if !@user.authenticate(params[:password_current])
+          flash[:danger] = "Update failed! Incorrect current password."
+          try_update = false
+        end
+      end
+    end
+
+    if try_update && @user.update_attributes(user_params)
       flash[:success] = "Profile updated"
       redirect_to @user
     else
