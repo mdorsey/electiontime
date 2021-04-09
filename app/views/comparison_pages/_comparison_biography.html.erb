@@ -14,8 +14,8 @@
         <!-- Biography -->
         <% if p.biography.present? %>
           <p><%= p.biography %></p>
-        <% elsif p.email.present? %>
-          <%= render 'comparison_pages/empty_profile', participant_id: p.id, participant_email: p.email %>
+        <% elsif p.email.present? && empty_profile_text %>
+          <%= render 'comparison_pages/empty_profile', participant_id: p.id, participant_email: p.email, empty_profile_text: empty_profile_text %>
         <% end %>
       </div>
     <% end %>

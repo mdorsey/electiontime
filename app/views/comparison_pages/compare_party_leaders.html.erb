@@ -7,7 +7,7 @@
 <%= render 'comparison_pages/comparison_nav_menu', survey_questions: @survey_questions %>
 
 <!-- BIOGRAPHIES -->
-<%= render 'comparison_pages/comparison_biography', participants: @party_leaders %>
+<%= render 'comparison_pages/comparison_biography', participants: @party_leaders, empty_profile_text: @content_empty_profile_text %>
 
 <!-- SURVEY QUESTIONS AND ANSWERS -->
 <%= render 'comparison_pages/comparison_survey', survey_questions: @survey_questions, participants: @party_leaders %>
