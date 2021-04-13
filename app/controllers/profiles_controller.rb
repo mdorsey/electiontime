@@ -22,6 +22,9 @@ class ProfilesController < ApplicationController
 
   def update
     if @participant.update_profile(params, profile_params, @survey_questions)
+
+      Log.create(user_id: current_user.id, log_type_id: LogType.find_by(name: "Public Profile").id, message: "User updated the Public Profile of " + @participant.name)
+
       flash[:success] = "Profile updated"
       redirect_to profile_path(@participant)
     else

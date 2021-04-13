@@ -45,7 +45,12 @@ class UsersController < ApplicationController
 
   def update
     if @user.update_attributes(user_params)
-      flash[:success] = "Profile updated"
+
+      if current_user?(@user)
+        Log.create(user_id: @user.id, log_type_id: LogType.find_by(name: "Account Settings").id, message: "User updated their Account Settings")
+      end
+      
+      flash[:success] = "Account settings updated"
       redirect_to @user
     else
       display_proper_view(@user, 'edit', 'edit_own_settings')
@@ -71,7 +76,7 @@ class UsersController < ApplicationController
     def display_proper_view(user, admin_view, own_settings_view)
       if current_user?(user)
         # Breadcrumbs
-        breadcrumb 'Settings', user_path(@user)
+        breadcrumb 'Account Settings', user_path(@user)
         
         render own_settings_view
       elsif is_admin_user?

@@ -34,7 +34,10 @@ Jurisdiction.create!(name: "Yukon")
 
 Language.create!(name: "English")
 
-LogType.create!(name: "User Log-In")
+LogType.create!(name: "Account Settings")
+LogType.create!(name: "Contact Participant")
+LogType.create!(name: "Public Profile")
+LogType.create!(name: "Session")
 
 Party.create!(name: "Independent")
 

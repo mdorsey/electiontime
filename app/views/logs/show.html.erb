@@ -14,17 +14,20 @@
 
     <div class="show-grid-wrapper">
 
-      <div class="grid-label">User:</div>
-      <div class="grid-value"><%= display_user(@log.user_id) %></div>
-
       <div class="grid-label">Log Type:</div>
       <div class="grid-value"><%= display_log_type(@log.log_type_id) %></div>
 
       <div class="grid-label">Message:</div>
       <div class="grid-value"><%= @log.message %></div>
 
+      <div class="grid-label">User:</div>
+      <div class="grid-value"><%= display_user(@log.user_id) %></div>
+
       <div class="grid-label">Location:</div>
       <div class="grid-value"><%= @log.location %></div>
+
+      <div class="grid-label">Time:</div>
+      <div class="grid-value"><%= @log.created_at.localtime %></div>
 
     </div>
   </div>
