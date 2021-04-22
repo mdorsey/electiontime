@@ -3,10 +3,12 @@ module SessionsHelper
   # Logs in the given user.
   def log_in(user)
     session[:user_id] = user.id
+    Log.create(user_id: user.id, log_type_id: LogType.find_by(name: "Session").id, message: "User logged in")
   end
 
   # Logs out the current user.
   def log_out
+    Log.create(user_id: current_user.id, log_type_id: LogType.find_by(name: "Session").id, message: "User logged out")
     forget(current_user)
     session.delete(:user_id)
     @current_user = nil
