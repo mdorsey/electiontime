@@ -36,6 +36,15 @@ Rails.application.configure do
 
   config.action_mailer.perform_caching = false
 
+  config.action_mailer.default_url_options = { :host => "localhost:3000" }
+
+  config.action_mailer.delivery_method = :mailgun
+  config.action_mailer.mailgun_settings = {
+    api_key: Rails.application.credentials.mailgun[:api_key],
+    domain: Rails.application.credentials.mailgun[:domain],
+    # api_host: 'api.eu.mailgun.net'  # Uncomment this line for EU region domains
+  }
+
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
 
