@@ -3,6 +3,7 @@ class ComparisonPagesController < ApplicationController
   before_action :set_election, only: [:election_summary, :compare_candidates, :compare_candidates_in_district, :compare_party_leaders, :compare_party_platforms]
   before_action :set_office, only: [:compare_candidates, :compare_candidates_in_district]
   before_action :set_district, only: [:compare_candidates_in_district]
+  before_action :set_empty_profile_text, only: [:compare_candidates, :compare_candidates_in_district, :compare_party_leaders, :compare_party_platforms]
 
   # Breadcrumbs
   breadcrumb 'Find My Election', :find_my_election_path
@@ -77,5 +78,12 @@ class ComparisonPagesController < ApplicationController
 
     def set_district
       @district = District.find(params[:district_id])
+    end
+
+    def set_empty_profile_text
+      @content_location = ContentLocation.find_by(name: "empty_profile_text")
+      if @content_location
+        @content_empty_profile_text = Content.find_by(content_location_id: @content_location.id)
+      end
     end
 end

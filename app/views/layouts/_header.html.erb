@@ -2,7 +2,7 @@
   <nav class="navbar" role="navigation" aria-label="main navigation">
     <div class="container">
       <div class="navbar-brand">
-        <%= link_to image_tag("logo_top_menu.png", alt: "ElectionTime.org"), root_path, class: "navbar-item" %>
+        <%= link_to image_tag("election_time_logo.png", alt: "ElectionTime.org"), root_path, class: "navbar-item" %>
 
         <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarMainMenu" onclick="toggle_burger_menu()">
           <span aria-hidden="true"></span>
@@ -15,22 +15,23 @@
         <div class="navbar-start">
           <%= link_to "Find My Election", find_my_election_path, class: "navbar-item" %>
           <%= link_to "About", about_path, class: "navbar-item" %>
-          <%= link_to "Get Involved", volunteer_path, class: "navbar-item" %>
           <%= link_to "Contact", contact_path, class: "navbar-item" %>
         </div>
 
         <div class="navbar-end">
           <% if logged_in? %>
             <div class="navbar-item has-dropdown is-hoverable">
-              <a class="navbar-link">
-                Account
+              <a class="navbar-link is-arrowless">
+                <span class="icon">
+                  <i class="fas fa-user-circle"></i>
+                </span>
               </a>
               <div class="navbar-dropdown is-right">
                 <% if has_participant? %>
                   <%= link_to "Public Profiles", profiles_path, class: "navbar-item" %>
                 <% end %>
 
-                <%= link_to "Settings", user_path(current_user), class: "navbar-item" %>
+                <%= link_to "Account Settings", user_path(current_user), class: "navbar-item" %>
       
                 <% if is_admin_user? %>
                   <hr class="navbar-divider">  
@@ -43,7 +44,11 @@
             </div>
 
           <% else %>
-            <%= link_to "Log In", login_path, class: "navbar-item" %>
+            <%= link_to(login_path, class: "navbar-item", title: 'Log In') do %>
+              <span class="icon">
+                <i class="fas fa-user-circle"></i>
+              </span>
+            <% end %>
           <% end %>
         </div>
       </div>

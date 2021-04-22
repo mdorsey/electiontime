@@ -12,7 +12,11 @@
         <%= render 'comparison_pages/comparison_participant_header', participant_id: p.id, party_id: p.party_id, avatar_image_class: 'is-avatar' %>
   
         <!-- Biography -->
-        <p><%= p.biography %></p>
+        <% if p.biography.present? %>
+          <p><%= p.biography %></p>
+        <% elsif p.email.present? && empty_profile_text %>
+          <%= render 'comparison_pages/empty_profile', participant_id: p.id, participant_email: p.email, empty_profile_text: empty_profile_text %>
+        <% end %>
       </div>
     <% end %>
   </div>

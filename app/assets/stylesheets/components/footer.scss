@@ -1,7 +1,30 @@
 footer {
-  border-top: 2px solid $first-color;
+  border-top: 10px solid $first-color;
   
+  .disclaimer {
+    text-align: center;
+    font-style: italic;
+  }
+
+  .footer-flex-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .footer-flex-space {
+    margin-right: 1em;
+  }
+
   .footer-item {
-    padding: 0 1.5rem;
+    padding-bottom: 0.5em;
+  }
+
+  .footer-logo {
+    max-height: 1.75rem;
+  }  
+
+  li {
+    padding-bottom: 0.5em;
   }
 }

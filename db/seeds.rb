@@ -9,9 +9,9 @@
 ContentLocation.create!(name: "page_about_location_main")
 ContentLocation.create!(name: "page_contact_location_main")
 ContentLocation.create!(name: "page_home_location_main")
-ContentLocation.create!(name: "page_volunteer_location_main")
 ContentLocation.create!(name: "page_election_summary_location_top")
 ContentLocation.create!(name: "page_election_summary_location_bottom")
+ContentLocation.create!(name: "empty_profile_text")
 
 ElectionType.create!(name: "Federal")
 ElectionType.create!(name: "Provincial")
