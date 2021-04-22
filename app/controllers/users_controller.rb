@@ -85,7 +85,7 @@ class UsersController < ApplicationController
     def display_proper_view(user, admin_view, own_settings_view)
       if current_user?(user)
         # Breadcrumbs
-        breadcrumb 'Settings', user_path(@user)
+        breadcrumb 'Account Settings', user_path(@user)
         
         render own_settings_view
       elsif is_admin_user?
