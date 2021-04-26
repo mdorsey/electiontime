@@ -32,3 +32,18 @@ global.toggle_comparison_menu_dropdown = function() {
     })
   }
 }
+
+global.participant_contact_click = function(participant_id) {
+  $.ajax({
+    type: 'POST',
+    url: "/participant-contact-click",
+    data: {
+      participant_id: participant_id,
+      location: window.location.href
+    },
+    success: function(data) {},
+    error: function(error) {
+      console.log("participant_contact_click error: " + error)
+    }
+  });
+}

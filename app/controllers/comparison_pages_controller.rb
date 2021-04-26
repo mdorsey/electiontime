@@ -66,6 +66,13 @@ class ComparisonPagesController < ApplicationController
     @survey_questions = @election.survey_questions_by_type("Party")
   end
 
+  def participant_contact_click
+    @participant = Participant.find_by(id: params[:participant_id])
+    if @participant && params[:location]
+      Log.create(log_type_id: LogType.find_by(name: "Contact Participant").id, message: "Anonymous user is contacting the participant " + @participant.name + " [id: " + @participant.id.to_s + "]", location: params[:location])
+    end
+  end
+
   private
 
     def set_election

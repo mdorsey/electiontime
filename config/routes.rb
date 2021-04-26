@@ -45,6 +45,7 @@ Rails.application.routes.draw do
   # Comparison_Pages controller  
   # These routes MUST be last in the list
   get     '/find-my-election', to: 'comparison_pages#find_my_election'
+  post    '/participant-contact-click', to: 'comparison_pages#participant_contact_click'
   get     '/:election_slug', to: 'comparison_pages#election_summary', as: 'election_summary'
   get     '/:election_slug/candidates/:office_id', to: 'comparison_pages#compare_candidates', as: 'compare_candidates'
   get     '/:election_slug/candidates/:office_id/:district_id', to: 'comparison_pages#compare_candidates_in_district', as: 'compare_candidates_in_district'
