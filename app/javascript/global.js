@@ -43,7 +43,7 @@ global.participant_contact_click = function(participant_id) {
     },
     success: function(data) {},
     error: function(error) {
-      console.log("participant_contact_click error: " + error)
+      console.log("participant_contact_click error")
     }
   });
 }
