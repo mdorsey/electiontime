@@ -39,5 +39,9 @@
       <div class="grid-value"><%= @user.updated_at.localtime %></div>
 
     </div>
+
+    <div class="buttons">
+      <%= link_to 'Send Welcome Email', send_welcome_email_path(@user), data: { confirm: 'Are you sure you want to send this user the Welcome email?' }, class: "button is-warning" %>
+    </div>
   </div>
 </div>

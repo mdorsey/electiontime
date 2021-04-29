@@ -66,7 +66,6 @@ class User < ApplicationRecord
     update_attribute(:activated_at, Time.zone.now)
   end
 
-  # Sends activation email.
   def send_activation_email
     UserMailer.account_activation(self).deliver_now
   end
@@ -78,7 +77,6 @@ class User < ApplicationRecord
     update_attribute(:reset_sent_at, Time.zone.now)
   end
 
-  # Sends password reset email.
   def send_password_reset_email
     UserMailer.password_reset(self).deliver_now
   end
@@ -86,6 +84,10 @@ class User < ApplicationRecord
   # Returns true if a password reset has expired (sent earlier than two hours ago)
   def password_reset_expired?
     reset_sent_at < 2.hours.ago
+  end
+
+  def send_welcome_email
+    UserMailer.welcome(self).deliver_now
   end
 
   private

@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 
   before_action :admin_user, only: [:index, :create, :new, :destroy]
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :set_user, only: [:show, :edit, :update, :destroy, :send_welcome_email]
   before_action :logged_in_user, only: [:edit, :update, :show]
   before_action :correct_user, only: [:edit, :update, :show]
 
@@ -13,8 +13,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
-      @user.send_activation_email
-      flash[:success] = "User created successfully. Confirmation email has been sent to activate the account."
+      flash[:success] = "User created successfully"
       redirect_to users_url
     else
       render 'new'
@@ -37,6 +36,12 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
+  end
+
+  def send_welcome_email
+    @user.send_welcome_email
+    flash[:success] = "Welcome email sent"
+    redirect_to @user
   end
 
   def show

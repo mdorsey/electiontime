@@ -12,10 +12,10 @@ Rails.application.routes.draw do
 
   # Admin controller
   get     '/admin/dashboard', to: 'admin#dashboard'
-  get     '/admin/import_districts', to: 'admin#import_districts'
-  post    '/admin/import_districts', to: 'admin#import_districts_submit'
-  get     '/admin/import_participants', to: 'admin#import_participants'
-  post    '/admin/import_participants', to: 'admin#import_participants_submit'
+  get     '/admin/import-districts', to: 'admin#import_districts'
+  post    '/admin/import-districts', to: 'admin#import_districts_submit'
+  get     '/admin/import-participants', to: 'admin#import_participants'
+  post    '/admin/import-participants', to: 'admin#import_participants_submit'
   
   resources :account_activations, only: [:edit]
   resources :content_locations
@@ -41,6 +41,9 @@ Rails.application.routes.draw do
   resources :system_settings
   resources :user_types
   resources :users
+
+  # Users controller
+  get     '/send-welcome-email/:id', to: 'users#send_welcome_email', as: 'send_welcome_email'
 
   # Comparison_Pages controller  
   # These routes MUST be last in the list
