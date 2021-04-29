@@ -43,6 +43,9 @@ gem 'will_paginate-bulma', '~> 1.0'
 # Manages and displays breadcrumb trails. https://github.com/piotrmurach/loaf
 gem 'loaf', '~> 0.10.0'
 
+# Mailgun's Official Ruby SDK for interacting with the Mailgun API. https://github.com/mailgun/mailgun-ruby
+gem 'mailgun-ruby', '~> 1.2', '>= 1.2.4'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

@@ -62,6 +62,15 @@ Rails.application.configure do
 
   config.action_mailer.perform_caching = false
 
+  config.action_mailer.default_url_options = { :host => "www.electiontime.org" }
+
+  config.action_mailer.delivery_method = :mailgun
+  config.action_mailer.mailgun_settings = {
+    api_key: Rails.application.credentials.mailgun[:api_key],
+    domain: Rails.application.credentials.mailgun[:domain],
+    # api_host: 'api.eu.mailgun.net'  # Uncomment this line for EU region domains
+  }
+
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
   # config.action_mailer.raise_delivery_errors = false
