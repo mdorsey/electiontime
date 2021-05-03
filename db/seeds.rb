@@ -12,6 +12,8 @@ ContentLocation.create!(name: "page_home_location_main")
 ContentLocation.create!(name: "page_election_summary_location_top")
 ContentLocation.create!(name: "page_election_summary_location_bottom")
 ContentLocation.create!(name: "empty_profile_text")
+ContentLocation.create!(name: "email_welcome_subject")
+ContentLocation.create!(name: "email_welcome_body")
 
 ElectionType.create!(name: "Federal")
 ElectionType.create!(name: "Provincial")
@@ -36,6 +38,7 @@ Language.create!(name: "English")
 
 LogType.create!(name: "Account Settings")
 LogType.create!(name: "Contact Participant")
+LogType.create!(name: "Email Sent")
 LogType.create!(name: "Public Profile")
 LogType.create!(name: "Session")
 

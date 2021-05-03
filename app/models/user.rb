@@ -87,7 +87,21 @@ class User < ApplicationRecord
   end
 
   def send_welcome_email
-    UserMailer.welcome(self).deliver_now
+    @subject_location = ContentLocation.find_by(name: "email_welcome_subject")
+    @body_location = ContentLocation.find_by(name: "email_welcome_body")
+
+    if @subject_location && @body_location
+      @subject = Content.find_by(content_location_id: @subject_location.id)
+      @body = Content.find_by(content_location_id: @body_location.id)
+
+      if @subject && @body
+        UserMailer.welcome(self, @subject, @body).deliver_now
+      else
+        return false
+      end
+    else
+      return false
+    end
   end
 
   private

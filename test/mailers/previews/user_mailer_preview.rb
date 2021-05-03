@@ -15,4 +15,13 @@ class UserMailerPreview < ActionMailer::Preview
     UserMailer.password_reset(user)
   end
 
+  # Preview this email at http://localhost:3000/rails/mailers/user_mailer/welcome
+  def welcome
+    user = User.first
+    subject_location = ContentLocation.find_by(name: "email_welcome_subject")
+    body_location = ContentLocation.find_by(name: "email_welcome_body")
+    subject = Content.find_by(content_location_id: subject_location.id)
+    body = Content.find_by(content_location_id: body_location.id)
+    UserMailer.welcome(user, subject, body)
+  end
 end

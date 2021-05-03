@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 
   before_action :admin_user, only: [:index, :create, :new, :destroy]
-  before_action :set_user, only: [:show, :edit, :update, :destroy, :send_welcome_email]
+  before_action :set_user, only: [:edit, :update, :show, :destroy, :send_welcome_email]
   before_action :logged_in_user, only: [:edit, :update, :show]
   before_action :correct_user, only: [:edit, :update, :show]
 
@@ -39,8 +39,13 @@ class UsersController < ApplicationController
   end
 
   def send_welcome_email
-    @user.send_welcome_email
-    flash[:success] = "Welcome email sent"
+    if @user.send_welcome_email
+      flash[:success] = "Welcome email sent"
+      Log.create(user_id: @user.id, log_type_id: LogType.find_by(name: "Email Sent").id, message: "Welcome email sent to " + @user.email)
+    else
+      flash[:danger] = "Error! Welcome email was not sent. Check the email's settings and try again."
+    end
+
     redirect_to @user
   end
 
