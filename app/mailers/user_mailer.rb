@@ -9,9 +9,15 @@ class UserMailer < ApplicationMailer
     mail(to: @user.email, subject: "Account activation")
   end
 
-  def password_reset(user)
+  def password_reset(user, subject, body)
     @user = user
-    mail(to: @user.email, subject: "Password reset")
+    @subject = subject
+    @body = body
+
+    @body_formatted_html = @body.content % { :first_name => @user.first_name, :last_name => @user.last_name }
+    @body_formatted_text = strip_tags(@body_formatted_html)
+
+    mail(to: @user.email, subject: strip_tags(@subject.content))
   end
 
   def welcome(user, subject, body)

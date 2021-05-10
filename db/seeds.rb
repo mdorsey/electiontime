@@ -14,6 +14,8 @@ ContentLocation.create!(name: "page_election_summary_location_bottom")
 ContentLocation.create!(name: "empty_profile_text")
 ContentLocation.create!(name: "email_welcome_subject")
 ContentLocation.create!(name: "email_welcome_body")
+ContentLocation.create!(name: "email_password_reset_subject")
+ContentLocation.create!(name: "email_password_reset_body")
 
 ElectionType.create!(name: "Federal")
 ElectionType.create!(name: "Provincial")

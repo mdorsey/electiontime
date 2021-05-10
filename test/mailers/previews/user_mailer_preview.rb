@@ -12,7 +12,11 @@ class UserMailerPreview < ActionMailer::Preview
   def password_reset
     user = User.first
     user.reset_token = User.new_token
-    UserMailer.password_reset(user)
+    subject_location = ContentLocation.find_by(name: "email_password_reset_subject")
+    body_location = ContentLocation.find_by(name: "email_password_reset_body")
+    subject = Content.find_by(content_location_id: subject_location.id)
+    body = Content.find_by(content_location_id: body_location.id)
+    UserMailer.password_reset(user, subject, body)
   end
 
   # Preview this email at http://localhost:3000/rails/mailers/user_mailer/welcome

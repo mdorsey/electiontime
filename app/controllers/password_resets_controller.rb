@@ -13,13 +13,20 @@ class PasswordResetsController < ApplicationController
 
   def create
     @user = User.find_by(email: params[:password_reset][:email].downcase)
+
     if @user
       @user.create_reset_digest
-      @user.send_password_reset_email
-      flash[:success] = "Email sent with password reset instructions"
+      
+      if @user.send_password_reset_email
+        flash[:success] = "An email has been sent to your address containing a link to reset your password. Check your email to continue."
+        Log.create(user_id: @user.id, log_type_id: LogType.find_by(name: "Email Sent").id, message: "Password Reset email sent to " + @user.email)
+      else
+        flash[:danger] = "Error! Password Reset email was not sent. Please contact support for assistance."
+      end
+      
       redirect_to root_url
     else
-      flash.now[:danger] = "Email address not found"
+      flash.now[:danger] = "Error! The email address you entered was not found. Please try again, or contact support for assistance."
       render 'new'
     end
   end
@@ -33,7 +40,7 @@ class PasswordResetsController < ApplicationController
       render 'edit'
     elsif @user.update_attributes(user_params)
       log_in @user
-      flash[:success] = "Password has been reset."
+      flash[:success] = "Your password has been reset and you have been logged in."
       redirect_to @user
     else
       render 'edit'
@@ -60,7 +67,7 @@ class PasswordResetsController < ApplicationController
     # Checks expiration of reset token.
     def check_expiration
       if @user.password_reset_expired?
-        flash[:danger] = "Password reset has expired."
+        flash[:danger] = "This password reset link has expired. Please try again."
         redirect_to new_password_reset_url
       end
     end
