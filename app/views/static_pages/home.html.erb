@@ -2,19 +2,25 @@
 <section>
   <div class="columns is-mobile">
     <div class="column is-10 is-offset-1">
-      <% if @content_main %>
-        <%= sanitize @content_main.content %>
+      <% if @content_banner %>
+        <%= sanitize @content_banner.content %>
       <% end %>
+      <div class="has-text-centered">
+        <%= link_to "View upcoming elections", root_path(anchor: "upcoming-elections"), class: "button is-primary" %>
+      </div>
     </div>
   </div>
   <figure class="image is-fullwidth">
-    <%= image_tag("home_page_cover.jpg", alt: "People voting") %>
+    <%= image_tag("home_page_banner.jpg", alt: "People voting") %>
   </figure>
 </section>
 
 <!-- Upcoming Elections -->
-<section>
+<section id="upcoming-elections">
   <h1>Upcoming Elections</h1>
+  <div class="has-text-centered">
+    <%= link_to "View all past elections", root_path(anchor: "past-elections") %>
+  </div>
   <ul>
     <% @elections_future.each do |election| %>
       <li>
@@ -26,12 +32,24 @@
   </ul>
 </section>
 
-
 <!-- About -->
-
+<section class="home-page-about">
+  <div class="columns">
+    <div class="column is-half">
+      <figure class="image is-square">
+        <%= image_tag("home_page_about.jpg", alt: "Ballot") %>
+      </figure>
+    </div>
+    <div class="column is-half">
+      <% if @content_about %>
+        <%= sanitize @content_about.content %>
+      <% end %>
+    </div>
+  </div>
+</section>
 
 <!-- Past Elections -->
-<section>
+<section id="past-elections">
   <h1>Past Elections</h1>
   <ul>
     <% @elections_past.each do |election| %>
