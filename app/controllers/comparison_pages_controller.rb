@@ -6,17 +6,11 @@ class ComparisonPagesController < ApplicationController
   before_action :set_empty_profile_text, only: [:compare_candidates, :compare_candidates_in_district, :compare_party_leaders, :compare_party_platforms]
 
   # Breadcrumbs
-  breadcrumb 'Find My Election', :find_my_election_path
   breadcrumb -> { @election.name }, -> { election_summary_path(@election.slug) }, only: [:election_summary, :compare_candidates, :compare_candidates_in_district, :compare_party_leaders, :compare_party_platforms]
   breadcrumb -> { 'Candidates for ' + @office.name }, -> { compare_candidates_path(election_slug: @election.slug, office_id: @office.id) }, only: [:compare_candidates]
   breadcrumb -> { 'Candidates for ' + @office.name + ' in ' + @district.name }, -> { compare_candidates_in_district_path(election_slug: @election.slug, office_id: @office.id, district_id: @district.id) }, only: [:compare_candidates_in_district]
   breadcrumb 'Party Leaders', -> { compare_party_leaders_path(@election.slug) }, only: [:compare_party_leaders]
   breadcrumb 'Party Platforms', -> { compare_party_platforms_path(@election.slug) }, only: [:compare_party_platforms]
-
-  def find_my_election
-    @elections_future = Election.where("active = true AND election_date >= ?", Time.now.utc.midnight).order('election_date ASC')
-    @elections_past = Election.where("active = true AND election_date < ?", Time.now.utc.midnight).order('election_date DESC')
-  end
 
   def election_summary
 

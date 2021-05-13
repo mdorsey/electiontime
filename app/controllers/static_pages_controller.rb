@@ -23,5 +23,8 @@ class StaticPagesController < ApplicationController
     if @content_location
       @content_main = Content.find_by(content_location_id: @content_location.id)
     end
+
+    @elections_future = Election.where("active = true AND election_date >= ?", Time.now.utc.midnight).order('election_date ASC')
+    @elections_past = Election.where("active = true AND election_date < ?", Time.now.utc.midnight).order('election_date DESC')
   end
 end

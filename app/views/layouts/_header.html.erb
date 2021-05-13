@@ -12,16 +12,12 @@
       </div>
 
       <div id="navbarMainMenu" class="navbar-menu">
-        <div class="navbar-start">
-          <%= link_to "Find My Election", find_my_election_path, class: "navbar-item" %>
+        <div class="navbar-end">
           <%= link_to "About", about_path, class: "navbar-item" %>
           <%= link_to "Contact", contact_path, class: "navbar-item" %>
-        </div>
-
-        <div class="navbar-end">
           <% if logged_in? %>
             <div class="navbar-item has-dropdown is-hoverable">
-              <a class="navbar-link is-arrowless">
+              <a class="navbar-link">
                 <span class="icon">
                   <i class="fas fa-user-circle"></i>
                 </span>

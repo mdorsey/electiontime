@@ -11,3 +11,35 @@
     <%= image_tag("home_page_cover.jpg", alt: "People voting") %>
   </figure>
 </section>
+
+<!-- Upcoming Elections -->
+<section>
+  <h1>Upcoming Elections</h1>
+  <ul>
+    <% @elections_future.each do |election| %>
+      <li>
+        <%= link_to election_summary_path(election.slug) do %>
+          <%= render 'static_pages/election_details_box', election: election %>
+        <% end %>
+      </li>
+    <% end %>
+  </ul>
+</section>
+
+
+<!-- About -->
+
+
+<!-- Past Elections -->
+<section>
+  <h1>Past Elections</h1>
+  <ul>
+    <% @elections_past.each do |election| %>
+      <li>
+        <%= link_to election_summary_path(election.slug) do %>
+          <%= render 'static_pages/election_details_box', election: election %>
+        <% end %>
+      </li>
+    <% end %>
+  </ul>
+</section>
