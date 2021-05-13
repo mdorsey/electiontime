@@ -17,6 +17,7 @@ ContentLocation.create!(name: "email_welcome_subject")
 ContentLocation.create!(name: "email_welcome_body")
 ContentLocation.create!(name: "email_password_reset_subject")
 ContentLocation.create!(name: "email_password_reset_body")
+ContentLocation.create!(name: "footer_fine_print")
 
 ElectionType.create!(name: "Federal")
 ElectionType.create!(name: "Provincial")
