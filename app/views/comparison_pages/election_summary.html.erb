@@ -22,11 +22,9 @@
   </div>
 </div>
 
-<div class="content">
-  <% if @content_top %>
-    <%= sanitize @content_top.content %>
-  <% end %>
-</div>
+<% if @content_top %>
+  <%= sanitize @content_top.content %>
+<% end %>
 
 <!-- COMPARE PARTY LEADERS (if enabled) -->
 <% if @party_leaders %>
@@ -112,8 +110,6 @@
   <% end %>
 <% end %>
 
-<div class="content">
-  <% if @content_bottom %>
-    <%= sanitize @content_bottom.content %>
-  <% end %>
-</div>
+<% if @content_bottom %>
+  <%= sanitize @content_bottom.content %>
+<% end %>

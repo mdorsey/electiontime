@@ -1,6 +1,13 @@
-<% provide(:title, "Home") %>
-<div class="content">
-  <% if @content_main %>
-    <%= sanitize @content_main.content %>
-  <% end %>
-</div>
+<!-- Banner -->
+<section>
+  <div class="columns is-mobile">
+    <div class="column is-10 is-offset-1">
+      <% if @content_main %>
+        <%= sanitize @content_main.content %>
+      <% end %>
+    </div>
+  </div>
+  <figure class="image is-fullwidth">
+    <%= image_tag("home_page_cover.jpg", alt: "People voting") %>
+  </figure>
+</section>

@@ -1,6 +1,7 @@
 h1 {
   @extend .title;
   @extend .is-3;
+  @extend .is-spaced;
   text-align: center;
   color: $first-color;
 }
@@ -10,6 +11,12 @@ h2 {
   @extend .is-5;
   margin-top: 1.5rem;
   color: $first-color;
+}
+
+h3 {
+  @extend .subtitle;
+  @extend .is-5;
+  text-align: center;
 }
 
 p {
