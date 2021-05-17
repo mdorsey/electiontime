@@ -54,7 +54,22 @@ class UsersController < ApplicationController
   end
 
   def update
-    if @user.update_attributes(user_params)
+
+    try_update = true
+
+    # Check if the user was on the 'edit_own_settings' page
+    if user_params.key?(:current_password)
+      # Check if the user attempted to update either their email or password
+      if (user_params[:email] != @user.email || user_params[:password].present? || user_params[:password_confirmation].present?)
+        # Verify the current password
+        if !@user.authenticate(user_params[:current_password])
+          @user.errors.add :current_password, "is incorrect. You must enter your current password in order to change your email or password."
+          try_update = false
+        end
+      end
+    end
+
+    if try_update && @user.update_attributes(user_params)
 
       if current_user?(@user)
         Log.create(user_id: @user.id, log_type_id: LogType.find_by(name: "Account Settings").id, message: "User updated their Account Settings")
@@ -74,7 +89,7 @@ class UsersController < ApplicationController
     end
 
     def user_params
-      params.require(:user).permit(:first_name, :last_name, :email, :user_type_id, :activated, :password, :password_confirmation)
+      params.require(:user).permit(:first_name, :last_name, :email, :user_type_id, :activated, :password, :password_confirmation, :current_password)
     end
 
     # Confirms the correct user, or if the user is an Admin

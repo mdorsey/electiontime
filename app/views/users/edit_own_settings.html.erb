@@ -20,6 +20,23 @@
     </div>
   </div>
 
+  <hr>
+  
+  <h2>Change Your Email or Password</h2>
+
+  <div class="field">
+    <%= f.label :password, "Current Password", class: 'label' %>
+    <div class="control">
+      <%= f.password_field :current_password, class: 'input' %>
+    </div>
+  </div>
+
+  <div class="help-text">
+    Enter your current password in order to change your Email or to set a New Password 
+  </div>
+
+  <br />
+
   <div class="field">
     <%= f.label :email, "Email", class: 'label' %>
     <div class="control">
@@ -27,16 +44,7 @@
     </div>
   </div>
 
-  <hr>
-  
-  <h2>Change Your Password</h2>
-
-  <div class="field">
-    <%= f.label :password, "Current Password", class: 'label' %>
-    <div class="control">
-      <%= f.password_field :password_current, class: 'input' %>
-    </div>
-  </div>
+  <br />
 
   <div class="field">
     <%= f.label :password, "New Password", class: 'label' %>
