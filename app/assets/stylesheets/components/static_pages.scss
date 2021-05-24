@@ -1,3 +1,13 @@
-.home-page-about {
-  border: 2px solid $second-color;
+.election-details-box-container {
+  border: 1px solid $first-color;
+  margin-bottom: 3em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  text-align: center;
+}
+
+.home-page-section {
+  margin: 3rem 0;
 }
