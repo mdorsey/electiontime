@@ -1,13 +1,51 @@
 .election-details-box-container {
   border: 1px solid $first-color;
   margin-bottom: 3em;
+  padding: 1em;
+}
+
+.election-details-box-information {
+  display: flex;
+  flex-direction: column;
+  text-align: right;
+}
+
+.election-details-box-feature {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-content: center;
-  text-align: center;
+  align-items: left;
+}
+
+.feature-image {
+  max-width: 500px;
+}
+
+.flag-image {
+  max-width: 256px;
 }
 
 .home-page-section {
   margin: 3rem 0;
 }
+
+
+/* --- BREAKPOINTS --- */
+
+/* --- Small devices (tablets, phones, 768px and down) --- */
+@media only screen and (max-width: 768px) {
+  .election-details-box-information {
+    text-align: center;
+  }
+
+  .election-details-box-feature {
+    align-items: center;
+  }
+}
+
+/* --- Extra small devices (phones, 600px and down) --- */
+@media only screen and (max-width: 600px) {
+  .flag-image {
+    max-width: 128px;
+  }
+} 
