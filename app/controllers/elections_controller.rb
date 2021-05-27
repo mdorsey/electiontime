@@ -46,6 +46,11 @@ class ElectionsController < ApplicationController
       @election.picture.purge
     end
 
+    # Remove any previous feature_image, if a new one was selected
+    if params[:election][:feature_image].present?
+      @election.feature_image.purge
+    end
+
     if @election.update_attributes(election_params)
 
       if (!election_params.include? "participant_ids")
@@ -67,6 +72,6 @@ class ElectionsController < ApplicationController
     end
 
     def election_params
-      params.require(:election).permit(:picture, :name, :election_date, :election_type_id, :jurisdiction_id, :active, :compare_parties, :compare_party_leaders, :participant_ids => [])
+      params.require(:election).permit(:picture, :feature_image, :name, :election_date, :election_type_id, :jurisdiction_id, :active, :compare_parties, :compare_party_leaders, :participant_ids => [])
     end
 end

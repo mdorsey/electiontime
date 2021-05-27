@@ -27,17 +27,32 @@ module ElectionsHelper
 
   def get_election_picture_url(election_id)
 
-    picture_url = ''
+    url = ''
 
     if election_id
       election = Election.find(election_id)
 
       if election.picture.attached?
-        picture_url = election.picture
+        url = election.picture
       end
     end
 
-    return picture_url
+    return url
+  end
+
+  def get_election_feature_image_url(election_id)
+
+    url = ''
+
+    if election_id
+      election = Election.find(election_id)
+
+      if election.feature_image.attached?
+        url = election.feature_image
+      end
+    end
+
+    return url
   end
 
   def get_number_of_election_candidates(election_id)

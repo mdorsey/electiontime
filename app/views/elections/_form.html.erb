@@ -9,6 +9,13 @@
   </div>
 
   <div class="field">
+    <%= f.label :feature_image, "Feature Image", class: 'label' %>
+    <div class="control">
+      <%= f.file_field :feature_image %>
+    </div>
+  </div>
+
+  <div class="field">
     <%= f.label :name, "Name", class: 'label' %>
     <div class="control">
       <%= f.text_field :name, class: 'input' %>

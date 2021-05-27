@@ -2,9 +2,9 @@
   <div class="columns">
     <div class="column is-half election-details-box-information">
   
-      <!-- Flag image -->
+      <!-- Election picture -->
       <div>
-        <%= image_tag(get_election_picture_url(election.id), alt: election.name, class: "flag-image") %>
+        <%= image_tag(get_election_picture_url(election.id), alt: election.name, class: "election-picture") %>
       </div>
       
       <!-- Election details -->
@@ -29,7 +29,7 @@
     <div class="column is-half election-details-box-feature">
       <!-- Feature image -->
       <div class="feature-image">
-        <!-- feature image placeholder -->
+        <%= image_tag(get_election_feature_image_url(election.id), alt: election.name) %>
       </div>
     </div>
   </div>

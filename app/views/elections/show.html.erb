@@ -16,8 +16,15 @@
 
       <div class="grid-label">Picture:</div>
       <div class="grid-value">
-        <figure class="image is-flag-big">
+        <figure class="image election-picture">
           <%= image_tag(get_election_picture_url(@election.id), alt: @election.name) %>
+        </figure>
+      </div>
+
+      <div class="grid-label">Feature Image:</div>
+      <div class="grid-value">
+        <figure class="image feature-image">
+          <%= image_tag(get_election_feature_image_url(@election.id)) %>
         </figure>
       </div>
 

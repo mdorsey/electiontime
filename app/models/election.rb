@@ -7,6 +7,7 @@ class Election < ApplicationRecord
   has_many :surveys
   has_and_belongs_to_many :participants
   has_one_attached :picture
+  has_one_attached :feature_image
 
   validates(:name, presence: true, length: { maximum: 255 }, uniqueness: { case_sensitive: false })
   validates(:election_date, presence: true)

@@ -1,14 +1,18 @@
-.is-avatar, .is-avatar-small {
-  height: 128px;
-  width: 128px;
-}
-
-.is-flag-big {
+.election-picture {
   max-width: 256px;
 }
 
-.is-flag-small {
+.election-picture-small {
   max-width: 128px;
+}
+
+.feature-image {
+  max-width: 500px;
+}
+
+.is-avatar, .is-avatar-small {
+  height: 128px;
+  width: 128px;
 }
 
 
@@ -16,8 +20,12 @@
 
 /* --- Extra small devices (phones, 600px and down) --- */
 @media only screen and (max-width: 600px) {
+  .election-picture {
+    max-width: 128px;
+  }
+
   .is-avatar-small {
     height: 96px;
     width: 96px;
   }
-} 
+}
