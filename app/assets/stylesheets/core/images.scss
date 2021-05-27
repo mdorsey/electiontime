@@ -1,3 +1,8 @@
+.avatar, .avatar-small {
+  height: 128px;
+  width: 128px;
+}
+
 .election-picture {
   max-width: 256px;
 }
@@ -10,22 +15,17 @@
   max-width: 500px;
 }
 
-.is-avatar, .is-avatar-small {
-  height: 128px;
-  width: 128px;
-}
-
 
 /* --- BREAKPOINTS --- */
 
 /* --- Extra small devices (phones, 600px and down) --- */
 @media only screen and (max-width: 600px) {
-  .election-picture {
-    max-width: 128px;
-  }
-
-  .is-avatar-small {
+  .avatar-small {
     height: 96px;
     width: 96px;
+  }
+  
+  .election-picture {
+    max-width: 128px;
   }
 }

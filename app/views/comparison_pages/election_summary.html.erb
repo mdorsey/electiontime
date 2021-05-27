@@ -36,7 +36,7 @@
       <div class="columns is-multiline is-mobile">
         <% @party_leaders.each do |p| %>
           <div class="column is-half-mobile is-half-tablet is-one-third-desktop is-one-third-widescreen is-one-third-fullhd">
-            <%= render 'comparison_pages/comparison_participant_header', participant_id: p.id, party_id: p.party_id, avatar_image_class: 'is-avatar-small' %>
+            <%= render 'comparison_pages/comparison_participant_header', participant_id: p.id, party_id: p.party_id, avatar_image_class: 'avatar-small' %>
           </div>
         <% end %>
       </div>
@@ -54,7 +54,7 @@
       <div class="columns is-multiline is-mobile">
         <% @parties.each do |p| %>
           <div class="column is-half-mobile is-half-tablet is-one-third-desktop is-one-third-widescreen is-one-third-fullhd">
-            <%= render 'comparison_pages/comparison_participant_header', participant_id: p.id, party_id: p.party_id, avatar_image_class: 'is-avatar-small' %>
+            <%= render 'comparison_pages/comparison_participant_header', participant_id: p.id, party_id: p.party_id, avatar_image_class: 'avatar-small' %>
           </div>
         <% end %>
       </div>
@@ -76,7 +76,7 @@
         <div class="columns is-multiline is-mobile">
           <% @election.candidates_for_display(office.id).each do |p| %>
             <div class="column is-half-mobile is-half-tablet is-one-third-desktop is-one-third-widescreen is-one-third-fullhd">
-              <%= render 'comparison_pages/comparison_participant_header', participant_id: p.id, party_id: p.party_id, avatar_image_class: 'is-avatar-small' %>
+              <%= render 'comparison_pages/comparison_participant_header', participant_id: p.id, party_id: p.party_id, avatar_image_class: 'avatar-small' %>
             </div>
           <% end %>
         </div>
