@@ -48,12 +48,12 @@ LogType.create!(name: "Session")
 
 Party.create!(name: "Independent")
 
-social_media_type_1 = SocialMediaType.create!(name: "Facebook", website: "https://www.facebook.com/", icon: "fab fa-facebook-square fa-2x")
-social_media_type_2 = SocialMediaType.create!(name: "Instagram", website: "https://www.instagram.com/", icon: "fab fa-instagram-square fa-2x")
-social_media_type_3 = SocialMediaType.create!(name: "LinkedIn", website: "https://www.linkedin.com/in/", icon: "fab fa-linkedin fa-2x")
-social_media_type_4 = SocialMediaType.create!(name: "Medium", website: "https://medium.com/", icon: "fab fa-medium fa-2x")
-social_media_type_5 = SocialMediaType.create!(name: "Twitter", website: "https://twitter.com/", icon: "fab fa-twitter-square fa-2x")
-social_media_type_6 = SocialMediaType.create!(name: "Youtube", website: "https://www.youtube.com/", icon: "fab fa-youtube-square fa-2x")
+social_media_type_1 = SocialMediaType.create!(name: "Facebook", website: "https://www.facebook.com/", icon: "fab fa-facebook-square fa-lg")
+social_media_type_2 = SocialMediaType.create!(name: "Instagram", website: "https://www.instagram.com/", icon: "fab fa-instagram-square fa-lg")
+social_media_type_3 = SocialMediaType.create!(name: "LinkedIn", website: "https://www.linkedin.com/in/", icon: "fab fa-linkedin fa-lg")
+social_media_type_4 = SocialMediaType.create!(name: "Medium", website: "https://medium.com/", icon: "fab fa-medium fa-lg")
+social_media_type_5 = SocialMediaType.create!(name: "Twitter", website: "https://twitter.com/", icon: "fab fa-twitter-square fa-lg")
+social_media_type_6 = SocialMediaType.create!(name: "Youtube", website: "https://www.youtube.com/", icon: "fab fa-youtube-square fa-lg")
 
 SurveyType.create!(name: "Candidate")
 SurveyType.create!(name: "Party")

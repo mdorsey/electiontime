@@ -49,7 +49,7 @@
           <!-- Social media icons -->
           <% get_social_media_profiles_in_alphabetical_order(p.id).each do |s| %>
             <%= link_to(social_media_profile_link(s.id), target: "_blank") do %>
-              <span class="icon is-medium">
+              <span class="icon">
                 <i class="<%= get_social_media_type_icon(s.social_media_type_id) %>"></i>
               </span>
             <% end %>
