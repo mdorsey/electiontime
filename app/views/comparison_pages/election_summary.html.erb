@@ -28,38 +28,40 @@
 
 <!-- COMPARE PARTY LEADERS (if enabled) -->
 <% if @party_leaders %>
-  <%= link_to compare_party_leaders_path(@election.slug) do %>
-    <div class="box">
-      <div class="election-section-heading">
-        Compare Party Leaders
-      </div>
-      <div class="columns is-multiline is-mobile">
-        <% @party_leaders.each do |p| %>
-          <div class="column is-half-mobile is-half-tablet is-one-third-desktop is-one-third-widescreen is-one-third-fullhd">
-            <%= render 'comparison_pages/comparison_participant_header', participant_id: p.id, party_id: p.party_id, avatar_image_class: 'avatar-small' %>
-          </div>
-        <% end %>
-      </div>
+  <div class="comparison-box-container">
+    <div class="election-section-heading">
+      Compare Party Leaders
     </div>
-  <% end %>
+    <div class="columns is-multiline is-mobile">
+      <% @party_leaders.each do |p| %>
+        <div class="column is-half-mobile is-half-tablet is-one-third-desktop is-one-third-widescreen is-one-third-fullhd">
+          <%= render 'comparison_pages/comparison_participant_header', participant_id: p.id, party_id: p.party_id, avatar_image_class: 'avatar-small' %>
+        </div>
+      <% end %>
+    </div>
+    <div class="has-text-centered">
+      <%= link_to "Go!", compare_party_leaders_path(@election.slug), class: "button is-primary" %>
+    </div>
+  </div>
 <% end %>
 
 <!-- COMPARE PARTY PLATFORMS (if enabled) -->
 <% if @parties %>
-  <%= link_to compare_party_platforms_path(@election.slug) do %>
-    <div class="box">
-      <div class="election-section-heading">
-        Compare Party Platforms
-      </div>
-      <div class="columns is-multiline is-mobile">
-        <% @parties.each do |p| %>
-          <div class="column is-half-mobile is-half-tablet is-one-third-desktop is-one-third-widescreen is-one-third-fullhd">
-            <%= render 'comparison_pages/comparison_participant_header', participant_id: p.id, party_id: p.party_id, avatar_image_class: 'avatar-small' %>
-          </div>
-        <% end %>
-      </div>
+  <div class="comparison-box-container">
+    <div class="election-section-heading">
+      Compare Party Platforms
     </div>
-  <% end %>
+    <div class="columns is-multiline is-mobile">
+      <% @parties.each do |p| %>
+        <div class="column is-half-mobile is-half-tablet is-one-third-desktop is-one-third-widescreen is-one-third-fullhd">
+          <%= render 'comparison_pages/comparison_participant_header', participant_id: p.id, party_id: p.party_id, avatar_image_class: 'avatar-small' %>
+        </div>
+      <% end %>
+    </div>
+    <div class="has-text-centered">
+      <%= link_to "Go!", compare_party_platforms_path(@election.slug), class: "button is-primary" %>
+    </div>
+  </div>
 <% end %>
 
 <!-- COMPARE CANDIDATES FOR OFFICE -->
@@ -68,27 +70,28 @@
   <% if office.districts.empty? %>
 
     <!-- WITHOUT DISTRICTS -->
-    <%= link_to compare_candidates_path(election_slug: @election.slug, office_id: office.id) do %>
-      <div class="box">
-        <div class="election-section-heading">
-          Compare Candidates for <%= office.name %>
-        </div>
-        <div class="columns is-multiline is-mobile">
-          <% @election.candidates_for_display(office.id).each do |p| %>
-            <div class="column is-half-mobile is-half-tablet is-one-third-desktop is-one-third-widescreen is-one-third-fullhd">
-              <%= render 'comparison_pages/comparison_participant_header', participant_id: p.id, party_id: p.party_id, avatar_image_class: 'avatar-small' %>
-            </div>
-          <% end %>
-        </div>
+    <div class="comparison-box-container">
+      <div class="election-section-heading">
+        Compare Candidates for <%= office.name %>
       </div>
-    <% end %>
+      <div class="columns is-multiline is-mobile">
+        <% @election.candidates_for_display(office.id).each do |p| %>
+          <div class="column is-half-mobile is-half-tablet is-one-third-desktop is-one-third-widescreen is-one-third-fullhd">
+            <%= render 'comparison_pages/comparison_participant_header', participant_id: p.id, party_id: p.party_id, avatar_image_class: 'avatar-small' %>
+          </div>
+        <% end %>
+      </div>
+      <div class="has-text-centered">
+        <%= link_to "Go!", compare_candidates_path(election_slug: @election.slug, office_id: office.id), class: "button is-primary" %>
+      </div>
+    </div>
 
   <% else %>
 
     <!-- WITH DISTRICTS -->
     <%= form_with(url: election_summary_path(@election.slug), method: "get", local: true) do |f| %>
       <%= hidden_field_tag :office_id, office.id %>
-      <div class="box">
+      <div class="comparison-box-container">
         <div class="election-section-heading">
           Compare Candidates for <%= office.name %>
         </div>

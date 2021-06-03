@@ -1,10 +1,8 @@
-.box {
+.comparison-box-container {
   border: 1px solid $first-color;
+  border-radius: 6px;
   margin-bottom: 3em;
-}
-
-.box:hover {
-  box-shadow: 0 0 0 1px $first-color;
+  padding: 1.25em;
 }
 
 .comparison-candidates-grid {
