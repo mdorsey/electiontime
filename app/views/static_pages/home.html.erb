@@ -18,18 +18,16 @@
 </section>
 
 <!-- Upcoming Elections -->
-<section class="hero is-primary">
+<section class="hero is-primary" id="upcoming-elections">
   <div class="hero-body">
-    <section id="upcoming-elections">
-      <h1>Upcoming Elections</h1>
-      <ul>
-        <% @elections_future.each do |election| %>
-          <li class="elections-list">
-            <%= render 'static_pages/election_details_box', election: election %>
-          </li>
-        <% end %>
-      </ul>
-    </section>
+    <h1>Upcoming Elections</h1>
+    <ul>
+      <% @elections_future.each do |election| %>
+        <li class="elections-list">
+          <%= render 'static_pages/election_details_box', election: election %>
+        </li>
+      <% end %>
+    </ul>
   </div>
 </section>
 
@@ -52,17 +50,15 @@
 </section>
 
 <!-- Past Elections -->
-<section class="hero is-primary">
+<section class="hero is-primary" id="past-elections">
   <div class="hero-body">
-    <section id="past-elections">
-      <h1>Past Elections</h1>
-      <ul>
-        <% @elections_past.each do |election| %>
-          <li class="elections-list">
-            <%= render 'static_pages/election_details_box', election: election %>
-          </li>
-        <% end %>
-      </ul>
-    </section>
+    <h1>Past Elections</h1>
+    <ul>
+      <% @elections_past.each do |election| %>
+        <li class="elections-list">
+          <%= render 'static_pages/election_details_box', election: election %>
+        </li>
+      <% end %>
+    </ul>
   </div>
 </section>
