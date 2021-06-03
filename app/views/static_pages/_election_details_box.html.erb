@@ -1,35 +1,37 @@
-<div class="election-details-box-container">
-  <div class="columns">
-    <div class="column is-half election-details-box-information">
-  
-      <!-- Election picture -->
-      <div>
-        <%= image_tag(get_election_picture_url(election.id), alt: election.name, class: "election-picture") %>
-      </div>
-      
-      <!-- Election details -->
-      <div>
-        <p class="election-name">
-          <%= election.name %>
-        </p>
-        <p><%= display_election_date(election.election_date) %></p>
-        <% if get_number_of_election_candidates(election.id) > 0 %>
-          <p><%= number_with_delimiter(get_number_of_election_candidates(election.id), :delimiter => ',') %> candidates</p>
-        <% end %>
-        <% if get_number_of_election_parties(election.id) > 0 %>
-          <p><%= number_with_delimiter(get_number_of_election_parties(election.id), :delimiter => ',') %> parties</p>
-        <% end %>
-      </div>
+<div class="container is-widescreen">
+  <div class="election-details-box-container">
+    <div class="columns">
+      <div class="column is-half election-details-box-information">
     
-      <!-- Button -->
-      <div>
-        <%= link_to "View Candidates", election_summary_path(election.slug), class: "button is-primary" %>
+        <!-- Election picture -->
+        <div>
+          <%= image_tag(get_election_picture_url(election.id), alt: election.name, class: "election-picture") %>
+        </div>
+        
+        <!-- Election details -->
+        <div>
+          <p class="election-title">
+            <%= election.name %>
+          </p>
+          <p><%= display_election_date(election.election_date) %></p>
+          <% if get_number_of_election_candidates(election.id) > 0 %>
+            <p><%= number_with_delimiter(get_number_of_election_candidates(election.id), :delimiter => ',') %> candidates</p>
+          <% end %>
+          <% if get_number_of_election_parties(election.id) > 0 %>
+            <p><%= number_with_delimiter(get_number_of_election_parties(election.id), :delimiter => ',') %> parties</p>
+          <% end %>
+        </div>
+      
+        <!-- Button -->
+        <div>
+          <%= link_to "View Candidates", election_summary_path(election.slug), class: "button is-primary" %>
+        </div>
       </div>
-    </div>
-    <div class="column is-half election-details-box-feature">
-      <!-- Feature image -->
-      <div class="feature-image">
-        <%= image_tag(get_election_feature_image_url(election.id), alt: election.name) %>
+      <div class="column is-half election-details-box-feature">
+        <!-- Feature image -->
+        <div class="feature-image">
+          <%= image_tag(get_election_feature_image_url(election.id), alt: election.name) %>
+        </div>
       </div>
     </div>
   </div>

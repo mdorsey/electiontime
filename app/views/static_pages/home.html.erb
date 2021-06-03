@@ -1,59 +1,68 @@
 <!-- Banner -->
-<section class="home-page-section">
-  <div class="columns is-mobile">
-    <div class="column is-10 is-offset-1">
-      <% if @content_banner %>
-        <%= sanitize @content_banner.content %>
-      <% end %>
-      <div class="has-text-centered">
-        <%= link_to "View Upcoming Elections", root_path(anchor: "upcoming-elections"), class: "button is-primary" %>
+<section class="section">
+  <div class="container is-widescreen">
+    <div class="columns is-mobile">
+      <div class="column is-10 is-offset-1">
+        <% if @content_banner %>
+          <%= sanitize @content_banner.content %>
+        <% end %>
+        <div class="has-text-centered">
+          <%= link_to "View Upcoming Elections", root_path(anchor: "upcoming-elections"), class: "button is-primary" %>
+        </div>
       </div>
     </div>
+    <figure class="image is-fullwidth">
+      <%= image_tag("home_page_banner.jpg", alt: "People voting") %>
+    </figure>
   </div>
-  <figure class="image is-fullwidth">
-    <%= image_tag("home_page_banner.jpg", alt: "People voting") %>
-  </figure>
 </section>
 
 <!-- Upcoming Elections -->
-<section class="home-page-section" id="upcoming-elections">
-  <h1>Upcoming Elections</h1>
-  <ul>
-    <% @elections_future.each do |election| %>
-      <li>
-        <%= render 'static_pages/election_details_box', election: election %>
-      </li>
-    <% end %>
-  </ul>
-  <div class="has-text-centered">
-    <%= link_to "View all past elections", root_path(anchor: "past-elections") %>
+<section class="hero is-primary">
+  <div class="hero-body">
+    <section id="upcoming-elections">
+      <h1>Upcoming Elections</h1>
+      <ul>
+        <% @elections_future.each do |election| %>
+          <li class="elections-list">
+            <%= render 'static_pages/election_details_box', election: election %>
+          </li>
+        <% end %>
+      </ul>
+    </section>
   </div>
 </section>
 
 <!-- About -->
-<section class="home-page-section">
-  <div class="columns">
-    <div class="column is-half">
-      <figure class="image is-square">
-        <%= image_tag("home_page_about.jpg", alt: "Ballot") %>
-      </figure>
-    </div>
-    <div class="column is-half">
-      <% if @content_about %>
-        <%= sanitize @content_about.content %>
-      <% end %>
+<section class="section">
+  <div class="container is-widescreen">
+    <div class="columns">
+      <div class="column is-half">
+        <figure class="image is-square">
+          <%= image_tag("home_page_about.jpg", alt: "Ballot") %>
+        </figure>
+      </div>
+      <div class="column is-half">
+        <% if @content_about %>
+          <%= sanitize @content_about.content %>
+        <% end %>
+      </div>
     </div>
   </div>
 </section>
 
 <!-- Past Elections -->
-<section class="home-page-section" id="past-elections">
-  <h1>Past Elections</h1>
-  <ul>
-    <% @elections_past.each do |election| %>
-      <li>
-        <%= render 'static_pages/election_details_box', election: election %>
-      </li>
-    <% end %>
-  </ul>
+<section class="hero is-primary">
+  <div class="hero-body">
+    <section id="past-elections">
+      <h1>Past Elections</h1>
+      <ul>
+        <% @elections_past.each do |election| %>
+          <li class="elections-list">
+            <%= render 'static_pages/election_details_box', election: election %>
+          </li>
+        <% end %>
+      </ul>
+    </section>
+  </div>
 </section>

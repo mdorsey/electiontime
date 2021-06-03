@@ -37,19 +37,21 @@
   <body>
     <%= render 'layouts/header' %>
 
-    <section class="section">
-      <div class="container is-widescreen">
-        <%= render 'layouts/breadcrumb' %>
-
-        <% flash.each do |message_type, message| %>
-          <div class="notification is-<%= message_type %>">
-            <%= message %>
-          </div>
-        <% end %>
-
-        <%= yield %>
-      </div>
-    </section>
+    <% if current_page?(root_path) %>
+      <%= yield %>
+    <% else %>
+      <section class="section">
+        <div class="container is-widescreen">
+          <%= render 'layouts/breadcrumb' %>
+          <% flash.each do |message_type, message| %>
+            <div class="notification is-<%= message_type %>">
+              <%= message %>
+            </div>
+          <% end %>
+          <%= yield %>
+        </div>
+      </section>
+    <% end %>
 
     <%= render 'layouts/footer' %>
 

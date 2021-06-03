@@ -1,7 +1,12 @@
 .election-details-box-container {
-  border: 1px solid $first-color;
-  margin-bottom: 3em;
+  background-color: $wallpaper-color;
+  color: $text;
   padding: 1em;
+
+  .election-title {
+    font-weight: bold;
+    font-size: 1.3em;
+  }
 }
 
 .election-details-box-information {
@@ -17,10 +22,9 @@
   align-items: left;
 }
 
-.home-page-section {
-  margin: 3rem 0;
+.elections-list {
+  margin: 2em 0;
 }
-
 
 /* --- BREAKPOINTS --- */
 
