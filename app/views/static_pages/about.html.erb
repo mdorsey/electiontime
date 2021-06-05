@@ -1,5 +1,13 @@
 <% provide(:title, "About") %>
 
-<% if @content_main %>
-  <%= sanitize @content_main.content %>
-<% end %>
+<h1>About ElectionTime.org</h1>
+
+<div class="about-page-picture">
+  <%= image_tag("about_page.jpg", alt: "About") %>
+</div>
+
+<div class="wysiwyg">
+  <% if @content_main %>
+    <%= sanitize @content_main.content %>
+  <% end %>
+</div>

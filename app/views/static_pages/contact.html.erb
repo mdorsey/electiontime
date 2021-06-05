@@ -1,4 +1,31 @@
 <% provide(:title, "Contact") %>
-<% if @content_main %>
-  <%= sanitize @content_main.content %>
-<% end %>
+
+<h1>Get In Touch</h1>
+
+<div class="contact-page-picture">
+  <%= image_tag("contact_page.jpg", alt: "Contact") %>
+</div>
+
+<div class="wysiwyg">
+  <% if @content_main %>
+    <%= sanitize @content_main.content %>
+  <% end %>
+</div>
+
+<h2>Connect on Social Media</h2>
+<a href="https://twitter.com/ElectionTimeOrg" target="_blank">
+  <div class="icon-text">
+    <span class="icon is-large">
+      <i class="fab fa-twitter fa-2x"></i>
+    </span>
+    <span>Follow us on Twitter</span>
+  </div>
+</a>
+<a href="https://www.facebook.com/ElectionTimeOrg" target="_blank">
+  <div class="icon-text">
+    <span class="icon is-large">
+      <i class="fab fa-facebook fa-2x"></i>
+    </span>
+    <span>Follow us on Facebook</span>
+  </div>
+</a>
