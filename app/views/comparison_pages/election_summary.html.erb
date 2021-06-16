@@ -40,7 +40,7 @@
       <% end %>
     </div>
     <div class="has-text-centered">
-      <%= link_to "Go!", compare_party_leaders_path(@election.slug), class: "button is-primary" %>
+      <%= link_to "Go!", compare_party_leaders_path(@election.slug), class: "button is-success" %>
     </div>
   </div>
 <% end %>
@@ -59,7 +59,7 @@
       <% end %>
     </div>
     <div class="has-text-centered">
-      <%= link_to "Go!", compare_party_platforms_path(@election.slug), class: "button is-primary" %>
+      <%= link_to "Go!", compare_party_platforms_path(@election.slug), class: "button is-success" %>
     </div>
   </div>
 <% end %>
@@ -82,7 +82,7 @@
         <% end %>
       </div>
       <div class="has-text-centered">
-        <%= link_to "Go!", compare_candidates_path(election_slug: @election.slug, office_id: office.id), class: "button is-primary" %>
+        <%= link_to "Go!", compare_candidates_path(election_slug: @election.slug, office_id: office.id), class: "button is-success" %>
       </div>
     </div>
 
@@ -105,7 +105,7 @@
             </div>
           </div>
           <div class="column is-12-mobile is-narrow-tablet is-narrow-desktop is-narrow-widescreen is-narrow-fullhd">
-            <%= f.submit "Go!", class: "button is-primary" %>
+            <%= f.submit "Go!", class: "button is-success" %>
           </div>
         </div>
       </div>
