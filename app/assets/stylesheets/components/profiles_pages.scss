@@ -6,10 +6,11 @@
   color: red;
 }
 
-.profiles-list {
-  li {
-    margin: 1em 0;
-  }
+.public-profile-container {
+  border: 1px solid $first-color;
+  border-radius: 6px;
+  margin: 1.5em 0;
+  padding: 1.25em;
 }
 
 .survey-answer-display {

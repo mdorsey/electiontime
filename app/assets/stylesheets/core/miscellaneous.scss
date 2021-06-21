@@ -18,9 +18,10 @@
 .show-grid-wrapper {
   display: grid;
   grid-template-areas: "grid-label grid-value";
-  grid-auto-columns: fit-content(50%);
+  grid-template-columns: fit-content(30%) fit-content(70%);
   row-gap: 1rem;
   column-gap: 2rem;
+  overflow-wrap: anywhere;
 }
 
 .grid-label {
