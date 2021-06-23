@@ -2,8 +2,6 @@ Rails.application.routes.draw do
  
   # Static_Pages controller  
   root    'static_pages#home'
-  get     '/about', to: 'static_pages#about'
-  get     '/contact', to: 'static_pages#contact'
 
   # Sessions controller
   get     '/login', to: 'sessions#new'

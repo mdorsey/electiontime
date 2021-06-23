@@ -1,4 +1,4 @@
-.about-page-picture, .contact-page-picture {
+.about-picture, .contact-picture {
   max-width: 600px;
   float: right;
   margin-left: 1.5em;
@@ -34,21 +34,21 @@
 
 /* --- Medium devices (laptops, tablets, 1023px and down) --- */
 @media only screen and (max-width: 1023px) {
-  .about-page-picture, .contact-page-picture {
+  .about-picture, .contact-picture {
     max-width: 500px;
   }
 }
 
 /* --- Small devices (tablets, phones, 768px and down) --- */
 @media only screen and (max-width: 768px) {
-  .about-page-picture, .contact-page-picture {
+  .about-picture, .contact-picture {
     max-width: 400px;
   }
 }
 
 /* --- Extra small devices (phones, 600px and down) --- */
 @media only screen and (max-width: 600px) {
-  .about-page-picture, .contact-page-picture {
+  .about-picture, .contact-picture {
     max-width: 300px;
     float: none;
     display:block;

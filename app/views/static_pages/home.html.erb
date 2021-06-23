@@ -7,7 +7,7 @@
           <%= sanitize @content_banner.content %>
         <% end %>
         <div class="has-text-centered">
-          <%= link_to "View Upcoming Elections", root_path(anchor: "upcoming-elections"), class: "button is-primary" %>
+          <%= link_to "View Upcoming Elections", root_path(anchor: "upcoming-elections"), class: "button is-success" %>
         </div>
       </div>
     </div>
@@ -17,7 +17,7 @@
   </div>
 </section>
 
-<!-- Upcoming Elections -->
+<!-- Upcoming Elections and Past Elections -->
 <section class="hero is-primary" id="upcoming-elections">
   <div class="hero-body">
     <h1>Upcoming Elections</h1>
@@ -28,30 +28,6 @@
         </li>
       <% end %>
     </ul>
-  </div>
-</section>
-
-<!-- About -->
-<section class="section">
-  <div class="container is-widescreen">
-    <div class="columns">
-      <div class="column is-half">
-        <figure class="image is-square">
-          <%= image_tag("home_page_about.jpg", alt: "Ballot") %>
-        </figure>
-      </div>
-      <div class="column is-half">
-        <% if @content_about %>
-          <%= sanitize @content_about.content %>
-        <% end %>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Past Elections -->
-<section class="hero is-primary" id="past-elections">
-  <div class="hero-body">
     <h1>Past Elections</h1>
     <ul>
       <% @elections_past.each do |election| %>
@@ -60,5 +36,57 @@
         </li>
       <% end %>
     </ul>
+  </div>
+</section>
+
+<!-- About -->
+<section class="section" id="about">
+  <div class="container is-widescreen">
+    <h1>About ElectionTime.org</h1>
+
+    <div class="about-picture">
+      <%= image_tag("home_page_about.jpg", alt: "About ElectionTime.org") %>
+    </div>
+
+    <div class="wysiwyg">
+      <% if @content_about %>
+        <%= sanitize @content_about.content %>
+      <% end %>
+    </div>
+  </div>
+</section>
+
+<!-- Contact -->
+<section class="section" id="contact">
+  <div class="container is-widescreen">
+    <h1>Get In Touch</h1>
+
+    <div class="contact-picture">
+      <%= image_tag("home_page_contact.jpg", alt: "Get In Touch") %>
+    </div>
+
+    <div class="wysiwyg">
+      <% if @content_contact %>
+        <%= sanitize @content_contact.content %>
+      <% end %>
+    </div>
+
+    <h2>Connect on Social Media</h2>
+    <a href="https://twitter.com/ElectionTimeOrg" target="_blank">
+      <div class="icon-text">
+        <span class="icon is-large">
+          <i class="fab fa-twitter fa-2x"></i>
+        </span>
+        <span>Follow us on Twitter</span>
+      </div>
+    </a>
+    <a href="https://www.facebook.com/ElectionTimeOrg" target="_blank">
+      <div class="icon-text">
+        <span class="icon is-large">
+          <i class="fab fa-facebook fa-2x"></i>
+        </span>
+        <span>Follow us on Facebook</span>
+      </div>
+    </a>
   </div>
 </section>

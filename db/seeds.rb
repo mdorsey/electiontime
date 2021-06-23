@@ -6,10 +6,9 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-ContentLocation.create!(name: "page_about_location_main")
-ContentLocation.create!(name: "page_contact_location_main")
 ContentLocation.create!(name: "page_home_location_banner")
 ContentLocation.create!(name: "page_home_location_about")
+ContentLocation.create!(name: "page_home_location_contact")
 ContentLocation.create!(name: "page_election_summary_location_top")
 ContentLocation.create!(name: "page_election_summary_location_bottom")
 ContentLocation.create!(name: "empty_profile_text")
