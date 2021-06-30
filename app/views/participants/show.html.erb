@@ -10,6 +10,7 @@
       <%= link_to 'Edit', edit_participant_path(@participant), class: "button is-primary" %>
       <%= link_to 'Delete', @participant, method: :delete, data: { confirm: 'Are you sure?' }, class: "button is-danger" %>
       <%= link_to 'Back', participants_path, class: "button is-light" %>
+      <%= link_to 'View Public Profile', profile_path(@participant.id), class: "button is-warning" %>
     </div>
 
     <div class="show-grid-wrapper">
