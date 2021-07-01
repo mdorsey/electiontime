@@ -38,6 +38,11 @@ class Participant < ApplicationRecord
     end
   end
 
+  # Returns true if the participant is in an active future election, false otherwise
+  def is_participant_in_future_election?
+    Election.joins(:participants).where("participants.id = ? AND elections.active = true AND election_date >= ?", self.id, Time.now.utc.midnight).any?
+  end
+
   def update_profile(raw_params, permitted_params, survey_questions)
 
     params_to_update = permitted_params

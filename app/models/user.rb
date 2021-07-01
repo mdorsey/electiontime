@@ -118,6 +118,11 @@ class User < ApplicationRecord
     end
   end
 
+  # Returns this user's participants in active elections that occur today or in the future
+  def participants_in_future_elections
+    Participant.joins(:elections).where("participants.user_id = ? AND elections.active = true AND election_date >= ?", self.id, Time.now.utc.midnight).order(name: :asc)
+  end
+
   private
 
     # Converts email to all lower-case.

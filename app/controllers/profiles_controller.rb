@@ -11,7 +11,7 @@ class ProfilesController < ApplicationController
   breadcrumb -> { @participant.participant_name_for_display }, -> { profile_path(@participant) }, only: [:edit, :show]
 
   def index
-    @profiles = Participant.where(user_id: current_user.id).order(name: :asc)
+    @profiles = current_user.participants_in_future_elections
   end
 
   def edit
@@ -70,10 +70,10 @@ class ProfilesController < ApplicationController
       params.require(:participant).permit(:picture, :name, :email, :phone, :address, :website, :biography)
     end
 
-    # Confirms the correct user attached to the participant, or if the user is an Admin
+    # Confirms the correct user is attached to the participant in a future election, or the user is an Admin
     def correct_participant_user
       @participant = Participant.find(params[:id])
       @user = User.find(@participant.user_id)
-      redirect_to(root_url) unless (current_user?(@user) || is_admin_user?)
+      redirect_to(root_url) unless ((current_user?(@user) && @participant.is_participant_in_future_election?) || is_admin_user?)
     end
 end
