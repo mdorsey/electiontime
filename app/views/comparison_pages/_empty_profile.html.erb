@@ -1,2 +1,2 @@
 <%= sanitize empty_profile_text.content %>
-<%= mail_to participant_email, "Email " + display_participant(participant_id, true), { target: "_blank", subject: "Complete your profile on ElectionTime.org", class: "button-with-extra-space is-primary", role: "button", onclick: "participant_contact_click('#{participant_id}');" } %>
+<%= mail_to participant_email, "Email " + display_participant(participant_id, true), { target: "_blank", subject: "Complete your profile on ElectionTime.org", class: "button-with-extra-space is-success", role: "button", onclick: "participant_contact_click('#{participant_id}');" } %>

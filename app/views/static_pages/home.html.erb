@@ -6,9 +6,6 @@
         <% if @content_banner %>
           <%= sanitize @content_banner.content %>
         <% end %>
-        <div class="has-text-centered">
-          <%= link_to "View Upcoming Elections", root_path(anchor: "upcoming-elections"), class: "button is-success" %>
-        </div>
       </div>
     </div>
     <figure class="image is-fullwidth">
@@ -17,25 +14,28 @@
   </div>
 </section>
 
-<!-- Upcoming Elections and Past Elections -->
+<!-- Upcoming Elections -->
 <section class="hero is-primary" id="upcoming-elections">
   <div class="hero-body">
     <h1>Upcoming Elections</h1>
-    <ul>
-      <% @elections_future.each do |election| %>
-        <li class="elections-list">
-          <%= render 'static_pages/election_details_box', election: election %>
-        </li>
-      <% end %>
-    </ul>
-    <h1>Past Elections</h1>
-    <ul>
-      <% @elections_past.each do |election| %>
-        <li class="elections-list">
-          <%= render 'static_pages/election_details_box', election: election %>
-        </li>
-      <% end %>
-    </ul>
+    <% if @elections_future.any? %>
+      <ul>
+        <% @elections_future.each do |election| %>
+          <li class="elections-list">
+            <%= render 'static_pages/election_details_box', election: election %>
+          </li>
+        <% end %>
+      </ul>
+    <% else %>
+      <div class="content_no_upcoming_elections">
+        <% if @content_no_upcoming_elections %>
+          <%= sanitize @content_no_upcoming_elections.content %>
+        <% end %>
+      </div>
+    <% end %>
+    <div class="has-text-centered">
+      <%= link_to "View Past Elections", root_path(anchor: "past-elections"), class: "button is-success" %>
+    </div>
   </div>
 </section>
 
@@ -88,5 +88,19 @@
         <span>Follow us on Facebook</span>
       </div>
     </a>
+  </div>
+</section>
+
+<!-- Past Elections -->
+<section class="hero is-primary" id="past-elections">
+  <div class="hero-body">
+    <h1>Past Elections</h1>
+    <ul>
+      <% @elections_past.each do |election| %>
+        <li class="elections-list">
+          <%= render 'static_pages/election_details_box', election: election %>
+        </li>
+      <% end %>
+    </ul>
   </div>
 </section>

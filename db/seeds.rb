@@ -7,6 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 ContentLocation.create!(name: "page_home_location_banner")
+ContentLocation.create!(name: "page_home_location_no_upcoming_elections")
 ContentLocation.create!(name: "page_home_location_about")
 ContentLocation.create!(name: "page_home_location_contact")
 ContentLocation.create!(name: "page_election_summary_location_top")

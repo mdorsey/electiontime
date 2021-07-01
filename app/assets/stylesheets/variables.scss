@@ -3,12 +3,10 @@ $first-color: #008080;
 $second-color: #800080;
 $wallpaper-color: white;
 
-
 /* Backgrounds */
 $body-background-color: $wallpaper-color;
 $navbar-background-color: $wallpaper-color;
 $footer-background-color: $wallpaper-color;
-
 
 /* Buttons and messages */
 $primary: $first-color;
@@ -19,12 +17,12 @@ $link: $second-color;
 $link-hover: $second-color;
 $link-focus: $second-color;
 
+
 /* Navbar */
 $navbar-item-color: $first-color;
 $navbar-item-hover-color: $second-color;
 $navbar-dropdown-item-hover-color: $second-color;
 $navbar-dropdown-arrow: $first-color;
-
 
 /* Admin menu */
 $menu-item-active-background-color: $first-color;
