@@ -13,6 +13,12 @@ gem 'mysql2', '~> 0.5.3'
 # Use Puma as the app server
 gem 'puma', '~> 5.0', '>= 5.0.4'
 
+# Use Capistrano for deploying to production
+gem 'capistrano', '~> 3.16'
+gem 'capistrano-rails', '~> 1.6', '>= 1.6.1'
+gem 'capistrano-passenger', '~> 0.2.1'
+gem 'capistrano-rbenv', '~> 2.2'
+
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 6.0'
 
