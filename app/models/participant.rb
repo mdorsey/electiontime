@@ -140,10 +140,14 @@ class Participant < ApplicationRecord
         first_name = row[3]
         last_name = row[4]
         email = row[5]
-        participant_name = row[6]
-        party_name = row[7]
-        office_name = row[8]
-        district_name = row[9]
+        office_name = row[6]
+        district_name = row[7]
+        participant_name = row[8]
+        participant_party = row[9]
+        participant_email = row[10]
+        participant_phone = row[11]
+        participant_address = row[12]
+        participant_website = row[13]
 
         if (c_or_p != "C" && c_or_p != "P")
           errors << "Row " + row_number + " has an invalid entry for Candidate (C) or Party (P)"
@@ -175,8 +179,8 @@ class Participant < ApplicationRecord
           errors << "Row " + row_number + " has a blank Participant Name"
         end
 
-        if !Party.find_by(name: party_name)
-          errors << "Row " + row_number + " has a party that doesn't exist: " + party_name
+        if !Party.find_by(name: participant_party)
+          errors << "Row " + row_number + " has a party that doesn't exist: " + participant_party
         end
 
         if (c_or_p === "C")
@@ -233,10 +237,14 @@ class Participant < ApplicationRecord
         first_name = row[3]
         last_name = row[4]
         email = row[5]
-        participant_name = row[6]
-        party_name = row[7]
-        office_name = row[8]
-        district_name = row[9]
+        office_name = row[6]
+        district_name = row[7]
+        participant_name = row[8]
+        participant_party = row[9]
+        participant_email = row[10]
+        participant_phone = row[11]
+        participant_address = row[12]
+        participant_website = row[13]
 
         if (c_or_p === "C")
           is_candidate = true
@@ -285,12 +293,16 @@ class Participant < ApplicationRecord
 
           if election.participants.create(user_id: owner.id,
                                           name: participant_name,
-                                          party_id: Party.find_by(name: party_name).id,
+                                          party_id: Party.find_by(name: participant_party).id,
                                           office_id: office.id,
                                           district_id: district_id,
                                           is_candidate: is_candidate,
                                           is_incumbent: is_incumbent,
-                                          is_party_leader: is_party_leader).valid?
+                                          is_party_leader: is_party_leader,
+                                          email: participant_email,
+                                          phone: participant_phone,
+                                          address: participant_address,
+                                          website: participant_website).valid?
             new_participants_count += 1
           end
 
@@ -298,10 +310,14 @@ class Participant < ApplicationRecord
           # Create the participant party
           if election.participants.create(user_id: owner.id,
                                           name: participant_name,
-                                          party_id: Party.find_by(name: party_name).id,
+                                          party_id: Party.find_by(name: participant_party).id,
                                           is_candidate: is_candidate,
                                           is_incumbent: is_incumbent,
-                                          is_party_leader: is_party_leader).valid?
+                                          is_party_leader: is_party_leader,
+                                          email: participant_email,
+                                          phone: participant_phone,
+                                          address: participant_address,
+                                          website: participant_website).valid?
             new_participants_count += 1
           end
         end
