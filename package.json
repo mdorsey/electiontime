@@ -1,5 +1,5 @@
 {
-  "name": "voteapp",
+  "name": "electiontime",
   "private": true,
   "dependencies": {
     "@rails/actioncable": "^6.0.0",
@@ -21,14 +21,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/mdorsey/vote_app.git"
+    "url": "git+https://github.com/mdorsey/electiontime.git"
   },
   "author": "mdorsey",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/mdorsey/vote_app/issues"
+    "url": "https://github.com/mdorsey/electiontime/issues"
   },
-  "homepage": "https://github.com/mdorsey/vote_app#readme",
+  "homepage": "https://github.com/mdorsey/electiontime#readme",
   "devDependencies": {
     "webpack-dev-server": "^3.11.0"
   }
