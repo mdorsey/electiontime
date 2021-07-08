@@ -32,8 +32,8 @@ append :linked_dirs, 'log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bund
 # Default value for local_user is ENV['USER']
 # set :local_user, -> { `git config user.name`.chomp }
 
-# Only keep the last 5 releases to save disk space
-set :keep_releases, 5
+# Set the number of releases kept on the server
+set :keep_releases, 3
 
 # Uncomment the following to require manually verifying the host key before first deploy.
 # set :ssh_options, verify_host_key: :secure
