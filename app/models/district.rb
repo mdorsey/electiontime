@@ -1,3 +1,5 @@
+require 'csv'
+
 class District < ApplicationRecord
 
   belongs_to :office
