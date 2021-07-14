@@ -1,5 +1,7 @@
 class AdminController < ApplicationController
   
+  before_action :admin_user
+  
   def dashboard
     @elections_active = Election.where(active: true).count
   end
