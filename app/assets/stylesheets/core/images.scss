@@ -7,6 +7,10 @@
 .avatar, .avatar-small {
   height: 128px;
   width: 128px;
+  
+  img {
+    border-radius: 50%;
+  }
 }
 
 .election-picture {
