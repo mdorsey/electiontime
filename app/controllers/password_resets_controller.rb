@@ -18,17 +18,17 @@ class PasswordResetsController < ApplicationController
       @user.create_reset_digest
       
       if @user.send_password_reset_email
-        flash[:success] = "An email has been sent to your address containing a link to reset your password. Check your email to continue."
+        flash.now[:success] = "An email has been sent to you containing a link to reset your password. Check your email to continue."
         Log.create(user_id: @user.id, log_type_id: LogType.find_by(name: "Email Sent").id, message: "Password Reset email sent to " + @user.email)
       else
-        flash[:danger] = "Error! Password Reset email was not sent. Please contact support for assistance."
+        flash.now[:danger] = "Error! The password reset email was not sent. Please contact support for assistance."
       end
       
-      redirect_to root_url
     else
       flash.now[:danger] = "Error! The email address you entered was not found. Please try again, or contact support for assistance."
-      render 'new'
     end
+
+    render 'new'
   end
 
   def edit
