@@ -21,6 +21,7 @@ class Participant < ApplicationRecord
   validates(:address, length: { maximum: 255 })
   validates(:phone, length: { maximum: 255 })
   validate :biography_max_character_length
+  validate :website_has_correct_format
 
   before_destroy :allow_destroy
 
@@ -352,4 +353,10 @@ class Participant < ApplicationRecord
         errors.add(:biography, "must be less than or equal to " + max_length.to_s + " characters")
       end
     end
+
+    def website_has_correct_format
+      if website.present?
+        errors.add(:website, "must begin with 'https://' or 'http://'") unless website.downcase.start_with?('https://', 'http://')
+      end
+    end    
 end
