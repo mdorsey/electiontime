@@ -31,8 +31,8 @@ gem 'turbolinks', '~> 5.2', '>= 5.2.1'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1', '>= 3.1.16'
 
-# Use Active Storage variant
-# gem 'image_processing', '~> 1.2'
+# High-level wrapper for processing images for the web with ImageMagick or libvips. https://github.com/janko/image_processing
+gem 'image_processing', '~> 1.12', '>= 1.12.1'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false

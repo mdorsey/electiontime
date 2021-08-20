@@ -22,7 +22,7 @@ class Participant < ApplicationRecord
   validates(:phone, length: { maximum: 255 })
   validate :biography_max_character_length
   validate :website_has_correct_format
-  validate :picture_is_image_file_type
+  validate :picture_is_proper_type_and_size
 
   before_destroy :allow_destroy
 
@@ -361,9 +361,15 @@ class Participant < ApplicationRecord
       end
     end
 
-    def picture_is_image_file_type
-      unless picture && picture.content_type =~ /^image\/(jpeg|jpg|png)$/
-        errors.add(:picture, "is not a valid image file type")
+    def picture_is_proper_type_and_size
+      if picture.attached?
+        if picture.content_type =~ /^image\/(jpeg|jpg|png)$/
+          if picture.blob.byte_size > 5.megabytes
+            errors.add(:picture, 'size must be less than 5 MB')
+          end
+        else
+          errors.add(:picture, "is not a valid image file type")
+        end
       end
     end
 end

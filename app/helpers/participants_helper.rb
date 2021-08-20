@@ -29,7 +29,7 @@ module ParticipantsHelper
       participant = Participant.find(participant_id)
 
       if participant.picture.attached?
-        picture_url = participant.picture
+        picture_url = participant.picture.variant(resize_to_fill: [128, 128])
       end
     end
 
