@@ -13,6 +13,8 @@ class Election < ApplicationRecord
   validates(:election_date, presence: true)
   validates(:election_type, presence: true)
   validates(:jurisdiction, presence: true)
+  validate :picture_is_image_file_type
+  validate :feature_image_is_image_file_type
 
   before_destroy :allow_destroy
   after_create :update_slug
@@ -75,5 +77,17 @@ class Election < ApplicationRecord
 
     def assign_slug
       self.slug = create_slug
+    end
+
+    def picture_is_image_file_type
+      unless picture && picture.content_type =~ /^image\/(jpeg|jpg|png)$/
+        errors.add(:picture, "is not a valid image file type")
+      end
+    end
+
+    def feature_image_is_image_file_type
+      unless feature_image && feature_image.content_type =~ /^image\/(jpeg|jpg|png)$/
+        errors.add(:feature_image, "is not a valid image file type")
+      end
     end
 end

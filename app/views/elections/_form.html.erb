@@ -4,15 +4,21 @@
   <div class="field">
     <%= f.label :picture, "Picture", class: 'label' %>
     <div class="control">
-      <%= f.file_field :picture %>
+      <%= f.file_field :picture, accept: 'image/png,image/jpg,image/jpeg' %>
     </div>
+  </div>
+  <div class="help-text">
+    Image file must be of type JPEG, JPG, or PNG
   </div>
 
   <div class="field">
     <%= f.label :feature_image, "Feature Image", class: 'label' %>
     <div class="control">
-      <%= f.file_field :feature_image %>
+      <%= f.file_field :feature_image, accept: 'image/png,image/jpg,image/jpeg' %>
     </div>
+  </div>
+  <div class="help-text">
+    Image file must be of type JPEG, JPG, or PNG
   </div>
 
   <div class="field">

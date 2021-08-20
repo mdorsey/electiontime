@@ -16,8 +16,11 @@
   <div class="field">
     <%= p_fields.label :picture, "Picture", class: 'label' %>
     <div class="control">
-      <%= p_fields.file_field :picture %>
+      <%= p_fields.file_field :picture, accept: 'image/png,image/jpg,image/jpeg' %>
     </div>
+  </div>
+  <div class="help-text">
+    Image file must be of type JPEG, JPG, or PNG
   </div>
 
   <hr>
