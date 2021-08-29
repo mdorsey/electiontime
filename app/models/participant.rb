@@ -22,7 +22,7 @@ class Participant < ApplicationRecord
   validates(:phone, length: { maximum: 255 })
   validate :biography_max_character_length
   validate :website_has_correct_format
-  validate :picture_is_proper_type_and_size
+  validate :picture_is_correct_format
 
   before_destroy :allow_destroy
 
@@ -361,7 +361,7 @@ class Participant < ApplicationRecord
       end
     end
 
-    def picture_is_proper_type_and_size
+    def picture_is_correct_format
       if picture.attached?
         if picture.content_type =~ /^image\/(jpeg|jpg|png)$/
           if picture.blob.byte_size > 5.megabytes

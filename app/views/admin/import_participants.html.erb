@@ -9,7 +9,7 @@
 
     <%= render partial: 'importer_status_messages', locals: {errors: @errors, rows_count: @new_participants_count, success_message: @success_message } %>
 
-    <%= form_with(url: admin_import_participants_path, method: "post", local: true) do |f| %>
+    <%= form_with(url: admin_import_participants_path, method: "post", multipart: true, local: true) do |f| %>
       <div class="field">
         <%= f.label "Election", class: 'label' %>
         <div class="control">
