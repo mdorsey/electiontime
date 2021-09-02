@@ -80,14 +80,18 @@ class Election < ApplicationRecord
     end
 
     def picture_is_correct_format
-      unless picture && picture.content_type =~ /^image\/(jpeg|jpg|png)$/
-        errors.add(:picture, "is not a valid image file type")
+      if picture.attached?
+        unless picture.content_type =~ /^image\/(jpeg|jpg|png)$/
+          errors.add(:picture, "is not a valid image file type")
+        end
       end
     end
 
     def feature_image_is_correct_format
-      unless feature_image && feature_image.content_type =~ /^image\/(jpeg|jpg|png)$/
-        errors.add(:feature_image, "is not a valid image file type")
+      if feature_image.attached?
+        unless feature_image.content_type =~ /^image\/(jpeg|jpg|png)$/
+          errors.add(:feature_image, "is not a valid image file type")
+        end
       end
     end
 end
