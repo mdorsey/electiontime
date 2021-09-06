@@ -23,7 +23,9 @@
 </div>
 
 <% if @content_top %>
-  <%= sanitize @content_top.content %>
+  <div class="election-summary-content-top wysiwyg">
+    <%= @content_top.content.html_safe %>
+  </div>
 <% end %>
 
 <!-- COMPARE PARTY LEADERS (if enabled) -->
@@ -114,5 +116,7 @@
 <% end %>
 
 <% if @content_bottom %>
-  <%= sanitize @content_bottom.content %>
+  <div class="wysiwyg">
+    <%= @content_bottom.content.html_safe %>
+  </div>
 <% end %>

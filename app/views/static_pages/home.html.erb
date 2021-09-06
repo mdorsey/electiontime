@@ -48,11 +48,11 @@
       <%= image_tag("home_page_about.jpg", alt: "About ElectionTime.org") %>
     </div>
 
-    <div class="wysiwyg">
-      <% if @content_about %>
+    <% if @content_about %>
+      <div class="wysiwyg">
         <%= sanitize @content_about.content %>
-      <% end %>
-    </div>
+      </div>
+    <% end %>
   </div>
 </section>
 
@@ -65,11 +65,11 @@
       <%= image_tag("home_page_contact.jpg", alt: "Get In Touch") %>
     </div>
 
-    <div class="wysiwyg">
-      <% if @content_contact %>
+    <% if @content_contact %>
+      <div class="wysiwyg">
         <%= sanitize @content_contact.content %>
-      <% end %>
-    </div>
+      </div>
+    <% end %>
 
     <h2>Connect on Social Media</h2>
     <a href="https://twitter.com/ElectionTimeOrg" target="_blank">
