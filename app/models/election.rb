@@ -29,19 +29,19 @@ class Election < ApplicationRecord
   end
 
   def parties_for_display
-    self.participants.where(is_candidate: false).order(name: :asc)
+    self.participants.where(is_candidate: false).shuffle
   end
 
   def candidates_for_display(office_id, district_id = nil)
     if district_id
-      self.participants.where(office_id: office_id, district_id: district_id).order(name: :asc)
+      self.participants.where(office_id: office_id, district_id: district_id).shuffle
     else
-      self.participants.where(office_id: office_id).order(name: :asc)
+      self.participants.where(office_id: office_id).shuffle
     end
   end
 
   def party_leaders_for_display
-    self.participants.where(is_party_leader: true).order(name: :asc)
+    self.participants.where(is_party_leader: true).shuffle
   end
 
   def survey_questions_by_type(survey_type_name)

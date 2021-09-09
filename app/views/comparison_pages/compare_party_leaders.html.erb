@@ -1,7 +1,7 @@
 <% provide(:title, "Compare Party Leaders") %>
 
 <!-- INTRO -->
-<%= render 'comparison_pages/comparison_intro', page_heading: 'Compare Party Leaders', participant_title: 'Leaders', display_incumbent: true %>
+<%= render 'comparison_pages/comparison_intro', page_heading: 'Compare Party Leaders', participant_title: 'Party leaders', display_incumbent: true %>
 
 <!-- NAV MENU -->
 <%= render 'comparison_pages/comparison_nav_menu', survey_questions: @survey_questions %>
@@ -12,5 +12,5 @@
 <!-- SURVEY QUESTIONS AND ANSWERS -->
 <%= render 'comparison_pages/comparison_survey', survey_questions: @survey_questions, participants: @party_leaders %>
 
-<!-- CONTACTS -->
+<!-- CONTACT INFORMATION -->
 <%= render 'comparison_pages/comparison_contact', participants: @party_leaders %>
