@@ -2,7 +2,7 @@ class UserMailer < ApplicationMailer
 
   include ActionView::Helpers::TextHelper
 
-  default from: "ElectionTime.org <contact@electiontime.org>"
+  default from: "ElectionTime <contact@electiontime.org>"
 
   def account_activation(user)
     @user = user
