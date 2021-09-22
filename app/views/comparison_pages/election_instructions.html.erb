@@ -1,0 +1,7 @@
+<% provide(:title, "Instructions for " + @election.name) %>
+
+<% if @content_instructions %>
+  <div class="wysiwyg">
+    <%= @content_instructions.content.html_safe %>
+  </div>
+<% end %>

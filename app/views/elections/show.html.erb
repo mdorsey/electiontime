@@ -37,6 +37,9 @@
       <div class="grid-label">Active:</div>
       <div class="grid-value"><%= display_boolean_as_yes_or_no(@election.active) %></div>
 
+      <div class="grid-label">Instructions Page:</div>
+      <div class="grid-value"><%= link_to "Instructions", election_instructions_path(@election.slug) %></div>
+
       <div class="grid-label">Election Type:</div>
       <div class="grid-value"><%= display_election_type(@election.election_type_id) %></div>
 
@@ -57,7 +60,7 @@
         <ul>
           <% @election.offices.order(:name).each do |office| %>
             <li><%= link_to office.name, office %></li>
-          <%end %>
+          <% end %>
         </ul>  
       </div>
       
@@ -66,7 +69,7 @@
         <ul>
           <% @election.surveys.each do |survey| %>
             <li><%= link_to survey.name, survey %></li>
-          <%end %>
+          <% end %>
         </ul>  
       </div>
 
@@ -75,7 +78,7 @@
         <ul>
           <% @election.contents.each do |content| %>
             <li><%= link_to content.name, content %></li>
-          <%end %>
+          <% end %>
         </ul>  
       </div>
 
@@ -90,7 +93,7 @@
         <ul>
           <% @election.participants.order(:name).each do |participant| %>
             <li><%= link_to display_participant(participant.id), participant %></li>
-          <%end %>
+          <% end %>
         </ul>
       </div>
 

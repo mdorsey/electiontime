@@ -43,13 +43,15 @@ Rails.application.routes.draw do
   # Users controller
   get     '/send-welcome-email/:id', to: 'users#send_welcome_email', as: 'send_welcome_email'
 
-  # Comparison_Pages controller  
-  # These routes MUST be last in the list
+  # Comparison_Pages controller
   post    '/participant-contact-click', to: 'comparison_pages#participant_contact_click'
+
+  # The following routes MUST be last in the list because they use the election_slug, which is variable
   get     '/:election_slug', to: 'comparison_pages#election_summary', as: 'election_summary'
   get     '/:election_slug/candidates/:office_id', to: 'comparison_pages#compare_candidates', as: 'compare_candidates'
   get     '/:election_slug/candidates/:office_id/:district_id', to: 'comparison_pages#compare_candidates_in_district', as: 'compare_candidates_in_district'
   get     '/:election_slug/leaders', to: 'comparison_pages#compare_party_leaders', as: 'compare_party_leaders'
   get     '/:election_slug/parties', to: 'comparison_pages#compare_party_platforms', as: 'compare_party_platforms'
+  get     '/:election_slug/instructions', to: 'comparison_pages#election_instructions', as: 'election_instructions'
 
 end
