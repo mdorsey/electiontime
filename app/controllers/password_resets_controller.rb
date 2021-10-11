@@ -41,7 +41,13 @@ class PasswordResetsController < ApplicationController
     elsif @user.update_attributes(user_params)
       log_in @user
       flash[:success] = "Your password has been reset and you have been logged in."
-      redirect_to @user
+
+      # Redirect to the Public Profiles page, or the homepage
+      if @user.participants_in_future_elections.any?
+        redirect_to profiles_path
+      else
+        redirect_to @user
+      end
     else
       render 'edit'
     end

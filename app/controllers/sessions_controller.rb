@@ -12,10 +12,17 @@ class SessionsController < ApplicationController
     if user && user.authenticate(params[:session][:password])
 
       if user.activated?
-        # Log the user in, remember them, and redirect to the homepage
+        # Log the user in, remember them
         log_in(user)
         params[:session][:remember_me] == '1' ? remember(user) : forget(user)
-        redirect_to root_url
+
+        # Redirect to the Public Profiles page, or the homepage
+        if user.participants_in_future_elections.any?
+          redirect_to profiles_path
+        else
+          redirect_to root_url
+        end
+        
       else
         flash[:danger] = 'Your account is not active. Please contact support for assistance.'
         redirect_to root_url
